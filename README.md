@@ -32,6 +32,8 @@ The tools used are cross-platform and should work on Windows, MacOS and Linux. Y
 
 Test if the site is working:
 
- hugo server -D --disableFastRender
+```
+hugo server -D --disableFastRender
+```
 
 This launches Hugo development server and you can see your website by opening http://localhost:1313.
