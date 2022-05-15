@@ -6,17 +6,17 @@ Theme for a blazing fast static website and/or blog using bootstrap 5.
 
 Hugo is the **world’s fastest static website engine**. It’s written in Go (aka Golang).
 
-[Hugo Documentation](https://gohugo.io/documentation/)
+- [Hugo Documentation](https://gohugo.io/documentation/)
 
-[Go template documentation](https://golang.org/pkg/text/template/#hdr-Functions)
+- [Go template documentation](https://golang.org/pkg/text/template/#hdr-Functions)
 
 ## Bootstrap
 
 Get started with Bootstrap
 
-[Bootstrap 5.2](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- [Bootstrap 5.2](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 
-[Install Bootstrap in your Node.js powered apps with the npm package](https://getbootstrap.com/docs/5.2/getting-started/download/#npm)
+- [Install Bootstrap in your Node.js powered apps with the npm package](https://getbootstrap.com/docs/5.2/getting-started/download/#npm)
 
 ## Requirements
 
