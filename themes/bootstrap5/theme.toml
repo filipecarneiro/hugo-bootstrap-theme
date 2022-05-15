@@ -1,0 +1,15 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "Bootstrap5"
+license = "MIT"
+licenselink = "https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"
+description = ""
+homepage = "https://github.com/filipecarneiro/hugo-bootstrap-theme"
+tags = []
+features = []
+min_version = "0.91.0"
+
+[author]
+  name = "Filipe Carneiro"
+  homepage = "https://github.com/filipecarneiro"

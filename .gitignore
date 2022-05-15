@@ -1,0 +1,6 @@
+.vs
+public
+node_modules
+resources
+.hugo_build.lock
+references.md

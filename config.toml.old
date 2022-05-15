@@ -1,0 +1,39 @@
+baseURL = 'https://salvus.site/'
+languageCode = 'en-us'
+title = 'Salvus.Site'
+
+theme = "bootstrap5"
+relativeURLS = true
+
+sectionPagesMenu = "main"
+
+[menu]
+  [[menu.main]]
+    identifier = "services"
+    name = "Services"
+    url = "/services/"
+    weight = 200
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/blog/"
+    weight = 300
+
+[module]
+  [[module.mounts]]
+    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    target = "assets/js/bootstrap.bundle.min.js"
+
+[params]
+  author = "Filipe Carneiro"
+  description = "Theme for a blazing fast static website and/or blog using bootstrap 5."
+  images = ["/images/site-feature-image.png"]
+  footer = "&copy; Salvus.Site - 2022 All rights reserved."
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = ["lastmod", ":fileModTime", ":default"]
+  logo = "https://salvus.site/logo.png"
+
+googleAnalytics = "UA-1511XXXX-X"
+enableRobotsTXT = true

@@ -1,0 +1,72 @@
+# Meta Data for SEO
+
+author = "Filipe Carneiro"
+description = "Theme for a blazing fast static website and/or blog using bootstrap 5."
+
+## Deprecated
+titleSeparator = "-"
+titleAddition = "Website Security Seal"
+
+## Open Graph
+images = ["/images/site-feature-image.png"]
+ogLocale = "en_US"
+domainTLD = "salvus.site"
+titleHome = "Salvus Site"
+
+## Twitter Cards
+twitterSite = "@jfilipecarneiro"
+twitterCreator = "@jfilipecarneiro"
+
+## JSON-LD
+# schemaType = "Person"
+schemaType = "Organization"
+schemaName = "Salvus Site"
+schemaAuthor = "Salvus Site"
+schemaAuthorTwitter = "https://twitter.com/jfilipecarneiro"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/filipecarneiro/"
+schemaAuthorGitHub = "https://github.com/filipecarneiro"
+schemaLocale = "en-US"
+schemaLogo = "favicon.png"
+schemaLogoWidth = 48
+schemaLogoHeight = 48
+schemaImage = "logo.png"
+schemaImageWidth = 1280
+schemaImageHeight = 1280
+schemaTwitter = ""
+schemaLinkedIn = ""
+schemaGitHub = ""
+schemaSection = "blog"
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+smallLimit = "300"
+
+# Footer
+footer = "Open-source <a class=\"text-muted text-decoration-none\" href=\"https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE\">MIT</a> Licensed."
+
+# Feed
+copyRight = "Copyright © 2022 Salvus Site. All rights reserved."
+
+# Alert
+alert = false
+alertDismissable = true
+alertText = "Introducing this new service! <a class=\"alert-link stretched-link\" href=\"https://salvus.site/blog/total-security/\">Check out Total Security</a>"
+
+# Pre-footer
+footerAbout = true
+footerAboutTitle = "Few Words About Us"
+footerAboutText = "We protect your website so you can provide a safe environment to build trust and improve the user experience of your visitors.<br/><br/>Salvus Site is the partner that you can rely on for preventive and reactive cybersecurity."
+
+[options]
+  lazySizes = true
+  bootStrapJs = true
+  breadCrumb = false
+  multilingualMode = false
+  fullWidth = false

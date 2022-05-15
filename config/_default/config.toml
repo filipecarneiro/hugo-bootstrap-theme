@@ -1,0 +1,37 @@
+baseURL = 'https://salvus.site/'
+languageCode = 'en-US'
+title = "Salvus Site"
+
+theme = "bootstrap5"
+
+disableHugoGeneratorInject = true
+enableRobotsTXT = true
+sectionPagesMenu = "main"
+googleAnalytics = "UA-1511XXXX-X"
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = ["lastmod", ":fileModTime", ":default"]
+  logo = "https://salvus.site/logo.png"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  contributor = "contributors"
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[permalinks]
+  blog = "/blog/:title/"
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.91.0"
+    max = ""
+  [[module.mounts]]
+    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    target = "assets/js/bootstrap.bundle.min.js"

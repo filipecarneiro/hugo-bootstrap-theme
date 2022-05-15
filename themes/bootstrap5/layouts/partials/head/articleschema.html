@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ .Title }},
+  "image": {{ .Params.featuredImage | absURL }},
+  "datePublished": {{ .PublishDate }},
+  "dateModified": {{ .Lastmod }},
+  "author": {{ .Param "author" }},
+  "mainEntityOfPage": { "@type": "WebPage" },
+    "publisher": {
+    "@type": "Organization",
+    "name": {{ .Site.Title }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ .Site.Params.logo }}
+    }
+  },
+  "wordcount" : {{ .Content | countwords }},
+  "description": {{ .Summary | plainify | safeHTML }},
+  "keywords": [{{ range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}]
+}
+</script>

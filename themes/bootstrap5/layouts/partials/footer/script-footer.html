@@ -1,0 +1,19 @@
+<!-- JavaScript and dependencies -->
+
+{{ $bootstrap := resources.Get "js/bootstrap.bundle.min.js" }}
+{{ $js := slice $bootstrap | resources.Concat "js/bundle.js" | resources.Minify }}
+
+{{ if eq (hugo.Environment) "development" -}}
+  {{ if .Site.Params.options.bootStrapJs -}}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+  {{ end -}}
+{{ else -}}  
+  {{ $js := $js | minify | fingerprint "sha512" -}}
+  {{ $bootstrap := $bootstrap | minify | fingerprint "sha512" -}}
+  {{ if .Site.Params.options.bootStrapJs -}}
+    <script src="{{ $bootstrap.RelPermalink }}" integrity="{{ $bootstrap.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{end}}
+
+{{ template "_internal/google_analytics_async.html" . }}

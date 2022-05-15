@@ -1,0 +1,23 @@
+<title>{{ .Title }}</title>
+
+{{ with .Description -}}
+  <meta name="description" content="{{ . }}">
+{{ else -}}
+  {{ with .Summary | plainify -}}
+    <meta name="description" content="{{ . }}">
+  {{ else -}}
+    <meta name="description" content="{{ .Site.Params.description }}">
+  {{ end -}}
+{{ end -}}
+
+{{ range .AlternativeOutputFormats -}}
+  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end -}}
+
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+
+<!-- will load json/ld depending on page type-->
+{{ if and (.IsPage) (eq .Section "blog") }}
+    {{- partial "head/articleschema.html" .  -}}
+{{ end }}
