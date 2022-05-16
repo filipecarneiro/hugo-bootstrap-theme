@@ -2,27 +2,24 @@
 
 <div class="container pb-5">
 
-   <div class="row">
-       <div class="col-auto">
-            Categories: {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
-            <a class="badge rounded-pill bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+    <div class="row">
+        <div class="col-auto">
+            Categories:
+            {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+                <a class="badge rounded-pill bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
-        
-       </div>
-      <div class="col-auto">
-            Tags: {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
-            <a class="badge rounded-pill bg-success nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+        </div>
+        <div class="col-auto">
+            Tags:
+            {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
+                <a class="badge rounded-pill bg-success nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
-      </div>
-   </div>
-
-
+        </div>
+    </div>
 
     {{ if ne .Kind "taxonomy" }}
 
         {{ range .Pages }}
-
-
         <div class="row g-4 mt-2 ">
 
             <div class="col-lg-3 col-sm-12">
@@ -35,20 +32,24 @@
                     <h2 class="h4 ">{{ .Title }}</h2>
                 </a>
 
-                <time datetime="{{ .Lastmod.Format `006-01-02T15:04:05Z07:00` | safeHTML }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time>
-                 <br />
-                 Categories: {{ range .Params.categories }}
-                 <a class="text-decoration-none nav-item px-1" href="/categories/{{ . | urlize}}">{{ . }}</a>
-
-                {{end}}
-                Tags:{{ range .Params.tags }}
-                 <a class="text-decoration-none nav-item px-1" href="/tags/{{ . | urlize}}">{{ . }}</a>
-
-                {{end}}
-
-                {{ .Content | truncate 400 }}
-                <a class="text-decoration-none link-secondary nav-link" href="{{.Permalink}}">...Read Article</a>
-
+                <p><small>
+                    <time datetime="{{ .Lastmod.Format `006-01-02T15:04:05Z07:00` | safeHTML }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time>
+                    <br />
+                    Categories:
+                    {{ range .Params.categories }}
+                        <a class="text-decoration-none nav-item px-1" href="/categories/{{ . | urlize}}">{{ . }}</a>
+                    {{end}}
+                    Tags:
+                    {{ range .Params.tags }}
+                        <a class="text-decoration-none nav-item px-1" href="/tags/{{ . | urlize}}">{{ . }}</a>
+                    {{end}}
+                </small></p>
+                
+                <div class="my-3">
+                    {{ .Summary | truncate 400 }}
+                </div>
+                
+                <a class="text-decoration-none link-secondary nav-link" href="{{.Permalink}}">Read Article</a>
 
             </div>
 
