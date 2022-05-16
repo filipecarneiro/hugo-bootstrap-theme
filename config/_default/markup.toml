@@ -16,3 +16,8 @@ defaultMarkdownHandler = "goldmark"
     hardWraps = false
     unsafe = true
     xHTML = false
+
+[tableOfContents]
+  endLevel = 3
+  ordered = false
+  startLevel = 2
