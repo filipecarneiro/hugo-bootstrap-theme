@@ -1,6 +1,7 @@
 defaultMarkdownHandler = "goldmark"
 
 [goldmark]
+
   [goldmark.extensions]
     definitionList = true
     footnote = true
@@ -9,9 +10,14 @@ defaultMarkdownHandler = "goldmark"
     table = true
     taskList = true
     typographer = true
+
   [goldmark.parser]
-    attribute = true
     autoHeadingID = true
+
+    [goldmark.parser.attribute]
+      block = true
+      title = true
+
   [goldmark.renderer]
     hardWraps = false
     unsafe = true
