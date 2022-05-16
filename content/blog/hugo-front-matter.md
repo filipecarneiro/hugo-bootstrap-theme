@@ -10,6 +10,9 @@ tags: ["hugo", "front matter" ]
 keywords: ["hugo", "front matter","draft post", "front matter variables"]
 author: "Filipe Carneiro"
 weight: 40
+aliases:
+  - draft-post
+  - my-fourth-blog-post
 ---
 
 # Hugo Front Matter
