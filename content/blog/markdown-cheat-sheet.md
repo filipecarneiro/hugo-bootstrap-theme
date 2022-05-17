@@ -186,19 +186,16 @@ func main() {
 ## Blockquote
 
 ```markdown
-
-> Blockquote
+> Blockquote  
 > Second line
-> Third line
-{.d-block .m-2 .p-2 .border-start .border-secondary}
-
-
+> 
+>  -- Author
 ```
 
 > Blockquote  
-> Second line  
-> Third line
-{.d-block .m-2 .p-2 .border-start .border-secondary}
+> Second line
+> 
+>  -- Author
 
 ---
 

@@ -4,3 +4,8 @@
     background-color: var(--bs-light);
     border-radius: .3rem;  
 }
+
+blockquote {
+    border-left: 4px solid var(--bs-secondary);
+    padding-left: 1em;
+}
