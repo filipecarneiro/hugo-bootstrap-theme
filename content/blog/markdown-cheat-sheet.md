@@ -202,20 +202,6 @@ func main() {
 
 ---
 
-## Math
-
-```markdown
-$$
-x = 1 + y^2
-$$
-```
-
-$$
-x = 1 + y^2
-$$
-
----
-
 ## HTML
 
 ```markdown
@@ -227,6 +213,8 @@ $$
 <div>
     <p>Hello world</p>
 </div>
+
+---
 
 ## See also
 
