@@ -28,10 +28,11 @@ You can refer to the table below for an overview of basic markdown syntax:
 | Bold           | `**Bold**`                       |
 | Strike         | `~~strike~~`                     |
 | Blockquote     | `>`                              |
-| Links          | `[link name](link.com)`          |
+| Links          | `[link name](https://link.com)`  |
+| Images         | `![Image name](image.png)`       |
 | Unordered list | `* List item`                    |
 | Ordered list   | `1. List item`                   |
-| Code Block     | <code>\`insert code here\`<code> |
+| Inline Code    | <code>\`insert code here\`<code> |
 {.table .table-sm .table-striped .table-hover}
 
 ---
@@ -108,8 +109,6 @@ You can refer to the table below for an overview of basic markdown syntax:
 
 `Inline code`
 
-$Inline math$
-
 ~~Strikethrough~~
 
 [Hyperlink](http://example.com)
@@ -130,8 +129,6 @@ $Inline math$
 <mark>Highlight</mark>
 
 `Inline code`
-
-$Inline math$
 
 ~~Strikethrough~~
 
@@ -154,6 +151,22 @@ $Inline math$
 | -------- | -------- |
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
+
+---
+
+## Blockquote
+
+```markdown
+> Blockquote  
+> Second line
+> 
+>  -- Author
+```
+
+> Blockquote  
+> Second line
+> 
+>  -- Author
 
 ---
 
@@ -180,22 +193,6 @@ func main() {
     fmt.Println("hello world")
 }
 ```
-
----
-
-## Blockquote
-
-```markdown
-> Blockquote  
-> Second line
-> 
->  -- Author
-```
-
-> Blockquote  
-> Second line
-> 
->  -- Author
 
 ---
 
