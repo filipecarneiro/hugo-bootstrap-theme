@@ -27,7 +27,7 @@ You can refer to the table below for an overview of basic markdown syntax:
 | Italics        | `*italics*`                      |
 | Bold           | `**Bold**`                       |
 | Strike         | `~~strike~~`                     |
-| Block quote    | `>`                              |
+| Blockquote     | `>`                              |
 | Links          | `[link name](link.com)`          |
 | Unordered list | `* List item`                    |
 | Ordered list   | `1. List item`                   |
@@ -183,13 +183,22 @@ func main() {
 
 ---
 
-## Quote
+## Blockquote
 
 ```markdown
-> Quote
+
+> Blockquote
+> Second line
+> Third line
+{.d-block .m-2 .p-2 .border-start .border-secondary}
+
+
 ```
 
-> Quote
+> Blockquote  
+> Second line  
+> Third line
+{.d-block .m-2 .p-2 .border-start .border-secondary}
 
 ---
 
@@ -221,4 +230,5 @@ $$
 
 ## See also
 
-https://www.markdownguide.org/tools/hugo/
+- [Hugo Markdown Reference](https://www.markdownguide.org/tools/hugo/)
+- [Bootstrap Typography](https://getbootstrap.com/docs/5.2/content/typography/)
