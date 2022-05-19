@@ -1,13 +1,14 @@
 baseURL = 'https://salvus.site/'
-languageCode = 'en-US'
 title = "Salvus Site"
+
+languageCode = 'en-US'
 
 theme = "bootstrap5"
 
 disableHugoGeneratorInject = true
 enableRobotsTXT = true
 sectionPagesMenu = "main"
-googleAnalytics = "UA-1511XXXX-X"
+#googleAnalytics = "UA-1511XXXX-X"
 
 [frontmatter]
   date = ["date", "publishDate", "lastmod"]
@@ -25,7 +26,7 @@ googleAnalytics = "UA-1511XXXX-X"
   priority = 0.5
 
 [permalinks]
-  blog = "/blog/:title/"
+  posts = "/blog/:title/"
 
 [module]
   [module.hugoVersion]

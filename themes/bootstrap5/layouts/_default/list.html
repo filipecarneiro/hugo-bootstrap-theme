@@ -4,13 +4,13 @@
 
     <div class="row">
         <div class="col-auto">
-            Categories:
+            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="/icons/feather-sprite.svg#folder"/></svg>
             {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
                 <a class="badge rounded-pill bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
         </div>
         <div class="col-auto">
-            Tags:
+            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="/icons/feather-sprite.svg#tag"/></svg>
             {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
                 <a class="badge rounded-pill bg-success nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
@@ -24,32 +24,39 @@
 
             <div class="col-lg-3 col-sm-12">
                 <img class="img-fluid rounded" src="{{ .Param `featuredImage` }}" alt="featured image {{.Title }}">
-
             </div>
-            <div class="col-lg-9 col-sm-12 bg-light p-3">
 
-                <a class="text-decoration-none" href="{{ .RelPermalink }}">
-                    <h2 class="h4 ">{{ .Title }}</h2>
-                </a>
+            <div class="col-lg-9 col-sm-12">
 
-                <p><small>
-                    <time datetime="{{ .Lastmod.Format `006-01-02T15:04:05Z07:00` | safeHTML }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time>
-                    <br />
-                    Categories:
-                    {{ range .Params.categories }}
-                        <a class="text-decoration-none nav-item px-1" href="/categories/{{ . | urlize}}">{{ . }}</a>
-                    {{end}}
-                    Tags:
-                    {{ range .Params.tags }}
-                        <a class="text-decoration-none nav-item px-1" href="/tags/{{ . | urlize}}">{{ . }}</a>
-                    {{end}}
-                </small></p>
+                <div class="card mb-3">
                 
-                <div class="my-3">
-                    {{ .Summary | truncate 400 }}
+                    <div class="card-body">
+                        <h2 class="card-title">{{ .Title }}</h2>
+
+                        <div class="card-subtitle text-muted">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feather"><use href="/icons/feather-sprite.svg#calendar"/></svg>
+                            <time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Lastmod | time.Format ":date_long" }}</time>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="/icons/feather-sprite.svg#folder"/></svg>
+                            {{ range .Params.categories }}
+                                <a class="text-decoration-none text-muted ms-2" href="/categories/{{ . | urlize}}">{{ . }}</a>
+                            {{end}}
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="/icons/feather-sprite.svg#tag"/></svg>
+                            {{ range .Params.tags }}
+                                <a class="text-decoration-none text-muted ms-2" href="/tags/{{ . | urlize}}">{{ . }}</a>
+                            {{end}}
+                        </div>
+
+                        <div class="card-text my-3">
+                            {{ .Summary | truncate 400 }}
+                        </div>
+                        
+
+                        <a class="btn btn-primary stretched-link" href="{{.Permalink}}">Read Article</a>
+
+                    </div>
                 </div>
-                
-                <a class="text-decoration-none link-secondary nav-link" href="{{.Permalink}}">Read Article</a>
 
             </div>
 

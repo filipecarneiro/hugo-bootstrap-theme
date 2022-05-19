@@ -17,12 +17,12 @@ weight = 40
 
 [[social]]
   name = "GitHub"
-  pre = "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"feather feather-github\"><use href=\"/icons/feather-sprite.svg#github\"></path></svg>"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='feather feather-github'><use href='/icons/feather-sprite.svg#github'/></svg>"
   url = "https://github.com/filipecarneiro/hugo-bootstrap-theme"
   weight = 10
 
 [[social]]
   name = "Twitter"
-  pre = "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"feather feather-twitter\"><use href=\"/icons/feather-sprite.svg#twitter\"></path></svg>"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='feather feather-twitter'><use href='/icons/feather-sprite.svg#twitter'/></svg>"
   url = "https://twitter.com/jfilipecarneiro"
   weight = 20

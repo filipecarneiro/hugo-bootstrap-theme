@@ -5,9 +5,36 @@
     border-radius: .3rem;  
 }
 
+%callout-shared {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    background-color: var(--bd-callout-bg, var(--bs-gray-100));
+    border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-300))
+}
+
 blockquote {
-    border-left: 4px solid var(--bs-secondary);
-    padding-left: 1em;
+    @extend %callout-shared;
+    text-align: center;
+}
+
+.callout {
+    @extend %callout-shared;
+}
+
+.callout-info {
+    --bd-callout-bg: rgba(var(--bs-info-rgb), .075);
+    --bd-callout-border: rgba(var(--bs-info-rgb), .5)
+}
+
+.callout-warning {
+    --bd-callout-bg: rgba(var(--bs-warning-rgb), .075);
+    --bd-callout-border: rgba(var(--bs-warning-rgb), .5)
+}
+
+.callout-danger {
+    --bd-callout-bg: rgba(var(--bs-danger-rgb), .075);
+    --bd-callout-border: rgba(var(--bs-danger-rgb), .5)
 }
 
 .feather {
