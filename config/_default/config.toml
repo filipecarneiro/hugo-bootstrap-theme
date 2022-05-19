@@ -37,7 +37,7 @@ googleAnalytics = "UA-1511XXXX-X"
     target = "assets/js/bootstrap.bundle.min.js"
   [[module.mounts]]
     source = "node_modules/bootstrap-icons/bootstrap-icons.svg"
-    target = "static/images/bootstrap-icons.svg"
+    target = "static/icons/bootstrap-icons.svg"
   [[module.mounts]]
     source = "node_modules/feather-icons/dist/feather-sprite.svg"
-    target = "static/images/feather-sprite.svg"
+    target = "static/icons/feather-sprite.svg"
