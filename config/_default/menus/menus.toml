@@ -12,7 +12,7 @@ weight = 30
 [[main]]
 identifier = "blog"
 name = "Blog"
-url = "/blog/"
+url = "/posts/"
 weight = 40
 
 [[social]]
