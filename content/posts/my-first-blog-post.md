@@ -1,7 +1,8 @@
 ---
 title: "My First Blog Post 👋"
 draft: false
-featuredImage: "/images/hugo-bootstrap-banner.png"
+featuredImage: "hugo-bootstrap-banner.png"
+images: ["hugo-bootstrap-banner.png"]
 categories: ["General", "Featured" ]
 tags: ["cloud", "static", "fast" ]
 keywords: ["hugo", "bootstrap","serverless", "hosting"]
