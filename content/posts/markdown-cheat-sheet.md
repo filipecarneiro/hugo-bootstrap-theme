@@ -1,7 +1,8 @@
 ---
-title: "Markdown Cheat Sheet 🥉"
+title: "Markdown Cheat Sheet Ⓜ️⬇️"
 draft: false
-featuredImage: "/images/hugo-bootstrap-banner.png"
+featuredImage: "markdown-guide-og.jpg"
+images: ["markdown-guide-og.jpg"]
 categories: ["General", "Featured" ]
 tags: ["hugo", "markdown"]
 keywords: ["hugo", "markdown","cheat sheet", "markdown cheatsheet", "hugo markdown cheat sheet", "goldmark"]
