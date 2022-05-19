@@ -9,3 +9,28 @@ blockquote {
     border-left: 4px solid var(--bs-secondary);
     padding-left: 1em;
 }
+
+.feather {
+    width: 1em;
+    height: 1em;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+a /*.feather*/ {
+    $twitter-blue: #55acee;
+    $github-black: #000;
+
+    .feather-twitter:hover {
+        stroke: $twitter-blue;
+        fill: $twitter-blue;
+    }
+
+    .feather-github:hover {
+        stroke: $github-black;
+        fill: $github-black;
+    }
+}
