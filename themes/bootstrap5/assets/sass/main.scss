@@ -1,2 +1,12 @@
-@import "node_modules/bootstrap/scss/bootstrap.scss";
-@import "styles.scss";
+// Custom.scss
+// Option A: Include all of Bootstrap
+// https://getbootstrap.com/docs/5.2/customize/sass/
+
+// Include any default variable overrides here (though functions won't be available)
+@import "variable-overrides.scss";
+
+// Bootstrap’s source Sass files
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
+@import "styles";
