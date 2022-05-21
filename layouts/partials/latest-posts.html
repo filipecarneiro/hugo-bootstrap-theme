@@ -1,0 +1,28 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    {{ range first 3 (where .Site.RegularPages.ByDate.Reverse "Section" "posts" ) }}
+        <div class="col">
+
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a class="stretched-link text-primary text-decoration-none" href="{{ .Permalink }}">
+                            {{ .Title | humanize }}
+                        </a>
+                    </h4>
+                    <p class="card-subtitle text-muted mb-3">
+                        by {{ .Params.Author }}
+                    </p>
+                    <p class="card-text">
+                        {{ .Summary | truncate 200 }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small>
+                </div>
+            </div>
+ 
+        </div>
+    {{ end }}
+
+</div>

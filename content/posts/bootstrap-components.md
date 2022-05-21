@@ -1,5 +1,5 @@
 ---
-title: "Bootstrap Components 🚀"
+title: "Bootstrap Components ✨"
 draft: false
 featuredImage: "bootstrap-v5-new-logo.png"
 images: ["bootstrap-v5-new-logo.png"]
@@ -7,7 +7,7 @@ categories: ["General", "Featured" ]
 tags: ["cloud", "static", "fast" ]
 keywords: ["hugo", "bootstrap","serverless", "hosting"]
 author: "Filipe Carneiro"
-weight: 20
+date: 2022-03-01
 ---
 
 # Bootstrap Components

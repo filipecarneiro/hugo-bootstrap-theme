@@ -1,5 +1,5 @@
 baseURL = 'https://salvus.site/'
-title = "Salvus Site"
+title = "Hugo Bootstrap Theme"
 
 languageCode = 'en-US'
 
@@ -7,7 +7,7 @@ theme = "bootstrap5"
 
 disableHugoGeneratorInject = true
 enableRobotsTXT = true
-sectionPagesMenu = "main"
+#sectionPagesMenu = "main"
 #googleAnalytics = "UA-1511XXXX-X"
 
 [frontmatter]

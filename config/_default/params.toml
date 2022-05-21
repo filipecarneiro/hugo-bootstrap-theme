@@ -1,11 +1,11 @@
 # Meta Data for SEO
 
 author = "Filipe Carneiro"
-description = "Theme for a blazing fast static website and/or blog using bootstrap 5."
+description = "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5."
 
 ## Deprecated
 titleSeparator = "-"
-titleAddition = "Website Security Seal"
+titleAddition = "Hugo Bootstrap Theme"
 
 ## Open Graph
 images = ["/images/site-feature-image.png"]

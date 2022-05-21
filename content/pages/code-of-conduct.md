@@ -1,5 +1,6 @@
 ---
 title: "Code of Conduct"
+description: "Contributor Covenant Code of Conduct"
 draft: false
 menu:
   footer:

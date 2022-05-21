@@ -4,12 +4,6 @@ url = "/"
 weight = 10
 
 [[main]]
-identifier = "services"
-name = "Services"
-url = "/services/"
-weight = 30
-
-[[main]]
 identifier = "blog"
 name = "Blog"
 url = "/posts/"

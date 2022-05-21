@@ -1,16 +1,27 @@
 {{ define "main" }}
 
-<div class="jumbotron text-center">
-  <h1 class="display-4">Hello, world! 👋</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-</div>
+<section class="section container-xxl bd-gutter">
+  <div class="col-md-8 mx-auto text-center my-5">
+    <img class="d-block mx-auto mb-3 d-non" src="/images/logo.svg" width="150" height="150" alt="Bootstrap">
+    <h1 class="display-4 fw-semibold mb-3">{{ .Site.Title }}</h1>
+    <p class="lead mb-4">{{ .Site.Params.Description }}</p>
+    <a class="btn btn-primary btn-lg px-4 mb-2" href="/" role="button">Get Started</a>
+    <p class="text-muted mb-0">Open-source MIT Licensed.</p>
+  </div>
+</section>
 
-<div class="container">
-  <h2 class="text-center my-3">About Us</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<section class="section container">
+  {{ partial "features" . }}
+</section>
 
-  <h2 class="text-center my-3">Our Services</h2>
-  {{ partial "services" . }}
-</div>
+<section class="section container">
+  <h3 class="text-primary text-center my-5">Latest Posts</h3>
+  {{ partial "latest-posts" . }}
+</section>
+
+<section class="section container">
+  <h3 class="text-primary text-center my-5">Featured Pages</h3>
+  {{ partial "featured-pages" . }}
+</section>
 
 {{ end }}

@@ -7,7 +7,7 @@ categories: ["General", "Featured" ]
 tags: ["cloud", "static", "fast" ]
 keywords: ["hugo", "bootstrap","serverless", "hosting"]
 author: "Filipe Carneiro"
-weight: 10
+date: 2022-01-01
 ---
 
 # Hey 
