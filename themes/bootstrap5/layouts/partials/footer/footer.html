@@ -4,7 +4,7 @@
       <p class="col-md-6 mb-0 text-muted">{{ .Site.Params.footer | safeHTML }}</p>
       <ul class="nav col-md-6 justify-content-end">
         {{ range .Site.Menus.footer -}}
-        <li class="nav-item"><a href="{{ .URL | relURL }}" class="nav-link px-2 text-muted">{{ .Name }}</a></li>
+        <li class="nav-item"><a href="{{ .URL }}" class="nav-link px-2 text-muted">{{ .Name }}</a></li>
         {{ end -}}
       </ul>
     </div>

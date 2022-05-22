@@ -33,7 +33,7 @@
                   {{- $active = eq .Name $current.Title -}}
                   <li>
                     <a class="dropdown-item{{ if $active }} active{{ end }}"
-                      href="{{ .URL | relLangURL }}" {{ if $active }} aria-current="true" {{ end }}>{{ .Name }}</a>
+                      href="{{ .URL }}" {{ if $active }} aria-current="true" {{ end }}>{{ .Name }}</a>
                   </li>
                   {{ end -}}
                 </ul>
@@ -41,7 +41,7 @@
             {{ else }}
               <li class="nav-item">
                 <a class="nav-link{{ if $active }} active{{ end }}" aria-current="page"
-                  href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                  href="{{ .URL }}">{{ .Name }}</a>
               </li>
               {{ end }}
           {{ end -}}
