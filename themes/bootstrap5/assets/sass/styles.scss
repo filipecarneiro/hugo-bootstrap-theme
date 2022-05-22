@@ -75,13 +75,6 @@ a /*.feather*/ {
         background-image: linear-gradient(180deg, rgba(var(--bs-body-bg-rgb), 0.01), rgba(var(--bs-body-bg-rgb), 1) 85%),radial-gradient(ellipse at top left, rgba(var(--bs-primary-rgb), 0.5), transparent 50%),radial-gradient(ellipse at top right, rgba(var(--bd-accent-rgb), 0.5), transparent 50%),radial-gradient(ellipse at center right, rgba(var(--bd-violet-rgb), 0.5), transparent 50%),radial-gradient(ellipse at center left, rgba(var(--bd-pink-rgb), 0.5), transparent 50%);
     }
 
-    .bd-navbar {
-        padding: .75rem 0;
-        background-color: transparent;
-        background-image: linear-gradient(to bottom, rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), 0.95));
-        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15),inset 0 -1px 0 rgba(0,0,0,0.15);
-    }
-
     .btn-bd-primary {
         --bs-btn-font-weight: 600;
         --bs-btn-color: var(--bs-white);
@@ -96,6 +89,15 @@ a /*.feather*/ {
         --bs-btn-active-bg: #5a23c8;
         --bs-btn-active-border-color: #5a23c8;
     }
+}
+
+.bd-navbar {
+    --bd-violet-rgb: 112.520718,44.062154,249.437846;
+    
+    padding: .75rem 0;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), 0.95));
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15),inset 0 -1px 0 rgba(0,0,0,0.15);
 }
 
 .text-violet {
