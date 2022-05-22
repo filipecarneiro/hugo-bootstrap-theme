@@ -1,5 +1,5 @@
 baseURL = 'https://filipecarneiro.github.io/hugo-bootstrap-theme/'
-relativeURLs = true
+relativeURLs = false
 title = "Hugo Bootstrap Theme"
 
 languageCode = 'en-US'
@@ -8,6 +8,7 @@ theme = "bootstrap5"
 
 disableHugoGeneratorInject = true
 enableRobotsTXT = true
+enableGitInfo = true
 #sectionPagesMenu = "main"
 #googleAnalytics = "UA-1511XXXX-X"
 
