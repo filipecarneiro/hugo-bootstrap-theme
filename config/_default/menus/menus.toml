@@ -6,13 +6,13 @@ weight = 10
 [[main]]
 identifier = "blog"
 name = "Blog"
-url = "/posts/"
+url = "posts/"
 weight = 40
 
 [[main]]
 identifier = "docs"
 name = "Docs"
-url = "/pages/"
+url = "pages/"
 weight = 50
 
 [[social]]
