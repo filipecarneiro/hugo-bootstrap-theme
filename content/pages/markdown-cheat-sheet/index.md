@@ -111,7 +111,7 @@ You can refer to the table below for an overview of basic markdown syntax:
 
 [Hyperlink](http://example.com)
 
-![Image](https://via.placeholder.com/50.png/09f/fff)
+![Image](placeholder-50-09f-fff.png)
 ```
 
 **Bold**
@@ -132,7 +132,7 @@ You can refer to the table below for an overview of basic markdown syntax:
 
 [Hyperlink](http://example.com)
 
-![Image](https://via.placeholder.com/50.png/09f/fff)
+![Image](placeholder-50-09f-fff.png)
 
 ---
 

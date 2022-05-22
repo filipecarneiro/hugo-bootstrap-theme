@@ -47,6 +47,11 @@ blockquote {
     fill: none;
 }
 
+.feather-big {
+    width: 4em;
+    height: 4em;
+}
+
 a /*.feather*/ {
     $twitter-blue: #55acee;
     $github-black: #000;
@@ -103,3 +108,4 @@ a /*.feather*/ {
 .text-violet {
     color: #6528e0;
 }
+
