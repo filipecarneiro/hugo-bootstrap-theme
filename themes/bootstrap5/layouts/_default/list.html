@@ -4,13 +4,13 @@
 
     <div class="row">
         <div class="col-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="/icons/feather-sprite.svg#folder"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `icons/feather-sprite.svg#folder` | relURL }}"/></svg>
             {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
                 <a class="badge rounded-pill bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
         </div>
         <div class="col-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="/icons/feather-sprite.svg#tag"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `icons/feather-sprite.svg#tag` | relURL }}"/></svg>
             {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
                 <a class="badge rounded-pill bg-success nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
