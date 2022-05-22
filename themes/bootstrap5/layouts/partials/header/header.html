@@ -5,7 +5,7 @@
 <header class="">
   <nav class="navbar navbar-expand-lg navbar-dark bd-navbar">
     <div class="container">
-      <a class="navbar-brand" href="{{ .Site.Home.Permalink }}">
+      <a class="navbar-brand" href="{{ "/" | relLangURL }}">
         <img src="{{ "images/logo.svg" | relURL }}" alt="logo" width="30" height="24" class="d-inline-block align-text-top">
         {{ .Site.Title }}
       </a>
@@ -95,7 +95,7 @@
           <ul class="navbar-nav">
             {{ range .Site.Menus.social -}}
               <li class="nav-item">
-                <a class="nav-link" href="{{ .URL | relURL }}">{{ .Pre | safeHTML }}<small class="ms-2 d-md-none">{{ .Name | safeHTML }}</small></a>
+                <a class="nav-link" href="{{ .URL | relLangURL }}">{{ .Pre | safeHTML }}<small class="ms-2 d-md-none">{{ .Name | safeHTML }}</small></a>
               </li>
             {{ end -}}
           </ul>
