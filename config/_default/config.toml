@@ -1,4 +1,5 @@
 baseURL = 'https://filipecarneiro.github.io/hugo-bootstrap-theme/'
+relativeURLs = true
 title = "Hugo Bootstrap Theme"
 
 languageCode = 'en-US'
