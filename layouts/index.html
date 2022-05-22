@@ -3,7 +3,7 @@
 <section class="section bd-masthead">
   <div class="container-xxl">
     <div class="col-md-8 mx-auto text-center my-5">
-      <img class="d-block mx-auto mb-3 d-non" src="images/logo.svg" width="150" height="150" alt="Bootstrap">
+      <img class="d-block mx-auto mb-3" src="{{ `images/logo.svg` | relURL }}" width="150" height="150" alt="Bootstrap">
       <h1 class="display-4 fw-semibold mb-3">{{ .Site.Title }}</h1>
       <p class="lead mb-4">{{ .Site.Params.Description }}</p>
       <a class="btn btn-bd-primary btn-lg px-4 mb-2" href="" role="button">Get Started</a>
