@@ -1,6 +1,6 @@
 <div class="row row-cols-1 g-4">
 
-    {{ range first 3 .Site.Taxonomies.tags.featured }}
+    {{ range .Site.Taxonomies.tags.featured }}
         <div class="col">
 
             <div class="card">
@@ -11,7 +11,11 @@
                         </a>
                     </h4>
                     <p class="text-text">
-                        {{ .Params.Description | truncate 400 }}
+                        {{ with .Params.description }}
+                            {{ . }}
+                        {{ else }}
+                            {{ .Summary | truncate 400 }}
+                        {{ end }}
                     </p>
                     <p class="text-text text-muted">
                         <small>

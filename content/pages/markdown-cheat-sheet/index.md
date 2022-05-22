@@ -2,15 +2,11 @@
 title: "Markdown Cheat Sheet Ⓜ️⬇️"
 description: "An overview of basic markdown syntax."
 draft: false
-featuredImage: "markdown-guide-og.jpg"
+tags: ["Featured"]
 images: ["markdown-guide-og.jpg"]
-categories: ["General", "Featured" ]
-tags: ["markdown","featured"]
-keywords: ["hugo", "markdown","cheat sheet", "markdown cheatsheet", "hugo markdown cheat sheet", "goldmark"]
-author: "Filipe Carneiro"
-date: 2022-02-21
+keywords: ["markdown cheat sheet","markdown","cheat sheet", "markdown cheatsheet", "hugo markdown cheat sheet", "goldmark"]
 aliases:
-  - my-third-blog-post
+  - blog/my-third-blog-post
 ---
 
 # Markdown Cheat Sheet

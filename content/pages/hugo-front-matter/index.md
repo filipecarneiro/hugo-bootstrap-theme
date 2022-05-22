@@ -3,13 +3,9 @@ title: "Hugo Front Matter 🦉"
 description: "Hugo allows you to add front matter in yaml, toml, or json to your content files."
 summary: "Hugo allows you to add front matter in yaml, toml, or json to your content files. Read on to know more about predefined and user-defined front matter variables."
 draft: true
-featuredImage: "hugo-front-matter.jpg"
+tags: ["Featured"]
 images: ["hugo-front-matter.jpg","hugo-logo.svg"]
-categories: ["General", "Featured" ]
-tags: ["hugo", "front matter" ]
-keywords: ["hugo", "front matter","draft post", "front matter variables"]
-author: "Filipe Carneiro"
-date: 2022-04-02
+keywords: ["Hugo Front Matter","hugo","front matter","draft post","front matter variables"]
 aliases:
   - draft-post
   - my-fourth-blog-post
@@ -21,7 +17,7 @@ Hugo allows you to add front matter in yaml, toml, or json to your content files
 
 **Front matter** allows you to keep metadata attached to an instance of a content type—i.e., embedded inside a content file—and is one of the many features that gives Hugo its strength.
 
-![Banner](/blog/hugo-front-matter.jpg)
+![Banner](hugo-front-matter.jpg)
 
 ## Front Matter Variables
 

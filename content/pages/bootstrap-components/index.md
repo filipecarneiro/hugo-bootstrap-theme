@@ -1,13 +1,10 @@
 ---
 title: "Bootstrap Components ✨"
+description: "Bootstrap is bundled with tens of components that can be reused to provide a good user experience and user interactions in a web page."
 draft: false
-featuredImage: "bootstrap-v5-new-logo.png"
-images: ["bootstrap-v5-new-logo.png"]
-categories: ["General", "Featured" ]
-tags: ["cloud", "static", "fast" ]
-keywords: ["hugo", "bootstrap","serverless", "hosting"]
-author: "Filipe Carneiro"
-date: 2022-03-01
+tags: ["Featured"]
+images: ["bootstrap-v5-new-logo.png","hugo-bootstrap-banner.png"]
+keywords: ["bootstrap components","bootstrap","hugo bootstrap theme"]
 ---
 
 # Bootstrap Components

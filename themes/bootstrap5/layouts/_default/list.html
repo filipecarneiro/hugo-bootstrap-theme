@@ -23,7 +23,12 @@
         <div class="row g-4 mt-2 ">
 
             <div class="col-lg-3 col-sm-12">
-                <img class="img-fluid rounded" src="{{ .Param `featuredImage` }}" alt="featured image {{.Title }}">
+                {{ if isset .Params "images" }}
+                    {{ with .Resources.GetMatch (index .Params.Images 0) }}
+                        {{ $image := .Resize "200x webp" }}
+                        <img class="img-fluid rounded w-100" src="{{ $image.Permalink }}" loading="lazy" {{/* width="{{ $image.Width }}" height="{{ $image.Height }}" */}} alt="featured image {{.Title }}"/>
+                    {{ end }}
+                {{ end }}
             </div>
 
             <div class="col-lg-9 col-sm-12">
@@ -37,15 +42,19 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="feather"><use href="/icons/feather-sprite.svg#calendar"/></svg>
                             <time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Lastmod | time.Format ":date_long" }}</time>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="/icons/feather-sprite.svg#folder"/></svg>
-                            {{ range .Params.categories }}
-                                <a class="text-decoration-none text-muted ms-2" href="/categories/{{ . | urlize}}">{{ . }}</a>
-                            {{end}}
+                            {{ if isset .Params "categories" }}
+                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="/icons/feather-sprite.svg#folder"/></svg>
+                                {{ range .Params.categories }}
+                                    <a class="text-decoration-none text-muted ms-2" href="/categories/{{ . | urlize}}">{{ . }}</a>
+                                {{end}}
+                            {{ end }}
 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="/icons/feather-sprite.svg#tag"/></svg>
-                            {{ range .Params.tags }}
-                                <a class="text-decoration-none text-muted ms-2" href="/tags/{{ . | urlize}}">{{ . }}</a>
-                            {{end}}
+                            {{ if isset .Params "tags" }}
+                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="/icons/feather-sprite.svg#tag"/></svg>
+                                {{ range .Params.tags }}
+                                    <a class="text-decoration-none text-muted ms-2" href="/tags/{{ . | urlize}}">{{ . }}</a>
+                                {{ end }}
+                            {{ end }}
                         </div>
 
                         <div class="card-text my-3">

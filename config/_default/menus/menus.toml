@@ -9,6 +9,12 @@ name = "Blog"
 url = "/posts/"
 weight = 40
 
+[[main]]
+identifier = "docs"
+name = "Docs"
+url = "/pages/"
+weight = 50
+
 [[social]]
   name = "GitHub"
   pre = "<svg xmlns='http://www.w3.org/2000/svg' class='feather feather-github'><use href='/icons/feather-sprite.svg#github'/></svg>"

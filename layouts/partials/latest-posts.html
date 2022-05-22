@@ -7,14 +7,20 @@
                 <div class="card-body">
                     <h4 class="card-title">
                         <a class="stretched-link text-primary text-decoration-none" href="{{ .Permalink }}">
-                            {{ .Title | humanize }}
+                            {{ .Title }}
                         </a>
                     </h4>
-                    <p class="card-subtitle text-muted mb-3">
-                        by {{ .Params.Author }}
-                    </p>
-                    <p class="card-text">
-                        {{ .Summary | truncate 200 }}
+                    {{ with .Params.author }}
+                        <p class="card-subtitle text-muted">
+                            by {{ . }}
+                        </p>
+                    {{ end }}
+                    <p class="card-text mt-3">
+                        {{ with .Params.description }}
+                            {{ . }}
+                        {{ else }}
+                            {{ .Summary | truncate 200 }}
+                        {{ end }}
                     </p>
                 </div>
                 <div class="card-footer">
