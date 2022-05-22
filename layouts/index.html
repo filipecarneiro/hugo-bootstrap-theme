@@ -1,12 +1,14 @@
 {{ define "main" }}
 
-<section class="section container-xxl bd-gutter">
-  <div class="col-md-8 mx-auto text-center my-5">
-    <img class="d-block mx-auto mb-3 d-non" src="/images/logo.svg" width="150" height="150" alt="Bootstrap">
-    <h1 class="display-4 fw-semibold mb-3">{{ .Site.Title }}</h1>
-    <p class="lead mb-4">{{ .Site.Params.Description }}</p>
-    <a class="btn btn-primary btn-lg px-4 mb-2" href="/" role="button">Get Started</a>
-    <p class="text-muted mb-0">Open-source MIT Licensed.</p>
+<section class="section bd-masthead">
+  <div class="container-xxl">
+    <div class="col-md-8 mx-auto text-center my-5">
+      <img class="d-block mx-auto mb-3 d-non" src="/images/logo.svg" width="150" height="150" alt="Bootstrap">
+      <h1 class="display-4 fw-semibold mb-3">{{ .Site.Title }}</h1>
+      <p class="lead mb-4">{{ .Site.Params.Description }}</p>
+      <a class="btn btn-bd-primary btn-lg px-4 mb-2" href="/" role="button">Get Started</a>
+      <p class="text-muted mb-0">Open-source MIT Licensed.</p>
+    </div>
   </div>
 </section>
 
@@ -15,12 +17,12 @@
 </section>
 
 <section class="section container">
-  <h3 class="text-primary text-center my-5">Latest Posts</h3>
+  <h3 class="text-secondary text-center my-5">Latest Posts</h3>
   {{ partial "latest-posts" . }}
 </section>
 
 <section class="section container">
-  <h3 class="text-primary text-center my-5">Featured Pages</h3>
+  <h3 class="text-secondary text-center my-5">Featured Pages</h3>
   {{ partial "featured-pages" . }}
 </section>
 

@@ -15,7 +15,9 @@
 <body class="{{ .Scratch.Get `class` }}">
     {{- partial "header/header.html" . -}}
     <div id="content">
-        {{- partial "breadcrumb.html" . -}}
+        {{ if ne .Kind "home" -}}
+            {{- partial "breadcrumb.html" . -}}
+        {{ end }}
         {{- block "main" . }}{{- end }}
     </div>
     {{ partial "footer/footer.html" . }}
