@@ -1,13 +1,24 @@
 {
   "name": "hugo-bootstrap-theme",
   "version": "1.0.0",
-  "description": "Hugo theme with Bootstrap 5",
-  "main": "index.js",
+  "description": "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.",
+  "keywords": ["hugo","hugo theme","bootstrap","bootstrap 5","static site generator"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
+  },
+  "homepage": "https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/README.md",
+  "bugs":{
+    "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme/issues"
+  },
+  "author": {
+    "name": "Filipe Carneiro",
+    "url": "https://github.com/filipecarneiro/"
+  },
+  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Filipe Carneiro",
-  "license": "MIT",
   "dependencies": {
     "bootstrap": "^5.2.0-beta1",
     "bootstrap-icons": "^1.8.2",
