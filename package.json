@@ -1,5 +1,5 @@
 {
-  "name": "hugo-bootstrap-theme",
+  "name": "@filipecarneiro/hugo-bootstrap-theme",
   "version": "1.0.0",
   "description": "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.",
   "keywords": ["hugo","hugo theme","bootstrap","bootstrap 5","static site generator"],
@@ -16,11 +16,9 @@
     "type": "git",
     "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "bootstrap": "^5.2.0-beta1",
