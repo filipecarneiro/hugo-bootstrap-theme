@@ -2,7 +2,23 @@
 
 Theme for a blazing fast static website and/or blog using bootstrap 5.
 
-## Hugo
+## Features
+
+- 🛡️ Security aware
+  
+  Get A+ scores on Mozilla Observatory out of the box. Easily change the default Security Headers to suit your needs.
+
+- ⚡Fast by default
+  
+  Get 100 scores on Google Lighthouse by default. Hugo Bootstrap Theme removes unused css, prefetches links, and lazy loads images.
+  
+- 📈 SEO-ready
+  
+  Use sensible defaults for structured data, open graph, and Twitter cards. Or easily change the Search Engine Optimization settings to your liking.
+
+## Framework
+
+### Hugo
 
 Hugo is the **world’s fastest static website engine**. It’s written in Go (aka Golang).
 
@@ -10,7 +26,7 @@ Hugo is the **world’s fastest static website engine**. It’s written in Go (a
 
 - [Go template documentation](https://golang.org/pkg/text/template/#hdr-Functions)
 
-## Bootstrap
+### Bootstrap
 
 Get started with Bootstrap
 
@@ -18,7 +34,7 @@ Get started with Bootstrap
 
 - [Install Bootstrap in your Node.js powered apps with the npm package](https://getbootstrap.com/docs/5.2/getting-started/download/#npm)
 
-## Requirements
+### Requirements
 
 The tools used are cross-platform and should work on Windows, MacOS and Linux. You will need the following tools to be downloaded and installed:
 
@@ -28,7 +44,23 @@ The tools used are cross-platform and should work on Windows, MacOS and Linux. Y
 
 - [Git](https://git-scm.com/downloads) - This is optional, but highly recommended for version control and remote backups.
 
-## Test your static site
+## Usage
+
+### Build the project locally on your computer
+
+Clone this repo:
+
+```
+git clone https://github.com/filipecarneiro/hugo-bootstrap-theme.git
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+### Test your static site
 
 Test if the site is working:
 
