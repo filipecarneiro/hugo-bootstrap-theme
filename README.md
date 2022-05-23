@@ -2,6 +2,12 @@
 
 Theme for a blazing fast static website and/or blog using bootstrap 5.
 
+![Screenshot](screenshot.png)
+
+## Demo
+
+- [https://filipecarneiro.github.io/hugo-bootstrap-theme/](https://filipecarneiro.github.io/hugo-bootstrap-theme/)
+
 ## Features
 
 - 🛡️ Security aware
