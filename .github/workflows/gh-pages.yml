@@ -1,4 +1,4 @@
-name: github pages
+name: Build and Deploy to gh-pages branch
 
 on:
   push:
