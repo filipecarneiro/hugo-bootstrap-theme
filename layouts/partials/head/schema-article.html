@@ -1,33 +1,40 @@
 <!-- Article Schema.org Type -->
 <!-- https://schema.org/Article -->
+<!-- Output all taxonomies as schema.org keywords -->
 
 {{ $logo := resources.GetMatch (index ($.Site.Params.images) 0) }}
 {{ $image := .Resources.GetMatch (index ($.Param "images") 0) }}
+{{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": {{ .Title }},
+  "name": {{ .Title }},
   {{ with $image -}}
   "image": {{ $image.Permalink }},
   {{ end -}}
-  "datePublished": {{ .PublishDate }},
-  "dateModified": {{ .Lastmod }},
-  {{- with (.Param "author") }}
-  "author": {{ . }},
+  "datePublished": {{ .PublishDate.Format $iso8601 }},
+  "dateModified": {{ .Lastmod.Format $iso8601 }},
+  {{ with (.Param "author") -}}
+  "author": {
+    "@type": "Person",
+    "name": "{{ . }}"
+  },
   {{ end -}}
-  "mainEntityOfPage": { "@type": "WebPage" },
-    "publisher": {
+  "mainEntityOfPage": {
+     "@type": "WebPage"
+  },
+  "publisher": {
     "@type": "Organization",
-    "name": {{ .Site.Title }}
-    {{- with $logo -}}
-    ,
+    "name": {{ .Site.Title }},
+    {{ with $logo -}}
     "logo": {
       "@type": "ImageObject",
       "url": {{ $logo.Permalink }}
-    }
+    },
     {{ end -}}
+    "url": "{{ .Site.BaseURL }}"
   },
   "wordcount" : {{ .Content | countwords }},
   "description": {{ .Summary | plainify | safeHTML }},
