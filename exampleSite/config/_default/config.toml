@@ -29,7 +29,7 @@ enableGitInfo = true
   priority = 0.5
 
 [permalinks]
-  posts = "/blog/:title/"
+#  post = "/post/:title/"
 
 [module]
   [module.hugoVersion]
