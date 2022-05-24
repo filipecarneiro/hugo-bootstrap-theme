@@ -6,7 +6,7 @@ draft: false
 categories: ["Hugo Bootstrap Theme"]
 tags: ["Hugo","Bootstrap","Featured"]
 keywords: ["hugo bootstrap theme"]
-author: ""
+authors: ["Filipe Carneiro"]
 ---
 
 > Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.

@@ -7,7 +7,7 @@ images: ["bootstrap-5-2-0-beta.png"]
 categories: ["The Bootstrap Blog"]
 tags: ["Bootstrap"]
 keywords: ["bootstrap 5 2 0 beta","bootstrap 5","bootstrap"]
-author: "Mark Otto"
+authors: ["Mark Otto"]
 ---
 
 ![Bootstrap 5 2 0 Beta](bootstrap-5-2-0-beta.png)

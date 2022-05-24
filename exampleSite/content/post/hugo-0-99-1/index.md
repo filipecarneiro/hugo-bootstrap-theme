@@ -7,7 +7,7 @@ images: ["hugo-0-99-1.jpg"]
 categories: ["Hugo Release Notes"]
 tags: ["Hugo"]
 keywords: ["hugo v0.99.1"]
-author: "Bjørn Erik Pedersen"
+authors: ["Bjørn Erik Pedersen"]
 ---
 
 ![Hugo 0 99 1](hugo-logo.svg)

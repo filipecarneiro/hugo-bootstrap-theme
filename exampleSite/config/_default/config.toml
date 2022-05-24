@@ -24,8 +24,8 @@ enableEmoji = true
 [taxonomies]
   tag = "tags"
   category = "categories"
-  contributor = "contributors"
   series = 'series'
+  author = "authors"
 
 [sitemap]
   changefreq = "weekly"

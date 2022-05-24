@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<div class="container pb-5">
+    <h1>{{ .Title }}</h1>
+
+    {{ $image := .Resources.GetMatch (index ($.Param "images") 0) }}
+    {{ with $image }}
+        <img src="{{ $image.Permalink }}" alt="{{ .Title }}" loading="lazy" />
+    {{ end }}
+
+    {{ with .Content  }}
+    <h2>Bio</h2>
+        {{ . }}
+    {{ end }}
+
+    {{ with .Params.twitter }}
+    <p>
+        <a href="https://twitter.com/{{ substr . 1 }}">
+            Follow {{ $.Params.name }} on Twitter
+        </a>
+    </p>
+    {{ end }}
+
+    <h2>Articles</h2>
+    <ul>
+        {{ range .Data.Pages }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+</div>
+
+{{ end }}

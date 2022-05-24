@@ -10,9 +10,9 @@
                             {{ .Title }}
                         </a>
                     </h4>
-                    {{ with .Params.author }}
+                    {{ with .Params.authors }}
                         <p class="card-subtitle text-muted">
-                            by {{ . }}
+                            by {{ index . 0 }}
                         </p>
                     {{ end }}
                     <p class="card-text mt-3">

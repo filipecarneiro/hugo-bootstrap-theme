@@ -1,0 +1,12 @@
+{{ define "main" }}
+
+<div class="container pb-5">
+    <h1>Authors</h1>
+    <ul>
+        {{ range .Data.Pages }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+</div>
+
+{{ end }}
