@@ -1,13 +1,17 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
-name = "Bootstrap5"
+name = "Hugo Bootstrap Theme"
 license = "MIT"
 licenselink = "https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"
-description = ""
+description = "Theme for a blazing fast static website and/or blog using bootstrap 5."
+
 homepage = "https://github.com/filipecarneiro/hugo-bootstrap-theme"
-tags = []
-features = []
+demosite = "https://filipecarneiro.github.io/hugo-bootstrap-theme/"
+
+tags = ["bootstrap","minimal","responsive","modern","blog","landing page"]
+features = ["security aware","fast by default","seo-ready","bootstrap framework","bootstrap 5.2"]
+
 min_version = "0.91.0"
 
 [author]

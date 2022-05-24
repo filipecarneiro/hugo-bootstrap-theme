@@ -4,7 +4,8 @@ title = "Hugo Bootstrap Theme"
 
 languageCode = 'en-US'
 
-theme = "bootstrap5"
+theme = "hugo-bootstrap-theme"
+themesdir = "../.."
 
 disableHugoGeneratorInject = true
 enableRobotsTXT = true

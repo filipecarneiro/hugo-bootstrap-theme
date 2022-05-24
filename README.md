@@ -2,7 +2,7 @@
 
 Theme for a blazing fast static website and/or blog using bootstrap 5.
 
-![Screenshot](screenshot.png)
+![Screenshot](images/tn.png)
 
 ## Demo
 
@@ -60,13 +60,17 @@ Clone this repo:
 git clone https://github.com/filipecarneiro/hugo-bootstrap-theme.git
 ```
 
+Change to exampleSite directory:
+
+```
+cd exampleSite
+```
+
 Install dependencies:
 
 ```
 npm install
 ```
-
-### Test your static site
 
 Test if the site is working:
 
@@ -74,4 +78,4 @@ Test if the site is working:
 hugo server -D --disableFastRender
 ```
 
-This launches Hugo development server and you can see your website by opening http://localhost:1313.
+This launches Hugo development server and you can see the example site by opening http://localhost:1313/hugo-bootstrap-theme/.
