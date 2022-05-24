@@ -62,12 +62,6 @@ Clone this repo:
 git clone https://github.com/filipecarneiro/hugo-bootstrap-theme.git
 ```
 
-Change to exampleSite directory:
-
-```
-cd exampleSite
-```
-
 Install dependencies:
 
 ```
@@ -77,7 +71,7 @@ npm install
 Test if the site is working:
 
 ```
-hugo server -D --disableFastRender
+hugo server -D --disableFastRender --source exampleSite
 ```
 
 This launches Hugo development server and you can see the example site by opening http://localhost:1313/hugo-bootstrap-theme/.
