@@ -20,12 +20,12 @@ enableEmoji = true
 [frontmatter]
   date = ["date", "publishDate", "lastmod"]
   lastmod = ["lastmod", ":fileModTime", ":default"]
-  logo = "https://salvus.site/logo.png"
 
 [taxonomies]
   tag = "tags"
   category = "categories"
   contributor = "contributors"
+  series = 'series'
 
 [sitemap]
   changefreq = "weekly"
@@ -46,6 +46,3 @@ enableEmoji = true
   [[module.mounts]]
     source = "node_modules/feather-icons/dist/feather-sprite.svg"
     target = "static/icons/feather-sprite.svg"
-#  [[module.mounts]]
-#    source = "node_modules/bootstrap-icons/bootstrap-icons.svg"
-#    target = "static/icons/bootstrap-icons.svg"

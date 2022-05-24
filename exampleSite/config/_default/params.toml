@@ -1,57 +1,21 @@
-# Meta Data for SEO
+# Site Params
 
-author = "Filipe Carneiro"
+# Open Graph, Twitter Cards and schema.org Thing and Article (in posts)
+# https://gohugo.io/templates/internal/#open-graph
+# https://gohugo.io/templates/internal/#twitter-cards
+# https://schema.org/Thing
+# https://schema.org/Article
 description = "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5."
+images = ['/images/logo.svg','/images/site-feature-image.png']
 
-## Deprecated
-titleSeparator = "-"
-titleAddition = "Hugo Bootstrap Theme"
-
-## Open Graph
-images = ["/images/site-feature-image.png"]
-ogLocale = "en_US"
-domainTLD = "salvus.site"
-titleHome = "Salvus Site"
-
-## Twitter Cards
-twitterSite = "@jfilipecarneiro"
-twitterCreator = "@jfilipecarneiro"
-
-## JSON-LD
-# schemaType = "Person"
-schemaType = "Organization"
-schemaName = "Salvus Site"
-schemaAuthor = "Salvus Site"
-schemaAuthorTwitter = "https://twitter.com/jfilipecarneiro"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/filipecarneiro/"
-schemaAuthorGitHub = "https://github.com/filipecarneiro"
-schemaLocale = "en-US"
-schemaLogo = "favicon.png"
-schemaLogoWidth = 48
-schemaLogoHeight = 48
-schemaImage = "logo.png"
-schemaImageWidth = 1280
-schemaImageHeight = 1280
-schemaTwitter = ""
-schemaLinkedIn = ""
-schemaGitHub = ""
-schemaSection = "blog"
-
+# For favicons
 ## Chrome Browser
 themeColor = "#fff"
-
-# Images
-quality = 85
-bgColor = "#fff"
-landscapePhotoWidths = [900, 800, 700, 600, 500]
-portraitPhotoWidths = [800, 700, 600, 500]
-lqipWidth = "20x"
-smallLimit = "300"
 
 # Alert
 alert = false
 alertDismissable = true
-alertText = "Introducing this new service! <a class=\"alert-link stretched-link\" href=\"https://salvus.site/blog/total-security/\">Check out Total Security</a>"
+alertText = "Introducing this new service! <a class=\"alert-link stretched-link\" href=\"https://salvus.site/\">Check out Total Security</a>"
 
 # Pre-footer
 footerAbout = true
@@ -59,8 +23,9 @@ footerAboutTitle = "Few Words About Us"
 footerAboutText = "We protect your website so you can provide a safe environment to build trust and improve the user experience of your visitors.<br/><br/>Salvus Site is the partner that you can rely on for preventive and reactive cybersecurity."
 
 [options]
-  lazySizes = false
   bootStrapJs = false
-  breadCrumb = false
-  multilingualMode = false
-  fullWidth = false
+
+  # TODO:
+  #breadCrumb = true
+  #multilingualMode = false
+  #fullWidth = false

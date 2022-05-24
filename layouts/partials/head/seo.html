@@ -14,10 +14,18 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
+<!-- Adds itemprop name and description from page title and description. -->
+<!-- If .IsPage adds itemprop datePublished, dateModified, wordCount, image, and keywords -->
+<!-- Check https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/schema.html -->
+{{ template "_internal/schema.html" . }}
+
+<!-- https://gohugo.io/templates/internal/#open-graph -->
 {{ template "_internal/opengraph.html" . }}
+
+<!-- https://gohugo.io/templates/internal/#twitter-cards -->
 {{ template "_internal/twitter_cards.html" . }}
 
 <!-- will load json/ld depending on page type-->
-{{ if and (.IsPage) (eq .Section "blog") }}
+{{ if and (.IsPage) (eq .Section "post") }}
     {{- partial "head/articleschema.html" .  -}}
 {{ end }}

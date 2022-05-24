@@ -3,21 +3,28 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": {{ .Title }},
-  "image": {{ .Params.featuredImage | absURL }},
+  {{- with $.Params.images -}}
+    {{- range first 1 . -}}"image": {{ . | absURL }},{{ end -}}
+  {{- end -}}
   "datePublished": {{ .PublishDate }},
   "dateModified": {{ .Lastmod }},
   "author": {{ .Param "author" }},
   "mainEntityOfPage": { "@type": "WebPage" },
     "publisher": {
     "@type": "Organization",
-    "name": {{ .Site.Title }},
+    "name": {{ .Site.Title }}
+    {{- with .Site.Params.images -}}
+    {{- range first 1 . -}}
+    ,
     "logo": {
       "@type": "ImageObject",
-      "url": {{ .Site.Params.logo }}
+      "url": {{ . | absURL }}
     }
+    {{ end -}}
+    {{- end -}}
   },
   "wordcount" : {{ .Content | countwords }},
   "description": {{ .Summary | plainify | safeHTML }},
-  "keywords": [{{ range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}]
+  "keywords": [{{ if .IsPage}}{{ range $index, $tag := .Params.tags }}{{ $tag }},{{ end }}{{ else }}{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}{{ end }}]
 }
 </script>
