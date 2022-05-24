@@ -48,12 +48,6 @@ portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
 smallLimit = "300"
 
-# Footer
-footer = "Open-source <a class=\"text-muted text-decoration-none\" href=\"https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE\">MIT</a> Licensed."
-
-# Feed
-copyRight = "Copyright © 2022 Salvus Site. All rights reserved."
-
 # Alert
 alert = false
 alertDismissable = true

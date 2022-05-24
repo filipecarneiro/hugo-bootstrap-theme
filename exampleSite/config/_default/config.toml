@@ -1,8 +1,11 @@
 baseURL = 'https://filipecarneiro.github.io/hugo-bootstrap-theme/'
-relativeURLs = false
 title = "Hugo Bootstrap Theme"
+author = "Filipe Carneiro"
+copyright = "Open-source <a class=\"text-muted text-decoration-none\" href=\"https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE\">MIT</a> Licensed."
 
-languageCode = 'en-US'
+languageCode = "en" # For the internal RSS template (and for the html lang attribute)
+DefaultContentLanguage = "en"
+timeZone = 'Europe/London'
 
 theme = "hugo-bootstrap-theme"
 themesdir = "../.."
@@ -10,6 +13,7 @@ themesdir = "../.."
 disableHugoGeneratorInject = true
 enableRobotsTXT = true
 enableGitInfo = true
+enableEmoji = true
 #sectionPagesMenu = "main"
 #googleAnalytics = "UA-1511XXXX-X"
 

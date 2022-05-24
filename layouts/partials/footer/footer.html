@@ -1,8 +1,8 @@
 <footer class="py-3 mt-3 bg-light">
   <div class="container py-1 my-1">
     <div class="d-flex flex-wrap justify-content-between align-items-center">
-      <p class="col-md-6 mb-0 text-muted">{{ .Site.Params.footer | safeHTML }}</p>
-      <ul class="nav col-md-6 justify-content-end">
+      <p class="col-md mb-0 text-muted">{{ .Site.Copyright | safeHTML }}</p>
+      <ul class="nav col-md-auto justify-content-end">
         {{ range .Site.Menus.footer -}}
         <li class="nav-item"><a href="{{ .URL }}" class="nav-link px-2 text-muted">{{ .Name }}</a></li>
         {{ end -}}
