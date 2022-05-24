@@ -1,27 +1,33 @@
+<!-- Article Schema.org Type -->
+<!-- https://schema.org/Article -->
+
+{{ $logo := resources.GetMatch (index ($.Site.Params.images) 0) }}
+{{ $image := .Resources.GetMatch (index ($.Param "images") 0) }}
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": {{ .Title }},
-  {{- with $.Params.images -}}
-    {{- range first 1 . -}}"image": {{ . | absURL }},{{ end -}}
-  {{- end -}}
+  {{ with $image -}}
+  "image": {{ $image.Permalink }},
+  {{ end -}}
   "datePublished": {{ .PublishDate }},
   "dateModified": {{ .Lastmod }},
-  "author": {{ .Param "author" }},
+  {{- with (.Param "author") }}
+  "author": {{ . }},
+  {{ end -}}
   "mainEntityOfPage": { "@type": "WebPage" },
     "publisher": {
     "@type": "Organization",
     "name": {{ .Site.Title }}
-    {{- with .Site.Params.images -}}
-    {{- range first 1 . -}}
+    {{- with $logo -}}
     ,
     "logo": {
       "@type": "ImageObject",
-      "url": {{ . | absURL }}
+      "url": {{ $logo.Permalink }}
     }
     {{ end -}}
-    {{- end -}}
   },
   "wordcount" : {{ .Content | countwords }},
   "description": {{ .Summary | plainify | safeHTML }},

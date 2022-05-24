@@ -25,7 +25,8 @@
 <!-- https://gohugo.io/templates/internal/#twitter-cards -->
 {{ template "_internal/twitter_cards.html" . }}
 
-<!-- will load json/ld depending on page type-->
-{{ if and (.IsPage) (eq .Section "post") }}
-    {{- partial "head/articleschema.html" .  -}}
+<!-- will load JSON-LD Schemas in pages -->
+<!-- https://schema.org/docs/schemas.html -->
+{{ if .IsPage }}
+    {{- partial "head/schema-article.html" .  -}}
 {{ end }}
