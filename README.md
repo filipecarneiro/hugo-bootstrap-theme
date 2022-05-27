@@ -105,4 +105,6 @@ hugo server -D
 
 #### Step 4: Check your parameters
 
-Check your `copyright` variable, your menus (the theme supports `main`, `footer` and `social` menus), ...
+Check your `copyright` variable, your menus (the theme supports `main`, `footer` and `social` menus), etc.
+
+Have a look on exampleSite for inspiration :)
