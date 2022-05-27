@@ -92,15 +92,15 @@ Then add the theme `hugo-bootstrap-theme` to your sites [configuration file](htt
 
 ```toml
 theme = "hugo-bootstrap-theme"
-themesdir = "../.."
+themesdir = "node_modules\\@filipecarneiro"
 ```
 
-The new themes directory is needed to get the new them from the node_modules folder.
+The new themes directory (themesdir) is needed to get the new theme from the `node_modules` folder.
 
 #### Step 3: Test your site
 
 ```
-hugo server -D
+hugo server -D --disableFastRender
 ```
 
 #### Step 4: Check your parameters
