@@ -54,7 +54,7 @@ The tools used are cross-platform and should work on Windows, MacOS and Linux. Y
 
 ## Usage
 
-### Build the project locally on your computer
+### Test the theme locally on your computer
 
 Clone this repo:
 
@@ -75,3 +75,34 @@ hugo server -D --disableFastRender --source exampleSite
 ```
 
 This launches Hugo development server and you can see the example site by opening http://localhost:1313/hugo-bootstrap-theme/.
+
+### Install on an existing Hugo site
+
+#### Step 1: Install via NPM
+
+```
+npm install @filipecarneiro/hugo-bootstrap-theme
+```
+
+Hugo bootstrap theme package will also add bootstrap and feather-icons to node modules.
+
+#### Step 2: Add to Config
+
+Then add the theme `hugo-bootstrap-theme` to your sites [configuration file](https://gohugo.io/getting-started/configuration/#configuration-file) `config.toml`, `config.yaml` or `config.json`:
+
+```toml
+theme = "hugo-bootstrap-theme"
+themesdir = "../.."
+```
+
+The new themes directory is needed to get the new them from the node_modules folder.
+
+#### Step 3: Test your site
+
+```
+hugo server -D
+```
+
+#### Step 4: Check your parameters
+
+Check your `copyright` variable, your menus (the theme supports `main`, `footer` and `social` menus), ...

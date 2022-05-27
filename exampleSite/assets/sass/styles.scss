@@ -1,72 +1,3 @@
-.jumbotron {
-    padding: 4rem 2rem;
-    margin-bottom: 2rem;
-    background-color: var(--bs-light);
-    border-radius: .3rem;  
-}
-
-%callout-shared {
-    padding: 1.25rem;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-    background-color: var(--bd-callout-bg, var(--bs-gray-100));
-    border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-300))
-}
-
-blockquote {
-    @extend %callout-shared;
-    text-align: center;
-}
-
-.callout {
-    @extend %callout-shared;
-}
-
-.callout-info {
-    --bd-callout-bg: rgba(var(--bs-info-rgb), .075);
-    --bd-callout-border: rgba(var(--bs-info-rgb), .5)
-}
-
-.callout-warning {
-    --bd-callout-bg: rgba(var(--bs-warning-rgb), .075);
-    --bd-callout-border: rgba(var(--bs-warning-rgb), .5)
-}
-
-.callout-danger {
-    --bd-callout-bg: rgba(var(--bs-danger-rgb), .075);
-    --bd-callout-border: rgba(var(--bs-danger-rgb), .5)
-}
-
-.feather {
-    width: 1em;
-    height: 1em;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-}
-
-.feather-big {
-    width: 4em;
-    height: 4em;
-}
-
-a /*.feather*/ {
-    $twitter-blue: #55acee;
-    $github-black: #000;
-
-    .feather-twitter:hover {
-        stroke: $twitter-blue;
-        fill: $twitter-blue;
-    }
-
-    .feather-github:hover {
-        stroke: $github-black;
-        fill: $github-black;
-    }
-}
-
 .home {
     --bd-purple: #4c0bce;
     --bd-violet: #712cf9;
@@ -96,7 +27,9 @@ a /*.feather*/ {
     }
 }
 
-.bd-navbar {
+.navbar {
+    @extend .navbar-dark;
+
     --bd-violet-rgb: 112.520718,44.062154,249.437846;
     
     padding: .75rem 0;
@@ -108,4 +41,3 @@ a /*.feather*/ {
 .text-violet {
     color: #6528e0;
 }
-
