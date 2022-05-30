@@ -23,7 +23,7 @@ footerAboutTitle = "Few Words About Us"
 footerAboutText = "We protect your website so you can provide a safe environment to build trust and improve the user experience of your visitors.<br/><br/>Salvus Site is the partner that you can rely on for preventive and reactive cybersecurity."
 
 [options]
-  bootStrapJs = false
+  bootStrapJs = true
 
   # TODO:
   #breadCrumb = true
