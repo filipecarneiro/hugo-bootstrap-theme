@@ -1,0 +1,42 @@
+[[main]]
+name = "Home"
+url = "/"
+weight = 10
+
+[[main]]
+identifier = "blog"
+name = "Blog"
+url = "/post/"
+weight = 40
+
+[[main]]
+identifier = "blog1"
+name = "Blog 1"
+url = "/post/"
+weight = 10
+parent = "blog"
+
+[[main]]
+identifier = "blog2"
+name = "Blog 2"
+url = "/post/"
+weight = 20
+parent = "blog"
+
+[[main]]
+identifier = "docs"
+name = "Docs"
+url = "/page/"
+weight = 50
+
+[[social]]
+  name = "GitHub"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='feather feather-github'><use href='/hugo-bootstrap-theme/icons/feather-sprite.svg#github'/></svg>"
+  url = "https://github.com/filipecarneiro/hugo-bootstrap-theme"
+  weight = 10
+
+[[social]]
+  name = "Twitter"
+  pre = "<svg xmlns='http://www.w3.org/2000/svg' class='feather feather-twitter'><use href='/hugo-bootstrap-theme/icons/feather-sprite.svg#twitter'/></svg>"
+  url = "https://twitter.com/jfilipecarneiro"
+  weight = 20

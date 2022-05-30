@@ -7,6 +7,10 @@ languageCode = "en" # For the internal RSS template (and for the html lang attri
 DefaultContentLanguage = "en"
 timeZone = 'Europe/London'
 
+# Multilingual
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
 theme = "hugo-bootstrap-theme"
 themesdir = "../.."
 
