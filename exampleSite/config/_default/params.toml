@@ -7,6 +7,7 @@
 # https://schema.org/Article
 description = "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5."
 images = ['images/logo.svg','images/site-feature-image.png']
+mainMenuLogo = "images/logo.svg"
 
 # For favicons
 ## Chrome Browser

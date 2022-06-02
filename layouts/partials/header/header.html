@@ -8,8 +8,10 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="{{ `/` | relLangURL }}">
-        <img src="{{ `images/logo.svg` | relURL }}" alt="logo" width="30" height="24"
+        {{ if isset .Site.Params "mainmenulogo" }}
+        <img src="{{ .Site.Params.mainMenuLogo | relURL }}" alt="logo" width="30" height="24"
           class="d-inline-block align-text-top">
+        {{ end }}
         {{ .Site.Title }}
       </a>
 
