@@ -1,9 +1,9 @@
 {{ if eq (hugo.Environment) "development" -}}
-  {{ $options := (dict "targetPath" "css/style.css" "enableSourceMap" true "includePaths" (slice "node_modules")) -}}
+  {{ $options := (dict "targetPath" "css/style.css" "enableSourceMap" true) -}}
   {{ $css := resources.Get "sass/main.scss" | toCSS $options -}}
   <link rel="stylesheet" href="{{ $css.Permalink | relURL }}" media="screen">
 {{ else -}}
-  {{ $options := (dict "targetPath" "css/style.css" "outputStyle" "compressed" "includePaths" (slice "node_modules")) -}}
+  {{ $options := (dict "targetPath" "css/style.css" "outputStyle" "compressed") -}}
   {{ $css := resources.Get "sass/main.scss" | toCSS $options -}}
   {{ $secureCSS := $css | resources.Fingerprint "sha512" -}}
   <link rel="stylesheet" href="{{ $secureCSS.Permalink }}" media="screen" integrity="{{ $secureCSS.Data.Integrity }}" crossorigin="anonymous">

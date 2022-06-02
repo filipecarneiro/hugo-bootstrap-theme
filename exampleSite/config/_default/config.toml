@@ -45,8 +45,17 @@ enableEmoji = true
     min = "0.91.0"
     max = ""
   [[module.mounts]]
-    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-    target = "assets/js/bootstrap.bundle.min.js"
+    source = "assets"
+    target = "assets"
   [[module.mounts]]
-    source = "node_modules/feather-icons/dist/feather-sprite.svg"
-    target = "static/icons/feather-sprite.svg"
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "node_modules/bootstrap/scss/"
+    target = "assets/sass/"
+  [[module.mounts]]
+    source = "node_modules/bootstrap/dist/"
+    target = "assets/"
+  [[module.mounts]]
+    source = "node_modules/feather-icons/dist/"
+    target = "static/icons/"
