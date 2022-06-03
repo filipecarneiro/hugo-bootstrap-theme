@@ -50,12 +50,3 @@ enableEmoji = true
   [[module.mounts]]
     source = "static"
     target = "static"
-  [[module.mounts]]
-    source = "node_modules/bootstrap/scss/"
-    target = "assets/sass/"
-  [[module.mounts]]
-    source = "node_modules/bootstrap/dist/"
-    target = "assets/"
-  [[module.mounts]]
-    source = "node_modules/feather-icons/dist/"
-    target = "static/icons/"

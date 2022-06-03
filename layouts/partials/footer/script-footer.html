@@ -1,6 +1,6 @@
 <!-- JavaScript and dependencies -->
 
-{{ $bootstrap := resources.Get "js/bootstrap.bundle.min.js" }}
+{{ $bootstrap := resources.Get "js/bootstrap/bootstrap.bundle.min.js" }}
 {{ $js := resources.Get "js/main.js" }}
 
 {{ if eq (hugo.Environment) "development" -}}

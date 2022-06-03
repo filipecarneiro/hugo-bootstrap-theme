@@ -20,7 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "publish": "npm publish --access public"
   },
-  "dependencies": {
+  "devDependencies": {
     "bootstrap": "^5.2.0-beta1",
     "feather-icons": "^4.29.0"
   }

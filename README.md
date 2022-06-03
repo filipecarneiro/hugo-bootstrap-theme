@@ -62,12 +62,6 @@ Clone this repo:
 git clone https://github.com/filipecarneiro/hugo-bootstrap-theme.git
 ```
 
-Install dependencies:
-
-```
-npm install
-```
-
 Test if the site is working:
 
 ```

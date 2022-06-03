@@ -4,13 +4,13 @@
 
     <div class="row">
         <div class="col-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `icons/feather-sprite.svg#folder` | relURL }}"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
             {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
                 <a class="badge rounded-pill bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
         </div>
         <div class="col-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `icons/feather-sprite.svg#tag` | relURL }}"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
             {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
                 <a class="badge rounded-pill bg-success nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
             {{end}}
@@ -39,18 +39,18 @@
                         <h2 class="card-title text-primary">{{ .Title }}</h2>
 
                         <div class="card-subtitle text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="feather"><use href="{{ `icons/feather-sprite.svg#calendar` | relURL }}"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feather"><use href="{{ `images/feather/feather-sprite.svg#calendar` | relURL }}"/></svg>
                             <time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Lastmod | time.Format ":date_long" }}</time>
 
                             {{ if isset .Params "categories" }}
-                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `icons/feather-sprite.svg#folder` | relURL }}"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
                                 {{ range .Params.categories }}
                                     <a class="text-decoration-none text-muted ms-2" href="/categories/{{ . | urlize}}">{{ . }}</a>
                                 {{end}}
                             {{ end }}
 
                             {{ if isset .Params "tags" }}
-                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `icons/feather-sprite.svg#tag` | relURL }}"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
                                 {{ range .Params.tags }}
                                     <a class="text-decoration-none text-muted ms-2" href="/tags/{{ . | urlize}}">{{ . }}</a>
                                 {{ end }}

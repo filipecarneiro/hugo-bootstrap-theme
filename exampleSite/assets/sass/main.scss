@@ -3,48 +3,48 @@
 // https://getbootstrap.com/docs/5.2/customize/sass/
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-@import "functions";
+@import "bootstrap/functions";
 
 // 2. Include any default variable overrides here
 @import "variable-overrides";
 
 // 3. Include remainder of required Bootstrap stylesheets
-@import "variables";
+@import "bootstrap/variables";
 
 // 4. Include any default map overrides here
 
 // 5. Include remainder of required parts
-@import "maps";
-@import "mixins";
-@import "utilities";
+@import "bootstrap/maps";
+@import "bootstrap/mixins";
+@import "bootstrap/utilities";
 
 // 6. Optionally include any other parts as needed
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
-@import "containers";
-@import "grid";
-@import "helpers";
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/containers";
+@import "bootstrap/grid";
+@import "bootstrap/helpers";
 
-@import "buttons";
-@import "nav";
-@import "navbar";
-@import "dropdown";
-@import "breadcrumb";
-@import "badge";
-@import "card";
+@import "bootstrap/buttons";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/dropdown";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/badge";
+@import "bootstrap/card";
 
 // pages/bootstrap-components/
-@import "accordion";
-@import "alert";
-@import "list-group";
+@import "bootstrap/accordion";
+@import "bootstrap/alert";
+@import "bootstrap/list-group";
 
 // pages/markdown-cheat-sheet/
-@import "tables";
+@import "bootstrap/tables";
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
-@import "utilities/api";
+@import "bootstrap/utilities/api";
 
 // 8. Add additional custom code here
 @import "custom"; // Theme SASS
