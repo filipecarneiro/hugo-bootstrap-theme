@@ -15,8 +15,8 @@
 <body class="{{ .Scratch.Get `class` }}">
     {{- partial "header/header.html" . -}}
     <div id="content">
-        {{ if ne .Kind "home" -}}
-            {{- partial "breadcrumb.html" . -}}
+        {{ if and (.Site.Params.options.breadCrumb) (ne .Kind "home") -}}
+            {{- partial "header/breadcrumb.html" . -}}
         {{ end }}
         {{- block "main" . }}{{- end }}
     </div>
