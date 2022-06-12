@@ -44,10 +44,18 @@
 
 .list {
     .card {
-        transition: transform 0.2s ease;
-    }
+        transition: transform 0.2s ease-in-out;
 
-    .card:hover {
-        transform: scale(1.01);
+        &:hover {
+            transform: scale(1.01);
+        }
+    }
+}
+
+.navbar-brand {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: rotate(-2deg) scale(1.1);
     }
 }
