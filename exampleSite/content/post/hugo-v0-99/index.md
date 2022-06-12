@@ -9,7 +9,7 @@ tags: ["Hugo"]
 keywords: ["hugo v0.99"]
 authors: ["Bjørn Erik Pedersen"]
 aliases:
-- post/hugo-0-99-1
+  - post/hugo-0-99-1
 ---
 
 ![Hugo](hugo-logo.svg)
