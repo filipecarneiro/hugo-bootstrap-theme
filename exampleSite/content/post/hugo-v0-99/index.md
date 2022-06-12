@@ -3,14 +3,16 @@ title: "Hugo v0.99.1"
 description: ""
 date: 2022-05-18
 draft: false
-images: ["hugo-0-99-1.jpg"]
+images: ["hugo-logo.png"]
 categories: ["Hugo Release Notes"]
 tags: ["Hugo"]
-keywords: ["hugo v0.99.1"]
+keywords: ["hugo v0.99"]
 authors: ["Bjørn Erik Pedersen"]
+aliases:
+- post/hugo-0-99-1
 ---
 
-![Hugo 0 99 1](hugo-logo.svg)
+![Hugo](hugo-logo.svg)
 
 Fix server regression for multihost sites (multiple languages with different baseURLs).
 
