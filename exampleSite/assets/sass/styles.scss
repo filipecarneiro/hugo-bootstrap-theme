@@ -41,3 +41,13 @@
 .text-violet {
     color: #6528e0;
 }
+
+.list {
+    .card {
+        transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.01);
+    }
+}

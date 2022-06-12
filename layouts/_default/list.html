@@ -2,20 +2,29 @@
 
 <div class="container py-3">
 
-    <div class="row">
-        <div class="col-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
-            {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
-                <a class="badge rounded-pill bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
-            {{end}}
+    {{ if or .Site.Params.options.listCategoryFilter .Site.Params.options.listTagFilter }}
+        <div class="row">
+
+            {{ if .Site.Params.options.listCategoryFilter }}
+                <div class="col-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
+                    {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+                        <a class="badge rounded-pill text-bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+                    {{end}}
+                </div>
+            {{ end }}
+
+            {{ if .Site.Params.options.listTagFilter }}
+                <div class="col-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
+                    {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
+                        <a class="badge rounded-pill text-bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+                    {{end}}
+                </div>
+            {{ end }}
+
         </div>
-        <div class="col-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
-            {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
-                <a class="badge rounded-pill bg-success nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
-            {{end}}
-        </div>
-    </div>
+    {{ end }}
 
     {{ if ne .Kind "taxonomy" }}
 
