@@ -42,7 +42,7 @@ enableEmoji = true
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.91.0"
+    min = "0.99.0"
     max = ""
   [[module.mounts]]
     source = "assets"
