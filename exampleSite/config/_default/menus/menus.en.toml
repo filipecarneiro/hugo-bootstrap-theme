@@ -6,21 +6,24 @@ weight = 10
 [[main]]
 identifier = "blog"
 name = "Blog"
-url = "/post/"
 weight = 40
 
 [[main]]
-identifier = "blog1"
-name = "Blog 1"
+name = "All"
 url = "/post/"
-weight = 10
+weight = 100
 parent = "blog"
 
 [[main]]
-identifier = "blog2"
-name = "Blog 2"
-url = "/post/"
+name = "Hugo"
+url = "/tags/hugo/"
 weight = 20
+parent = "blog"
+
+[[main]]
+name = "Bootstrap"
+url = "/tags/bootstrap/"
+weight = 30
 parent = "blog"
 
 [[main]]
