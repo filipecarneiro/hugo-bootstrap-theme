@@ -86,7 +86,7 @@ Then add the theme `hugo-bootstrap-theme` to your sites [configuration file](htt
 
 ```toml
 theme = "hugo-bootstrap-theme"
-themesdir = "node_modules\\@filipecarneiro"
+themesdir = "node_modules/@filipecarneiro"
 ```
 
 The new themes directory (themesdir) is needed to get the new theme from the `node_modules` folder.
