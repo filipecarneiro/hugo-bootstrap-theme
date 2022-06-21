@@ -14,10 +14,7 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
-<!-- Adds itemprop name and description from page title and description. -->
-<!-- If .IsPage adds itemprop datePublished, dateModified, wordCount, image, and keywords -->
-<!-- Check https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/schema.html -->
-{{ template "_internal/schema.html" . }}
+<!-- Removed "_internal/schema.html" as it generates invalid HTML. Using "head/schema-article.html" in ld+json instead. -->
 
 <!-- https://gohugo.io/templates/internal/#open-graph -->
 {{ template "_internal/opengraph.html" . }}
