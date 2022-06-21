@@ -7,7 +7,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="{{ `/` | relLangURL }}">
+      <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}">
         {{ if isset .Site.Params "mainmenulogo" }}
         <img src="{{ .Site.Params.mainMenuLogo | relURL }}" alt="logo" width="30" height="24"
           class="d-inline-block align-text-top">
