@@ -17,7 +17,9 @@
     "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "hugo server --source exampleSite --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics",
+    "build": "hugo --minify --source exampleSite --baseUrl '/' --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics",
+    "test": "docker run -v $pwd/exampleSite/public:/test --rm wjdp/htmltest /test -l 3 -s",
     "publish": "npm publish --access public"
   },
   "devDependencies": {

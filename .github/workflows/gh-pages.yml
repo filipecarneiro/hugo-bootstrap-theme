@@ -29,14 +29,17 @@ jobs:
       - name: NPM Install
         run: npm install
 
-      - name: Build
-        run: hugo --minify --source exampleSite
+      - name: Build for test
+        run: hugo --source exampleSite --baseUrl '/' --cleanDestinationDir --enableGitInfo --gc
 
       - name: Run htmltest
         uses: wjdp/htmltest-action@master
         with:
           path: ./exampleSite/public
           
+      - name: Build
+        run: hugo --source exampleSite --minify --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
