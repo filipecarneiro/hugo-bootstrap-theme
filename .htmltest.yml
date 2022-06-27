@@ -1,0 +1,7 @@
+DirectoryPath: "./exampleSite/public"
+IgnoreURLs:
+- "example.com"
+- "^/misc/js/script.js$"
+IgnoreDirs:
+- "lib"
+CacheExpires: "6h"
