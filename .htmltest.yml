@@ -1,7 +1,8 @@
 DirectoryPath: "./exampleSite/public"
 IgnoreURLs:
-- "example.com"
+- "twitter.com"
 - "^/misc/js/script.js$"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
+IgnoreExternalBrokenLinks: true
