@@ -1,22 +1,21 @@
-<!--
-    Note, if you just put some random url next to your site in your Hugo development server, it WILL NOT redirect to 404.html. However, you can test it by using the actual link http://localhost:1313/404.html
+{{/*
 
-    In production, you will have to add a trigger to your 404 file path where you host it.
+  Note, if you just put some random url next to your site in your Hugo development server, it WILL NOT redirect to
+  404.html. However, you can test it by using the actual link http://localhost:1313/404.html
 
-    https://gohugo.io/templates/404/#automatic-loading
--->
+  In production, you will have to add a trigger to your 404 file path where you host it:
+  https://gohugo.io/templates/404/#automatic-loading
 
-**/
+*/}}
 
 {{ define "main"}}
-    <main id="main">
-      <div class="text-center mt-5">
-       <h1 class="display-2">
-        404 Not Found   
-        </h1>
-        <h2 class="display-5">Looks like this page is not on our website</h2>
-        <a class="mt-5 btn themed-button" href="{{ "/" | relLangURL }}">Go back to homepage</a>
-      </div>
-      
-    </main>
+<main id="main">
+
+  <div class="text-center mt-5">
+    <h1 class="display-2">404 Not Found</h1>
+    <h2 class="display-5">Looks like this page is not on our website</h2>
+    <a class="mt-5 btn themed-button" href="{{ .Site.BaseURL | relLangURL }}">Go back to homepage</a>
+  </div>
+
+</main>
 {{ end }}
