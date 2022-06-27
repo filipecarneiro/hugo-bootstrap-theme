@@ -7,7 +7,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}">
+      <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
         {{ if isset .Site.Params "mainmenulogo" }}
         <img src="{{ .Site.Params.mainMenuLogo | relURL }}" alt="logo" width="30" height="24"
           class="d-inline-block align-text-top">
@@ -80,11 +80,11 @@
                 </li>
                 {{ end -}}
                 {{ else -}}
-                {{ range .Site.Languages -}}
-                {{ if ne $.Site.Language.Lang .Lang }}
+                {{ range .Site.Home.AllTranslations -}}
+                {{ if ne $.Site.Language.Lang .Language.Lang }}
                 <li>
-                  <a class="dropdown-item" rel="alternate" href="{{ (printf `%s/` .Lang) | relLangURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">
-                    {{ .LanguageName }}
+                  <a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">
+                    {{ .Language.LanguageName }}
                   </a>
                 </li>
                 {{ end -}}
