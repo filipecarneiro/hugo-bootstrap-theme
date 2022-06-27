@@ -54,14 +54,14 @@
                             {{ if isset .Params "categories" }}
                                 <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
                                 {{ range .Params.categories }}
-                                    <a class="text-decoration-none text-muted ms-2" href="/categories/{{ . | urlize}}">{{ . }}</a>
+                                    <a class="text-decoration-none text-muted ms-2" href="{{ `/categories/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
                                 {{end}}
                             {{ end }}
 
                             {{ if isset .Params "tags" }}
                                 <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
                                 {{ range .Params.tags }}
-                                    <a class="text-decoration-none text-muted ms-2" href="/tags/{{ . | urlize}}">{{ . }}</a>
+                                    <a class="text-decoration-none text-muted ms-2" href="{{ `/tags/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
                                 {{ end }}
                             {{ end }}
                         </div>
