@@ -1,8 +1,6 @@
 DirectoryPath: "./exampleSite/public"
-IgnoreURLs:
-- "twitter.com"
-CheckFavicon: true
+CheckFavicon: false
 EnforceHTML5: true
-HTTPHeaders: {"Range": "bytes=0-0", "Accept": "*/*"}
+HTTPHeaders: {"Range": "bytes=0-0", "Accept": "*/*", "User-Agent": "HtmlTest/1.0.0"}
 IgnoreExternalBrokenLinks: false
-LogLevel: 1
+LogLevel: 0
