@@ -1,8 +1,8 @@
 DirectoryPath: "./exampleSite/public"
 IgnoreURLs:
 - "twitter.com"
-- "^/misc/js/script.js$"
-IgnoreDirs:
-- "lib"
-CacheExpires: "6h"
-IgnoreExternalBrokenLinks: true
+CheckFavicon: true
+EnforceHTML5: true
+HTTPHeaders: {"Range": "bytes=0-0", "Accept": "*/*"}
+IgnoreExternalBrokenLinks: false
+LogLevel: 1
