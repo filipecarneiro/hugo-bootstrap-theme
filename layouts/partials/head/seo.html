@@ -16,11 +16,10 @@
 
 <!-- Removed "_internal/schema.html" as it generates invalid HTML. Using "head/schema-article.html" in ld+json instead. -->
 
-<!-- https://gohugo.io/templates/internal/#open-graph -->
-{{ template "_internal/opengraph.html" . }}
-
-<!-- https://gohugo.io/templates/internal/#twitter-cards -->
-{{ template "_internal/twitter_cards.html" . }}
+<!-- Removed "_internal/opengraph.html" as it generates invalid image links. Using "head/opengraph.html" and "head/facebook.html" instead. -->
+{{ partial "head/opengraph.html" . }}
+{{ partial "head/facebook.html" . }}
+{{ partial "head/twitter.html" . }}
 
 <!-- will load JSON-LD Schemas in pages -->
 <!-- https://schema.org/docs/schemas.html -->
