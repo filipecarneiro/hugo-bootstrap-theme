@@ -1,0 +1,11 @@
+{{ partial
+    "content/carousel.html"
+        (dict
+            "context" .
+            "imagesPattern" (.Get `imagesPattern`)
+            "aspectRatio" (.Get `aspectRatio`)
+            "crossFade" (.Get `crossFade`)
+            "withIndicators" (.Get `withIndicators`)
+            "withControls" (.Get `withControls`)
+        )
+}}

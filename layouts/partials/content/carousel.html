@@ -1,0 +1,92 @@
+{{/*
+  Bootstrap Carousel
+  A slideshow component for cycling through images like a carousel.
+  https://getbootstrap.com/docs/5.1/components/carousel/
+
+  Serve responsive images
+  https://web.dev/serve-responsive-images/
+  https://cloudfour.com/thinks/responsive-images-the-simple-way/
+  https://responsivebreakpoints.com/
+
+  Lazyloading
+  https://github.com/aFarkas/lazysizes
+
+  Fixing The Resizing Problem
+
+  Setting Height And Width On Images Is Important Again
+  https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/
+
+  New aspect-ratio CSS property supported in Chromium, Safari Technology Preview, and Firefox Nightly
+  https://web.dev/aspect-ratio/
+
+  Parameters:
+
+    - "imagesPattern" to pass to resources.Match
+    - "aspectRatio" to be used in aspect-ratio CSS property (default "16/9")
+    - "crossFade" boolean to animate slides with a fade transition instead of a slide (default false)
+    - "withIndicators" boolean to add the indicators to the carousel, alongside the controls (default false) 
+    - "withControls" boolean to add the previous and next controls (default false)
+
+  Example:
+
+    partial "carousel.html" (dict "context" . "imagesPattern" "carousel/home/*.png" "aspectRatio" "8/3" "withControls" true)
+
+*/}}
+
+{{/* warnf "Carousel imagesPattern: '%+v'" .imagesPattern */}}
+{{/* warnf "Carousel aspectRatio: '%+v'" .aspectRatio */}}
+{{/* warnf "Carousel crossFade: '%+v'" .crossFade */}}
+{{/* warnf "Carousel withIndicators: '%+v'" .withIndicators */}}
+{{/* warnf "Carousel withControls: '%+v'" .withControls */}}
+
+{{ $images := resources.Match .imagesPattern }}
+
+<div id="bootstrapCarousel" class="carousel slide {{ if (.crossFade) }}carousel-fade{{ end }}" data-bs-ride="carousel">
+  {{ if .withIndicators }}
+    <div class="carousel-indicators">
+      {{ range $index, $image := $images }}
+        <button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="{{ $index }}"
+                {{ if (ne $index 0) }}
+                  class="active" aria-current="true"
+                {{ end }}
+                aria-label="{{ $image.Title }}">
+        </button>
+      {{ end }}
+    </div>
+  {{ end }}
+
+  {{ with $images }}
+  <div class="carousel-inner">
+    {{ range $index, $image := $images }}
+      <div class="carousel-item{{ if (eq $index 0) }} active{{ end }}">
+        {{ $imageExtraLarge := $image.Resize "2560x webp" -}}  
+        {{ $imageLarge := $image.Resize "1920x webp" -}}
+        {{ $imageMedium := $image.Resize "1280x webp" -}}
+        {{ $imageSmall := $image.Resize "960x webp" -}}
+        {{ $imageExtraSmall := $image.Resize "640x webp" -}}
+        {{ $imageExtraExtraSmall := $image.Resize "320x webp" -}}
+        <img class="d-block w-100"
+             {{ if (ne $index 0) }} loading="lazy" {{ end }}
+             style="width: 100%; height: auto; aspect-ratio: {{ $.aspectRatio | default `16/9` | safeCSS }};"
+             src="{{ $imageMedium.RelPermalink }}"
+             srcset="{{ $imageExtraLarge.RelPermalink }} 2560w, {{ $imageLarge.RelPermalink }} 1920w, {{ $imageMedium.RelPermalink }} 1280w, {{ $imageSmall.RelPermalink }} 960w, {{ $imageExtraSmall.RelPermalink }} 640w, {{ $imageExtraExtraSmall.RelPermalink }} 320w"
+             sizes="100vw"
+             alt="{{ $image.Title }}">
+      </div>
+    {{ end }}
+  </div>
+  {{ else }}
+    {{ warnf "Carousel imagesPattern: resources.Match '%+v' returned no images!" .imagesPattern }}
+  {{ end }}
+
+  {{ if .withControls }}
+  <button class="carousel-control-prev" type="button" data-bs-target="#bootstrapCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bootstrapCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  {{ end }}
+</div>
