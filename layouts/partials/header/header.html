@@ -102,7 +102,7 @@
           <ul class="navbar-nav">
             {{ range .Site.Menus.social -}}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .URL | relLangURL }}">
+              <a class="nav-link" href="{{ .URL | relLangURL }}" target='{{ if in .URL "https://" }}_blank{{ else }}_self{{ end }}'>
                 {{ .Pre | safeHTML }}<small class="ms-2 d-md-none">{{ .Name | safeHTML }}</small>
               </a>
             </li>
