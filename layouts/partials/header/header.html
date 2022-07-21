@@ -39,7 +39,7 @@
               {{ range .Children -}}
               {{- $active = eq .Name $current.Title -}}
               <li>
-                <a class="dropdown-item{{ if $active }} active{{ end }}" href="{{ .URL }}" {{ if $active }}aria-current="true" {{ end }}>
+                <a class="dropdown-item{{ if $active }} active{{ end }}" href="{{ .URL | relLangURL }}" {{ if $active }}aria-current="true" {{ end }}>
                   {{ .Name }}
                 </a>
               </li>
@@ -48,7 +48,7 @@
           </li>
           {{ else }}
           <li class="nav-item">
-            <a class="nav-link{{ if $active }} active{{ end }}" aria-current="page" href="{{ .URL }}">{{ .Name }}</a>
+            <a class="nav-link{{ if $active }} active{{ end }}" aria-current="page" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
           </li>
           {{ end }}
           {{ end -}}
@@ -97,7 +97,7 @@
         {{ end -}}
 
         <!-- Social Menu -->
-        {{ if gt (len .Site.Menus.social ) 1 }}
+        {{ if gt (len .Site.Menus.social ) 0 }}
         <div class="menu-social d-flex">
           <ul class="navbar-nav">
             {{ range .Site.Menus.social -}}
