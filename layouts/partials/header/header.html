@@ -97,7 +97,7 @@
         {{ end -}}
 
         <!-- Social Menu -->
-        {{ if gt (len .Site.Menus.social ) 0 }}
+        {{ if isset .Site.Menus "social" }}
         <div class="menu-social d-flex">
           <ul class="navbar-nav">
             {{ range .Site.Menus.social -}}

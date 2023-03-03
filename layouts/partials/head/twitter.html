@@ -1,10 +1,13 @@
 {{- /* Twitter Cards */}}
 
-{{ $image := .Resources.GetMatch (index ($.Param "images") 0) }}
-
+{{ with $.Param "images" }}
+{{ $image := $.Resources.GetMatch (index (.) 0) }}
 {{ with $image -}}
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image" content="{{ .Permalink }}"/>
+{{ else -}}
+    {{ warnf "Can't find image in Site param `images` first value (%s)." ($.Param `images`) }}
+{{ end }}
 {{ else -}}
     <meta name="twitter:card" content="summary"/>
 {{ end -}}

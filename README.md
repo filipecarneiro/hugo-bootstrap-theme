@@ -102,3 +102,59 @@ hugo server -D --disableFastRender
 Check your `copyright` variable, your menus (the theme supports `main`, `footer` and `social` menus), etc.
 
 Have a look on exampleSite for inspiration :)
+
+### Start from Scratch
+
+#### Step 1: Create a new Hugo site
+
+Follow [Hugo Quick Start](https://gohugo.io/getting-started/quick-start/) to create a new site, add a sample page and change basic settings.
+
+Since you've created an Git repository, let's specify some Hugo files and folders to ignore.
+
+Create a `.gitignore` file on the root of your project with this content:
+
+```txt
+public
+node_modules
+resources
+.hugo_build.lock
+```
+
+Optionally, add a remote repository and push your code.
+
+#### Step 2: Install and configure Hugo Bootstrap Theme
+
+Update npm to the latest version:
+
+```
+npm install -g npm
+```
+
+If you don't have npm, [download and install Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+Then, create an npm package for your site:
+
+```
+npm init -y
+```
+
+If wanted, you can customize your package information, editing the generated `package.json` file.
+
+Now, install Hugo Bootstrap Theme:
+
+```
+npm install @filipecarneiro/hugo-bootstrap-theme
+```
+
+Then add the theme `hugo-bootstrap-theme` to your site configuration file `config.toml`:
+
+```toml
+theme = 'hugo-bootstrap-theme'
+themesdir = 'node_modules/@filipecarneiro'
+```
+
+Change the existing `theme` value from `ananke` to `hugo-bootstrap-theme` and add a new line for `themesdir`, like above.
+
+Add some [configuration](https://gohugo.io/getting-started/configuration/), like `copyright`, `description` and your menus (the theme supports `main`, `footer` and `social` menus).
+
+Have a look on exampleSite for inspiration :)

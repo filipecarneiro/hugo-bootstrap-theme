@@ -4,8 +4,6 @@
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/advanced/structured-data/article#non-amp -->
 
-{{ $logo := resources.GetMatch (index ($.Site.Params.images) 0) }}
-{{ $image := .Resources.GetMatch (index ($.Param "images") 0) }}
 {{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
 
 <script type="application/ld+json">
@@ -13,8 +11,10 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": {{ .Title }},
-  {{ with $image -}}
-  "image": {{ $image.Permalink }},
+  {{ if $.Param "images" -}}
+  {{ with .Resources.GetMatch (index ($.Param "images") 0) -}}
+  "image": {{ .Permalink }},
+  {{ end -}}
   {{ end -}}
   "datePublished": {{ .PublishDate.Format $iso8601 }},
   "dateModified": {{ .Lastmod.Format $iso8601 }},
@@ -30,11 +30,13 @@
   "mainEntityOfPage": "{{ .Site.BaseURL }}",
   "publisher": {
     "@type": "Organization",
-    {{ with $logo -}}
+    {{ if isset $.Site.Params "images" }}
+    {{ with resources.GetMatch (index ($.Site.Params.images) 0) -}}
     "logo": {
       "@type": "ImageObject",
-      "url": {{ $logo.Permalink }}
+      "url": {{ .Permalink }}
     },
+    {{ end -}}
     {{ end -}}
     "name": {{ .Site.Title }}
   },
