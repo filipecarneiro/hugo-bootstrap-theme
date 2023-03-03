@@ -143,7 +143,7 @@ If wanted, you can customize your package information, editing the generated `pa
 Now, install Hugo Bootstrap Theme:
 
 ```
-npm install @filipecarneiro/hugo-bootstrap-theme
+npm install @filipecarneiro/hugo-bootstrap-theme --save-dev
 ```
 
 Then add the theme `hugo-bootstrap-theme` to your site configuration file `config.toml`:
