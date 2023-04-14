@@ -1,0 +1,20 @@
+{{/*
+  Email Shortcode
+  Write a email address using HTML DOM Document write() to hide the email from bots 
+
+  Parameters:
+
+    - "user" local-part of the email address (local-part@domain)
+    - "domain" domain of the email address (local-part@domain)
+    - "class" class or classes to be aplied on parent figure element. (default empty)
+
+  Example:
+
+    {{< email user="jsmith" domain="example.com" class="cool-link" >}}
+
+*/}}
+{{ $emailAddress := printf "%s@%s" (.Get "user") (.Get "domain") }}
+<script type='text/javascript' nonce='dXNlcj0iaGVsbG8iLGRvbWFpbj0iaGVua3ZlcmxpbmRlLmNvbSIsZG9jdW1lbnQud3JpdGUodXNlcisiQCIrZG9tYWluKTs='>
+  document.write("<a href='mailto:" + {{ $emailAddress }} + "' class='email {{- with .Get "class" }} {{.}}{{ end -}}'>" + {{ $emailAddress }} + "</a>");
+</script>
+<noscript>{{ with .Get "user" }}{{.}}{{ end }} at {{ with .Get "domain" }}{{.}}{{ end }}</noscript>

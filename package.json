@@ -1,6 +1,6 @@
 {
   "name": "@filipecarneiro/hugo-bootstrap-theme",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.",
   "keywords": ["hugo","hugo theme","bootstrap","bootstrap 5","static site generator"],
   "homepage": "https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/README.md",

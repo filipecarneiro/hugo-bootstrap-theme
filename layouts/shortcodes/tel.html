@@ -1,0 +1,22 @@
+{{/*
+    Tel Shortcode
+    Write a telephone number with an optional country code and legal message. 
+ 
+    Parameters:
+  
+      - "number" telephone number with intended spaces
+      - "country" country prefix
+      - "class" class or classes to be aplied on parent figure element. (default empty)
+      - "note" note to be added to the telephone number
+  
+    Example:
+  
+      {{< tel number="229 419 378" country="351" class="cool-link" note="Chamada para a rede fixa nacional" >}}
+  
+*/}}
+{{ $countryPrefix := "" }}
+{{ with .Get "country" }}{{ $countryPrefix = printf "+%s" . }}{{ end }}
+{{ $telNumber := printf "%s%s" $countryPrefix ( replaceRE "(\\s)" "" (.Get "number")) }}
+<a class='tel  {{- with .Get "class" }} {{.}}{{ end -}}' href='tel:{{ $telNumber }}' title='{{ with .Get "note" }}{{ . }}{{ end }}'>
+    {{- with .Get "number" }}{{.}}{{ end }}{{ with .Get "note" }}*{{ end -}}
+</a>
