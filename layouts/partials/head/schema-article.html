@@ -41,7 +41,7 @@
     "name": {{ .Site.Title }}
   },
   "wordcount" : {{ .Content | countwords }},
-  "description": {{ .Summary | plainify | safeHTML }},
-  "keywords": [{{ if .IsPage}}{{ range $index, $tag := .Params.tags }}{{ $tag }},{{ end }}{{ else }}{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}{{ end }}]
+  "description": {{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | safeHTML }}{{ end }},
+  "keywords": {{ .Keywords }}
 }
 </script>
