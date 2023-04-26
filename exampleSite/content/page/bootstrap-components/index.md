@@ -199,13 +199,13 @@ See [List group documentation](https://getbootstrap.com/docs/5.2/components/list
 
 ---
 
-## Creating your own
+### Creating your own
 
 Read the [customize components page](https://getbootstrap.com/docs/5.2/customize/components/) to learn how build your own components.
 
 ---
 
-### Callout
+## Callout
 
 <br>
 
@@ -223,6 +223,20 @@ Read the [customize components page](https://getbootstrap.com/docs/5.2/customize
 
 <div class="callout callout-danger">
     <strong>This is a danger callout.</strong> Example text to show it in action.
+</div>
+
+<br>
+
+---
+
+## Tooltip
+
+<br>
+
+<div class="tooltip">
+  <p class="">
+  Placeholder text to demonstrate some <a href="#" data-bs-toggle="tooltip" data-bs-title="Default tooltip">inline links</a> with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of <a href="#" data-bs-toggle="tooltip" data-bs-title="Another tooltip">real text</a>. And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how <a href="#" data-bs-toggle="tooltip" data-bs-title="Another one here too">these tooltips on links</a> can work in practice, once you use them on <a href="#" data-bs-toggle="tooltip" data-placement="bottom" data-bs-title="The last tip!">your own</a> site or project.
+  </p>
 </div>
 
 <br>
