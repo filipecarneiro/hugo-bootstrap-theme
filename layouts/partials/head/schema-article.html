@@ -27,7 +27,7 @@
   },
   {{ end -}}
   {{ end -}}
-  "mainEntityOfPage": "{{ .Site.BaseURL }}",
+  "mainEntityOfPage": {{ .Site.BaseURL }},
   "publisher": {
     "@type": "Organization",
     {{ if isset $.Site.Params "images" }}
