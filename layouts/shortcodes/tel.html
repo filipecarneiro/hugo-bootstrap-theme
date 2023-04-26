@@ -1,22 +1,36 @@
 {{/*
-    Tel Shortcode
-    Write a telephone number with an optional country code and legal message. 
- 
-    Parameters:
-  
-      - "number" telephone number with intended spaces
-      - "country" country prefix
-      - "class" class or classes to be aplied on parent figure element. (default empty)
-      - "note" note to be added to the telephone number
-  
-    Example:
-  
-      {{< tel number="229 419 378" country="351" class="cool-link" note="Chamada para a rede fixa nacional" >}}
-  
+  Tel Shortcode
+  Write a telephone number with an optional country code and legal message. 
+
+  Parameters:
+
+    - "number" telephone number with intended spaces
+    - "country" country prefix
+    - "class" class or classes to be aplied on parent figure element. (default empty)
+    - "note" note to be added to the telephone number
+
+  Example:
+
+    {{< tel number="229 419 378" country="351" class="cool-link" note="Chamada para a rede fixa nacional" >}}
+
+  Note: To use Bootstrap tooltip on Note icon, you need to enable tooltip on your JavaScript.
+        See: https://getbootstrap.com/docs/5.2/components/tooltips/#enable-tooltips
+
 */}}
 {{ $countryPrefix := "" }}
 {{ with .Get "country" }}{{ $countryPrefix = printf "+%s" . }}{{ end }}
 {{ $telNumber := printf "%s%s" $countryPrefix ( replaceRE "(\\s)" "" (.Get "number")) }}
-<a class='tel  {{- with .Get "class" }} {{.}}{{ end -}}' href='tel:{{ $telNumber }}' title='{{ with .Get "note" }}{{ . }}{{ end }}'>
-  {{- with .Get "country" }}{{ $countryPrefix }} {{ end -}}{{ with .Get "number" }}{{.}}{{ end }}{{ with .Get "note" }}*{{ end -}}
+<a id='telephone-{{ $telNumber }}'
+ class='tel {{- with .Get "class" }} {{.}}{{ end -}}'
+ href='tel:{{ $telNumber }}'>
+{{- with .Get "country" }}{{ $countryPrefix }} {{ end -}}{{ with .Get "number" }}{{.}}{{ end -}}
 </a>
+{{ with .Get "note" }}
+<a class='tel-note {{- with $.Get "class" }} {{ . }}{{ end -}}'
+ href="#telephone-{{ $telNumber }}"
+ title="{{ . }}"
+ data-bs-toggle="tooltip" data-bs-title="{{ . }}">
+<span class="text-break">&nbsp;<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="/images/feather/feather-sprite.svg#info"/></svg></span>
+<small class="visually-hidden">{{ . }}</small>
+</a>
+{{ end -}}
