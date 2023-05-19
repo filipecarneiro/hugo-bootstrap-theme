@@ -1,6 +1,6 @@
 {{- /* Twitter Cards */}}
 
-{{ with $.Param "images" }}
+{{ with $.Params.images }}
 {{ $image := $.Resources.GetMatch (index (.) 0) }}
 {{ with $image -}}
     <meta name="twitter:card" content="summary_large_image"/>
