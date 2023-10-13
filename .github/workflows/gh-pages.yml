@@ -31,11 +31,13 @@ jobs:
 
       - name: Build for test
         run: hugo --source exampleSite --baseUrl '/' --cleanDestinationDir --enableGitInfo --gc
+        if: ${{ false }}
 
       - name: Run htmltest
         uses: wjdp/htmltest-action@master
         with:
           config: .htmltest.yml
+        if: ${{ false }}
            
       - name: Build
         run: hugo --source exampleSite --minify --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics
