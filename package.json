@@ -17,8 +17,9 @@
     "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
   },
   "scripts": {
-    "start": "hugo server --source exampleSite --cleanDestinationDir --enableGitInfo --gc",
-    "build": "hugo --minify --source exampleSite --baseUrl '/' --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics",
+    "postinstall": "hugo-installer --version otherDependencies.hugo --extended",
+    "start": "exec-bin bin/hugo/hugo server --source exampleSite --cleanDestinationDir --enableGitInfo --gc",
+    "build": "exec-bin bin/hugo/hugo --minify --source exampleSite --baseUrl '/' --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics",
     "test:htmltest": "docker run --rm -v $pwd/exampleSite/public:/test --rm wjdp/htmltest /test -l 3 -s",
     "test:htmlproofer": "docker run --rm -it -v $pwd/public:/src klakegg/html-proofer --disable-external --check-favicon --check-html --check-img-http --check-opengraph --check-sri",
     "test": "npm run test:htmlproofer",
@@ -26,6 +27,11 @@
   },
   "devDependencies": {
     "bootstrap": "^5.2.3",
-    "feather-icons": "^4.29.0"
+    "feather-icons": "^4.29.0",
+    "exec-bin": "^1.0.0",
+    "hugo-installer": "^4.0.1"
+  },
+  "otherDependencies": {
+    "hugo": "0.119.0"
   }
 }

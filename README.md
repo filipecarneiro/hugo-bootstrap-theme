@@ -70,6 +70,15 @@ hugo server -D --disableFastRender --source exampleSite
 
 This launches Hugo development server and you can see the example site by opening http://localhost:1313/hugo-bootstrap-theme/.
 
+You can also use Hugo as an installed NPM local package. In this case, you don't need to install Hugo globally:
+
+```
+npm install
+npm run start
+```
+
+This will install Hugo in a `bin` subfolder and then run it, using the NPM package `exec-bin`.
+
 ### Install on an existing Hugo site
 
 #### Step 1: Install via NPM
