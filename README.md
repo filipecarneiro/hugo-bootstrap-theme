@@ -38,9 +38,9 @@ Hugo is the **world’s fastest static website engine**. It’s written in Go (a
 
 Get started with Bootstrap
 
-- [Bootstrap 5.2](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
-- [Install Bootstrap in your Node.js powered apps with the npm package](https://getbootstrap.com/docs/5.2/getting-started/download/#npm)
+- [Install Bootstrap in your Node.js powered apps with the npm package](https://getbootstrap.com/docs/5.3/getting-started/download/#npm)
 
 ### Requirements
 
