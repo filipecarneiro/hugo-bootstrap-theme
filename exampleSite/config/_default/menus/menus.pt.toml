@@ -1,19 +1,12 @@
 [[main]]
 name = "Início"
-url = "/"
+url = ""
 weight = 10
 
 [[main]]
-identifier = "blog"
-name = "Blog"
-url = "/post/"
-weight = 40
-
-[[main]]
-identifier = "docs"
-name = "Docs"
-url = "/page/"
-weight = 50
+name = "Sobre"
+url = "about"
+weight = 20
 
 [[social]]
   name = "GitHub"

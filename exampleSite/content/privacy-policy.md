@@ -36,6 +36,6 @@ All logs are discarded in every release.
 
 ## Contact us
 
-[Contact us](/contact/) if you have any questions.
+[Contact us](/hugo-bootstrap-theme/contact/) if you have any questions.
 
 Effective Date: *15th May 2022*
