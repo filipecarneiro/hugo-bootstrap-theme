@@ -58,7 +58,7 @@ Bootstrap is bundled with tens of components that can be reused to provide a goo
 
 <br>
 
-See [Accordion documentation](https://getbootstrap.com/docs/5.2/components/accordion/).
+See [Accordion documentation](https://getbootstrap.com/docs/5.3/components/accordion/).
 
 ---
 
@@ -93,7 +93,7 @@ See [Accordion documentation](https://getbootstrap.com/docs/5.2/components/accor
 
 <br>
 
-See [Alert documentation](https://getbootstrap.com/docs/5.2/components/alerts/).
+See [Alert documentation](https://getbootstrap.com/docs/5.3/components/alerts/).
 
 ---
 
@@ -137,7 +137,7 @@ See [Alert documentation](https://getbootstrap.com/docs/5.2/components/alerts/).
 
 <br>
 
-See [Badge documentation](https://getbootstrap.com/docs/5.2/components/badge/).
+See [Badge documentation](https://getbootstrap.com/docs/5.3/components/badge/).
 
 ---
 
@@ -158,7 +158,7 @@ See [Badge documentation](https://getbootstrap.com/docs/5.2/components/badge/).
 
 <br>
 
-See [Button documentation](https://getbootstrap.com/docs/5.2/components/buttons/).
+See [Button documentation](https://getbootstrap.com/docs/5.3/components/buttons/).
 
 ---
 
@@ -177,7 +177,7 @@ See [Button documentation](https://getbootstrap.com/docs/5.2/components/buttons/
 
 <br>
 
-See [Card documentation](https://getbootstrap.com/docs/5.2/components/card/).
+See [Card documentation](https://getbootstrap.com/docs/5.3/components/card/).
 
 ---
 
@@ -195,13 +195,13 @@ See [Card documentation](https://getbootstrap.com/docs/5.2/components/card/).
 
 <br>
 
-See [List group documentation](https://getbootstrap.com/docs/5.2/components/list-group/).
+See [List group documentation](https://getbootstrap.com/docs/5.3/components/list-group/).
 
 ---
 
 ### Creating your own
 
-Read the [customize components page](https://getbootstrap.com/docs/5.2/customize/components/) to learn how build your own components.
+Read the [customize components page](https://getbootstrap.com/docs/5.3/customize/components/) to learn how build your own components.
 
 ---
 

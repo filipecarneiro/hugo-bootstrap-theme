@@ -19,4 +19,4 @@ A slideshow component for cycling through elementsâ€”images or slides of text â€
 
 <br>
 
-See [Carousel documentation](https://getbootstrap.com/docs/5.2/components/carousel/).
+See [Carousel documentation](https://getbootstrap.com/docs/5.3/components/carousel/).

@@ -211,4 +211,4 @@ func main() {
 ## See also
 
 - [Hugo Markdown Reference](https://www.markdownguide.org/tools/hugo/)
-- [Bootstrap Typography](https://getbootstrap.com/docs/5.2/content/typography/)
+- [Bootstrap Typography](https://getbootstrap.com/docs/5.3/content/typography/)
