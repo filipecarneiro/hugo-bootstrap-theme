@@ -27,7 +27,7 @@
           {{- $section := $current.Section -}}
           {{ range .Site.Menus.main -}}
           {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) -}}
-          {{- $active = or $active (eq .Name $current.Title) -}}
+          {{- $active = or $active (eq .Name $current.LinkTitle) -}}
           {{- $active = or $active (and (eq .Name ($section | humanize)) (eq $current.Section $section)) -}}
           {{- $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog" "contributors")) -}}
           {{ if .HasChildren }}
@@ -37,7 +37,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               {{ range .Children -}}
-              {{- $active = eq .Name $current.Title -}}
+              {{- $active = eq .Name $current.LinkTitle -}}
               <li>
                 <a class="dropdown-item{{ if $active }} active{{ end }}" href="{{ .URL | relLangURL }}" {{ if $active }}aria-current="true" {{ end }}>
                   {{ .Name }}

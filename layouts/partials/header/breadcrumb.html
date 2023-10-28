@@ -4,12 +4,12 @@
             {{ define "breadcrumb" }}
                 {{ with .Parent }}
                     {{ template "breadcrumb" . }}
-                    <li class="breadcrumb-item"> <a href="{{ .Permalink }}">{{ if .IsHome }}Home{{ else }}{{ .Title }}{{ end }}</a> </li>
+                    <li class="breadcrumb-item"> <a href="{{ .Permalink }}">{{ if .IsHome }}Home{{ else }}{{ .LinkTitle }}{{ end }}</a> </li>
                 {{ end }}
             {{ end }}
             {{ if not .IsHome }}
                 {{ template "breadcrumb" . }}
-                <li class="breadcrumb-item active" aria-current="page">  {{ .Title }}</li>
+                <li class="breadcrumb-item active" aria-current="page">  {{ .LinkTitle }}</li>
             {{ end }}
         </ol>
     </div>
