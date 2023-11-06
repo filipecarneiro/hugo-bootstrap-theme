@@ -3,13 +3,13 @@
 <div class="container py-3">
 
     {{ if or .Site.Params.options.listCategoryFilter .Site.Params.options.listTagFilter }}
-        <div class="row">
+        <div class="row mb-3">
 
             {{ if .Site.Params.options.listCategoryFilter }}
                 <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
                     {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
-                        <a class="badge rounded-pill text-bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+                        <a class="badge text-bg-light nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
                     {{end}}
                 </div>
             {{ end }}
@@ -18,7 +18,7 @@
                 <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
                     {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
-                        <a class="badge rounded-pill text-bg-primary nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+                        <a class="badge text-bg-light nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
                     {{end}}
                 </div>
             {{ end }}
@@ -29,25 +29,23 @@
     {{ if ne .Kind "taxonomy" }}
 
         {{ range .Pages }}
-        <div class="row g-4 mt-2 ">
+        <div class="card border-light-subtle mb-3">
+            <div class="row g-0">
 
-            <div class="col-lg-3 col-sm-12">
-                {{ if isset .Params "images" }}
-                    {{ with .Resources.GetMatch (index .Params.Images 0) }}
-                        {{ $image := .Resize "200x webp" }}
-                        <img class="img-fluid rounded w-100" src="{{ $image.Permalink }}" loading="lazy" {{/* width="{{ $image.Width }}" height="{{ $image.Height }}" */}} alt="featured image {{.Title }}"/>
+                <div class="col-md-4 d-flex align-items-center">
+                    {{ if isset .Params "images" }}
+                        {{ with .Resources.GetMatch (index .Params.Images 0) }}
+                            {{ $image := .Fill "600x300 Center webp" }}
+                            <img class="img-fluid rounded p-1" src="{{ $image.Permalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}"/>
+                        {{ end }}
                     {{ end }}
-                {{ end }}
-            </div>
+                </div>
 
-            <div class="col-lg-9 col-sm-12">
-
-                <div class="card mb-3">
-                
+                <div class="col-md-8">
                     <div class="card-body">
                         <h2 class="card-title text-primary">{{ .Title }}</h2>
 
-                        <div class="card-subtitle text-muted">
+                        <div class="card-subtitle text-muted mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="feather"><use href="{{ `images/feather/feather-sprite.svg#calendar` | relURL }}"/></svg>
                             <time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Lastmod | time.Format ":date_long" }}</time>
 
@@ -66,18 +64,19 @@
                             {{ end }}
                         </div>
 
-                        <div class="card-text my-3">
-                            {{ .Summary | truncate 400 }}
+                        <div class="card-text">
+                            {{ with .Params.description }}
+                                {{ . }}
+                            {{ else }}
+                                {{ .Summary | truncate 400 }}
+                            {{ end }}
                         </div>
                         
-
                         <a class="stretched-link" href="{{.Permalink}}"></a>
-
                     </div>
                 </div>
 
             </div>
-
         </div>
         {{ end }}
 
