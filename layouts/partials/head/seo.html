@@ -10,6 +10,13 @@
   {{ end -}}
 {{ end -}}
 
+<!-- canonical tag -->
+<link rel="canonical" href="{{ .Permalink | safeURL }}" />
+
+<!-- Self-referential and X-default hreflang tags -->
+<link rel="alternate" hreflang="{{ .Params.LanguageCode | default `pt-pt` }}" href="{{ .Permalink | safeURL }}" />
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink | safeURL }}" />
+
 {{ range .AlternativeOutputFormats -}}
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
