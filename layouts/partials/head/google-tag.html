@@ -16,7 +16,7 @@
       - Using GTM with a Content Security Policy (CSP) and impress your DevOps team in the process (https://www.dumky.net/posts/using-gtm-with-a-content-security-policy-csp-and-impress-your-devops-team-in-the-process/)
 -->
 */}}
-{{ with .Params.googleTag }}
+{{ with $.Site.Params.googleTag }}
 
 <!-- google-tag-consent.js -->
 {{- $googleTagConsentJs := resources.Get "js/google-tag-consent.js" -}}
