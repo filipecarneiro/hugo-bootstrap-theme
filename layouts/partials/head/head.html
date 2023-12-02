@@ -1,4 +1,5 @@
 <head>
+    {{ block "head/google-tag" . }}{{ partial "head/google-tag.html" . }}{{ end }}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ block "head/content-security-policy" . }}{{ partial "head/content-security-policy.html" . }}{{ end }}

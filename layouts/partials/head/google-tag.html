@@ -1,0 +1,41 @@
+{{/*
+<!--
+    Google tag
+    (see google-tag-consent.js and google-tag.js)
+
+    https://developers.google.com/tag-platform/devguides/consent
+    
+    Uses 'googleTag' and 'googleAds' page params, if existent
+
+    With:
+      - Variables inside JavaScript (https://discourse.gohugo.io/t/variables-inside-javascript/39086) 
+      - Generate inline script SHA for Content-Security-Policy (https://discourse.gohugo.io/t/generate-inline-script-sha-for-content-security-policy/14627)
+
+    TODO:
+      - Use Tag Manager with a Content Security Policy (https://developers.google.com/tag-platform/tag-manager/web/csp)
+      - Using GTM with a Content Security Policy (CSP) and impress your DevOps team in the process (https://www.dumky.net/posts/using-gtm-with-a-content-security-policy-csp-and-impress-your-devops-team-in-the-process/)
+-->
+*/}}
+{{ with .Params.googleTag }}
+
+<!-- google-tag-consent.js -->
+{{- $googleTagConsentJs := resources.Get "js/google-tag-consent.js" -}}
+{{- $googleTagConsentJs = $googleTagConsentJs | fingerprint "sha512" -}}
+
+<!-- google-tag.js -->
+{{- $googleTagJs := resources.Get "js/google-tag.js" -}}
+{{- $opts := dict 
+  "params" (dict "measurementId" .measurementId "googleAds" .googleAds)
+-}}
+{{- $googleTagJs = $googleTagJs | js.Build $opts | fingerprint "sha512" -}}
+
+{{ if ne .cookies true }}
+<script async src="{{ $googleTagConsentJs.Permalink }}" integrity="{{ $googleTagConsentJs.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}
+
+{{ if ne .measurementId nil }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .measurementId }}" ></script>
+<script async src="{{ $googleTagJs.Permalink }}" integrity="{{ $googleTagJs.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}
+
+{{ end }}
