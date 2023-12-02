@@ -1,0 +1,32 @@
+<!-- Product Schema.org Type -->
+<!-- https://schema.org/Product -->
+
+<!-- TODO: Get ratings fom Google My Business -->
+
+<!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/product -->
+
+{{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+
+{{ with .Params.product }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ .name }},
+  "description": {{ .description }},
+  {{ with .image -}}
+  {{ $image := $.Resources.GetMatch . -}}
+  {{ with $image -}}
+  "image": {{ .Permalink }},
+  {{ end -}}
+  {{ end -}}
+  {{ with .aggregateRating -}}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ trim .ratingValue " " }},
+    "reviewCount": {{ trim .reviewCount " " }}
+  }
+  {{- end }}
+}
+</script>
+{{ end }}

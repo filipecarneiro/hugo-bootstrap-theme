@@ -1,0 +1,44 @@
+<!-- LocalBusiness Schema.org Type -->
+<!-- https://schema.org/LocalBusiness -->
+<!-- Output all taxonomies as schema.org keywords -->
+
+<!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/local-business#non-amp -->
+
+{{ with .Site.Params.localBusiness }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  {{ with .image -}}
+  {{- with resources.GetMatch . -}}
+  "image": {{ .Permalink }},
+  {{ end -}}
+  {{ end -}}
+  "name": {{ .name | safeHTML }},
+  {{ with .address -}}
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ .streetAddress }}",
+    "addressLocality": "{{ .locality }}",
+    "addressRegion": "{{ .region }}",
+    "postalCode": "{{ .postalCode }}",
+    "addressCountry": "{{ .country }}"
+  },
+  {{ end -}}
+  {{ with .map -}}
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "{{ .latitude }}",
+    "longitude": "{{ .longitude }}"
+  },
+  {{ end -}}
+  {{ with .telephone -}}
+  "telephone": {{ . }},
+  {{ end -}}
+  {{ with .priceRange -}}
+  "priceRange": {{ . }},
+  {{ end -}}
+  "url": {{ with .webpage }}{{ . | jsonify | safeJS }}{{ else }}{{ $.Permalink }}{{ end }}
+}
+</script>
+{{ end }}
