@@ -10,6 +10,10 @@
   {{ end -}}
 {{ end -}}
 
+{{ if eq .Kind "404" }}
+  <meta name="robots" content="noindex">
+{{ end }}
+
 <!-- canonical tag -->
 <link rel="canonical" href="{{ .Permalink | safeURL }}" />
 
