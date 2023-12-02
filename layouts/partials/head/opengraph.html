@@ -13,6 +13,14 @@
       {{ end -}}
   {{- end -}}
 {{- end -}}
+{{- with $.Site.Params.images -}}
+  {{- range first 6 . }}
+    {{ $imageItem := resources.GetMatch . }}
+      {{- with $imageItem -}}
+        <meta property="og:image" content="{{ .Permalink }}" />
+      {{ end -}}
+  {{- end -}}
+{{- end -}}
 
 {{- if .IsPage }}
   <meta property="article:section" content="{{ .Section }}" />
