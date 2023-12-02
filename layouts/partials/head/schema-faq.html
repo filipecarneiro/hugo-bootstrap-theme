@@ -1,0 +1,29 @@
+<!-- FAQPage Schema.org Type -->
+<!-- https://schema.org/FAQPage -->
+
+<!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/faqpage -->
+
+{{ with .Params.faq }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  {{ with .title -}}
+  "name": {{ . }},
+  {{ end -}}
+  "mainEntity": [
+  {{ range $i, $item := .items -}}
+    {{- if $i }}, {{ end }}
+    {
+      "@type": "Question",
+      "name": {{ $item.question }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ replace $item.answer "\n" "<br/>" | safeJSStr }}
+      }
+    }
+  {{- end }}
+  ]
+}
+</script>
+{{ end }}
