@@ -1,0 +1,50 @@
+<!-- Organization Schema.org Type -->
+<!-- https://schema.org/Organization -->
+<!-- Output all taxonomies as schema.org keywords -->
+
+<!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/organization -->
+
+{{ with .Site.Params.organization }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ .name }},
+  {{ with .legalName -}}
+  "legalName": {{ . }},
+  {{ end -}}
+  {{ with .description -}}
+  "description": {{ . }},
+  {{ end -}}
+  {{ with .logo -}}
+  {{- with resources.GetMatch . -}}
+  "logo": {{ .Permalink }},
+  {{ end -}}
+  {{ end -}}
+  {{ with .url -}}
+  "url": {{ . }},
+  {{ end -}}
+  {{ with .taxID -}}
+  "taxID": {{ . }},
+  {{ end -}}
+  {{ with .address -}}
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ .streetAddress }}",
+    "addressLocality": "{{ .locality }}",
+    "addressRegion": "{{ .region }}",
+    "postalCode": "{{ .postalCode }}",
+    "addressCountry": "{{ .country }}"
+  },
+  {{ end -}}
+  {{ with .contactPoint -}}
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "{{ .email }}",
+    "telephone": "{{ .telephone }}",
+    "url": "{{ .url }}"
+  }
+  {{- end }}
+}
+</script>
+{{ end }}

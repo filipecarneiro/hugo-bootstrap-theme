@@ -1,0 +1,32 @@
+<!-- WebSite Schema.org Type -->
+<!-- https://schema.org/WebSite -->
+<!-- Output all taxonomies as schema.org keywords -->
+
+<!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/site-names#how-to-add-structured-data -->
+
+{{ with .Site.Params.webSite }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ .name }},
+  {{ with .description -}}
+  "description": {{ . }},
+  {{ end -}}
+  {{ with .image -}}
+  {{- with resources.GetMatch . -}}
+  "image": {{ .Permalink }},
+  {{ end -}}
+  {{ end -}}
+  {{ with .copyrightHolder -}}
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "{{ .name }}"
+  },
+  {{- end }}
+  {{ with .url -}}
+  "url": {{ . }}
+  {{ end -}}
+}
+</script>
+{{ end }}

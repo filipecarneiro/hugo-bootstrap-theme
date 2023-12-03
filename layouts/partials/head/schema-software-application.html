@@ -1,0 +1,51 @@
+<!-- Software Application Schema.org Type -->
+<!-- https://schema.org/SoftwareApplication -->
+
+<!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/software-app -->
+
+{{ with .Params.softwareApplication }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["SoftwareApplication", {{ .subType }}],
+  "name": {{ .name }},
+  {{ with .screenshot -}}
+  {{ $image := $.Resources.GetMatch . -}}
+  {{ with $image -}}
+  "screenshot": {{ .Permalink }},
+  {{ end -}}
+  {{ end -}}
+  "description": {{ .description }},
+  {{ with .browserRequirements -}}
+  "browserRequirements": {{ . }},
+  {{ end -}}
+  {{ with .applicationCategory -}}
+  "applicationCategory": {{ . }},
+  {{ end -}}
+  {{ with .countriesSupported -}}
+  "countriesSupported": {{ . }},
+  {{ end -}}
+  {{ with .operatingSystem -}}
+  "operatingSystem": {{ . }},
+  {{ end -}}
+  {{ with .aggregateRating -}}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ trim .ratingValue " " }},
+    "reviewCount": {{ trim .reviewCount " " }}
+  },
+  {{- end }}
+  {{ with .offer -}}
+  "offers": {
+    "@type": "Offer",
+    "price": {{ trim .price " " }},
+    "priceCurrency": {{ .priceCurrency }},
+    {{ with .priceValidUntil -}}
+    "priceValidUntil": {{ . }},
+    {{ end -}}
+    "url": {{ $.Permalink }}
+  }
+  {{- end }}
+}
+</script>
+{{ end }}

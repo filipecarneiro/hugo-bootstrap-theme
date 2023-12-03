@@ -35,23 +35,36 @@
 <!-- will load JSON-LD Schemas in pages -->
 <!-- https://schema.org/docs/schemas.html -->
 {{ if .IsPage }}
-  <!-- Article Schema -->
+  <!-- Article structured data -->
   {{- partial "head/schema-article.html" .  -}}
 {{ end }}
 
 {{ if .IsHome }}
-  <!-- Local Business Schema -->
+  <!-- WebSite structured data -->
+  {{ if .Site.Params.webSite }}
+    {{- partial "head/schema-website.html" .  -}}
+  {{ end }}
+  <!-- Organization structured data -->
+  {{ if .Site.Params.organization }}
+    {{- partial "head/schema-organization.html" .  -}}
+  {{ end }}
+  <!-- Local Business structured data -->
   {{ if .Site.Params.localBusiness }}
     {{- partial "head/schema-local-business.html" .  -}}
   {{ end }}
 {{ end }}
 
-<!-- Product Schema -->
+<!-- Product structured data -->
 {{ if .Params.product -}}
   {{- partial "head/schema-product.html" .  -}}
 {{ end }}
 
-<!-- FAQPage Schema -->
+<!-- Software Application structured data -->
+{{ if .Params.softwareApplication -}}
+  {{- partial "head/schema-software-application.html" .  -}}
+{{ end }}
+
+<!-- FAQPage structured data -->
 {{ if .Params.faq -}}
   {{- partial "head/schema-faq.html" .  -}}
 {{ end }}
