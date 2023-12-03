@@ -13,18 +13,44 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": {{ .name }},
-  "description": {{ .description }},
   {{ with .image -}}
   {{ $image := $.Resources.GetMatch . -}}
   {{ with $image -}}
   "image": {{ .Permalink }},
   {{ end -}}
   {{ end -}}
+  "description": {{ .description }},
+  {{ with .sku -}}
+  "sku": {{ . }},
+  {{ end -}}
+  {{ with .brand -}}
+  "brand": {
+    "@type": {{ .type }},
+    "name": {{ .name }}
+  },
+  {{ end -}}
   {{ with .aggregateRating -}}
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": {{ trim .ratingValue " " }},
     "reviewCount": {{ trim .reviewCount " " }}
+  },
+  {{- end }}
+  {{ with .offer -}}
+  "offers": {
+    "@type": "Offer",
+    "price": {{ trim .price " " }},
+    "priceCurrency": {{ .priceCurrency }},
+    {{ with .priceValidUntil -}}
+    "priceValidUntil": {{ . }},
+    {{ end -}}
+    {{ with .availability -}}
+    "availability": "https://schema.org/{{ . }}",
+    {{ end -}}
+    {{ with .itemCondition -}}
+    "itemCondition": "https://schema.org/{{ . }}",
+    {{ end -}}
+    "url": {{ $.Permalink }}
   }
   {{- end }}
 }
