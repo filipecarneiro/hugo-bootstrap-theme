@@ -48,7 +48,7 @@
           </li>
           {{ else }}
           <li class="nav-item">
-            <a class="nav-link{{ if $active }} active{{ end }}" aria-current="page" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+            <a class="nav-link{{ if $active }} active{{ end }}" aria-current="page" href="{{ .URL | relLangURL }}"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>{{ .Name }}</a>
           </li>
           {{ end }}
           {{ end -}}
@@ -64,7 +64,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarLanguageDropdown">
                 <li>
-                  <a class="dropdown-item active" aria-current="true" href="{{ .RelPermalink }}">
+                  <a class="dropdown-item active" aria-current="true" href="{{ .RelPermalink }}"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>
                     {{ .Site.Language.LanguageName }}
                   </a>
                 </li>
@@ -74,7 +74,7 @@
                 {{ if .IsTranslated -}}
                 {{ range .Translations }}
                 <li>
-                  <a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">
+                  <a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>
                     {{ .Language.LanguageName }}
                   </a>
                 </li>
@@ -83,7 +83,7 @@
                 {{ range .Site.Home.AllTranslations -}}
                 {{ if ne $.Site.Language.Lang .Language.Lang }}
                 <li>
-                  <a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">
+                  <a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>
                     {{ .Language.LanguageName }}
                   </a>
                 </li>
@@ -102,7 +102,7 @@
           <ul class="navbar-nav">
             {{ range .Site.Menus.social -}}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .URL | relLangURL }}" target='{{ if in .URL "https://" }}_blank{{ else }}_self{{ end }}'>
+              <a class="nav-link" href="{{ .URL | relLangURL }}" target='{{ if in .URL "https://" }}_blank{{ else }}_self{{ end }}'{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>
                 {{ .Pre | safeHTML }}<small class="ms-2 d-md-none">{{ .Name | safeHTML }}</small>
               </a>
             </li>

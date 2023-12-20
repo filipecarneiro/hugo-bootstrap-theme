@@ -7,6 +7,7 @@ weight = 10
 name = "About"
 url = "about"
 weight = 20
+title = "Made with ❤️ by the Hugo Bootstrap Theme team"
 
 [[main]]
 identifier = "blog"
@@ -42,9 +43,11 @@ weight = 50
   pre = "<svg xmlns='http://www.w3.org/2000/svg' class='feather feather-github'><use href='/hugo-bootstrap-theme/images/feather/feather-sprite.svg#github'/></svg>"
   url = "https://github.com/filipecarneiro/hugo-bootstrap-theme/"
   weight = 10
+  title = "Visit the GitHub project"
 
 [[social]]
   name = "Twitter"
   pre = "<svg xmlns='http://www.w3.org/2000/svg' class='feather feather-twitter'><use href='/hugo-bootstrap-theme/images/feather/feather-sprite.svg#twitter'/></svg>"
   url = "https://twitter.com/jfilipecarneiro/"
   weight = 20
+  title = "Contact on Twitter"
