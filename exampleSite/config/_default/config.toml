@@ -3,8 +3,6 @@ title = "Hugo Bootstrap Theme"
 author = "Filipe Carneiro"
 copyright = "Open-source <a class=\"text-muted text-decoration-none\" href=\"https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE\">MIT</a> Licensed."
 
-languageCode = "en" # For the internal RSS template (and for the html lang attribute)
-DefaultContentLanguage = "en"
 timeZone = 'Europe/London'
 
 # Multilingual

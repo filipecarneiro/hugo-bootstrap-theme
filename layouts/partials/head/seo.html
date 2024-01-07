@@ -18,7 +18,7 @@
 <link rel="canonical" href="{{ .Permalink | safeURL }}" />
 
 <!-- Self-referential and X-default hreflang tags -->
-<link rel="alternate" hreflang="{{ .Params.LanguageCode | default `pt-pt` }}" href="{{ .Permalink | safeURL }}" />
+<link rel="alternate" hreflang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}" href="{{ .Permalink | safeURL }}" />
 <link rel="alternate" hreflang="x-default" href="{{ .Permalink | safeURL }}" />
 
 {{ range .AlternativeOutputFormats -}}
