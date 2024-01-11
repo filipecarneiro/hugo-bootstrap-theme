@@ -38,6 +38,6 @@
     "hugo-installer": "^4.0.1"
   },
   "otherDependencies": {
-    "hugo": "0.121.1"
+    "hugo": "0.121.2"
   }
 }
