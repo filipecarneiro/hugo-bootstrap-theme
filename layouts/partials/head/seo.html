@@ -10,7 +10,7 @@
   {{ end -}}
 {{ end -}}
 
-{{ if eq .Kind "404" }}
+{{ if or (.Params.noindex) (eq .Kind "404") }}
   <meta name="robots" content="noindex">
 {{ end }}
 

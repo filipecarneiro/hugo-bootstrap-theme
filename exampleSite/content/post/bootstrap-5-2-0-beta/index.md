@@ -8,6 +8,7 @@ categories: ["The Bootstrap Blog"]
 tags: ["Bootstrap"]
 keywords: ["bootstrap 5 2 0 beta","bootstrap 5","bootstrap"]
 authors: ["Mark Otto"]
+noindex: true
 ---
 
 ![Bootstrap 5 2 0 Beta](bootstrap-5-2-0-beta.png)
