@@ -6,7 +6,7 @@
 @import "bootstrap/functions";
 
 // 2. Include any default variable overrides here
-@import "variable-overrides";
+@import "variable-overrides"; 
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/variables";
@@ -26,26 +26,32 @@
 @import "bootstrap/images";
 @import "bootstrap/containers";
 @import "bootstrap/grid";
-@import "bootstrap/helpers";
-
+@import "bootstrap/tables";
+//@import "bootstrap/forms";
 @import "bootstrap/buttons";
+//@import "bootstrap/transitions";
+@import "bootstrap/dropdown";
+//@import "bootstrap/button-group";
 @import "bootstrap/nav";
 @import "bootstrap/navbar";
-@import "bootstrap/dropdown";
-@import "bootstrap/breadcrumb";
-@import "bootstrap/badge";
 @import "bootstrap/card";
-
-// pages/bootstrap-components/
 @import "bootstrap/accordion";
+@import "bootstrap/breadcrumb";
+//@import "bootstrap/pagination";
+@import "bootstrap/badge";
 @import "bootstrap/alert";
+//@import "bootstrap/progress";
 @import "bootstrap/list-group";
-
-// pages/markdown-cheat-sheet/
-@import "bootstrap/tables";
-
-// pages/bootstrap-carousel/
+//@import "bootstrap/close";
+//@import "bootstrap/toasts";
+//@import "bootstrap/modal";
+//@import "bootstrap/tooltip";
+//@import "bootstrap/popover";
 @import "bootstrap/carousel";
+//@import "bootstrap/spinners";
+//@import "bootstrap/offcanvas";
+//@import "bootstrap/placeholders";
+@import "bootstrap/helpers";
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "bootstrap/utilities/api";
