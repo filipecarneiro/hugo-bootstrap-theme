@@ -13,6 +13,7 @@ aliases:
 ---
 
 ![Hugo](hugo-logo.svg)
+{ .img-fluid .mb-5 }
 
 Fix server regression for multihost sites (multiple languages with different baseURLs).
 

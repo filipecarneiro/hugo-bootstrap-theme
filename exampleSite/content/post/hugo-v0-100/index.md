@@ -11,6 +11,7 @@ authors: ["Bjørn Erik Pedersen"]
 ---
 
 ![Hugo](hugo-logo.svg)
+{ .img-fluid .mb-5 }
 
 This release is mostly motivated by the fix for the panic experienced by people having blackfriday configured as defaultMarkdownHandler ([#9968](https://github.com/gohugoio/hugo/issues/9968)). The Blackfriday support was removed in Hugo v0.100.0 after being deprecated with a warning for a long time.
 

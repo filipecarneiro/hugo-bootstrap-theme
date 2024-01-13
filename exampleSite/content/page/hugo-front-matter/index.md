@@ -18,6 +18,7 @@ Hugo allows you to add front matter in yaml, toml, or json to your content files
 **Front matter** allows you to keep metadata attached to an instance of a content type—i.e., embedded inside a content file—and is one of the many features that gives Hugo its strength.
 
 ![Banner](hugo-front-matter.jpg)
+{ .img-fluid }
 
 ## Front Matter Variables
 

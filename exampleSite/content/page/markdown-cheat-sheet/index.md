@@ -112,6 +112,7 @@ You can refer to the table below for an overview of basic markdown syntax:
 [Hyperlink](http://example.com)
 
 ![Image](placeholder-50-09f-fff.png)
+{ .img-fluid }
 ```
 
 **Bold**
@@ -133,6 +134,7 @@ You can refer to the table below for an overview of basic markdown syntax:
 [Hyperlink](http://example.com)
 
 ![Image](placeholder-50-09f-fff.png)
+{ .img-fluid }
 
 ---
 

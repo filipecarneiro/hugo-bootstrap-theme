@@ -11,3 +11,4 @@ author: ""
 ---
 
 ![{{ replace .Name "-" " " | title }}]({{ .Name | urlize }}.jpg)
+{ .img-fluid }

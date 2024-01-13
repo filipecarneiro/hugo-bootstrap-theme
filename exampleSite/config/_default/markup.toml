@@ -13,6 +13,7 @@ defaultMarkdownHandler = "goldmark"
 
   [goldmark.parser]
     autoHeadingID = true
+    wrapStandAloneImageWithinParagraph = false
 
     [goldmark.parser.attribute]
       block = true

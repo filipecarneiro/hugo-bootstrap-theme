@@ -12,6 +12,7 @@ noindex: true
 ---
 
 ![Bootstrap 5 2 0 Beta](bootstrap-5-2-0-beta.png)
+{ .img-fluid }
 
 > It’s the biggest release since v5 itself—**Bootstrap v5.2.0-beta1 is here!** This release features redesigned docs, CSS variables for all our components, responsive offcanvas, new helpers and utilities, refined buttons and inputs, and lots of improvements under the hood.
 
