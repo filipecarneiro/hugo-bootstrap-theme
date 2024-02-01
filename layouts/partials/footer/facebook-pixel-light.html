@@ -1,11 +1,9 @@
 {{/*
 <!--
-    Facebook Pixel lightweight implementation for ViewContent event
+    Facebook Pixel lightweight implementation for PageView event
     https://developers.facebook.com/docs/meta-pixel/advanced#installing-the-pixel-using-an-img-tag
 -->
 */}}
 {{- with $.Site.Params.facebookPixel }}
-    <noscript>
-        <img src="https://www.facebook.com/tr?id={{ . }}&ev=ViewContent" height="1" width="1" style="display:none"/>
-    </noscript>
+    <img height="1" width="1" src="https://www.facebook.com/tr?id={{ . }}&ev=PageView" style="display:none"/>
 {{ end }}
