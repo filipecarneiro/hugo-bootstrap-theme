@@ -19,4 +19,5 @@
     {{ $js := . | minify | fingerprint "sha512" -}}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end }}
+  {{ partial "footer/facebook-pixel-light.html" . }}
 {{end}}
