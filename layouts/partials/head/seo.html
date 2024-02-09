@@ -22,7 +22,7 @@
 <link rel="alternate" hreflang="x-default" href="{{ .Permalink | safeURL }}" />
 
 {{ range .AlternativeOutputFormats -}}
-  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+  <link rel="{{ .Rel }}" {{ printf "type=%q" .MediaType.Type | safeHTMLAttr }} href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
 <!-- Removed "_internal/schema.html" as it generates invalid HTML. Using "head/schema-article.html" in ld+json instead. -->
