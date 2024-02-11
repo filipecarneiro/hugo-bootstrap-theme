@@ -4,7 +4,7 @@
 
 Theme for a blazing fast static website and/or blog using bootstrap 5.
 
-![Screenshot](images/tn.png)
+![Screenshot](https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/images/tn.png)
 
 ## Demo
 
