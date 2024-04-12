@@ -24,8 +24,8 @@
   },
   "scripts": {
     "postinstall": "hugo-installer --version otherDependencies.hugo --extended",
-    "start": "exec-bin bin/hugo/hugo server --source exampleSite --cleanDestinationDir --enableGitInfo --gc",
-    "build": "exec-bin bin/hugo/hugo --minify --source exampleSite --baseURL '/' --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics",
+    "start": "exec-bin bin/hugo/hugo server --source exampleSite --cleanDestinationDir --gc",
+    "build": "exec-bin bin/hugo/hugo --minify --source exampleSite --baseURL '/' --cleanDestinationDir --gc --printPathWarnings --templateMetrics",
     "test:htmltest": "docker run --rm -v $pwd/exampleSite/public:/test --rm wjdp/htmltest /test -l 3 -s",
     "test:htmlproofer": "docker run --rm -it -v $pwd/public:/src klakegg/html-proofer --disable-external --check-favicon --check-html --check-img-http --check-opengraph --check-sri",
     "test": "npm run test:htmlproofer",

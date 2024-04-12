@@ -14,7 +14,7 @@ themesdir = "../.."
 
 disableHugoGeneratorInject = true
 enableRobotsTXT = true
-enableGitInfo = true
+#enableGitInfo = true
 enableEmoji = true
 #sectionPagesMenu = "main"
 #googleAnalytics = "UA-1511XXXX-X"
