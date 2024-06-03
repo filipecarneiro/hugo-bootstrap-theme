@@ -3,24 +3,24 @@
 {{ with $.Params.images }}
   {{ $image := $.Resources.GetMatch (index (.) 0) }}
   {{ with $image -}}
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="{{ .Permalink }}"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ .Permalink }}">
   {{ end -}}
 {{ else -}}
   {{ with $.Site.Params.images }}
     {{ $image := resources.GetMatch (index (.) 0) }}
     {{ with $image -}}
-      <meta name="twitter:card" content="summary_large_image"/>
-      <meta name="twitter:image" content="{{ .Permalink }}"/>
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="{{ .Permalink }}">
     {{ end -}}
   {{ else -}}
-    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:card" content="summary">
   {{ end -}}
 {{ end -}}
 
-<meta name="twitter:title" content="{{ .Title }}"/>
-<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}"/>
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
 
 {{ with .Site.Social.twitter -}}
-<meta name="twitter:site" content="@{{ . }}"/>
+<meta name="twitter:site" content="@{{ . }}">
 {{ end -}}

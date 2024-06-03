@@ -19,7 +19,7 @@
       "name": {{ $item.question }},
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": {{ replace $item.answer "\n" "<br/>" | safeJSStr }}
+        "text": {{ replace $item.answer "\n" "<br>" | safeJSStr }}
       }
     }
   {{- end }}

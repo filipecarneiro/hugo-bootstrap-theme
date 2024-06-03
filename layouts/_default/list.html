@@ -36,7 +36,7 @@
                     {{ if isset .Params "images" }}
                         {{ with .Resources.GetMatch (index .Params.Images 0) }}
                             {{ $image := .Fill "600x300 Center webp" }}
-                            <img class="img-fluid rounded p-1" src="{{ $image.Permalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}"/>
+                            <img class="img-fluid rounded p-1" src="{{ $image.Permalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}">
                         {{ end }}
                     {{ end }}
                 </div>
