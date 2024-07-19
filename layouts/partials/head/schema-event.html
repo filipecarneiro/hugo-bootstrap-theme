@@ -1,0 +1,90 @@
+<!-- Event Schema.org Type -->
+<!-- https://schema.org/Event -->
+<!-- Output all taxonomies as schema.org keywords -->
+
+<!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/event -->
+
+{{ with .Site.Params.event -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": {{ .name }},
+  "startDate": {{ .startDate | jsonify | safeJS }},
+  {{ with .endDate -}}
+  "endDate": {{ . | jsonify | safeJS }},
+  {{ end -}}
+  {{ with .description -}}
+  "description": {{ . | jsonify | safeJS }},
+  {{ end -}}
+  {{ with .attendanceMode -}}
+  "eventAttendanceMode": "https://schema.org/{{ . }}",
+  {{ end -}}
+  {{ with .status -}}
+  "eventStatus": "https://schema.org/{{ . }}",
+  {{ end -}}
+  "location": {
+    "@type": "Place",
+    "name": {{ .PlaceName | jsonify | safeJS }},
+    {{ with .address -}}
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": {{ .streetAddress | jsonify | safeJS }},
+      "addressLocality": {{ .locality | jsonify | safeJS }},
+      "postalCode": {{ .postalCode | jsonify | safeJS }},
+      "addressCountry": {{ .country | jsonify | safeJS }}
+    }
+    {{ end -}}
+  },
+  {{ with .image -}}
+  {{- with resources.GetMatch . -}}
+  {{- with .Resize "960x" -}}
+  "image": {{ .Permalink }},
+  {{ end -}}
+  {{ end -}}
+  {{ end -}}
+  {{ with .offer -}}
+  "offers": {
+    "@type": "Offer",
+    "price": {{ .price | jsonify | safeJS }},
+    "priceCurrency": {{ .priceCurrency }},
+    "availability" : "https://schema.org/{{ .availability }}",
+    "description": {{ .description }},
+    {{ with .validFrom -}}
+    "validFrom" : {{ . | jsonify | safeJS }},
+    {{ end -}}
+    "url" : {{ .url }}
+  },
+  {{ end -}}
+  {{- $speakersList := slice -}}
+  {{- range $.Site.Data.event }}{{ range .events }}{{ range .speakers }}{{ $speakersList = $speakersList | append . }}{{ end }}{{ end }}{{ end -}}
+  {{- if ( gt ( len $speakersList ) 0 ) -}}
+  "performer": [
+  {{- $speakersList = $speakersList | uniq | sort -}}
+  {{- range $index, $speaker := $speakersList }}
+    {
+      "@type": "Person",
+      "name": "{{ $speaker }}"
+    }
+    {{- if (ne (add $index 1) (len $speakersList)) }},{{ end -}}
+  {{ end -}}
+  ],
+  {{ end -}}
+  {{ with $.Site.Params.organization -}}
+  "organizer": {
+    "@type": "Organization",
+    {{ with .logo -}}
+    {{- with resources.GetMatch . -}}
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ .Permalink }}
+    },
+    {{ end -}}
+    {{ end -}}
+    "name": {{ .name }},
+    "url": {{ .url }}
+  }
+{{ end -}}
+}
+</script>
+{{ end -}}

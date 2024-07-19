@@ -52,6 +52,10 @@
   {{ if .Site.Params.localBusiness }}
     {{- partial "head/schema-local-business.html" .  -}}
   {{ end }}
+  <!-- Event structured data -->
+  {{ if .Site.Params.event -}}
+    {{- partial "head/schema-event.html" .  -}}
+  {{ end }}
 {{ end }}
 
 <!-- Product structured data -->
