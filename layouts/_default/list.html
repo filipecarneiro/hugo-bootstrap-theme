@@ -8,7 +8,7 @@
             {{ if .Site.Params.options.listCategoryFilter }}
                 <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
-                    {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+                    {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle }}
                         <a class="badge text-bg-light nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
                     {{end}}
                 </div>
@@ -17,7 +17,7 @@
             {{ if .Site.Params.options.listTagFilter }}
                 <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
-                    {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
+                    {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
                         <a class="badge text-bg-light nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
                     {{end}}
                 </div>
