@@ -9,7 +9,7 @@
                 <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
                     {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle }}
-                        <a class="badge text-bg-light nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+                        <a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
                     {{end}}
                 </div>
             {{ end }}
@@ -18,7 +18,7 @@
                 <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
                     {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
-                        <a class="badge text-bg-light nav-link" href="{{.Permalink}}">{{.Title}}</a>&nbsp;
+                        <a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
                     {{end}}
                 </div>
             {{ end }}
@@ -36,7 +36,7 @@
                     {{ if isset .Params "images" }}
                         {{ with .Resources.GetMatch (index .Params.Images 0) }}
                             {{ $image := .Fill "600x300 Center webp" }}
-                            <img class="img-fluid rounded p-1" src="{{ $image.Permalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}">
+                            <img class="img-fluid rounded p-1" src="{{ $image.RelPermalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}">
                         {{ end }}
                     {{ end }}
                 </div>
@@ -72,7 +72,7 @@
                             {{ end }}
                         </div>
                         
-                        <a class="stretched-link" href="{{.Permalink}}"></a>
+                        <a class="stretched-link" href="{{.RelPermalink}}"></a>
                     </div>
                 </div>
 
