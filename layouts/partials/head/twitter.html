@@ -1,4 +1,7 @@
-{{- /* Twitter Cards */}}
+<!-- Twitter Cards -->
+<!-- https://developer.x.com/en/docs/x-for-websites/cards/overview/summary-card-with-large-image -->
+
+<!-- Test with Twitter Card Validator: https://cards-dev.twitter.com/validator -->
 
 {{ with $.Params.images }}
   {{ $image := $.Resources.GetMatch (index (.) 0) }}
@@ -8,10 +11,11 @@
   {{ end -}}
 {{ else -}}
   {{ with $.Site.Params.images }}
-    {{ $image := resources.GetMatch (index (.) 0) }}
-    {{ with $image -}}
+    {{ with resources.GetMatch (index (.) 0) }}
+    {{ with .Resize "960x" -}}
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:image" content="{{ .Permalink }}">
+    {{ end -}}
     {{ end -}}
   {{ else -}}
     <meta name="twitter:card" content="summary">

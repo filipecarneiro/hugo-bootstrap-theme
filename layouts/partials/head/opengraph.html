@@ -1,3 +1,9 @@
+<!-- The Open Graph protocol -->
+<!-- https://ogp.me/ -->
+
+<!-- Test with Facebook Object Debugger: https://developers.facebook.com/tools/debug/ -->
+<!-- Or with Google Rich Snippets Testing Tool: https://developers.google.com/search/docs/appearance/structured-data -->
+
 {{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
 
 <meta property="og:title" content="{{ .Title }}">
@@ -7,17 +13,19 @@
 
 {{- with $.Params.images -}}
   {{- range first 6 . }}
-    {{ $imageItem := $.Resources.GetMatch . }}
-      {{- with $imageItem -}}
+    {{ with $.Resources.GetMatch . }}
+      {{- with .Resize "960x" -}}
         <meta property="og:image" content="{{ .Permalink }}">
+      {{ end -}}
       {{ end -}}
   {{- end -}}
 {{- end -}}
 {{- with $.Site.Params.images -}}
   {{- range first 6 . }}
-    {{ $imageItem := resources.GetMatch . }}
-      {{- with $imageItem -}}
+    {{ with resources.GetMatch . }}
+      {{- with .Resize "960x" -}}
         <meta property="og:image" content="{{ .Permalink }}">
+      {{ end -}}
       {{ end -}}
   {{- end -}}
 {{- end -}}

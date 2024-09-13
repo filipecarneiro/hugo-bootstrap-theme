@@ -15,7 +15,9 @@
   {{ end -}}
   {{ with .image -}}
   {{- with resources.GetMatch . -}}
+  {{- with .Resize "960x" -}}
   "image": {{ .Permalink }},
+  {{ end -}}
   {{ end -}}
   {{ end -}}
   {{ with .copyrightHolder -}}
