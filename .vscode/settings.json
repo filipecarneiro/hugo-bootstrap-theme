@@ -6,6 +6,7 @@
         "goldmark",
         "htmlproofer",
         "htmltest",
+        "jsonify",
         "klakegg",
         "markdownify",
         "multihost",
