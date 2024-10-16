@@ -1,7 +1,267 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/</link><description>Recent content in Docs on Hugo Bootstrap Theme</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE">MIT&lt;/a> Licensed.</copyright><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Bootstrap Carousel 🎠</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</guid><description>Bootstrap Carousel A slideshow component for cycling through elements—images or slides of text — like a carousel.
-Previous Next See Carousel documentation.</description></item><item><title>Bootstrap Components ✨</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</guid><description>Bootstrap Components Bootstrap is bundled with tens of components that can be reused to provide a good user experience and user interactions in a web page.
-Accordion Accordion Item #1 This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</description></item><item><title>Markdown Cheat Sheet Ⓜ️⬇️</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</guid><description>Markdown Cheat Sheet Hugo has excellent Markdown support out of the box. By default, Hugo uses the Goldmark Markdown processor which is fully CommonMark-compliant. See the configuration instructions to learn more about the extensions you can configure.
-Overview You can refer to the table below for an overview of basic markdown syntax:
-TASK MARKDOWN SYNTAX Heading 1 # Heading 2 ## Heading 3 ### Italics *italics* Bold **Bold** Strike ~~strike~~ Blockquote &amp;gt; Links [link name](https://link.</description></item><item><title>Security Best Practices 🔒</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</guid><description>Security Best Practices Improve code health of your web page following these best practices.
-Use HTTPS All websites should be protected with HTTPS, even ones that don&amp;rsquo;t handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your site and your users.
-External Links When you link to a page on another site using the target=&amp;quot;_blank&amp;quot; attribute, you can expose your site to performance and security issues:</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/</link><description>Recent content in Docs on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE">MIT&lt;/a> Licensed.</copyright><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Bootstrap Carousel 🎠</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</guid><description>&lt;h1 id="bootstrap-carousel">Bootstrap Carousel&lt;/h1>
+&lt;p>A slideshow component for cycling through elements—images or slides of text — like a carousel.&lt;/p>
+&lt;br>
+&lt;div class="w-50 mx-auto">
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;div id="bootstrapCarousel" class="carousel slide " data-bs-ride="carousel">
+ 
+ &lt;div class="carousel-indicators">
+ 
+ &lt;button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="0"
+ 
+ aria-label="/carousel/bootstrap-v5-new-logo.png">
+ &lt;/button>
+ 
+ &lt;button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="1"
+ 
+ class="active" aria-current="true"
+ 
+ aria-label="/carousel/hugo-bootstrap-banner.png">
+ &lt;/button>
+ 
+ &lt;button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="2"
+ 
+ class="active" aria-current="true"
+ 
+ aria-label="/carousel/site-feature-image.png">
+ &lt;/button>
+ 
+ &lt;/div>
+ 
+ 
+ 
+ &lt;div class="carousel-inner">
+ 
+ &lt;div class="carousel-item active">
+ &lt;img class="d-block w-100"
+ 
+ style="width: 100%; height: auto; aspect-ratio: 3/2;"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu17768083517347784721.webp"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu5658724542368121244.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu13989272068776961349.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu17768083517347784721.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu17579560545239176807.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu6754380644829145559.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu14471662008727345547.webp 320w"
+ sizes="100vw"
+ alt="/carousel/bootstrap-v5-new-logo.png">
+ &lt;/div>
+ 
+ &lt;div class="carousel-item">
+ &lt;img class="d-block w-100"
+ loading="lazy" 
+ style="width: 100%; height: auto; aspect-ratio: 3/2;"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu7625796464525241415.webp"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu14820273903129127740.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu338268891222114157.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu7625796464525241415.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu9297781600989498680.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu16253673355430841120.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu10177828483376869443.webp 320w"
+ sizes="100vw"
+ alt="/carousel/hugo-bootstrap-banner.png">
+ &lt;/div>
+ 
+ &lt;div class="carousel-item">
+ &lt;img class="d-block w-100"
+ loading="lazy" 
+ style="width: 100%; height: auto; aspect-ratio: 3/2;"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/site-feature-image_hu10088320692094221228.webp"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/site-feature-image_hu11559249972070732063.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/site-feature-image_hu10831703916235242620.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/site-feature-image_hu10088320692094221228.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/site-feature-image_hu14414100585612360649.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/site-feature-image_hu12765534416654200698.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/hugo-bootstrap-theme/carousel/site-feature-image_hu15587972128880409712.webp 320w"
+ sizes="100vw"
+ alt="/carousel/site-feature-image.png">
+ &lt;/div>
+ 
+ &lt;/div>
+ 
+ 
+ 
+ &lt;button class="carousel-control-prev" type="button" data-bs-target="#bootstrapCarousel" data-bs-slide="prev">
+ &lt;span class="carousel-control-prev-icon" aria-hidden="true">&lt;/span>
+ &lt;span class="visually-hidden">Previous&lt;/span>
+ &lt;/button>
+ &lt;button class="carousel-control-next" type="button" data-bs-target="#bootstrapCarousel" data-bs-slide="next">
+ &lt;span class="carousel-control-next-icon" aria-hidden="true">&lt;/span>
+ &lt;span class="visually-hidden">Next&lt;/span>
+ &lt;/button>
+ 
+ &lt;/div>
+ 
+
+&lt;/div>
+&lt;br>
+&lt;p>See &lt;a href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener">Carousel documentation&lt;/a>.&lt;/p></description></item><item><title>Bootstrap Components ✨</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</guid><description>&lt;h1 id="bootstrap-components">Bootstrap Components&lt;/h1>
+&lt;p>Bootstrap is bundled with tens of components that can be reused to provide a good user experience and user interactions in a web page.&lt;/p>
+&lt;hr>
+&lt;h2 id="accordion">Accordion&lt;/h2>
+&lt;br>
+&lt;div class="accordion" id="accordionExample">
+ &lt;div class="accordion-item">
+ &lt;h2 class="accordion-header" id="headingOne">
+ &lt;button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+ Accordion Item #1
+ &lt;/button>
+ &lt;/h2>
+ &lt;div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+ &lt;div class="accordion-body">
+ &lt;strong>This is the first item's accordion body.&lt;/strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the &lt;code>.accordion-body&lt;/code>, though the transition does limit overflow.
+ &lt;/div>
+ &lt;/div>
+ &lt;/div>
+ &lt;div class="accordion-item">
+ &lt;h2 class="accordion-header" id="headingTwo">
+ &lt;button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+ Accordion Item #2
+ &lt;/button>
+ &lt;/h2>
+ &lt;div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+ &lt;div class="accordion-body">
+ &lt;strong>This is the second item's accordion body.&lt;/strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the &lt;code>.accordion-body&lt;/code>, though the transition does limit overflow.
+ &lt;/div>
+ &lt;/div>
+ &lt;/div>
+ &lt;div class="accordion-item">
+ &lt;h2 class="accordion-header" id="headingThree">
+ &lt;button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+ Accordion Item #3
+ &lt;/button>
+ &lt;/h2>
+ &lt;div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+ &lt;div class="accordion-body">
+ &lt;strong>This is the third item's accordion body.&lt;/strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the &lt;code>.accordion-body&lt;/code>, though the transition does limit overflow.
+ &lt;/div>
+ &lt;/div>
+ &lt;/div>
+&lt;/div>
+&lt;br>
+&lt;p>See &lt;a href="https://getbootstrap.com/docs/5.3/components/accordion/" target="_blank" rel="noopener">Accordion documentation&lt;/a>.&lt;/p></description></item><item><title>Markdown Cheat Sheet Ⓜ️⬇️</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-cheat-sheet">Markdown Cheat Sheet&lt;/h1>
+&lt;p>Hugo has excellent Markdown support out of the box. By default, Hugo uses the &lt;a href="https://github.com/yuin/goldmark/" target="_blank" rel="noopener">Goldmark Markdown processor&lt;/a> which is fully CommonMark-compliant. See the &lt;a href="https://gohugo.io/getting-started/configuration-markup/" target="_blank" rel="noopener">configuration instructions&lt;/a> to learn more about the extensions you can configure.&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>You can refer to the table below for an overview of basic markdown syntax:&lt;/p>
+&lt;table class="table table-sm table-striped table-hover">
+ &lt;thead>
+ &lt;tr>
+ &lt;th>TASK&lt;/th>
+ &lt;th>MARKDOWN SYNTAX&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>Heading 1&lt;/td>
+ &lt;td>&lt;code>#&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Heading 2&lt;/td>
+ &lt;td>&lt;code>##&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Heading 3&lt;/td>
+ &lt;td>&lt;code>###&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Italics&lt;/td>
+ &lt;td>&lt;code>*italics*&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Bold&lt;/td>
+ &lt;td>&lt;code>**Bold**&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Strike&lt;/td>
+ &lt;td>&lt;code>~~strike~~&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Blockquote&lt;/td>
+ &lt;td>&lt;code>&amp;gt;&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Links&lt;/td>
+ &lt;td>&lt;code>[link name](https://link.com)&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Images&lt;/td>
+ &lt;td>&lt;code>![Image name](image.png)&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Unordered list&lt;/td>
+ &lt;td>&lt;code>* List item&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Ordered list&lt;/td>
+ &lt;td>&lt;code>1. List item&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Inline Code&lt;/td>
+ &lt;td>&lt;code>`insert code here`&lt;code>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="headings">Headings&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span># Heading 1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## Heading 2
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">### Heading 3
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#### Heading 4
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">##### Heading 5
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">###### Heading 6
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="heading-1">Heading 1&lt;/h1>
+&lt;h2 id="heading-2">Heading 2&lt;/h2>
+&lt;h3 id="heading-3">Heading 3&lt;/h3>
+&lt;h4 id="heading-4">Heading 4&lt;/h4>
+&lt;h5 id="heading-5">Heading 5&lt;/h5>
+&lt;h6 id="heading-6">Heading 6&lt;/h6>
+&lt;hr>
+&lt;h2 id="lists">Lists&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">*&lt;/span> Unordered item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">*&lt;/span> Unordered item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">*&lt;/span> Unordered item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">1.&lt;/span> Ordered item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">2.&lt;/span> Ordered item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">3.&lt;/span> Ordered item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">- [ ]&lt;/span> Task item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">- [x]&lt;/span> Checked Task item
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">- [ ]&lt;/span> Task item
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Unordered item&lt;/li>
+&lt;li>Unordered item&lt;/li>
+&lt;li>Unordered item&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>Ordered item&lt;/li>
+&lt;li>Ordered item&lt;/li>
+&lt;li>Ordered item&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> Task item&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> Checked Task item&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> Task item&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="format">Format&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-markdown" data-lang="markdown">&lt;span style="display:flex;">&lt;span>**Bold**
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-style:italic">*Italic*&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">u&lt;/span>&amp;gt;Underline&amp;lt;/&lt;span style="color:#f92672">u&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">sup&lt;/span>&amp;gt;Superscript&amp;lt;/&lt;span style="color:#f92672">sup&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">sub&lt;/span>&amp;gt;Subscript&amp;lt;/&lt;span style="color:#f92672">sub&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">mark&lt;/span>&amp;gt;Highlight&amp;lt;/&lt;span style="color:#f92672">mark&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">`Inline code`&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">~~Strikethrough~~&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#f92672">Hyperlink&lt;/span>](&lt;span style="color:#a6e22e">http://example.com&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>![&lt;span style="color:#f92672">Image&lt;/span>](&lt;span style="color:#a6e22e">placeholder-50-09f-fff.png&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{ .img-fluid }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>Bold&lt;/strong>&lt;/p></description></item><item><title>Security Best Practices 🔒</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</guid><description>&lt;h1 id="security-best-practices">Security Best Practices&lt;/h1>
+&lt;p>Improve code health of your web page following these best practices.&lt;/p>
+&lt;h2 id="use-https">Use HTTPS&lt;/h2>
+&lt;p>All websites should be protected with HTTPS, even ones that don&amp;rsquo;t handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your site and your users.&lt;/p>
+&lt;h2 id="external-links">External Links&lt;/h2>
+&lt;p>When you link to a page on another site using the target=&amp;quot;_blank&amp;quot; attribute, you can expose your site to performance and security issues:&lt;/p></description></item></channel></rss>
