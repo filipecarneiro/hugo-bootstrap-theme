@@ -13,20 +13,22 @@
 
 {{- with $.Params.images -}}
   {{- range first 6 . }}
-    {{ with $.Resources.GetMatch . }}
-      {{- with .Resize "960x" -}}
-        <meta property="og:image" content="{{ .Permalink }}">
-      {{ end -}}
-      {{ end -}}
+    {{ with $image := $.Resources.GetMatch . }}
+      {{ if ne $image.MediaType.SubType "svg" }}
+        {{ $image = $image.Resize "960x" }}
+      {{ end }}
+      <meta property="og:image" content="{{ $image.Permalink }}">
+    {{ end -}}
   {{- end -}}
 {{- end -}}
 {{- with $.Site.Params.images -}}
   {{- range first 6 . }}
-    {{ with resources.GetMatch . }}
-      {{- with .Resize "960x" -}}
-        <meta property="og:image" content="{{ .Permalink }}">
-      {{ end -}}
-      {{ end -}}
+    {{ with $image := resources.GetMatch . }}
+      {{ if ne $image.MediaType.SubType "svg" }}
+        {{ $image = $image.Resize "960x" }}
+      {{ end }}
+        <meta property="og:image" content="{{ $image.Permalink }}">
+    {{ end -}}
   {{- end -}}
 {{- end -}}
 

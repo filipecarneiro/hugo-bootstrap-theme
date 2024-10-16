@@ -14,10 +14,11 @@
   "description": {{ . }},
   {{ end -}}
   {{ with .image -}}
-  {{- with resources.GetMatch . -}}
-  {{- with .Resize "960x" -}}
-  "image": {{ .Permalink }},
-  {{ end -}}
+  {{- with $image := resources.GetMatch . -}}
+  {{- if ne $image.MediaType.SubType "svg" -}}
+    {{- $image = $image.Resize "960x" -}}
+  {{- end -}}
+  "image": {{ $image.Permalink }},
   {{ end -}}
   {{ end -}}
   {{ with .copyrightHolder -}}

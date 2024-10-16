@@ -4,18 +4,21 @@
 <!-- Test with Twitter Card Validator: https://cards-dev.twitter.com/validator -->
 
 {{ with $.Params.images }}
-  {{ $image := $.Resources.GetMatch (index (.) 0) }}
-  {{ with $image -}}
+  {{ with $image := $.Resources.GetMatch (index (.) 0) -}}
+    {{ if ne $image.MediaType.SubType "svg" }}
+      {{ $image = $image.Resize "960x" }}
+    {{ end }}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ .Permalink }}">
+    <meta name="twitter:image" content="{{ $image.Permalink }}">
   {{ end -}}
 {{ else -}}
   {{ with $.Site.Params.images }}
-    {{ with resources.GetMatch (index (.) 0) }}
-    {{ with .Resize "960x" -}}
+    {{ with $image := resources.GetMatch (index (.) 0) }}
+      {{ if ne $image.MediaType.SubType "svg" }}
+        {{ $image = $image.Resize "960x" }}
+      {{ end }}
       <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:image" content="{{ .Permalink }}">
-    {{ end -}}
+      <meta name="twitter:image" content="{{ $image.Permalink }}">
     {{ end -}}
   {{ else -}}
     <meta name="twitter:card" content="summary">
