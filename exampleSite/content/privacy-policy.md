@@ -10,7 +10,7 @@ menu:
 
 # Privacy Policy
 
-**TLDR**: We do not use cookies and we do not collect any personal data.
+**TL;DR**: We do not use cookies and we do not collect any personal data.
 
 ## Website visitors
 

@@ -6,11 +6,11 @@
 
     - "user" local-part of the email address (local-part@domain)
     - "domain" domain of the email address (local-part@domain)
-    - "class" class or classes to be aplied on parent figure element. (default empty)
+    - "class" class or classes to be applied on parent figure element. (default empty)
 
   Example:
 
-    {{< email user="jsmith" domain="example.com" class="cool-link" >}}
+    {{< email user="john.smith" domain="example.com" class="cool-link" >}}
 
 */}}
 {{ $emailAddress := printf "%s@%s" (.Get "user") (.Get "domain") }}
