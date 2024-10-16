@@ -4,7 +4,6 @@
     https://developers.facebook.com/docs/plugins/comments/#moderation-setup-instructions
 -->
 */}}
-{{ $facebook_admin := or site.Params.facebook_admin .Site.Social.facebook_admin }}
-{{- with $facebook_admin }}
+{{- with .Site.Params.Social.facebook_admin }}
     <meta property="fb:admins" content="{{ . }}">
 {{ end }}

@@ -18,7 +18,7 @@
 <link rel="canonical" href="{{ .Permalink | safeURL }}">
 
 <!-- Self-referential hreflang attributes -->
-<link rel="alternate" hreflang="{{ .Language.LanguageCode | default $.Sites.First.Language.LanguageCode }}" href="{{ .Permalink | safeURL }}">
+<link rel="alternate" hreflang="{{ .Language.LanguageCode | default $.Sites.Default.Language.LanguageCode }}" href="{{ .Permalink | safeURL }}">
 <!-- Translated pages hreflang tags -->
 {{ if .IsTranslated -}}
 {{ range .Translations -}}
@@ -27,7 +27,7 @@
 {{ end -}}
 <!-- X-default hreflang tag -->
 {{ range .AllTranslations -}}
-{{ if eq .Language.LanguageCode $.Sites.First.Language.LanguageCode -}}
+{{ if eq .Language.LanguageCode $.Sites.Default.Language.LanguageCode -}}
 <link rel="alternate" hreflang="x-default" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 {{ end -}}
