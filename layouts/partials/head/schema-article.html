@@ -22,8 +22,8 @@
   {{ with (index (.) 0) -}}
   "author": {
     "@type": "Person",
-    "name": "{{ . }}",
-    "url": "{{ $.Site.BaseURL }}/authors/{{ . | urlize}}"
+    "name": "{{ . }}"{{ with $.Site.GetPage (printf "/authors/%s" . ) }},
+    "url": "{{ .Permalink }}"{{ end}}
   },
   {{ end -}}
   {{ end -}}
