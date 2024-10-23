@@ -5,8 +5,6 @@
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/product -->
 
-{{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
-
 {{ with .Params.product }}
 <script type="application/ld+json">
 {
@@ -50,7 +48,62 @@
     {{ with .itemCondition -}}
     "itemCondition": "https://schema.org/{{ . }}",
     {{ end -}}
-    "url": {{ $.Permalink }}
+    "url": {{ $.Permalink }},
+    {{ with .shippingDetails -}}
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      {{ with .shippingRate -}}
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": {{ trim .value " " }},
+        "currency": {{ .currency }}
+      },
+      {{ end -}}
+      {{ with .shippingDestination -}}
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": {{ .addressCountry }}
+      },
+      {{ end }}
+      {{ with .deliveryTime -}}
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        {{ with .handlingTime -}}
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": {{ trim .minValue " " }},
+          "maxValue": {{ trim .maxValue " " }},
+          "unitCode": {{ .unitCode }}
+        },
+        {{ end -}}
+        {{ with .transitTime -}}
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": {{ trim .minValue " " }},
+          "maxValue": {{ trim .maxValue " " }},
+          "unitCode": {{ .unitCode }}
+        }
+        {{ end -}}
+      }
+      {{ end -}}
+    },
+    {{ end -}}
+    {{ with .hasMerchantReturnPolicy -}}
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "returnPolicyCategory": "https://schema.org/{{ .returnPolicyCategory }}",
+        {{ with .merchantReturnDays -}}
+        "merchantReturnDays": {{ . }},
+        {{ end -}}
+        {{ with .returnMethod -}}
+        "returnMethod": "https://schema.org/{{ . }}",
+        {{ end -}}
+        {{ with .returnFees -}}
+        "returnFees": "https://schema.org/{{ . }}",
+        {{ end -}}
+        "applicableCountry": {{ .applicableCountry }}
+      }
+    {{ end -}}
   }
   {{- end }}
 }
