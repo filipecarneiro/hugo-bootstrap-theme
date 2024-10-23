@@ -12,7 +12,7 @@ demosite = "https://filipecarneiro.github.io/hugo-bootstrap-theme/"
 tags = ["bootstrap","minimal","responsive","modern","blog","landing page"]
 features = ["security aware","fast by default","seo-ready","bootstrap framework","bootstrap 5","bootstrap 5.3"]
 
-min_version = "0.99.1"
+min_version = "0.123.0"
 
 [author]
   name = "Filipe Carneiro"
