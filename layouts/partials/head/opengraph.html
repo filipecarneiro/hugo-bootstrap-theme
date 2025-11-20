@@ -11,26 +11,18 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 
-{{- with $.Params.images -}}
-  {{- range first 6 . }}
-    {{ with $image := $.Resources.GetMatch . }}
-      {{ if ne $image.MediaType.SubType "svg" }}
-        {{ $image = $image.Resize "960x" }}
-      {{ end }}
-      <meta property="og:image" content="{{ $image.Permalink }}">
-    {{ end -}}
-  {{- end -}}
+{{- $images := union $.Params.images $.Site.Params.images -}}
+{{- range first 6 $images }}
+  {{ with $image := $.Resources.GetMatch . }}
+    {{ if ne $image.MediaType.SubType "svg" }}
+      {{ $image = $image.Resize "960x" }}
+    {{ else }}  
+      <meta property="og:image:type" content="image/svg+xml">
+    {{ end }}
+    <meta property="og:image" content="{{ $image.Permalink }}">
+  {{ end -}}
 {{- end -}}
-{{- with $.Site.Params.images -}}
-  {{- range first 6 . }}
-    {{ with $image := resources.GetMatch . }}
-      {{ if ne $image.MediaType.SubType "svg" }}
-        {{ $image = $image.Resize "960x" }}
-      {{ end }}
-        <meta property="og:image" content="{{ $image.Permalink }}">
-    {{ end -}}
-  {{- end -}}
-{{- end -}}
+
 
 {{- if .IsPage }}
   <meta property="article:section" content="{{ .Section }}">
