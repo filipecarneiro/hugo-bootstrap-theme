@@ -16,12 +16,19 @@
   {{ with $image := $.Resources.GetMatch . }}
     {{ if ne $image.MediaType.SubType "svg" }}
       {{ $image = $image.Resize "960x" }}
-    {{ else }}  
-      <meta property="og:image:type" content="image/svg+xml">
+      <meta property="og:image" content="{{ $image.Permalink }}">
+    {{ else }}
+      {{/* Handle SVG: Strip the .svg extension and append .png */}}
+      {{ $pngPath := printf "%s.png" (replaceRE "\\.svg$" "" $image.RelPermalink) }}  
+      {{ if $pngPath }}
+        <meta property="og:image" content="{{ $pngPath }}">
+      {{ else }}
+        <meta property="og:image" content="{{ $image.Permalink }}">
+      {{ end }}
     {{ end }}
-    <meta property="og:image" content="{{ $image.Permalink }}">
   {{ end -}}
 {{- end -}}
+
 
 
 {{- if .IsPage }}
