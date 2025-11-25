@@ -2,17 +2,17 @@
 <html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}">
 {{ partial "head/head.html" . }}
 {{ if eq .Kind "home" -}}
-    {{ .Scratch.Set "class" "home" -}}
+    {{ .Store.Set "class" "home" -}}
 {{ else if eq .Kind "404" -}}
-    {{ .Scratch.Set "class" "error404" -}}
+    {{ .Store.Set "class" "error404" -}}
 {{ else if eq .Kind "page" -}}
-    {{ .Scratch.Set "class" .Type -}}
-    {{ .Scratch.Add "class" " single" -}}
+    {{ .Store.Set "class" .Type -}}
+    {{ .Store.Add "class" " single" -}}
 {{ else -}}
-    {{ .Scratch.Set "class" .Type -}}
-    {{ .Scratch.Add "class" " list" -}}
+    {{ .Store.Set "class" .Type -}}
+    {{ .Store.Add "class" " list" -}}
 {{ end -}}
-<body class="{{ .Scratch.Get `class` }} d-flex flex-column min-vh-100">
+<body class="{{ hugo.Store.Get `class` }} d-flex flex-column min-vh-100">
     {{- partial "header/header.html" . -}}
     <div id="content">
         {{ if and (.Site.Params.options.breadCrumb) (ne .Kind "home") -}}
