@@ -12,7 +12,7 @@
     {{ .Store.Set "class" .Type -}}
     {{ .Store.Add "class" " list" -}}
 {{ end -}}
-<body class="{{ hugo.Store.Get `class` }} d-flex flex-column min-vh-100">
+<body class="{{ .Store.Get `class` }} d-flex flex-column min-vh-100">
     {{- partial "header/header.html" . -}}
     <div id="content">
         {{ if and (.Site.Params.options.breadCrumb) (ne .Kind "home") -}}
