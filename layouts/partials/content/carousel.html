@@ -59,17 +59,15 @@
   <div class="carousel-inner">
     {{ range $index, $image := $images }}
       <div class="carousel-item{{ if (eq $index 0) }} active{{ end }}">
-        {{ $imageExtraLarge := $image.Resize "2560x webp" -}}  
-        {{ $imageLarge := $image.Resize "1920x webp" -}}
-        {{ $imageMedium := $image.Resize "1280x webp" -}}
-        {{ $imageSmall := $image.Resize "960x webp" -}}
-        {{ $imageExtraSmall := $image.Resize "640x webp" -}}
-        {{ $imageExtraExtraSmall := $image.Resize "320x webp" -}}
+        {{ $imageCanvas := $image.Resize "3200x webp" -}}
+        {{ $imageDesktop := $image.Resize "1920x webp" -}}
+        {{ $imageTablet := $image.Resize "1280x webp" -}}
+        {{ $imagePhone := $image.Resize "820x webp" -}}
         <img class="d-block w-100"
              {{ if (ne $index 0) }} loading="lazy" {{ end }}
              style="width: 100%; height: auto; aspect-ratio: {{ $.aspectRatio | default `16/9` | safeCSS }};"
-             src="{{ $imageMedium.RelPermalink }}"
-             srcset="{{ $imageExtraLarge.RelPermalink }} 2560w, {{ $imageLarge.RelPermalink }} 1920w, {{ $imageMedium.RelPermalink }} 1280w, {{ $imageSmall.RelPermalink }} 960w, {{ $imageExtraSmall.RelPermalink }} 640w, {{ $imageExtraExtraSmall.RelPermalink }} 320w"
+             src="{{ $imageTablet.RelPermalink }}"
+             srcset="{{ $imageCanvas.RelPermalink }} 3200w, {{ $imageDesktop.RelPermalink }} 1920w, {{ $imageTablet.RelPermalink }} 1280w, {{ $imagePhone.RelPermalink }} 820w"
              sizes="100vw"
              alt="{{ $image.Title }}">
       </div>

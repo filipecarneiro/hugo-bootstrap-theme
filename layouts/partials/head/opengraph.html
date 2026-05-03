@@ -11,26 +11,24 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 
-{{- with $.Params.images -}}
-  {{- range first 6 . }}
-    {{ with $image := $.Resources.GetMatch . }}
-      {{ if ne $image.MediaType.SubType "svg" }}
-        {{ $image = $image.Resize "960x" }}
+{{- $images := union $.Params.images $.Site.Params.images -}}
+{{- range first 6 $images }}
+  {{ with $image := $.Resources.GetMatch . }}
+    {{ if ne $image.MediaType.SubType "svg" }}
+      {{ $image = $image.Resize "960x" }}
+      <meta property="og:image" content="{{ $image.Permalink | absURL }}">
+    {{ else }}
+      {{/* Handle SVG: Strip the .svg extension and append .png */}}
+      {{ $pngPath := printf "%s.png" (replaceRE "\\.svg$" "" $image.RelPermalink) }}  
+      {{ if $pngPath }}
+        <meta property="og:image" content="{{ $pngPath | absURL }}">
+      {{ else }}
+        <meta property="og:image" content="{{ $image.Permalink | absURL }}">
       {{ end }}
-      <meta property="og:image" content="{{ $image.Permalink }}">
-    {{ end -}}
-  {{- end -}}
+    {{ end }}
+  {{ end -}}
 {{- end -}}
-{{- with $.Site.Params.images -}}
-  {{- range first 6 . }}
-    {{ with $image := resources.GetMatch . }}
-      {{ if ne $image.MediaType.SubType "svg" }}
-        {{ $image = $image.Resize "960x" }}
-      {{ end }}
-        <meta property="og:image" content="{{ $image.Permalink }}">
-    {{ end -}}
-  {{- end -}}
-{{- end -}}
+
 
 {{- if .IsPage }}
   <meta property="article:section" content="{{ .Section }}">
@@ -64,12 +62,12 @@
 {{- $permalink := .Permalink }}
 {{- $siteSeries := .Site.Taxonomies.series }}
 {{ with .Params.series }}
-  {{- range $name := . }}
-    {{- $series := index $siteSeries ($name | urlize) }}
-    {{- range $page := first 6 $series.Pages }}
-      {{- if ne $page.Permalink $permalink }}
-        <meta property="og:see_also" content="{{ $page.Permalink }}">
-      {{ end }}
-    {{- end }}
-  {{ end }}
+  {{- $name := . }}  <!-- $name is the series name as a string -->
+  {{- $series := index $siteSeries ($name | urlize) }}
+  {{- range $page := first 6 $series.Pages }}
+    {{- if ne $page.Permalink $permalink }}
+      <meta property="og:see_also" content="{{ $page.Permalink }}">
+    {{ end }}
+  {{- end }}
 {{ end }}
+

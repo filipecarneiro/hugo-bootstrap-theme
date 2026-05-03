@@ -32,10 +32,10 @@
           {{- $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog" "contributors")) -}}
           {{ if .HasChildren }}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown-{{ .Name | urlize }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ .Name }}
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown-{{ .Name | urlize }}">
               {{ range .Children -}}
               {{- $active = eq .Name $current.LinkTitle -}}
               <li>
