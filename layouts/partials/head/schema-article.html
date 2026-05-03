@@ -3,45 +3,71 @@
 <!-- Output all taxonomies as schema.org keywords -->
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/advanced/structured-data/article#non-amp -->
-
 {{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+{{ $publishDate := .PublishDate }}
+{{ if not $publishDate }}
+  {{ $publishDate = now }}
+{{ end }}
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": {{ .Title }},
-  {{ if $.Param "images" -}}
-  {{ with .Resources.GetMatch (index ($.Param "images") 0) -}}
-  "image": {{ .Permalink }},
-  {{ end -}}
-  {{ end -}}
-  "datePublished": {{ .PublishDate.Format $iso8601 }},
-  "dateModified": {{ .Lastmod.Format $iso8601 }},
-  {{ with .Params.authors -}}
-  {{ with (index (.) 0) -}}
-  "author": {
-    "@type": "Person",
-    "name": "{{ . }}"{{ with $.Site.GetPage (printf "/authors/%s" . ) }},
-    "url": "{{ .Permalink }}"{{ end}}
-  },
-  {{ end -}}
-  {{ end -}}
-  "mainEntityOfPage": {{ .Site.BaseURL }},
+  "headline": "{{ .Title }}",
+  
+  {{ $images := .Resources.ByType "image" }}
+  {{ if $images }}
+  "image": [
+    {{- range $i, $img := $images -}}
+      {{- if $i }}, {{ end -}}
+      "{{ $img.Permalink }}"
+    {{- end -}}
+  ],
+  {{ end }}
+
+  "datePublished": "{{ $publishDate.Format $iso8601 }}",
+  "dateModified": "{{ .Lastmod.Format $iso8601 }}",
+
+  {{- if .Params.authors }}
+  "author": [
+    {{- range $i, $author := .Params.authors }}
+      {{- if $i }},{{ end }}
+      {
+        "@type": "Person",
+        "name": "{{ $author }}"
+        {{- with $.Site.GetPage (printf "/authors/%s" $author) }}
+        , "url": "{{ .Permalink }}"
+        {{- end }}
+      }
+    {{- end }}
+  ],
+  {{- end }}
+
+  "mainEntityOfPage": "{{ .Permalink }}",
+
   "publisher": {
     "@type": "Organization",
-    {{ if isset $.Site.Params "images" }}
-    {{ with resources.GetMatch (index ($.Site.Params.images) 0) -}}
-    "logo": {
-      "@type": "ImageObject",
-      "url": {{ .Permalink }}
-    },
-    {{ end -}}
-    {{ end -}}
-    "name": {{ .Site.Title }}
+    "name": "{{ .Site.Title }}"
+    {{ with .Site.Params.images }}
+      {{ with index . 0 }}
+      , "logo": {
+        "@type": "ImageObject",
+        "url": "{{ . }}"
+      }
+      {{ end }}
+    {{ end }}
   },
-  "wordcount" : {{ .Content | countwords }},
-  "description": {{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | safeHTML }}{{ end }},
-  "keywords": {{ .Keywords }}
+
+  "wordcount": {{ .Content | countwords }},
+  "description": "{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | safeHTML }}{{ end }}"
+
+  {{- if .Keywords }},
+  "keywords": [
+    {{- range $i, $k := .Keywords -}}
+      {{- if $i }}, {{ end -}}
+      "{{ $k }}"
+    {{- end }}
+  ]
+  {{- end }}
 }
 </script>
