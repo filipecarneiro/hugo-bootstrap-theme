@@ -65,7 +65,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarLanguageDropdown">
                 <li>
                   <a class="dropdown-item active" aria-current="true" href="{{ .RelPermalink }}"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>
-                    {{ .Site.Language.LanguageName }}
+                    {{ .Site.Language.Label }}
                   </a>
                 </li>
                 <li>
@@ -75,7 +75,7 @@
                 {{ range .Translations }}
                 <li>
                   <a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>
-                    {{ .Language.LanguageName }}
+                    {{ .Language.Label }}
                   </a>
                 </li>
                 {{ end -}}
@@ -84,7 +84,7 @@
                 {{ if ne $.Site.Language.Lang .Language.Lang }}
                 <li>
                   <a class="dropdown-item" rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>
-                    {{ .Language.LanguageName }}
+                    {{ .Language.Label }}
                   </a>
                 </li>
                 {{ end -}}
