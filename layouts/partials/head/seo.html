@@ -18,19 +18,19 @@
 <link rel="canonical" href="{{ .Permalink | safeURL }}">
 
 <!-- Self-referential hreflang attributes -->
-<link rel="alternate" hreflang="{{ .Language.LanguageCode | default .Site.Language.Lang }}" href="{{ .Permalink | safeURL }}">
+<link rel="alternate" hreflang="{{ .Language.Locale | default .Site.Language.Lang }}" href="{{ .Permalink | safeURL }}">
 
 <!-- Translated pages hreflang tags -->
 {{ if .IsTranslated -}}
 {{ range .Translations -}}
-<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink | safeURL }}">
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 {{ end -}}
 
 <!-- X-default hreflang tag -->
 {{ if .IsTranslated -}}
 {{ range .AllTranslations -}}
-{{ if eq .Language.LanguageCode $.Sites.Default.Language.LanguageCode -}}
+{{ if eq .Language.Locale $.Sites.Default.Language.Locale -}}
 <link rel="alternate" hreflang="x-default" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 {{ end -}}
