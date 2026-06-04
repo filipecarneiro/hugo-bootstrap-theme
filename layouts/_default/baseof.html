@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}">
+<html lang="{{ .Language.Locale | default site.Language.Locale }}">
 {{ partial "head/head.html" . }}
 {{ $bodyClasses := slice }}
 
