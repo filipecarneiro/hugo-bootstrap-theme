@@ -58,7 +58,7 @@
   },
   {{ end -}}
   {{- $speakersList := slice -}}
-  {{- range $.Site.Data.event }}{{ range .events }}{{ range .speakers }}{{ $speakersList = $speakersList | append . }}{{ end }}{{ end }}{{ end -}}
+  {{- range hugo.Data.event }}{{ range .events }}{{ range .speakers }}{{ $speakersList = $speakersList | append . }}{{ end }}{{ end }}{{ end -}}
   {{- if ( gt ( len $speakersList ) 0 ) -}}
   "performer": [
   {{- $speakersList = $speakersList | uniq | sort -}}
