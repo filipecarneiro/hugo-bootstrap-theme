@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}">
 {{ partial "head/head.html" . }}
+{{ $bodyClasses := slice }}
+
 {{ if eq .Kind "home" -}}
-    {{ .Scratch.Set "class" "home" -}}
+  {{ $bodyClasses = $bodyClasses | append "home" -}}
 {{ else if eq .Kind "404" -}}
-    {{ .Scratch.Set "class" "error404" -}}
+  {{ $bodyClasses = $bodyClasses | append "error404" -}}
 {{ else if eq .Kind "page" -}}
-    {{ .Scratch.Set "class" .Type -}}
-    {{ .Scratch.Add "class" " single" -}}
+  {{ $bodyClasses = $bodyClasses | append .Type "single" -}}
 {{ else -}}
-    {{ .Scratch.Set "class" .Type -}}
-    {{ .Scratch.Add "class" " list" -}}
+  {{ $bodyClasses = $bodyClasses | append .Type "list" -}}
 {{ end -}}
-<body class="{{ .Scratch.Get `class` }} d-flex flex-column min-vh-100">
+
+<body class="{{ delimit $bodyClasses " " }} d-flex flex-column min-vh-100">
     {{- partial "header/header.html" . -}}
     <div id="content">
         {{ if and (.Site.Params.options.breadCrumb) (ne .Kind "home") -}}
