@@ -30,7 +30,7 @@
 <!-- X-default hreflang tag -->
 {{ if .IsTranslated -}}
 {{ range .AllTranslations -}}
-{{ if eq .Language.Locale $.Sites.Default.Language.Locale -}}
+{{ if eq .Language.Locale hugo.Sites.Default.Language.Locale -}}
 <link rel="alternate" hreflang="x-default" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 {{ end -}}
