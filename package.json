@@ -1,6 +1,6 @@
 {
   "name": "@filipecarneiro/hugo-bootstrap-theme",
-  "version": "1.0.50",
+  "version": "2.0.0",
   "description": "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.",
   "keywords": [
     "hugo",
@@ -28,7 +28,7 @@
     "test:htmltest": "docker run --rm -v $pwd/exampleSite/public:/test --rm wjdp/htmltest /test -l 3 -s",
     "test:htmlproofer": "docker run --rm -it -v $pwd/public:/src klakegg/html-proofer --disable-external --check-favicon --check-html --check-img-http --check-opengraph --check-sri",
     "test": "npm run test:htmlproofer",
-    "deploy": "npm version patch && npm publish --access public"
+    "deploy": "npm publish --access public"
   },
   "devDependencies": {
     "bootstrap": "^5.3.8",
