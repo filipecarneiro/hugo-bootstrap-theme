@@ -59,7 +59,8 @@
   <div class="carousel-inner">
     {{ range $index, $image := $images }}
       <div class="carousel-item{{ if (eq $index 0) }} active{{ end }}">
-        {{ $imageExtraLarge := $image.Resize "2560x webp" -}}  
+        {{ $imageCanvas := $image.Resize "3200x webp" -}}
+        {{ $imageExtraLarge := $image.Resize "2560x webp" -}}
         {{ $imageLarge := $image.Resize "1920x webp" -}}
         {{ $imageMedium := $image.Resize "1280x webp" -}}
         {{ $imageSmall := $image.Resize "960x webp" -}}
@@ -69,7 +70,7 @@
              {{ if (ne $index 0) }} loading="lazy" {{ end }}
              style="width: 100%; height: auto; aspect-ratio: {{ $.aspectRatio | default `16/9` | safeCSS }};"
              src="{{ $imageMedium.RelPermalink }}"
-             srcset="{{ $imageExtraLarge.RelPermalink }} 2560w, {{ $imageLarge.RelPermalink }} 1920w, {{ $imageMedium.RelPermalink }} 1280w, {{ $imageSmall.RelPermalink }} 960w, {{ $imageExtraSmall.RelPermalink }} 640w, {{ $imageExtraExtraSmall.RelPermalink }} 320w"
+             srcset="{{ $imageCanvas.RelPermalink }} 3200w, {{ $imageExtraLarge.RelPermalink }} 2560w, {{ $imageLarge.RelPermalink }} 1920w, {{ $imageMedium.RelPermalink }} 1280w, {{ $imageSmall.RelPermalink }} 960w, {{ $imageExtraSmall.RelPermalink }} 640w, {{ $imageExtraExtraSmall.RelPermalink }} 320w"
              sizes="100vw"
              alt="{{ $image.Title }}">
       </div>
