@@ -7,7 +7,7 @@ images: ["site-feature-image.png"]
 categories: ["Hugo Bootstrap Theme"]
 tags: ["Hugo","Bootstrap","Featured"]
 keywords: ["hugo bootstrap theme"]
-authors: ["Filipe Carneiro"]
+authors: ["Filipe Carneiro", "Theme Contributors"]
 aliases:
   - hugo-bootstrap-theme-alpha
 ---

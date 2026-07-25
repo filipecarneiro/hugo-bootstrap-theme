@@ -8,7 +8,7 @@ categories: ["Hugo Release Notes"]
 series: ["Hugo Releases"]
 tags: ["Hugo"]
 keywords: ["hugo v0.119"]
-authors: ["Bjørn Erik Pedersen"]
+authors: ["Bjørn Erik Pedersen", "Hugo Contributors"]
 ---
 
 ![Hugo](hugo-logo.svg)
