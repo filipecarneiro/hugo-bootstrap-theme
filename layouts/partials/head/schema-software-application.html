@@ -3,49 +3,35 @@
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/software-app -->
 
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
 {{ with .Params.softwareApplication }}
+  {{ $type := slice "SoftwareApplication" }}
+  {{ with .subType }}{{ $type = $type | append . }}{{ end }}
+  {{ $d := dict "@context" "https://schema.org" "@type" $type
+                "name" .name "description" .description }}
+  {{ with .screenshot }}
+    {{ with $.Resources.GetMatch . }}{{ $d = merge $d (dict "screenshot" .Permalink) }}{{ end }}
+  {{ end }}
+  {{ with .browserRequirements }}{{ $d = merge $d (dict "browserRequirements" .) }}{{ end }}
+  {{ with .applicationCategory }}{{ $d = merge $d (dict "applicationCategory" .) }}{{ end }}
+  {{ with .countriesSupported }}{{ $d = merge $d (dict "countriesSupported" .) }}{{ end }}
+  {{ with .operatingSystem }}{{ $d = merge $d (dict "operatingSystem" .) }}{{ end }}
+  {{ with .aggregateRating }}
+    {{ $d = merge $d (dict "aggregateRating" (dict
+      "@type" "AggregateRating"
+      "ratingValue" (trim .ratingValue " ")
+      "reviewCount" (trim .reviewCount " "))) }}
+  {{ end }}
+  {{ with .offer }}
+    {{ $offer := dict "@type" "Offer"
+                      "price" (trim .price " ")
+                      "priceCurrency" .priceCurrency
+                      "url" $.Permalink }}
+    {{ with .priceValidUntil }}{{ $offer = merge $offer (dict "priceValidUntil" .) }}{{ end }}
+    {{ $d = merge $d (dict "offers" $offer) }}
+  {{ end }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["SoftwareApplication", {{ .subType }}],
-  "name": {{ .name }},
-  {{ with .screenshot -}}
-  {{ $image := $.Resources.GetMatch . -}}
-  {{ with $image -}}
-  "screenshot": {{ .Permalink }},
-  {{ end -}}
-  {{ end -}}
-  "description": {{ .description }},
-  {{ with .browserRequirements -}}
-  "browserRequirements": {{ . }},
-  {{ end -}}
-  {{ with .applicationCategory -}}
-  "applicationCategory": {{ . }},
-  {{ end -}}
-  {{ with .countriesSupported -}}
-  "countriesSupported": {{ . }},
-  {{ end -}}
-  {{ with .operatingSystem -}}
-  "operatingSystem": {{ . }},
-  {{ end -}}
-  {{ with .aggregateRating -}}
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": {{ trim .ratingValue " " }},
-    "reviewCount": {{ trim .reviewCount " " }}
-  },
-  {{- end }}
-  {{ with .offer -}}
-  "offers": {
-    "@type": "Offer",
-    "price": {{ trim .price " " }},
-    "priceCurrency": {{ .priceCurrency }},
-    {{ with .priceValidUntil -}}
-    "priceValidUntil": {{ . }},
-    {{ end -}}
-    "url": {{ $.Permalink }}
-  }
-  {{- end }}
-}
+{{ $d }}
 </script>
 {{ end }}
