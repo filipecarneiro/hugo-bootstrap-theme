@@ -46,7 +46,7 @@ Get started with Bootstrap
 
 The tools used are cross-platform and should work on Windows, MacOS and Linux. You will need the following tools to be downloaded and installed:
 
-- [Hugo static site builder](https://github.com/goHugoio/Hugo/releases) - IMPORTANT: make sure you pick the extended version, Hugo_extended_0.xx.x_…
+- [Hugo static site builder](https://github.com/goHugoio/Hugo/releases) - **version 0.158.0 or later**. IMPORTANT: make sure you pick the extended version, Hugo_extended_0.xxx.x_…
 
 - [Node & NPM](https://nodejs.org/) - We use this to maintain project dependencies
 
@@ -69,15 +69,6 @@ hugo server -D --disableFastRender --source exampleSite
 ```
 
 This launches Hugo development server and you can see the example site by opening http://localhost:1313/hugo-bootstrap-theme/.
-
-You can also use Hugo as an installed NPM local package. In this case, you don't need to install Hugo globally:
-
-```
-npm install
-npm run start
-```
-
-This will install Hugo in a `bin` subfolder and then run it, using the NPM package `exec-bin`.
 
 ### Install on an existing Hugo site
 
