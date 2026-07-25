@@ -28,3 +28,76 @@ footerAboutText = "We protect your website so you can provide a safe environment
   breadCrumb = true
   listCategoryFilter = true
   listTagFilter = true
+
+# ---------------------------------------------------------------------------
+# Structured data (JSON-LD) — https://schema.org
+# Each block below drives one partial in layouts/partials/head/. Remove a block
+# and its schema simply stops being emitted.
+# ---------------------------------------------------------------------------
+
+# schema.org/WebSite — rendered on the home page
+[webSite]
+  name = "Hugo Bootstrap Theme"
+  description = "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5."
+  image = "images/site-feature-image.png"
+  url = "https://filipecarneiro.github.io/hugo-bootstrap-theme/"
+  [webSite.copyrightHolder]
+    name = "Hugo Bootstrap Theme"
+
+# schema.org/Organization — rendered on the home page
+[organization]
+  name = "Hugo Bootstrap Theme"
+  legalName = "Hugo Bootstrap Theme"
+  description = "Open source Hugo theme built on Bootstrap 5."
+  logo = "images/site-feature-image.png"
+  url = "https://filipecarneiro.github.io/hugo-bootstrap-theme/"
+  [organization.address]
+    streetAddress = "Rua de Exemplo 100"
+    locality = "Porto"
+    region = "Porto"
+    postalCode = "4000-000"
+    country = "PT"
+  [organization.contactPoint]
+    email = "example@example.com"
+    telephone = "+351000000000"
+    url = "https://filipecarneiro.github.io/hugo-bootstrap-theme/contact/"
+
+# schema.org/LocalBusiness — rendered on the home page
+[localBusiness]
+  name = "Hugo Bootstrap Theme"
+  image = "images/site-feature-image.png"
+  telephone = "+351000000000"
+  priceRange = "$$"
+  webpage = "https://filipecarneiro.github.io/hugo-bootstrap-theme/"
+  [localBusiness.address]
+    streetAddress = "Rua de Exemplo 100"
+    locality = "Porto"
+    region = "Porto"
+    postalCode = "4000-000"
+    country = "PT"
+  [localBusiness.map]
+    latitude = "41.14961"
+    longitude = "-8.61099"
+
+# schema.org/Event — rendered on the home page
+[event]
+  name = "Hugo Bootstrap Theme Community Meetup"
+  startDate = "2026-10-01T18:00:00+01:00"
+  endDate = "2026-10-01T20:00:00+01:00"
+  description = "An example event showing how Event structured data is emitted by this theme."
+  attendanceMode = "OfflineEventAttendanceMode"
+  status = "EventScheduled"
+  PlaceName = "Example Venue"
+  image = "images/site-feature-image.png"
+  [event.address]
+    streetAddress = "Rua de Exemplo 100"
+    locality = "Porto"
+    postalCode = "4000-000"
+    country = "PT"
+  [event.offer]
+    price = "0"
+    priceCurrency = "EUR"
+    availability = "InStock"
+    description = "Free admission"
+    validFrom = "2026-09-01T00:00:00+01:00"
+    url = "https://filipecarneiro.github.io/hugo-bootstrap-theme/"

@@ -33,6 +33,18 @@ weight = 30
 parent = "blog"
 
 [[main]]
+name = "Authors"
+url = "authors"
+weight = 40
+parent = "blog"
+
+[[main]]
+name = "Series"
+url = "series"
+weight = 50
+parent = "blog"
+
+[[main]]
 identifier = "docs"
 name = "Docs"
 url = "page"
