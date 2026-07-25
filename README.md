@@ -42,11 +42,19 @@ Get started with Bootstrap
 
 - [Install Bootstrap in your Node.js powered apps with the npm package](https://getbootstrap.com/docs/5.3/getting-started/download/#npm)
 
+### Upgrading from 1.x
+
+**Version 2.0.0 requires Hugo 0.158.0 or later.** The templates use `.Language.Locale` and `.Language.Label`, which replaced the deprecated `.LanguageCode` and `.LanguageName` in Hugo 0.158.0. On older Hugo the build fails with `can't evaluate field Locale in type *langs.Language`.
+
+Upgrade your Hugo before moving to 2.x. You do **not** need to change your site configuration — `locale`/`label` are read from the older `languageCode`/`languageName` config keys as well.
+
+Version 2.0.0 also removes the `postinstall` hook that downloaded a Hugo binary into `bin/`. Install Hugo yourself (see Requirements below); if your site relied on that hook, add [`hugo-installer`](https://www.npmjs.com/package/hugo-installer) to your own project.
+
 ### Requirements
 
 The tools used are cross-platform and should work on Windows, MacOS and Linux. You will need the following tools to be downloaded and installed:
 
-- [Hugo static site builder](https://github.com/goHugoio/Hugo/releases) - IMPORTANT: make sure you pick the extended version, Hugo_extended_0.xx.x_…
+- [Hugo static site builder](https://github.com/goHugoio/Hugo/releases) - **version 0.158.0 or later**. IMPORTANT: make sure you pick the extended version, Hugo_extended_0.xxx.x_…
 
 - [Node & NPM](https://nodejs.org/) - We use this to maintain project dependencies
 
@@ -69,15 +77,6 @@ hugo server -D --disableFastRender --source exampleSite
 ```
 
 This launches Hugo development server and you can see the example site by opening http://localhost:1313/hugo-bootstrap-theme/.
-
-You can also use Hugo as an installed NPM local package. In this case, you don't need to install Hugo globally:
-
-```
-npm install
-npm run start
-```
-
-This will install Hugo in a `bin` subfolder and then run it, using the NPM package `exec-bin`.
 
 ### Install on an existing Hugo site
 

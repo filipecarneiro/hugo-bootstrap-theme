@@ -1,6 +1,6 @@
 {
   "name": "@filipecarneiro/hugo-bootstrap-theme",
-  "version": "1.0.50",
+  "version": "2.0.0",
   "description": "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.",
   "keywords": [
     "hugo",
@@ -23,21 +23,15 @@
     "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
   },
   "scripts": {
-    "postinstall": "npx hugo-installer --version otherDependencies.hugo --extended",
-    "start": "exec-bin bin/hugo/hugo server --source exampleSite --cleanDestinationDir --gc",
-    "build": "exec-bin bin/hugo/hugo --minify --source exampleSite --baseURL '/' --cleanDestinationDir --gc --printPathWarnings --templateMetrics",
+    "start": "hugo server --source exampleSite --cleanDestinationDir --gc",
+    "build": "hugo --minify --source exampleSite --baseURL '/' --cleanDestinationDir --gc --printPathWarnings --templateMetrics",
     "test:htmltest": "docker run --rm -v $pwd/exampleSite/public:/test --rm wjdp/htmltest /test -l 3 -s",
     "test:htmlproofer": "docker run --rm -it -v $pwd/public:/src klakegg/html-proofer --disable-external --check-favicon --check-html --check-img-http --check-opengraph --check-sri",
     "test": "npm run test:htmlproofer",
-    "deploy": "npm version patch && npm publish --access public"
+    "deploy": "npm publish --access public"
   },
   "devDependencies": {
     "bootstrap": "^5.3.8",
-    "feather-icons": "^4.29.2",
-    "exec-bin": "^1.0.0",
-    "hugo-installer": "^4.0.1"
-  },
-  "otherDependencies": {
-    "hugo": "0.163.3"
+    "feather-icons": "^4.29.2"
   }
 }
