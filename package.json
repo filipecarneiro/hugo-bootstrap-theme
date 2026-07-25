@@ -32,7 +32,7 @@
     "deploy": "npm version patch && npm publish --access public"
   },
   "devDependencies": {
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.8",
     "feather-icons": "^4.29.2",
     "exec-bin": "^1.0.0",
     "hugo-installer": "^4.0.1"
