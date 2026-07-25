@@ -5,107 +5,80 @@
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/product -->
 
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
 {{ with .Params.product }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": {{ .name }},
-  {{ with .image -}}
-  {{ $image := $.Resources.GetMatch . -}}
-  {{ with $image -}}
-  "image": {{ .Permalink }},
-  {{ end -}}
-  {{ end -}}
-  "description": {{ .description }},
-  {{ with .sku -}}
-  "sku": {{ . }},
-  {{ end -}}
-  {{ with .brand -}}
-  "brand": {
-    "@type": {{ .type }},
-    "name": {{ .name }}
-  },
-  {{ end -}}
-  {{ with .aggregateRating -}}
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": {{ trim .ratingValue " " }},
-    "reviewCount": {{ trim .reviewCount " " }}
-  },
-  {{- end }}
-  {{ with .offer -}}
-  "offers": {
-    "@type": "Offer",
-    "price": {{ trim .price " " }},
-    "priceCurrency": {{ .priceCurrency }},
-    {{ with .priceValidUntil -}}
-    "priceValidUntil": {{ . }},
-    {{ end -}}
-    {{ with .availability -}}
-    "availability": "https://schema.org/{{ . }}",
-    {{ end -}}
-    {{ with .itemCondition -}}
-    "itemCondition": "https://schema.org/{{ . }}",
-    {{ end -}}
-    "url": {{ $.Permalink }},
-    {{ with .shippingDetails -}}
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      {{ with .shippingRate -}}
-      "shippingRate": {
-        "@type": "MonetaryAmount",
-        "value": {{ trim .value " " }},
-        "currency": {{ .currency }}
-      },
-      {{ end -}}
-      {{ with .shippingDestination -}}
-      "shippingDestination": {
-        "@type": "DefinedRegion",
-        "addressCountry": {{ .addressCountry }}
-      },
+  {{ $d := dict "@context" "https://schema.org" "@type" "Product"
+                "name" .name "description" .description }}
+  {{ with .image }}
+    {{ with $.Resources.GetMatch . }}{{ $d = merge $d (dict "image" .Permalink) }}{{ end }}
+  {{ end }}
+  {{ with .sku }}{{ $d = merge $d (dict "sku" .) }}{{ end }}
+  {{ with .brand }}
+    {{ $d = merge $d (dict "brand" (dict "@type" .type "name" .name)) }}
+  {{ end }}
+  {{ with .aggregateRating }}
+    {{ $d = merge $d (dict "aggregateRating" (dict
+      "@type" "AggregateRating"
+      "ratingValue" (trim .ratingValue " ")
+      "reviewCount" (trim .reviewCount " "))) }}
+  {{ end }}
+  {{ with .offer }}
+    {{ $offer := dict "@type" "Offer"
+                      "price" (trim .price " ")
+                      "priceCurrency" .priceCurrency
+                      "url" $.Permalink }}
+    {{ with .priceValidUntil }}{{ $offer = merge $offer (dict "priceValidUntil" .) }}{{ end }}
+    {{ with .availability }}{{ $offer = merge $offer (dict "availability" (printf "https://schema.org/%s" .)) }}{{ end }}
+    {{ with .itemCondition }}{{ $offer = merge $offer (dict "itemCondition" (printf "https://schema.org/%s" .)) }}{{ end }}
+
+    {{ with .shippingDetails }}
+      {{ $ship := dict "@type" "OfferShippingDetails" }}
+      {{ with .shippingRate }}
+        {{ $ship = merge $ship (dict "shippingRate" (dict
+          "@type" "MonetaryAmount"
+          "value" (trim .value " ")
+          "currency" .currency)) }}
       {{ end }}
-      {{ with .deliveryTime -}}
-      "deliveryTime": {
-        "@type": "ShippingDeliveryTime",
-        {{ with .handlingTime -}}
-        "handlingTime": {
-          "@type": "QuantitativeValue",
-          "minValue": {{ trim .minValue " " }},
-          "maxValue": {{ trim .maxValue " " }},
-          "unitCode": {{ .unitCode }}
-        },
-        {{ end -}}
-        {{ with .transitTime -}}
-        "transitTime": {
-          "@type": "QuantitativeValue",
-          "minValue": {{ trim .minValue " " }},
-          "maxValue": {{ trim .maxValue " " }},
-          "unitCode": {{ .unitCode }}
-        }
-        {{ end -}}
-      }
-      {{ end -}}
-    },
-    {{ end -}}
-    {{ with .hasMerchantReturnPolicy -}}
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "returnPolicyCategory": "https://schema.org/{{ .returnPolicyCategory }}",
-        {{ with .merchantReturnDays -}}
-        "merchantReturnDays": {{ . }},
-        {{ end -}}
-        {{ with .returnMethod -}}
-        "returnMethod": "https://schema.org/{{ . }}",
-        {{ end -}}
-        {{ with .returnFees -}}
-        "returnFees": "https://schema.org/{{ . }}",
-        {{ end -}}
-        "applicableCountry": {{ .applicableCountry }}
-      }
-    {{ end -}}
-  }
-  {{- end }}
-}
+      {{ with .shippingDestination }}
+        {{ $ship = merge $ship (dict "shippingDestination" (dict
+          "@type" "DefinedRegion"
+          "addressCountry" .addressCountry)) }}
+      {{ end }}
+      {{ with .deliveryTime }}
+        {{ $dt := dict "@type" "ShippingDeliveryTime" }}
+        {{ with .handlingTime }}
+          {{ $dt = merge $dt (dict "handlingTime" (dict
+            "@type" "QuantitativeValue"
+            "minValue" (trim .minValue " ")
+            "maxValue" (trim .maxValue " ")
+            "unitCode" .unitCode)) }}
+        {{ end }}
+        {{ with .transitTime }}
+          {{ $dt = merge $dt (dict "transitTime" (dict
+            "@type" "QuantitativeValue"
+            "minValue" (trim .minValue " ")
+            "maxValue" (trim .maxValue " ")
+            "unitCode" .unitCode)) }}
+        {{ end }}
+        {{ $ship = merge $ship (dict "deliveryTime" $dt) }}
+      {{ end }}
+      {{ $offer = merge $offer (dict "shippingDetails" $ship) }}
+    {{ end }}
+
+    {{ with .hasMerchantReturnPolicy }}
+      {{ $ret := dict "@type" "MerchantReturnPolicy"
+                      "returnPolicyCategory" (printf "https://schema.org/%s" .returnPolicyCategory)
+                      "applicableCountry" .applicableCountry }}
+      {{ with .merchantReturnDays }}{{ $ret = merge $ret (dict "merchantReturnDays" .) }}{{ end }}
+      {{ with .returnMethod }}{{ $ret = merge $ret (dict "returnMethod" (printf "https://schema.org/%s" .)) }}{{ end }}
+      {{ with .returnFees }}{{ $ret = merge $ret (dict "returnFees" (printf "https://schema.org/%s" .)) }}{{ end }}
+      {{ $offer = merge $offer (dict "hasMerchantReturnPolicy" $ret) }}
+    {{ end }}
+
+    {{ $d = merge $d (dict "offers" $offer) }}
+  {{ end }}
+<script type="application/ld+json">
+{{ $d }}
 </script>
 {{ end }}

@@ -1,91 +1,69 @@
 <!-- Event Schema.org Type -->
 <!-- https://schema.org/Event -->
-<!-- Output all taxonomies as schema.org keywords -->
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/event -->
 
-{{ with .Site.Params.event -}}
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
+{{ with .Site.Params.event }}
+  {{ $d := dict "@context" "https://schema.org" "@type" "Event"
+                "name" .name "startDate" .startDate }}
+  {{ with .endDate }}{{ $d = merge $d (dict "endDate" .) }}{{ end }}
+  {{ with .description }}{{ $d = merge $d (dict "description" .) }}{{ end }}
+  {{ with .attendanceMode }}{{ $d = merge $d (dict "eventAttendanceMode" (printf "https://schema.org/%s" .)) }}{{ end }}
+  {{ with .status }}{{ $d = merge $d (dict "eventStatus" (printf "https://schema.org/%s" .)) }}{{ end }}
+
+  {{ $place := dict "@type" "Place" "name" .PlaceName }}
+  {{ with .address }}
+    {{ $place = merge $place (dict "address" (dict
+      "@type" "PostalAddress"
+      "streetAddress" .streetAddress
+      "addressLocality" .locality
+      "postalCode" .postalCode
+      "addressCountry" .country)) }}
+  {{ end }}
+  {{ $d = merge $d (dict "location" $place) }}
+
+  {{ with .image }}
+    {{ with resources.GetMatch . }}
+      {{ $image := . }}
+      {{ if ne $image.MediaType.SubType "svg" }}{{ $image = $image.Resize "960x" }}{{ end }}
+      {{ $d = merge $d (dict "image" $image.Permalink) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with .offer }}
+    {{ $offer := dict "@type" "Offer"
+                      "price" .price
+                      "priceCurrency" .priceCurrency
+                      "availability" (printf "https://schema.org/%s" .availability)
+                      "description" .description
+                      "url" .url }}
+    {{ with .validFrom }}{{ $offer = merge $offer (dict "validFrom" .) }}{{ end }}
+    {{ $d = merge $d (dict "offers" $offer) }}
+  {{ end }}
+
+  {{ $speakersList := slice }}
+  {{ range hugo.Data.event }}{{ range .events }}{{ range .speakers }}{{ $speakersList = $speakersList | append . }}{{ end }}{{ end }}{{ end }}
+  {{ with $speakersList }}
+    {{ $performers := slice }}
+    {{ range ($speakersList | uniq | sort) }}
+      {{ $performers = $performers | append (dict "@type" "Person" "name" .) }}
+    {{ end }}
+    {{ $d = merge $d (dict "performer" $performers) }}
+  {{ end }}
+
+  {{ with $.Site.Params.organization }}
+    {{ $org := dict "@type" "Organization" "name" .name }}
+    {{ with .url }}{{ $org = merge $org (dict "url" .) }}{{ end }}
+    {{ with .logo }}
+      {{ with resources.GetMatch . }}
+        {{ $org = merge $org (dict "logo" (dict "@type" "ImageObject" "url" .Permalink)) }}
+      {{ end }}
+    {{ end }}
+    {{ $d = merge $d (dict "organizer" $org) }}
+  {{ end }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": {{ .name }},
-  "startDate": {{ .startDate | jsonify | safeJS }},
-  {{ with .endDate -}}
-  "endDate": {{ . | jsonify | safeJS }},
-  {{ end -}}
-  {{ with .description -}}
-  "description": {{ . | jsonify | safeJS }},
-  {{ end -}}
-  {{ with .attendanceMode -}}
-  "eventAttendanceMode": "https://schema.org/{{ . }}",
-  {{ end -}}
-  {{ with .status -}}
-  "eventStatus": "https://schema.org/{{ . }}",
-  {{ end -}}
-  "location": {
-    "@type": "Place",
-    "name": {{ .PlaceName | jsonify | safeJS }},
-    {{ with .address -}}
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": {{ .streetAddress | jsonify | safeJS }},
-      "addressLocality": {{ .locality | jsonify | safeJS }},
-      "postalCode": {{ .postalCode | jsonify | safeJS }},
-      "addressCountry": {{ .country | jsonify | safeJS }}
-    }
-    {{ end -}}
-  },
-  {{ with .image -}}
-  {{- with $image := resources.GetMatch . -}}
-  {{- if ne $image.MediaType.SubType "svg" -}}
-    {{- $image = $image.Resize "960x" -}}
-  {{- end -}}
-  "image": {{ $image.Permalink }},
-  {{ end -}}
-  {{ end -}}
-  {{ with .offer -}}
-  "offers": {
-    "@type": "Offer",
-    "price": {{ .price | jsonify | safeJS }},
-    "priceCurrency": {{ .priceCurrency }},
-    "availability" : "https://schema.org/{{ .availability }}",
-    "description": {{ .description }},
-    {{ with .validFrom -}}
-    "validFrom" : {{ . | jsonify | safeJS }},
-    {{ end -}}
-    "url" : {{ .url }}
-  },
-  {{ end -}}
-  {{- $speakersList := slice -}}
-  {{- range hugo.Data.event }}{{ range .events }}{{ range .speakers }}{{ $speakersList = $speakersList | append . }}{{ end }}{{ end }}{{ end -}}
-  {{- if ( gt ( len $speakersList ) 0 ) -}}
-  "performer": [
-  {{- $speakersList = $speakersList | uniq | sort -}}
-  {{- range $index, $speaker := $speakersList }}
-    {
-      "@type": "Person",
-      "name": "{{ $speaker }}"
-    }
-    {{- if (ne (add $index 1) (len $speakersList)) }},{{ end -}}
-  {{ end -}}
-  ],
-  {{ end -}}
-  {{ with $.Site.Params.organization -}}
-  "organizer": {
-    "@type": "Organization",
-    {{ with .logo -}}
-    {{- with resources.GetMatch . -}}
-    "logo": {
-      "@type": "ImageObject",
-      "url": {{ .Permalink }}
-    },
-    {{ end -}}
-    {{ end -}}
-    "name": {{ .name }},
-    "url": {{ .url }}
-  }
-{{ end -}}
-}
+{{ $d }}
 </script>
-{{ end -}}
+{{ end }}

@@ -1,50 +1,36 @@
 <!-- Organization Schema.org Type -->
 <!-- https://schema.org/Organization -->
-<!-- Output all taxonomies as schema.org keywords -->
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/organization -->
 
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
 {{ with .Site.Params.organization }}
+  {{ $d := dict "@context" "https://schema.org" "@type" "Organization" "name" .name }}
+  {{ with .legalName }}{{ $d = merge $d (dict "legalName" .) }}{{ end }}
+  {{ with .description }}{{ $d = merge $d (dict "description" .) }}{{ end }}
+  {{ with .logo }}
+    {{ with resources.GetMatch . }}{{ $d = merge $d (dict "logo" .Permalink) }}{{ end }}
+  {{ end }}
+  {{ with .url }}{{ $d = merge $d (dict "url" .) }}{{ end }}
+  {{ with .taxID }}{{ $d = merge $d (dict "taxID" .) }}{{ end }}
+  {{ with .address }}
+    {{ $d = merge $d (dict "address" (dict
+      "@type" "PostalAddress"
+      "streetAddress" .streetAddress
+      "addressLocality" .locality
+      "addressRegion" .region
+      "postalCode" .postalCode
+      "addressCountry" .country)) }}
+  {{ end }}
+  {{ with .contactPoint }}
+    {{ $d = merge $d (dict "contactPoint" (dict
+      "@type" "ContactPoint"
+      "email" .email
+      "telephone" .telephone
+      "url" .url)) }}
+  {{ end }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": {{ .name }},
-  {{ with .legalName -}}
-  "legalName": {{ . }},
-  {{ end -}}
-  {{ with .description -}}
-  "description": {{ . }},
-  {{ end -}}
-  {{ with .logo -}}
-  {{- with resources.GetMatch . -}}
-  "logo": {{ .Permalink }},
-  {{ end -}}
-  {{ end -}}
-  {{ with .url -}}
-  "url": {{ . }},
-  {{ end -}}
-  {{ with .taxID -}}
-  "taxID": {{ . }},
-  {{ end -}}
-  {{ with .address -}}
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "{{ .streetAddress }}",
-    "addressLocality": "{{ .locality }}",
-    "addressRegion": "{{ .region }}",
-    "postalCode": "{{ .postalCode }}",
-    "addressCountry": "{{ .country }}"
-  },
-  {{ end -}}
-  {{ with .contactPoint -}}
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "{{ .email }}",
-    "telephone": "{{ .telephone }}",
-    "url": "{{ .url }}"
-  }
-  {{- end }}
-}
+{{ $d }}
 </script>
 {{ end }}

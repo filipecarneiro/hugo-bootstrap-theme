@@ -1,35 +1,25 @@
 <!-- WebSite Schema.org Type -->
 <!-- https://schema.org/WebSite -->
-<!-- Output all taxonomies as schema.org keywords -->
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/site-names#how-to-add-structured-data -->
 
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
 {{ with .Site.Params.webSite }}
+  {{ $d := dict "@context" "https://schema.org" "@type" "WebSite" "name" .name }}
+  {{ with .description }}{{ $d = merge $d (dict "description" .) }}{{ end }}
+  {{ with .image }}
+    {{ with resources.GetMatch . }}
+      {{ $image := . }}
+      {{ if ne $image.MediaType.SubType "svg" }}{{ $image = $image.Resize "960x" }}{{ end }}
+      {{ $d = merge $d (dict "image" $image.Permalink) }}
+    {{ end }}
+  {{ end }}
+  {{ with .copyrightHolder }}
+    {{ $d = merge $d (dict "copyrightHolder" (dict "@type" "Organization" "name" .name)) }}
+  {{ end }}
+  {{ with .url }}{{ $d = merge $d (dict "url" .) }}{{ end }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": {{ .name }},
-  {{ with .description -}}
-  "description": {{ . }},
-  {{ end -}}
-  {{ with .image -}}
-  {{- with $image := resources.GetMatch . -}}
-  {{- if ne $image.MediaType.SubType "svg" -}}
-    {{- $image = $image.Resize "960x" -}}
-  {{- end -}}
-  "image": {{ $image.Permalink }},
-  {{ end -}}
-  {{ end -}}
-  {{ with .copyrightHolder -}}
-  "copyrightHolder": {
-    "@type": "Organization",
-    "name": "{{ .name }}"
-  },
-  {{- end }}
-  {{ with .url -}}
-  "url": {{ . }}
-  {{ end -}}
-}
+{{ $d }}
 </script>
 {{ end }}
