@@ -12,7 +12,7 @@
                     </h4>
                     {{ with .Params.authors }}
                         <p class="card-subtitle text-muted">
-                            by {{ index . 0 }}
+                            by {{ delimit . ", " }}
                         </p>
                     {{ end }}
                     <p class="card-text mt-3">
