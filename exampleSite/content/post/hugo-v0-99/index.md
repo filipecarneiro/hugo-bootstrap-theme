@@ -5,6 +5,7 @@ date: 2022-05-18
 draft: false
 images: ["hugo-logo.png"]
 categories: ["Hugo Release Notes"]
+series: ["Hugo Releases"]
 tags: ["Hugo"]
 keywords: ["hugo v0.99"]
 authors: ["Bjørn Erik Pedersen"]

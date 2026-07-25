@@ -3,27 +3,35 @@
 
 <!-- Test with Twitter Card Validator: https://cards-dev.twitter.com/validator -->
 
-{{ with $.Params.images }}
-  {{ with $image := $.Resources.GetMatch (index (.) 0) -}}
-    {{ if ne $image.MediaType.SubType "svg" }}
-      {{ $image = $image.Resize "960x" }}
-    {{ end }}
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ $image.Permalink }}">
-  {{ end -}}
-{{ else -}}
-  {{ with $.Site.Params.images }}
-    {{ with $image := resources.GetMatch (index (.) 0) }}
-      {{ if ne $image.MediaType.SubType "svg" }}
-        {{ $image = $image.Resize "960x" }}
-      {{ end }}
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:image" content="{{ $image.Permalink }}">
-    {{ end -}}
-  {{ else -}}
-    <meta name="twitter:card" content="summary">
-  {{ end -}}
-{{ end -}}
+{{- /* Only raster formats X can render; SVG cards are rejected. Matches head/opengraph.html. */ -}}
+{{- $twFormats := slice "png" "jpeg" -}}
+{{- $twImage := "" -}}
+{{- range $.Params.images -}}
+  {{- if not $twImage -}}
+    {{- with $.Resources.GetMatch . -}}
+      {{- if in $twFormats .MediaType.SubType -}}
+        {{- $twImage = (.Resize "960x").Permalink -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $twImage -}}
+  {{- range $.Site.Params.images -}}
+    {{- if not $twImage -}}
+      {{- with resources.GetMatch . -}}
+        {{- if in $twFormats .MediaType.SubType -}}
+          {{- $twImage = (.Resize "960x").Permalink -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end }}
+{{ if $twImage }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ $twImage }}">
+{{- else }}
+<meta name="twitter:card" content="summary">
+{{- end }}
 
 <meta name="twitter:title" content="{{ .Title }}">
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
