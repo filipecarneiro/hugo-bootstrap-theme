@@ -33,16 +33,12 @@ jobs:
       - name: NPM Install
         run: npm install
 
-      - name: Build for test
-        run: hugo --source exampleSite --baseUrl '/' --cleanDestinationDir --enableGitInfo --gc
-        if: ${{ false }}
+      # A disabled htmltest step used to sit here. `if: false` skips a step but
+      # does not stop GitHub building a container action's image during job
+      # setup, so every deploy still depended on Docker Hub being reachable -
+      # and failed when it was not. Re-add it as a separate job if link
+      # checking is wanted again; .htmltest.yml is still in the repo.
 
-      - name: Run htmltest
-        uses: wjdp/htmltest-action@master
-        with:
-          config: .htmltest.yml
-        if: ${{ false }}
-           
       - name: Build
         run: hugo --source exampleSite --minify --cleanDestinationDir --enableGitInfo --gc --printPathWarnings --templateMetrics
 
