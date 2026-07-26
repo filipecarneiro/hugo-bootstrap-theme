@@ -1,5 +1,6 @@
 ---
 title: "Hugo Front Matter 🦉"
+date: 2022-05-16
 description: "Hugo allows you to add front matter in yaml, toml, or json to your content files."
 summary: "Hugo allows you to add front matter in yaml, toml, or json to your content files. Read on to know more about predefined and user-defined front matter variables."
 draft: true

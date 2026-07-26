@@ -1,5 +1,6 @@
 ---
 title: "Privacy Policy"
+date: 2022-05-15
 description: " We do not use cookies and we do not collect any personal data."
 draft: false
 tags: ["Privacy"]

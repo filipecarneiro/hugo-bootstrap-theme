@@ -1,5 +1,6 @@
 ---
 title: "Structured Data Demo 🔎"
+date: 2026-07-25
 description: "Demonstrates the Product, SoftwareApplication and FAQPage JSON-LD that this theme can emit from front matter."
 draft: false
 tags: ["Featured"]

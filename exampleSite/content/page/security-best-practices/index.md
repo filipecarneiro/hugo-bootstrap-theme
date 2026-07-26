@@ -1,5 +1,6 @@
 ---
 title: "Security Best Practices 🔒"
+date: 2022-05-22
 description: "Improve code health of your web page following these best practices. Prevent security vulnerabilities"
 draft: false
 tags: ["Featured"]

@@ -1,5 +1,6 @@
 ---
 title: "Code of Conduct"
+date: 2022-05-15
 description: "Contributor Covenant Code of Conduct"
 draft: false
 menu:

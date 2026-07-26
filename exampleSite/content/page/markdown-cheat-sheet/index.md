@@ -1,5 +1,6 @@
 ---
 title: "Markdown Cheat Sheet Ⓜ️⬇️"
+date: 2022-05-16
 description: "An overview of basic markdown syntax."
 draft: false
 tags: ["Featured"]
