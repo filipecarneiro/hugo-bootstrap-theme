@@ -25,13 +25,12 @@
   "scripts": {
     "start": "hugo server --source exampleSite --cleanDestinationDir --gc",
     "build": "hugo --minify --source exampleSite --baseURL '/' --cleanDestinationDir --gc --printPathWarnings --templateMetrics",
-    "test:htmltest": "docker run --rm -v $pwd/exampleSite/public:/test --rm wjdp/htmltest /test -l 3 -s",
-    "test:htmlproofer": "docker run --rm -it -v $pwd/public:/src klakegg/html-proofer --disable-external --check-favicon --check-html --check-img-http --check-opengraph --check-sri",
-    "test": "npm run test:htmlproofer",
+    "scan": "node scripts/scan.mjs --site=https://filipecarneiro.github.io/hugo-bootstrap-theme/",
     "deploy": "npm publish --access public"
   },
   "devDependencies": {
     "bootstrap": "^5.3.8",
-    "feather-icons": "^4.29.2"
+    "feather-icons": "^4.29.2",
+    "unlighthouse": "^0.18.0"
   }
 }
