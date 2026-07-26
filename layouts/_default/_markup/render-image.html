@@ -7,12 +7,26 @@
   can decode; SVGs are not decoded, so the dimensions are read from the
   viewBox instead.
 
+  Raster images in a page bundle are also resized into a webp srcset, so a
+  phone downloads a phone-sized file instead of the full-resolution original.
+
   Markdown attributes are preserved, so `![alt](img.png){ .img-fluid }` keeps
   its classes.
 */ -}}
 
 {{- $dest := .Destination -}}
 {{- $res := or (.Page.Resources.GetMatch $dest) (resources.GetMatch $dest) -}}
+
+{{- /* Widths worth generating: phone, tablet, laptop, the widest the content
+       column ever gets, and one for high-density desktop displays. Anything
+       larger than the original is skipped - upscaling costs bytes and adds no
+       detail. An image smaller than every target is converted at its own
+       width, so it still gets the format saving. */ -}}
+{{- $targetWidths := slice 480 768 1024 1440 2048 -}}
+
+{{- /* Only formats where resizing is safe. GIFs are excluded because Hugo
+       flattens them to a single frame, and SVG has no pixels to resize. */ -}}
+{{- $resizable := slice "png" "jpeg" -}}
 
 {{- /* Rendered content outlives the page it was written on: .Summary is reused
        on list pages and the home page, and the same HTML goes into the RSS
@@ -22,6 +36,7 @@
        any context. Destinations we cannot resolve - absolute URLs, static files
        - are passed through untouched. */ -}}
 {{- $src := $dest -}}
+{{- $srcset := slice -}}
 
 {{- $w := "" -}}
 {{- $h := "" -}}
@@ -36,14 +51,41 @@
   {{- else -}}
     {{- $w = .Width -}}
     {{- $h = .Height -}}
+    {{- if in $resizable .MediaType.SubType -}}
+      {{- $original := . -}}
+      {{- /* Built by hand rather than with `where`: that function reads its
+             second argument as a field name, not an operator, when the
+             collection holds plain numbers - it silently matches nothing. */ -}}
+      {{- $widths := slice -}}
+      {{- range $target := $targetWidths -}}
+        {{- if lt $target $original.Width -}}
+          {{- $widths = $widths | append $target -}}
+        {{- end -}}
+      {{- end -}}
+      {{- /* The image's own width is always the top tier, so a high-density
+             display can still have every pixel - just in webp rather than the
+             original format. It also covers images smaller than every target,
+             which get the format saving and nothing else. */ -}}
+      {{- $widths = $widths | append $original.Width -}}
+      {{- range $target := $widths -}}
+        {{- $variant := $original.Resize (printf "%dx webp q80" $target) -}}
+        {{- $srcset = $srcset | append (printf "%s %dw" $variant.RelPermalink $variant.Width) -}}
+        {{- /* The widest variant becomes src, so browsers ignoring srcset
+               still get a resized file rather than the original. */ -}}
+        {{- $src = $variant.RelPermalink -}}
+        {{- $w = $variant.Width -}}
+        {{- $h = $variant.Height -}}
+      {{- end -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
 {{- /* The first image on a page is often the largest contentful paint, so it
-       is left eager; later ones are lazy. */ -}}
+       is left eager and asked for early; later ones are lazy. */ -}}
 <img src="{{ $src | safeURL }}" alt="{{ .Text }}"
   {{- with .Title }} title="{{ . }}"{{ end }}
+  {{- with $srcset }} srcset="{{ delimit . ", " }}" sizes="(min-width: 1200px) 1140px, 100vw"{{ end }}
   {{- if and $w $h }} width="{{ $w }}" height="{{ $h }}"{{ end }}
-  {{- if .Ordinal }} loading="lazy"{{ end }}
+  {{- if .Ordinal }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}
   {{- range $k, $v := .Attributes }}{{ with $v }} {{ $k }}="{{ $v }}"{{ end }}{{ end -}}
 >
