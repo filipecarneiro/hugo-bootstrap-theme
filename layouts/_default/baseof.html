@@ -15,12 +15,12 @@
 
 <body class="{{ delimit $bodyClasses " " }} d-flex flex-column min-vh-100">
     {{- partial "header/header.html" . -}}
-    <div id="content">
+    <main id="content">
         {{ if and (.Site.Params.options.breadCrumb) (ne .Kind "home") -}}
             {{- partial "header/breadcrumb.html" . -}}
         {{ end }}
         {{- block "main" . }}{{- end }}
-    </div>
+    </main>
     {{ partial "footer/footer.html" . }}
     {{ partial "footer/script-footer.html" . }}
 </body>
