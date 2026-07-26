@@ -58,7 +58,7 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
  src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp"
  width="1280" height="853"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_a38aed50b3671da8.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_868ab0caa8c1ea89.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_8c7815b60042997c.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_f02d8114a926fe8b.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_98ea1cc9fcc628e9.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_b5ba7ea000e46f13.webp 320w"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_b5ba7ea000e46f13.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_98ea1cc9fcc628e9.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_f02d8114a926fe8b.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_8aa19c5f7199b76d.webp 1500w"
  sizes="100vw"
  alt="/carousel/bootstrap-v5-new-logo.png"&gt;
  &lt;/div&gt;
@@ -67,9 +67,9 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
  &lt;img class="d-block w-100"
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
- src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_f5c58e8fd3bf94cd.webp"
- width="1280" height="853"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_9a244f6ac10a1501.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_ca213fa3f12e87a1.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_987c0856de059395.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_f5c58e8fd3bf94cd.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3569854ca2402d40.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3a632ea0cf515ae.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_562134f766a643ab.webp 320w"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp"
+ width="800" height="533"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_562134f766a643ab.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3a632ea0cf515ae.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp 800w"
  sizes="100vw"
  alt="/carousel/hugo-bootstrap-banner.png"&gt;
  &lt;/div&gt;
@@ -78,9 +78,9 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
  &lt;img class="d-block w-100"
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
- src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_2307e3bf8cbc3b13.webp"
- width="1280" height="853"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_de2c29e6bbbe095e.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_5a7d8ece9e74673e.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_5ca2777393db0e32.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_2307e3bf8cbc3b13.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_ed12dd2cf96c83.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_29b1e057aa93d8f4.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_6fd943804354b6d2.webp 320w"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_625e7e6813765c04.webp"
+ width="900" height="600"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_6fd943804354b6d2.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_29b1e057aa93d8f4.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_625e7e6813765c04.webp 900w"
  sizes="100vw"
  alt="/carousel/site-feature-image.png"&gt;
  &lt;/div&gt;
@@ -216,12 +216,12 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id="headings"&gt;Headings&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# Heading 1
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## Heading 2
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;### Heading 3
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#### Heading 4
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##### Heading 5
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;###### Heading 6
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff;font-weight:bold"&gt;# Heading 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;## Heading 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;### Heading 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;#### Heading 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;##### Heading 5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;###### Heading 6
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="heading-1"&gt;Heading 1&lt;/h1&gt;
 &lt;h2 id="heading-2"&gt;Heading 2&lt;/h2&gt;
 &lt;h3 id="heading-3"&gt;Heading 3&lt;/h3&gt;
@@ -230,17 +230,17 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
 &lt;h6 id="heading-6"&gt;Heading 6&lt;/h6&gt;
 &lt;hr&gt;
 &lt;h2 id="lists"&gt;Lists&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;*&lt;/span&gt; Unordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;*&lt;/span&gt; Unordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;*&lt;/span&gt; Unordered item
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;1.&lt;/span&gt; Ordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;2.&lt;/span&gt; Ordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;3.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;1.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;2.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;3.&lt;/span&gt; Ordered item
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;- [ ]&lt;/span&gt; Task item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;- [x]&lt;/span&gt; Checked Task item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;- [ ]&lt;/span&gt; Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [ ]&lt;/span&gt; Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [x]&lt;/span&gt; Checked Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [ ]&lt;/span&gt; Task item
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Unordered item&lt;/li&gt;
 &lt;li&gt;Unordered item&lt;/li&gt;
@@ -251,14 +251,20 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
 &lt;li&gt;Ordered item&lt;/li&gt;
 &lt;li&gt;Ordered item&lt;/li&gt;
 &lt;/ol&gt;
+&lt;!-- Hand-written HTML, not the task-list markdown shown in the code block
+ above, and it renders identically. Goldmark emits a task item as a bare
+ disabled checkbox with no accessible name, which a screen reader announces
+ as just "checkbox" and Lighthouse reports as a form element without a
+ label. Hugo has no render hook for task lists, so a label can only be
+ attached by writing the markup out. --&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Task item&lt;/li&gt;
-&lt;li&gt;&lt;input checked="" disabled="" type="checkbox"&gt; Checked Task item&lt;/li&gt;
-&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Task item&lt;/li&gt;
+ &lt;li&gt;&lt;input type="checkbox" id="task-item-1" disabled&gt; &lt;label for="task-item-1"&gt;Task item&lt;/label&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;input type="checkbox" id="task-item-2" checked disabled&gt; &lt;label for="task-item-2"&gt;Checked Task item&lt;/label&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;input type="checkbox" id="task-item-3" disabled&gt; &lt;label for="task-item-3"&gt;Task item&lt;/label&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id="format"&gt;Format&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;**Bold**
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;**Bold**
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-style:italic"&gt;*Italic*&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -270,12 +276,12 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;mark&amp;gt;Highlight&amp;lt;/mark&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;`Inline code`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a5d6ff"&gt;`Inline code`&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;~~Strikethrough~~&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ffa198;background-color:#490202"&gt;~~Strikethrough~~&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#f92672"&gt;Hyperlink&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;http://example.com&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#7ee787"&gt;Hyperlink&lt;/span&gt;](http://example.com)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#f92672"&gt;Image&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;placeholder-50-09f-fff.png&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#7ee787"&gt;Image&lt;/span&gt;](placeholder-50-09f-fff.png)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{ .img-fluid }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

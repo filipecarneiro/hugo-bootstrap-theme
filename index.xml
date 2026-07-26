@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/</link><description>Recent content on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><lastBuildDate>Sun, 26 Jul 2026 10:07:22 +0000</lastBuildDate><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Sat, 25 Jul 2026 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/</link><description>Recent content on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><lastBuildDate>Sun, 26 Jul 2026 11:42:52 +0000</lastBuildDate><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Sat, 25 Jul 2026 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
 &lt;p&gt;This page exists to exercise the page-level JSON-LD partials that ship with the
 theme, so their output is validated on every build rather than only when a real
 site happens to configure them.&lt;/p&gt;
@@ -9,11 +9,11 @@ site happens to configure them.&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/FAQPage" target="_blank" rel="noopener"&gt;FAQPage&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;faq:&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The site-level schemas (&lt;code&gt;WebSite&lt;/code&gt;, &lt;code&gt;Organization&lt;/code&gt;, &lt;code&gt;LocalBusiness&lt;/code&gt; and &lt;code&gt;Event&lt;/code&gt;)
-are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and render on the home page.&lt;/p&gt;</description></item><item><title>Hugo v0.119.0</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
+are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and render on the home page.&lt;/p&gt;</description></item><item><title>Hugo v0.119.0</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/hugo-logo.svg" alt="Hugo" width="1493" height="391" fetchpriority="high" class="img-fluid mb-5"&gt;
 &lt;p&gt;This version is built with Go 1.21.1 which contains some relevant security fixes for the html/template package, see &lt;a href="https://github.com/golang/go/issues/62196" target="_blank" rel="noopener"&gt;Issue 62196&lt;/a&gt; and &lt;a href="https://github.com/golang/go/issues/62197" target="_blank" rel="noopener"&gt;Issue 62197&lt;/a&gt;. This is the main reason Hugo 0.119.0 is released sooner rather than later. But this release also comes with a dependency refresh and some useful image processing improvements:&lt;/p&gt;
 &lt;p&gt;A new general-purpose &lt;a href="https://gohugo.io/content-management/image-processing/#process" target="_blank" rel="noopener"&gt;Process&lt;/a&gt; method and filter.
 A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" rel="noopener"&gt;Opacity&lt;/a&gt; filter.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"&gt;Release Notes on GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Bootstrap 5.3.0</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/</link><pubDate>Tue, 30 May 2023 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/bootstrap-5-3.png" alt="Bootstrap 5 3" width="1432" height="777" class="img-fluid"&gt;
+&lt;p&gt;&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"&gt;Release Notes on GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Bootstrap 5.3.0</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/</link><pubDate>Tue, 30 May 2023 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/bootstrap-5-3_hu_fbe9445fa6788212.webp" alt="Bootstrap 5 3" srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/bootstrap-5-3_hu_17bcd2a4dcdb1343.webp 480w, https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/bootstrap-5-3_hu_42536b176bc2a357.webp 768w, https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/bootstrap-5-3_hu_54c07882800c8a1d.webp 1024w, https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-3-0/bootstrap-5-3_hu_fbe9445fa6788212.webp 1432w" sizes="(min-width: 1200px) 1140px, 100vw" width="1432" height="777" fetchpriority="high" class="img-fluid"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;It’s official, the final stable release of v5.3.0 has landed! It’s been a monumental effort to revamp our codebase for CSS variables and color modes, one that will see continued changes leading up to an eventual Bootstrap 6. And we’re so excited to finally ship it!&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -66,7 +66,7 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
  src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp"
  width="1280" height="853"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_a38aed50b3671da8.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_868ab0caa8c1ea89.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_8c7815b60042997c.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_f02d8114a926fe8b.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_98ea1cc9fcc628e9.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_b5ba7ea000e46f13.webp 320w"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_b5ba7ea000e46f13.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_98ea1cc9fcc628e9.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_f02d8114a926fe8b.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_8aa19c5f7199b76d.webp 1500w"
  sizes="100vw"
  alt="/carousel/bootstrap-v5-new-logo.png"&gt;
  &lt;/div&gt;
@@ -75,9 +75,9 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
  &lt;img class="d-block w-100"
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
- src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_f5c58e8fd3bf94cd.webp"
- width="1280" height="853"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_9a244f6ac10a1501.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_ca213fa3f12e87a1.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_987c0856de059395.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_f5c58e8fd3bf94cd.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3569854ca2402d40.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3a632ea0cf515ae.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_562134f766a643ab.webp 320w"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp"
+ width="800" height="533"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_562134f766a643ab.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3a632ea0cf515ae.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp 800w"
  sizes="100vw"
  alt="/carousel/hugo-bootstrap-banner.png"&gt;
  &lt;/div&gt;
@@ -86,9 +86,9 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
  &lt;img class="d-block w-100"
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
- src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_2307e3bf8cbc3b13.webp"
- width="1280" height="853"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_de2c29e6bbbe095e.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_5a7d8ece9e74673e.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_5ca2777393db0e32.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_2307e3bf8cbc3b13.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_ed12dd2cf96c83.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_29b1e057aa93d8f4.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_6fd943804354b6d2.webp 320w"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_625e7e6813765c04.webp"
+ width="900" height="600"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_6fd943804354b6d2.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_29b1e057aa93d8f4.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_625e7e6813765c04.webp 900w"
  sizes="100vw"
  alt="/carousel/site-feature-image.png"&gt;
  &lt;/div&gt;
@@ -111,7 +111,7 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 
 &lt;/div&gt;
 &lt;br&gt;
-&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener"&gt;Carousel documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo v0.100.2</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</link><pubDate>Wed, 08 Jun 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
+&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener"&gt;Carousel documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo v0.100.2</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</link><pubDate>Wed, 08 Jun 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/hugo-logo.svg" alt="Hugo" width="1493" height="391" fetchpriority="high" class="img-fluid mb-5"&gt;
 &lt;p&gt;This release is mostly motivated by the fix for the panic experienced by people having blackfriday configured as defaultMarkdownHandler (&lt;a href="https://github.com/gohugoio/hugo/issues/9968" target="_blank" rel="noopener"&gt;#9968&lt;/a&gt;). The Blackfriday support was removed in Hugo v0.100.0 after being deprecated with a warning for a long time.&lt;/p&gt;
 &lt;p&gt;v0.100.1 fix panic with markdownify/RenderString with shortcode on Page with no content file.&lt;/p&gt;
 &lt;p&gt;$page.RenderString (see &lt;a href="https://github.com/gohugoio/hugo/issues/6703" target="_blank" rel="noopener"&gt;#6703&lt;/a&gt;) finally supports shortcodes, and shortcode improvements is the main theme in Hugo 0.100.0.&lt;/p&gt;
@@ -178,7 +178,7 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
  &lt;/div&gt;
 &lt;/div&gt;
 &lt;br&gt;
-&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/accordion/" target="_blank" rel="noopener"&gt;Accordion documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo v0.99.1</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</link><pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
+&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/accordion/" target="_blank" rel="noopener"&gt;Accordion documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo v0.99.1</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</link><pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/hugo-logo.svg" alt="Hugo" width="1493" height="391" fetchpriority="high" class="img-fluid mb-5"&gt;
 &lt;p&gt;Fix server regression for multihost sites (multiple languages with different baseURLs).&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"&gt;Release Notes on GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Markdown Cheat Sheet Ⓜ️⬇️</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</link><pubDate>Mon, 16 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-cheat-sheet"&gt;Markdown Cheat Sheet&lt;/h1&gt;
 &lt;p&gt;Hugo has excellent Markdown support out of the box. By default, Hugo uses the &lt;a href="https://github.com/yuin/goldmark/" target="_blank" rel="noopener"&gt;Goldmark Markdown processor&lt;/a&gt; which is fully CommonMark-compliant. See the &lt;a href="https://gohugo.io/getting-started/configuration-markup/" target="_blank" rel="noopener"&gt;configuration instructions&lt;/a&gt; to learn more about the extensions you can configure.&lt;/p&gt;
@@ -244,12 +244,12 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id="headings"&gt;Headings&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# Heading 1
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;## Heading 2
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;### Heading 3
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#### Heading 4
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;##### Heading 5
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;###### Heading 6
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff;font-weight:bold"&gt;# Heading 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;## Heading 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;### Heading 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;#### Heading 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;##### Heading 5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;###### Heading 6
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="heading-1"&gt;Heading 1&lt;/h1&gt;
 &lt;h2 id="heading-2"&gt;Heading 2&lt;/h2&gt;
 &lt;h3 id="heading-3"&gt;Heading 3&lt;/h3&gt;
@@ -258,17 +258,17 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;h6 id="heading-6"&gt;Heading 6&lt;/h6&gt;
 &lt;hr&gt;
 &lt;h2 id="lists"&gt;Lists&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;*&lt;/span&gt; Unordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;*&lt;/span&gt; Unordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;*&lt;/span&gt; Unordered item
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;1.&lt;/span&gt; Ordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;2.&lt;/span&gt; Ordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;3.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;1.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;2.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;3.&lt;/span&gt; Ordered item
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;- [ ]&lt;/span&gt; Task item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;- [x]&lt;/span&gt; Checked Task item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;- [ ]&lt;/span&gt; Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [ ]&lt;/span&gt; Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [x]&lt;/span&gt; Checked Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [ ]&lt;/span&gt; Task item
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Unordered item&lt;/li&gt;
 &lt;li&gt;Unordered item&lt;/li&gt;
@@ -279,14 +279,20 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;li&gt;Ordered item&lt;/li&gt;
 &lt;li&gt;Ordered item&lt;/li&gt;
 &lt;/ol&gt;
+&lt;!-- Hand-written HTML, not the task-list markdown shown in the code block
+ above, and it renders identically. Goldmark emits a task item as a bare
+ disabled checkbox with no accessible name, which a screen reader announces
+ as just "checkbox" and Lighthouse reports as a form element without a
+ label. Hugo has no render hook for task lists, so a label can only be
+ attached by writing the markup out. --&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Task item&lt;/li&gt;
-&lt;li&gt;&lt;input checked="" disabled="" type="checkbox"&gt; Checked Task item&lt;/li&gt;
-&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Task item&lt;/li&gt;
+ &lt;li&gt;&lt;input type="checkbox" id="task-item-1" disabled&gt; &lt;label for="task-item-1"&gt;Task item&lt;/label&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;input type="checkbox" id="task-item-2" checked disabled&gt; &lt;label for="task-item-2"&gt;Checked Task item&lt;/label&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;input type="checkbox" id="task-item-3" disabled&gt; &lt;label for="task-item-3"&gt;Task item&lt;/label&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id="format"&gt;Format&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;**Bold**
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;**Bold**
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-style:italic"&gt;*Italic*&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -298,13 +304,13 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;mark&amp;gt;Highlight&amp;lt;/mark&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#e6db74"&gt;`Inline code`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a5d6ff"&gt;`Inline code`&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;~~Strikethrough~~&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ffa198;background-color:#490202"&gt;~~Strikethrough~~&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#f92672"&gt;Hyperlink&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;http://example.com&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#7ee787"&gt;Hyperlink&lt;/span&gt;](http://example.com)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#f92672"&gt;Image&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;placeholder-50-09f-fff.png&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#7ee787"&gt;Image&lt;/span&gt;](placeholder-50-09f-fff.png)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{ .img-fluid }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>About</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</guid><description>&lt;h1 id="about-us"&gt;About Us&lt;/h1&gt;
 &lt;p&gt;Made with ❤️ by the &lt;em&gt;Hugo Bootstrap Theme&lt;/em&gt; &lt;a href="https://github.com/filipecarneiro/hugo-bootstrap-theme/graphs/contributors" target="_blank" rel="noopener"&gt;team&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Code of Conduct</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</guid><description>&lt;h1 id="contributor-covenant-code-of-conduct"&gt;Contributor Covenant Code of Conduct&lt;/h1&gt;
@@ -329,7 +335,7 @@ diverse, inclusive, and healthy community.&lt;/p&gt;</description></item><item><
 &lt;li&gt;No information is monetized.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="information-we-collect-and-what-we-use-it-for"&gt;Information we collect and what we use it for&lt;/h2&gt;
-&lt;p&gt;The server hosting this site can collect the following information:&lt;/p&gt;</description></item><item><title>Bootstrap 5.2.0 beta</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</link><pubDate>Fri, 13 May 2022 13:00:44 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/bootstrap-5-2-0-beta.png" alt="Bootstrap 5 2 0 Beta" width="647" height="404" class="img-fluid"&gt;
+&lt;p&gt;The server hosting this site can collect the following information:&lt;/p&gt;</description></item><item><title>Bootstrap 5.2.0 beta</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</link><pubDate>Fri, 13 May 2022 13:00:44 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/bootstrap-5-2-0-beta_hu_d45c328fc5a16ecc.webp" alt="Bootstrap 5 2 0 Beta" srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/bootstrap-5-2-0-beta_hu_5f222ffd77222f9.webp 480w, https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/bootstrap-5-2-0-beta_hu_d45c328fc5a16ecc.webp 647w" sizes="(min-width: 1200px) 1140px, 100vw" width="647" height="404" fetchpriority="high" class="img-fluid"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;It’s the biggest release since v5 itself—&lt;strong&gt;Bootstrap v5.2.0-beta1 is here!&lt;/strong&gt; This release features redesigned docs, CSS variables for all our components, responsive offcanvas, new helpers and utilities, refined buttons and inputs, and lots of improvements under the hood.&lt;/p&gt;
 &lt;/blockquote&gt;
