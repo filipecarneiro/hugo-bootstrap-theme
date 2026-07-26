@@ -19,6 +19,21 @@
   New aspect-ratio CSS property supported in Chromium, Safari Technology Preview, and Firefox Nightly
   https://web.dev/aspect-ratio/
 
+  Image descriptions
+
+  Images are looked for in the page's own bundle first, then in assets. Only
+  page resources can carry metadata, so that is the only way to give a slide a
+  real description:
+
+    resources:
+      - src: "carousel/skyline.jpg"
+        params:
+          alt: "The city skyline at dusk"
+
+  An image with no description is treated as decorative - it gets alt="" so
+  screen readers skip it rather than reading out a filename - and the build
+  warns, because a photograph in a carousel usually does carry meaning.
+
   Parameters:
 
     - "imagesPattern" to pass to resources.Match
@@ -39,25 +54,51 @@
 {{/* warnf "Carousel withIndicators: '%+v'" .withIndicators */}}
 {{/* warnf "Carousel withControls: '%+v'" .withControls */}}
 
-{{ $images := resources.Match .imagesPattern }}
+{{/* The page's own bundle first, assets second. Only page resources can carry
+     front matter metadata, so this is what makes a described slide possible at
+     all; the assets fallback keeps every existing site working unchanged. */}}
+{{ $page := .context.Page }}
+{{ $images := or ($page.Resources.Match .imagesPattern) (resources.Match .imagesPattern) }}
+
+{{/* Resolve each description once - the indicators and the slides need the
+     same answer, and it should not be computed twice.
+
+     .Title is not a description: Hugo falls back to the resource name when no
+     title is set, so it holds a filename ("skyline.jpg") for a page resource
+     and a path ("/carousel/skyline.jpg") for an asset. Comparing it against
+     .Name is what tells a real title apart from that default. */}}
+{{ $slides := slice }}
+{{ range $images }}
+  {{ $alt := "" }}
+  {{ with .Params.alt }}{{ $alt = . }}{{ end }}
+  {{ if and (not $alt) (ne .Title .Name) }}{{ $alt = .Title }}{{ end }}
+  {{ if not $alt }}
+    {{ warnf "Carousel: %q on %s has no description - rendering it as decorative (alt=\"\"). Add params.alt for it under `resources` in the page front matter." .Name $page.RelPermalink }}
+  {{ end }}
+  {{ $slides = $slides | append (dict "image" . "alt" $alt) }}
+{{ end }}
 
 <div id="bootstrapCarousel" class="carousel slide {{ if (.crossFade) }}carousel-fade{{ end }}" data-bs-ride="carousel">
   {{ if .withIndicators }}
     <div class="carousel-indicators">
-      {{ range $index, $image := $images }}
+      {{/* The label names the button, not the picture - "Slide 2" is what a
+           user needs when tabbing through the controls, with the image's
+           description appended when it has one. */}}
+      {{ range $index, $slide := $slides }}
         <button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="{{ $index }}"
-                {{ if (ne $index 0) }}
+                {{ if (eq $index 0) }}
                   class="active" aria-current="true"
                 {{ end }}
-                aria-label="{{ $image.Title }}">
+                aria-label="Slide {{ add $index 1 }}{{ with $slide.alt }}: {{ . }}{{ end }}">
         </button>
       {{ end }}
     </div>
   {{ end }}
 
-  {{ with $images }}
+  {{ with $slides }}
   <div class="carousel-inner">
-    {{ range $index, $image := $images }}
+    {{ range $index, $slide := $slides }}
+      {{ $image := $slide.image -}}
       <div class="carousel-item{{ if (eq $index 0) }} active{{ end }}">
         {{/* The carousel is full-bleed (sizes="100vw"), so it wants wider tiers
              than the content column does - but only those the source can
@@ -90,7 +131,7 @@
              width="{{ $default.Width }}" height="{{ $default.Height }}"
              srcset="{{ delimit $srcset ", " }}"
              sizes="100vw"
-             alt="{{ $image.Title }}">
+             alt="{{ $slide.alt }}">
       </div>
     {{ end }}
   </div>

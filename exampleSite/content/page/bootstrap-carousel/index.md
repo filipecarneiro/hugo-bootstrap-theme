@@ -6,6 +6,19 @@ draft: false
 tags: ["Featured"]
 images: ["bootstrap-v5-new-logo.png"]
 keywords: ["bootstrap carousel","bootstrap","hugo bootstrap theme"]
+# The carousel images live in this bundle rather than in assets/ because only
+# page resources can carry metadata - params.alt is what gives each slide a
+# description instead of a filename read aloud by a screen reader.
+resources:
+  - src: "carousel/bootstrap-v5-new-logo.png"
+    params:
+      alt: "The Bootstrap 5 logo: a white letter B on a purple rounded square, ringed by small circles, triangles and zigzags"
+  - src: "carousel/hugo-bootstrap-banner.png"
+    params:
+      alt: "The word HUGO spelled in pink, blue, green and yellow hexagons, above the Bootstrap logo on a purple tile"
+  - src: "carousel/site-feature-image.png"
+    params:
+      alt: "The Hugo Bootstrap Theme home page, with a Get Started button above columns headed Security aware, Fast by default and SEO-ready"
 ---
 
 # Bootstrap Carousel
