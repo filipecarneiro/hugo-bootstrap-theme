@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/</link><description>Recent content on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><lastBuildDate>Sun, 26 Jul 2026 12:32:41 +0000</lastBuildDate><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Sat, 25 Jul 2026 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/</link><description>Recent content on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><lastBuildDate>Sun, 26 Jul 2026 13:04:20 +0000</lastBuildDate><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Sat, 25 Jul 2026 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
 &lt;p&gt;This page exists to exercise the page-level JSON-LD partials that ship with the
 theme, so their output is validated on every build rather than only when a real
 site happens to configure them.&lt;/p&gt;
@@ -267,13 +267,13 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id="headings"&gt;Headings&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff;font-weight:bold"&gt;# Heading 1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;## Heading 2
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;### Heading 3
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;#### Heading 4
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;##### Heading 5
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#79c0ff"&gt;###### Heading 6
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="heading-1"&gt;Heading 1&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# Heading 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;## Heading 2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;### Heading 3
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;#### Heading 4
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;##### Heading 5
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;###### Heading 6
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="heading-1"&gt;Heading 1&lt;/h1&gt;
 &lt;h2 id="heading-2"&gt;Heading 2&lt;/h2&gt;
 &lt;h3 id="heading-3"&gt;Heading 3&lt;/h3&gt;
 &lt;h4 id="heading-4"&gt;Heading 4&lt;/h4&gt;
@@ -281,17 +281,17 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;h6 id="heading-6"&gt;Heading 6&lt;/h6&gt;
 &lt;hr&gt;
 &lt;h2 id="lists"&gt;Lists&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;*&lt;/span&gt; Unordered item
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;*&lt;/span&gt; Unordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;*&lt;/span&gt; Unordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;*&lt;/span&gt; Unordered item
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;1.&lt;/span&gt; Ordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;2.&lt;/span&gt; Ordered item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;3.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;1.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;2.&lt;/span&gt; Ordered item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;3.&lt;/span&gt; Ordered item
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [ ]&lt;/span&gt; Task item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [x]&lt;/span&gt; Checked Task item
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff7b72"&gt;- [ ]&lt;/span&gt; Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;- [ ]&lt;/span&gt; Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;- [x]&lt;/span&gt; Checked Task item
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#5317ac"&gt;- [ ]&lt;/span&gt; Task item
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Unordered item&lt;/li&gt;
 &lt;li&gt;Unordered item&lt;/li&gt;
@@ -315,9 +315,9 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id="format"&gt;Format&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;**Bold**
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#000;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;**Bold**
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-style:italic"&gt;*Italic*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;*Italic*
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;u&amp;gt;Underline&amp;lt;/u&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -327,13 +327,13 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;mark&amp;gt;Highlight&amp;lt;/mark&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a5d6ff"&gt;`Inline code`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#2544bb"&gt;`Inline code`&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ffa198;background-color:#490202"&gt;~~Strikethrough~~&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;~~Strikethrough~~
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#7ee787"&gt;Hyperlink&lt;/span&gt;](http://example.com)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[Hyperlink](http://example.com)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#7ee787"&gt;Image&lt;/span&gt;](placeholder-50-09f-fff.png)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![Image](placeholder-50-09f-fff.png)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{ .img-fluid }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>About</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</guid><description>&lt;h1 id="about-us"&gt;About Us&lt;/h1&gt;
 &lt;p&gt;Made with ❤️ by the &lt;em&gt;Hugo Bootstrap Theme&lt;/em&gt; &lt;a href="https://github.com/filipecarneiro/hugo-bootstrap-theme/graphs/contributors" target="_blank" rel="noopener"&gt;team&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Code of Conduct</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</guid><description>&lt;h1 id="contributor-covenant-code-of-conduct"&gt;Contributor Covenant Code of Conduct&lt;/h1&gt;
