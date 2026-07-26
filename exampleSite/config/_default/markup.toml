@@ -24,6 +24,17 @@ defaultMarkdownHandler = "goldmark"
     unsafe = true
     xHTML = false
 
+[highlight]
+  # Hugo defaults to Monokai, whose comment/subheading grey (#75715e) sits at
+  # 3.03:1 and whose keyword pink (#f92672) at 3.93:1 against the #272822 code
+  # background - both under the 4.5:1 WCAG AA needs, so Lighthouse fails the
+  # page on colour contrast. github-dark clears AA for every token this site
+  # renders, comments included, with 7.51:1 at its worst.
+  #
+  # Its line-number greys are 4.12:1, so if lineNos is ever switched on, the
+  # contrast failure comes back for those.
+  style = "github-dark"
+
 [tableOfContents]
   endLevel = 3
   ordered = false
