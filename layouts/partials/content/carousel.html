@@ -70,6 +70,7 @@
              {{ if (ne $index 0) }} loading="lazy" {{ end }}
              style="width: 100%; height: auto; aspect-ratio: {{ $.aspectRatio | default `16/9` | safeCSS }};"
              src="{{ $imageMedium.RelPermalink }}"
+             width="{{ $imageMedium.Width }}" height="{{ $imageMedium.Height }}"
              srcset="{{ $imageCanvas.RelPermalink }} 3200w, {{ $imageExtraLarge.RelPermalink }} 2560w, {{ $imageLarge.RelPermalink }} 1920w, {{ $imageMedium.RelPermalink }} 1280w, {{ $imageSmall.RelPermalink }} 960w, {{ $imageExtraSmall.RelPermalink }} 640w, {{ $imageExtraExtraSmall.RelPermalink }} 320w"
              sizes="100vw"
              alt="{{ $image.Title }}">

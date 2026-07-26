@@ -1,0 +1,39 @@
+{{- /*
+  Image render hook.
+
+  Emits intrinsic width and height so the browser can reserve space before the
+  image loads, which is what stops the page shifting as images arrive
+  (Cumulative Layout Shift). Hugo reports .Width/.Height for raster images it
+  can decode; SVGs are not decoded, so the dimensions are read from the
+  viewBox instead.
+
+  Markdown attributes are preserved, so `![alt](img.png){ .img-fluid }` keeps
+  its classes.
+*/ -}}
+
+{{- $dest := .Destination -}}
+{{- $res := or (.Page.Resources.GetMatch $dest) (resources.GetMatch $dest) -}}
+
+{{- $w := "" -}}
+{{- $h := "" -}}
+{{- with $res -}}
+  {{- if eq .MediaType.SubType "svg" -}}
+    {{- with (findRESubmatch `viewBox="[\d.-]+ +[\d.-]+ +([\d.]+) +([\d.]+)"` .Content 1) -}}
+      {{- $vb := index . 0 -}}
+      {{- $w = index $vb 1 -}}
+      {{- $h = index $vb 2 -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $w = .Width -}}
+    {{- $h = .Height -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* The first image on a page is often the largest contentful paint, so it
+       is left eager; later ones are lazy. */ -}}
+<img src="{{ $dest | safeURL }}" alt="{{ .Text }}"
+  {{- with .Title }} title="{{ . }}"{{ end }}
+  {{- if and $w $h }} width="{{ $w }}" height="{{ $h }}"{{ end }}
+  {{- if .Ordinal }} loading="lazy"{{ end }}
+  {{- range $k, $v := .Attributes }}{{ with $v }} {{ $k }}="{{ $v }}"{{ end }}{{ end -}}
+>
