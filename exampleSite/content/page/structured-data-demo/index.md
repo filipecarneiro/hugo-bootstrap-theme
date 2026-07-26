@@ -5,6 +5,7 @@ draft: false
 tags: ["Featured"]
 keywords: ["structured data","json-ld","schema.org","hugo bootstrap theme"]
 images: ["site-feature-image.png"]
+authors: ["Filipe Carneiro"]
 
 # schema.org/Product -> layouts/partials/head/schema-product.html
 product:
@@ -21,6 +22,7 @@ product:
   offer:
     price: "0.00"
     priceCurrency: "EUR"
+    validFrom: "2026-01-01"
     priceValidUntil: "2027-12-31"
     availability: "InStock"
     itemCondition: "NewCondition"
@@ -62,6 +64,7 @@ softwareApplication:
   offer:
     price: "0.00"
     priceCurrency: "EUR"
+    validFrom: "2026-01-01"
     priceValidUntil: "2027-12-31"
 
 # schema.org/FAQPage -> layouts/partials/head/schema-faq.html

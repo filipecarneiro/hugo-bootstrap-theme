@@ -89,6 +89,7 @@ footerAboutText = "We protect your website so you can provide a safe environment
   status = "EventScheduled"
   PlaceName = "Example Venue"
   image = "images/site-feature-image.png"
+  performers = ["Filipe Carneiro", "Theme Contributors"]
   [event.address]
     streetAddress = "Rua de Exemplo 100"
     locality = "Porto"
