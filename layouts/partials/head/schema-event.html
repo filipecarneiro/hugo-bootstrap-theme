@@ -43,7 +43,11 @@
     {{ $d = merge $d (dict "offers" $offer) }}
   {{ end }}
 
+  {{/* Performers come from either a simple performers list on the event params
+       or, for sites that keep a schedule, data/event/*.{yaml,toml,json} shaped
+       as events[].speakers[]. Both are merged, de-duplicated and sorted. */}}
   {{ $speakersList := slice }}
+  {{ range .performers }}{{ $speakersList = $speakersList | append . }}{{ end }}
   {{ range hugo.Data.event }}{{ range .events }}{{ range .speakers }}{{ $speakersList = $speakersList | append . }}{{ end }}{{ end }}{{ end }}
   {{ with $speakersList }}
     {{ $performers := slice }}
