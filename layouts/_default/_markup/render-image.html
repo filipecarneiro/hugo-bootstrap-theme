@@ -14,9 +14,19 @@
 {{- $dest := .Destination -}}
 {{- $res := or (.Page.Resources.GetMatch $dest) (resources.GetMatch $dest) -}}
 
+{{- /* Rendered content outlives the page it was written on: .Summary is reused
+       on list pages and the home page, and the same HTML goes into the RSS
+       feed. A bundle-relative destination like `hugo-logo.svg` resolves against
+       whatever URL is displaying it, so it 404s everywhere except the post
+       itself. Publishing the resource's own path keeps the image reachable from
+       any context. Destinations we cannot resolve - absolute URLs, static files
+       - are passed through untouched. */ -}}
+{{- $src := $dest -}}
+
 {{- $w := "" -}}
 {{- $h := "" -}}
 {{- with $res -}}
+  {{- $src = .RelPermalink -}}
   {{- if eq .MediaType.SubType "svg" -}}
     {{- with (findRESubmatch `viewBox="[\d.-]+ +[\d.-]+ +([\d.]+) +([\d.]+)"` .Content 1) -}}
       {{- $vb := index . 0 -}}
@@ -31,7 +41,7 @@
 
 {{- /* The first image on a page is often the largest contentful paint, so it
        is left eager; later ones are lazy. */ -}}
-<img src="{{ $dest | safeURL }}" alt="{{ .Text }}"
+<img src="{{ $src | safeURL }}" alt="{{ .Text }}"
   {{- with .Title }} title="{{ . }}"{{ end }}
   {{- if and $w $h }} width="{{ $w }}" height="{{ $h }}"{{ end }}
   {{- if .Ordinal }} loading="lazy"{{ end }}
