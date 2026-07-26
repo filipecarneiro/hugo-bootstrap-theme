@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/</link><description>Recent content on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><lastBuildDate>Sun, 26 Jul 2026 09:54:48 +0000</lastBuildDate><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo v0.119.0</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/</link><description>Recent content on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><lastBuildDate>Sun, 26 Jul 2026 10:07:22 +0000</lastBuildDate><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Sat, 25 Jul 2026 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
+&lt;p&gt;This page exists to exercise the page-level JSON-LD partials that ship with the
+theme, so their output is validated on every build rather than only when a real
+site happens to configure them.&lt;/p&gt;
+&lt;p&gt;Three schemas are emitted from the front matter above:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/Product" target="_blank" rel="noopener"&gt;Product&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;product:&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/SoftwareApplication" target="_blank" rel="noopener"&gt;SoftwareApplication&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;softwareApplication:&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/FAQPage" target="_blank" rel="noopener"&gt;FAQPage&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;faq:&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The site-level schemas (&lt;code&gt;WebSite&lt;/code&gt;, &lt;code&gt;Organization&lt;/code&gt;, &lt;code&gt;LocalBusiness&lt;/code&gt; and &lt;code&gt;Event&lt;/code&gt;)
+are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and render on the home page.&lt;/p&gt;</description></item><item><title>Hugo v0.119.0</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</link><pubDate>Sun, 24 Sep 2023 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-119/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
 &lt;p&gt;This version is built with Go 1.21.1 which contains some relevant security fixes for the html/template package, see &lt;a href="https://github.com/golang/go/issues/62196" target="_blank" rel="noopener"&gt;Issue 62196&lt;/a&gt; and &lt;a href="https://github.com/golang/go/issues/62197" target="_blank" rel="noopener"&gt;Issue 62197&lt;/a&gt;. This is the main reason Hugo 0.119.0 is released sooner rather than later. But this release also comes with a dependency refresh and some useful image processing improvements:&lt;/p&gt;
 &lt;p&gt;A new general-purpose &lt;a href="https://gohugo.io/content-management/image-processing/#process" target="_blank" rel="noopener"&gt;Process&lt;/a&gt; method and filter.
 A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" rel="noopener"&gt;Opacity&lt;/a&gt; filter.&lt;/p&gt;
@@ -6,32 +17,7 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 &lt;blockquote&gt;
 &lt;p&gt;It’s official, the final stable release of v5.3.0 has landed! It’s been a monumental effort to revamp our codebase for CSS variables and color modes, one that will see continued changes leading up to an eventual Bootstrap 6. And we’re so excited to finally ship it!&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;On top of all the work that’s gone into this release, a lot has happened behind the scenes since we shipped our pre-releases. Keep reading to learn everything that’s &lt;a href="https://blog.getbootstrap.com/2023/05/30/bootstrap-5-3-0/" target="_blank" rel="noopener"&gt;new in v5.3.0&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo v0.100.2</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</link><pubDate>Wed, 08 Jun 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
-&lt;p&gt;This release is mostly motivated by the fix for the panic experienced by people having blackfriday configured as defaultMarkdownHandler (&lt;a href="https://github.com/gohugoio/hugo/issues/9968" target="_blank" rel="noopener"&gt;#9968&lt;/a&gt;). The Blackfriday support was removed in Hugo v0.100.0 after being deprecated with a warning for a long time.&lt;/p&gt;
-&lt;p&gt;v0.100.1 fix panic with markdownify/RenderString with shortcode on Page with no content file.&lt;/p&gt;
-&lt;p&gt;$page.RenderString (see &lt;a href="https://github.com/gohugoio/hugo/issues/6703" target="_blank" rel="noopener"&gt;#6703&lt;/a&gt;) finally supports shortcodes, and shortcode improvements is the main theme in Hugo 0.100.0.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"&gt;Release Notes on GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo Bootstrap Theme alpha</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-bootstrap-theme/</link><pubDate>Sun, 22 May 2022 13:35:02 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-bootstrap-theme/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Open-source MIT Licensed Hugo Theme, using Bootstrap 5.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;🛡️ Security aware&lt;/p&gt;
-&lt;p&gt;Get A+ scores on Mozilla Observatory out of the box. Easily change the default Security Headers to suit your needs.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;⚡ Fast by default&lt;/p&gt;
-&lt;p&gt;Get 100 scores on Google Lighthouse by default. Hugo Bootstrap Theme removes unused css, prefetches links, and lazy loads images.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;📈 SEO-ready&lt;/p&gt;</description></item><item><title>Hugo v0.99.1</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</link><pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
-&lt;p&gt;Fix server regression for multihost sites (multiple languages with different baseURLs).&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"&gt;Release Notes on GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Bootstrap 5.2.0 beta</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</link><pubDate>Fri, 13 May 2022 13:00:44 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/bootstrap-5-2-0-beta.png" alt="Bootstrap 5 2 0 Beta" width="647" height="404" class="img-fluid"&gt;
-&lt;blockquote&gt;
-&lt;p&gt;It’s the biggest release since v5 itself—&lt;strong&gt;Bootstrap v5.2.0-beta1 is here!&lt;/strong&gt; This release features redesigned docs, CSS variables for all our components, responsive offcanvas, new helpers and utilities, refined buttons and inputs, and lots of improvements under the hood.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Given the size of the update and time since our last release, we’re doing something different and shipping it as a beta first. &lt;a href="https://blog.getbootstrap.com/2022/05/13/bootstrap-5-2-0-beta/" target="_blank" rel="noopener"&gt;Keep reading for details&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>About</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</guid><description>&lt;h1 id="about-us"&gt;About Us&lt;/h1&gt;
-&lt;p&gt;Made with ❤️ by the &lt;em&gt;Hugo Bootstrap Theme&lt;/em&gt; &lt;a href="https://github.com/filipecarneiro/hugo-bootstrap-theme/graphs/contributors" target="_blank" rel="noopener"&gt;team&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Bootstrap Carousel 🎠</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</guid><description>&lt;h1 id="bootstrap-carousel"&gt;Bootstrap Carousel&lt;/h1&gt;
+&lt;p&gt;On top of all the work that’s gone into this release, a lot has happened behind the scenes since we shipped our pre-releases. Keep reading to learn everything that’s &lt;a href="https://blog.getbootstrap.com/2023/05/30/bootstrap-5-3-0/" target="_blank" rel="noopener"&gt;new in v5.3.0&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Bootstrap Carousel 🎠</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</guid><description>&lt;h1 id="bootstrap-carousel"&gt;Bootstrap Carousel&lt;/h1&gt;
 &lt;p&gt;A slideshow component for cycling through elements—images or slides of text — like a carousel.&lt;/p&gt;
 &lt;br&gt;
 &lt;div class="w-50 mx-auto"&gt;
@@ -125,7 +111,30 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
 
 &lt;/div&gt;
 &lt;br&gt;
-&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener"&gt;Carousel documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Bootstrap Components ✨</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</guid><description>&lt;h1 id="bootstrap-components"&gt;Bootstrap Components&lt;/h1&gt;
+&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener"&gt;Carousel documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo v0.100.2</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</link><pubDate>Wed, 08 Jun 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-100/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
+&lt;p&gt;This release is mostly motivated by the fix for the panic experienced by people having blackfriday configured as defaultMarkdownHandler (&lt;a href="https://github.com/gohugoio/hugo/issues/9968" target="_blank" rel="noopener"&gt;#9968&lt;/a&gt;). The Blackfriday support was removed in Hugo v0.100.0 after being deprecated with a warning for a long time.&lt;/p&gt;
+&lt;p&gt;v0.100.1 fix panic with markdownify/RenderString with shortcode on Page with no content file.&lt;/p&gt;
+&lt;p&gt;$page.RenderString (see &lt;a href="https://github.com/gohugoio/hugo/issues/6703" target="_blank" rel="noopener"&gt;#6703&lt;/a&gt;) finally supports shortcodes, and shortcode improvements is the main theme in Hugo 0.100.0.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"&gt;Release Notes on GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo Bootstrap Theme alpha</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-bootstrap-theme/</link><pubDate>Sun, 22 May 2022 13:35:02 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-bootstrap-theme/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Open-source MIT Licensed Hugo Theme, using Bootstrap 5.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;🛡️ Security aware&lt;/p&gt;
+&lt;p&gt;Get A+ scores on Mozilla Observatory out of the box. Easily change the default Security Headers to suit your needs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;⚡ Fast by default&lt;/p&gt;
+&lt;p&gt;Get 100 scores on Google Lighthouse by default. Hugo Bootstrap Theme removes unused css, prefetches links, and lazy loads images.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;📈 SEO-ready&lt;/p&gt;</description></item><item><title>Security Best Practices 🔒</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</link><pubDate>Sun, 22 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</guid><description>&lt;h1 id="security-best-practices"&gt;Security Best Practices&lt;/h1&gt;
+&lt;p&gt;Improve code health of your web page following these best practices.&lt;/p&gt;
+&lt;h2 id="use-https"&gt;Use HTTPS&lt;/h2&gt;
+&lt;p&gt;All websites should be protected with HTTPS, even ones that don&amp;rsquo;t handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your site and your users.&lt;/p&gt;
+&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
+&lt;p&gt;When you link to a page on another site using the target=&amp;quot;_blank&amp;quot; attribute, you can expose your site to performance and security issues:&lt;/p&gt;</description></item><item><title>Bootstrap Components ✨</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</link><pubDate>Thu, 19 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</guid><description>&lt;h1 id="bootstrap-components"&gt;Bootstrap Components&lt;/h1&gt;
 &lt;p&gt;Bootstrap is bundled with tens of components that can be reused to provide a good user experience and user interactions in a web page.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="accordion"&gt;Accordion&lt;/h2&gt;
@@ -169,17 +178,9 @@ A new &lt;a href="https://gohugo.io/functions/images/#opacity" target="_blank" r
  &lt;/div&gt;
 &lt;/div&gt;
 &lt;br&gt;
-&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/accordion/" target="_blank" rel="noopener"&gt;Accordion documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Code of Conduct</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</guid><description>&lt;h1 id="contributor-covenant-code-of-conduct"&gt;Contributor Covenant Code of Conduct&lt;/h1&gt;
-&lt;h2 id="our-pledge"&gt;Our Pledge&lt;/h2&gt;
-&lt;p&gt;We as members, contributors, and leaders pledge to make participation in our
-community a harassment-free experience for everyone, regardless of age, body
-size, visible or invisible disability, ethnicity, sex characteristics, gender
-identity and expression, level of experience, education, socio-economic status,
-nationality, personal appearance, race, caste, color, religion, or sexual
-identity and orientation.&lt;/p&gt;
-&lt;p&gt;We pledge to act and interact in ways that contribute to an open, welcoming,
-diverse, inclusive, and healthy community.&lt;/p&gt;</description></item><item><title>Contact</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/contact/</guid><description>&lt;h1 id="contact"&gt;Contact&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://github.com/filipecarneiro/hugo-bootstrap-theme/issues/new" target="_blank" rel="noopener"&gt;Open an issue&lt;/a&gt; on GitHub.&lt;/p&gt;</description></item><item><title>Markdown Cheat Sheet Ⓜ️⬇️</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-cheat-sheet"&gt;Markdown Cheat Sheet&lt;/h1&gt;
+&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/accordion/" target="_blank" rel="noopener"&gt;Accordion documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Hugo v0.99.1</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</link><pubDate>Wed, 18 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/hugo-v0-99/hugo-logo.svg" alt="Hugo" width="1493" height="391" class="img-fluid mb-5"&gt;
+&lt;p&gt;Fix server regression for multihost sites (multiple languages with different baseURLs).&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"&gt;Release Notes on GitHub&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Markdown Cheat Sheet Ⓜ️⬇️</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</link><pubDate>Mon, 16 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-cheat-sheet"&gt;Markdown Cheat Sheet&lt;/h1&gt;
 &lt;p&gt;Hugo has excellent Markdown support out of the box. By default, Hugo uses the &lt;a href="https://github.com/yuin/goldmark/" target="_blank" rel="noopener"&gt;Goldmark Markdown processor&lt;/a&gt; which is fully CommonMark-compliant. See the &lt;a href="https://gohugo.io/getting-started/configuration-markup/" target="_blank" rel="noopener"&gt;configuration instructions&lt;/a&gt; to learn more about the extensions you can configure.&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;/h2&gt;
 &lt;p&gt;You can refer to the table below for an overview of basic markdown syntax:&lt;/p&gt;
@@ -305,7 +306,18 @@ diverse, inclusive, and healthy community.&lt;/p&gt;</description></item><item><
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#f92672"&gt;Image&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;placeholder-50-09f-fff.png&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{ .img-fluid }
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Privacy Policy</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/privacy-policy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/privacy-policy/</guid><description>&lt;h1 id="privacy-policy"&gt;Privacy Policy&lt;/h1&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>About</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/about/</guid><description>&lt;h1 id="about-us"&gt;About Us&lt;/h1&gt;
+&lt;p&gt;Made with ❤️ by the &lt;em&gt;Hugo Bootstrap Theme&lt;/em&gt; &lt;a href="https://github.com/filipecarneiro/hugo-bootstrap-theme/graphs/contributors" target="_blank" rel="noopener"&gt;team&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Code of Conduct</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/code-of-conduct/</guid><description>&lt;h1 id="contributor-covenant-code-of-conduct"&gt;Contributor Covenant Code of Conduct&lt;/h1&gt;
+&lt;h2 id="our-pledge"&gt;Our Pledge&lt;/h2&gt;
+&lt;p&gt;We as members, contributors, and leaders pledge to make participation in our
+community a harassment-free experience for everyone, regardless of age, body
+size, visible or invisible disability, ethnicity, sex characteristics, gender
+identity and expression, level of experience, education, socio-economic status,
+nationality, personal appearance, race, caste, color, religion, or sexual
+identity and orientation.&lt;/p&gt;
+&lt;p&gt;We pledge to act and interact in ways that contribute to an open, welcoming,
+diverse, inclusive, and healthy community.&lt;/p&gt;</description></item><item><title>Contact</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/contact/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/contact/</guid><description>&lt;h1 id="contact"&gt;Contact&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://github.com/filipecarneiro/hugo-bootstrap-theme/issues/new" target="_blank" rel="noopener"&gt;Open an issue&lt;/a&gt; on GitHub.&lt;/p&gt;</description></item><item><title>Privacy Policy</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/privacy-policy/</link><pubDate>Sun, 15 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/privacy-policy/</guid><description>&lt;h1 id="privacy-policy"&gt;Privacy Policy&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: We do not use cookies and we do not collect any personal data.&lt;/p&gt;
 &lt;h2 id="website-visitors"&gt;Website visitors&lt;/h2&gt;
 &lt;ul&gt;
@@ -317,20 +329,8 @@ diverse, inclusive, and healthy community.&lt;/p&gt;</description></item><item><
 &lt;li&gt;No information is monetized.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="information-we-collect-and-what-we-use-it-for"&gt;Information we collect and what we use it for&lt;/h2&gt;
-&lt;p&gt;The server hosting this site can collect the following information:&lt;/p&gt;</description></item><item><title>Security Best Practices 🔒</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</guid><description>&lt;h1 id="security-best-practices"&gt;Security Best Practices&lt;/h1&gt;
-&lt;p&gt;Improve code health of your web page following these best practices.&lt;/p&gt;
-&lt;h2 id="use-https"&gt;Use HTTPS&lt;/h2&gt;
-&lt;p&gt;All websites should be protected with HTTPS, even ones that don&amp;rsquo;t handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your site and your users.&lt;/p&gt;
-&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
-&lt;p&gt;When you link to a page on another site using the target=&amp;quot;_blank&amp;quot; attribute, you can expose your site to performance and security issues:&lt;/p&gt;</description></item><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
-&lt;p&gt;This page exists to exercise the page-level JSON-LD partials that ship with the
-theme, so their output is validated on every build rather than only when a real
-site happens to configure them.&lt;/p&gt;
-&lt;p&gt;Three schemas are emitted from the front matter above:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/Product" target="_blank" rel="noopener"&gt;Product&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;product:&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/SoftwareApplication" target="_blank" rel="noopener"&gt;SoftwareApplication&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;softwareApplication:&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/FAQPage" target="_blank" rel="noopener"&gt;FAQPage&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;faq:&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The site-level schemas (&lt;code&gt;WebSite&lt;/code&gt;, &lt;code&gt;Organization&lt;/code&gt;, &lt;code&gt;LocalBusiness&lt;/code&gt; and &lt;code&gt;Event&lt;/code&gt;)
-are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and render on the home page.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;The server hosting this site can collect the following information:&lt;/p&gt;</description></item><item><title>Bootstrap 5.2.0 beta</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</link><pubDate>Fri, 13 May 2022 13:00:44 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/</guid><description>&lt;img src="https://filipecarneiro.github.io/hugo-bootstrap-theme/post/bootstrap-5-2-0-beta/bootstrap-5-2-0-beta.png" alt="Bootstrap 5 2 0 Beta" width="647" height="404" class="img-fluid"&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It’s the biggest release since v5 itself—&lt;strong&gt;Bootstrap v5.2.0-beta1 is here!&lt;/strong&gt; This release features redesigned docs, CSS variables for all our components, responsive offcanvas, new helpers and utilities, refined buttons and inputs, and lots of improvements under the hood.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Given the size of the update and time since our last release, we’re doing something different and shipping it as a beta first. &lt;a href="https://blog.getbootstrap.com/2022/05/13/bootstrap-5-2-0-beta/" target="_blank" rel="noopener"&gt;Keep reading for details&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>

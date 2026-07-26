@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/</link><description>Recent content in Docs on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Bootstrap Carousel 🎠</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</guid><description>&lt;h1 id="bootstrap-carousel"&gt;Bootstrap Carousel&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on Hugo Bootstrap Theme</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/</link><description>Recent content in Docs on Hugo Bootstrap Theme</description><generator>Hugo</generator><language>en-US</language><copyright>Open-source &lt;a class="text-muted text-decoration-none" href="https://github.com/filipecarneiro/hugo-bootstrap-theme/blob/main/LICENSE"&gt;MIT&lt;/a&gt; Licensed.</copyright><atom:link href="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Sat, 25 Jul 2026 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
+&lt;p&gt;This page exists to exercise the page-level JSON-LD partials that ship with the
+theme, so their output is validated on every build rather than only when a real
+site happens to configure them.&lt;/p&gt;
+&lt;p&gt;Three schemas are emitted from the front matter above:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/Product" target="_blank" rel="noopener"&gt;Product&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;product:&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/SoftwareApplication" target="_blank" rel="noopener"&gt;SoftwareApplication&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;softwareApplication:&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/FAQPage" target="_blank" rel="noopener"&gt;FAQPage&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;faq:&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The site-level schemas (&lt;code&gt;WebSite&lt;/code&gt;, &lt;code&gt;Organization&lt;/code&gt;, &lt;code&gt;LocalBusiness&lt;/code&gt; and &lt;code&gt;Event&lt;/code&gt;)
+are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and render on the home page.&lt;/p&gt;</description></item><item><title>Bootstrap Carousel 🎠</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</guid><description>&lt;h1 id="bootstrap-carousel"&gt;Bootstrap Carousel&lt;/h1&gt;
 &lt;p&gt;A slideshow component for cycling through elements—images or slides of text — like a carousel.&lt;/p&gt;
 &lt;br&gt;
 &lt;div class="w-50 mx-auto"&gt;
@@ -92,7 +103,12 @@
 
 &lt;/div&gt;
 &lt;br&gt;
-&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener"&gt;Carousel documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Bootstrap Components ✨</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</guid><description>&lt;h1 id="bootstrap-components"&gt;Bootstrap Components&lt;/h1&gt;
+&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/carousel/" target="_blank" rel="noopener"&gt;Carousel documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Security Best Practices 🔒</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</link><pubDate>Sun, 22 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</guid><description>&lt;h1 id="security-best-practices"&gt;Security Best Practices&lt;/h1&gt;
+&lt;p&gt;Improve code health of your web page following these best practices.&lt;/p&gt;
+&lt;h2 id="use-https"&gt;Use HTTPS&lt;/h2&gt;
+&lt;p&gt;All websites should be protected with HTTPS, even ones that don&amp;rsquo;t handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your site and your users.&lt;/p&gt;
+&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
+&lt;p&gt;When you link to a page on another site using the target=&amp;quot;_blank&amp;quot; attribute, you can expose your site to performance and security issues:&lt;/p&gt;</description></item><item><title>Bootstrap Components ✨</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</link><pubDate>Thu, 19 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-components/</guid><description>&lt;h1 id="bootstrap-components"&gt;Bootstrap Components&lt;/h1&gt;
 &lt;p&gt;Bootstrap is bundled with tens of components that can be reused to provide a good user experience and user interactions in a web page.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="accordion"&gt;Accordion&lt;/h2&gt;
@@ -136,7 +152,7 @@
  &lt;/div&gt;
 &lt;/div&gt;
 &lt;br&gt;
-&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/accordion/" target="_blank" rel="noopener"&gt;Accordion documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Markdown Cheat Sheet Ⓜ️⬇️</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-cheat-sheet"&gt;Markdown Cheat Sheet&lt;/h1&gt;
+&lt;p&gt;See &lt;a href="https://getbootstrap.com/docs/5.3/components/accordion/" target="_blank" rel="noopener"&gt;Accordion documentation&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Markdown Cheat Sheet Ⓜ️⬇️</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</link><pubDate>Mon, 16 May 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/markdown-cheat-sheet/</guid><description>&lt;h1 id="markdown-cheat-sheet"&gt;Markdown Cheat Sheet&lt;/h1&gt;
 &lt;p&gt;Hugo has excellent Markdown support out of the box. By default, Hugo uses the &lt;a href="https://github.com/yuin/goldmark/" target="_blank" rel="noopener"&gt;Goldmark Markdown processor&lt;/a&gt; which is fully CommonMark-compliant. See the &lt;a href="https://gohugo.io/getting-started/configuration-markup/" target="_blank" rel="noopener"&gt;configuration instructions&lt;/a&gt; to learn more about the extensions you can configure.&lt;/p&gt;
 &lt;h2 id="overview"&gt;Overview&lt;/h2&gt;
 &lt;p&gt;You can refer to the table below for an overview of basic markdown syntax:&lt;/p&gt;
@@ -262,20 +278,4 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#f92672"&gt;Image&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;placeholder-50-09f-fff.png&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{ .img-fluid }
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Security Best Practices 🔒</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/security-best-practices/</guid><description>&lt;h1 id="security-best-practices"&gt;Security Best Practices&lt;/h1&gt;
-&lt;p&gt;Improve code health of your web page following these best practices.&lt;/p&gt;
-&lt;h2 id="use-https"&gt;Use HTTPS&lt;/h2&gt;
-&lt;p&gt;All websites should be protected with HTTPS, even ones that don&amp;rsquo;t handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your site and your users.&lt;/p&gt;
-&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
-&lt;p&gt;When you link to a page on another site using the target=&amp;quot;_blank&amp;quot; attribute, you can expose your site to performance and security issues:&lt;/p&gt;</description></item><item><title>Structured Data Demo 🔎</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/structured-data-demo/</guid><description>&lt;h1 id="structured-data-demo"&gt;Structured Data Demo&lt;/h1&gt;
-&lt;p&gt;This page exists to exercise the page-level JSON-LD partials that ship with the
-theme, so their output is validated on every build rather than only when a real
-site happens to configure them.&lt;/p&gt;
-&lt;p&gt;Three schemas are emitted from the front matter above:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/Product" target="_blank" rel="noopener"&gt;Product&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;product:&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/SoftwareApplication" target="_blank" rel="noopener"&gt;SoftwareApplication&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;softwareApplication:&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/FAQPage" target="_blank" rel="noopener"&gt;FAQPage&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;faq:&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The site-level schemas (&lt;code&gt;WebSite&lt;/code&gt;, &lt;code&gt;Organization&lt;/code&gt;, &lt;code&gt;LocalBusiness&lt;/code&gt; and &lt;code&gt;Event&lt;/code&gt;)
-are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and render on the home page.&lt;/p&gt;</description></item></channel></rss>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Bold&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>
