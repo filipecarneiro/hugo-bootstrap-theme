@@ -56,6 +56,28 @@ blockquote {
     height: 4em;
 }
 
+// Highlighted code blocks.
+//
+// Chroma supplies the colours only - with noClasses they arrive as an inline
+// style on the <pre> - and Bootstrap's reboot gives pre nothing but display,
+// margin and overflow. Without the rules below the code sits hard against the
+// edges of its own background, reading as a full-bleed slab rather than a code
+// block. Padding has to go on the pre, not the .highlight wrapper, because the
+// background colour is on the pre.
+//
+// The border does the work a dark background used to: the syntax theme is a
+// light one, so without it a block would be white on white and have no edge.
+.highlight {
+    margin-bottom: 1rem;
+
+    pre {
+        padding: 1rem;
+        margin-bottom: 0;
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+    }
+}
+
 a /*.feather*/ {
     $twitter-blue: #55acee;
     $github-black: #000;
