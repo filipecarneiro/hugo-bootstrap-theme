@@ -59,19 +59,36 @@
   <div class="carousel-inner">
     {{ range $index, $image := $images }}
       <div class="carousel-item{{ if (eq $index 0) }} active{{ end }}">
-        {{ $imageCanvas := $image.Resize "3200x webp" -}}
-        {{ $imageExtraLarge := $image.Resize "2560x webp" -}}
-        {{ $imageLarge := $image.Resize "1920x webp" -}}
-        {{ $imageMedium := $image.Resize "1280x webp" -}}
-        {{ $imageSmall := $image.Resize "960x webp" -}}
-        {{ $imageExtraSmall := $image.Resize "640x webp" -}}
-        {{ $imageExtraExtraSmall := $image.Resize "320x webp" -}}
+        {{/* The carousel is full-bleed (sizes="100vw"), so it wants wider tiers
+             than the content column does - but only those the source can
+             actually fill. Resizing above the original width upscales: Hugo
+             writes a genuinely larger file with no extra detail, which for a
+             300x200 source meant 8 KiB in and 94 KiB out. The image's own width
+             is always the top tier, so nothing is lost. */ -}}
+        {{ $targets := slice 320 640 960 1280 1920 2560 3200 -}}
+        {{ $variants := slice -}}
+        {{ range $target := $targets -}}
+          {{ if lt $target $image.Width -}}
+            {{ $variants = $variants | append ($image.Resize (printf "%dx webp" $target)) -}}
+          {{ end -}}
+        {{ end -}}
+        {{ $variants = $variants | append ($image.Resize (printf "%dx webp" $image.Width)) -}}
+
+        {{/* Fallback for the src attribute: the largest tier that stays within
+             a typical laptop width, so browsers that ignore srcset do not pull
+             the biggest file. */ -}}
+        {{ $default := index $variants 0 -}}
+        {{ $srcset := slice -}}
+        {{ range $variant := $variants -}}
+          {{ if le $variant.Width 1280 }}{{ $default = $variant }}{{ end -}}
+          {{ $srcset = $srcset | append (printf "%s %dw" $variant.RelPermalink $variant.Width) -}}
+        {{ end -}}
         <img class="d-block w-100"
              {{ if (ne $index 0) }} loading="lazy" {{ end }}
              style="width: 100%; height: auto; aspect-ratio: {{ $.aspectRatio | default `16/9` | safeCSS }};"
-             src="{{ $imageMedium.RelPermalink }}"
-             width="{{ $imageMedium.Width }}" height="{{ $imageMedium.Height }}"
-             srcset="{{ $imageCanvas.RelPermalink }} 3200w, {{ $imageExtraLarge.RelPermalink }} 2560w, {{ $imageLarge.RelPermalink }} 1920w, {{ $imageMedium.RelPermalink }} 1280w, {{ $imageSmall.RelPermalink }} 960w, {{ $imageExtraSmall.RelPermalink }} 640w, {{ $imageExtraExtraSmall.RelPermalink }} 320w"
+             src="{{ $default.RelPermalink }}"
+             width="{{ $default.Width }}" height="{{ $default.Height }}"
+             srcset="{{ delimit $srcset ", " }}"
              sizes="100vw"
              alt="{{ $image.Title }}">
       </div>
