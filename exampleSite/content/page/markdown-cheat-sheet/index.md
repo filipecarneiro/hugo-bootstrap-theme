@@ -85,9 +85,17 @@ You can refer to the table below for an overview of basic markdown syntax:
 2. Ordered item
 3. Ordered item
 
-- [ ] Task item
-- [x] Checked Task item
-- [ ] Task item
+<!-- Hand-written HTML, not the task-list markdown shown in the code block
+     above, and it renders identically. Goldmark emits a task item as a bare
+     disabled checkbox with no accessible name, which a screen reader announces
+     as just "checkbox" and Lighthouse reports as a form element without a
+     label. Hugo has no render hook for task lists, so a label can only be
+     attached by writing the markup out. -->
+<ul>
+  <li><input type="checkbox" id="task-item-1" disabled> <label for="task-item-1">Task item</label></li>
+  <li><input type="checkbox" id="task-item-2" checked disabled> <label for="task-item-2">Checked Task item</label></li>
+  <li><input type="checkbox" id="task-item-3" disabled> <label for="task-item-3">Task item</label></li>
+</ul>
 
 ---
 
