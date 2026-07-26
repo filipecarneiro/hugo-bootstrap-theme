@@ -1,2 +1,9 @@
 <!-- https://report-uri.com/home/generate -->
-<meta http-equiv='Content-Security-Policy' content="script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'">
+{{- /* Set params.contentSecurityPolicy to change this, rather than overriding
+       the partial: the same value is then used for the header emitted into
+       _headers, so a site cannot end up with two policies that disagree. A
+       browser enforces every policy it is given, so a stricter header silently
+       overrides a more permissive meta tag. */ -}}
+{{- $default := "script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'" -}}
+{{- $csp := site.Params.contentSecurityPolicy | default $default -}}
+<meta http-equiv='Content-Security-Policy' {{ printf "content=%q" $csp | safeHTMLAttr }}>

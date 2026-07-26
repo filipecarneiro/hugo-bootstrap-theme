@@ -14,7 +14,7 @@ Theme for a blazing fast static website and/or blog using bootstrap 5.
 
 - 🛡️ Security aware
   
-  Get A+ scores on Mozilla Observatory out of the box. Easily change the default Security Headers to suit your needs.
+  Every page carries a Content Security Policy, and a `_headers` file of sensible defaults is available for hosts that serve custom response headers — see [Security headers](#security-headers). Note that GitHub Pages cannot serve custom headers at all, so a site published there is graded on the meta CSP alone.
 
 - ⚡Fast by default
   
@@ -110,6 +110,60 @@ hugo server -D --disableFastRender
 Check your `copyright` variable, your menus (the theme supports `main`, `footer` and `social` menus), etc.
 
 Have a look on exampleSite for inspiration :)
+
+### Security headers
+
+Every page gets a Content Security Policy as a `<meta>` tag, which works on any
+host. The remaining headers — `Referrer-Policy`, `X-Content-Type-Options`,
+`X-Frame-Options`, `Permissions-Policy`, `Strict-Transport-Security` — can only
+be sent as HTTP response headers, so they depend on where the site is published:
+
+| Host | Custom headers | What applies |
+| --- | --- | --- |
+| Netlify, Cloudflare Pages | reads `_headers` | meta CSP **and** all headers below |
+| GitHub Pages | not supported | meta CSP only |
+
+The theme ships `layouts/index.headers`, but Hugo writes it only if the site
+declares the output format. Add these three blocks to your configuration:
+
+```toml
+[mediaTypes]
+  # No delimiter, so the file is written as "_headers" and not "_headers.txt".
+  [mediaTypes."text/netlify"]
+    delimiter = ""
+
+[outputFormats]
+  [outputFormats.HEADERS]
+    mediaType = "text/netlify"
+    baseName = "_headers"
+    isPlainText = true
+    notAlternative = true
+
+[outputs]
+  # HTML and RSS are Hugo's defaults for the home page and must be repeated,
+  # or declaring HEADERS would replace them.
+  home = ["HTML", "RSS", "HEADERS"]
+```
+
+Build and confirm `public/_headers` exists. To change the headers themselves,
+copy `layouts/index.headers` into your own `layouts/`.
+
+#### Changing the Content Security Policy
+
+Set it once, in `params` — **do not** override the
+`head/content-security-policy.html` partial:
+
+```toml
+[params]
+  contentSecurityPolicy = "script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'"
+```
+
+The same value is then used for the meta tag and for the header in `_headers`.
+This matters: a browser enforces *every* policy it receives and applies the
+intersection, so a permissive meta tag combined with a stricter header blocks
+whatever only the meta tag allowed. While the parameter is unset no CSP is
+written to `_headers`, precisely so an overridden meta tag cannot be tightened
+behind your back.
 
 ### Start from Scratch
 

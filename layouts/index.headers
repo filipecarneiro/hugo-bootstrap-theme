@@ -1,3 +1,10 @@
+{{- /* Security headers for hosts that read a _headers file - Netlify and
+       Cloudflare Pages. GitHub Pages ignores it, because it cannot serve
+       custom response headers at all; there the meta CSP is the only policy
+       that reaches the browser.
+
+       Nothing is written unless the site declares the HEADERS output format -
+       see "Security headers" in the README. */ -}}
 # Sensible default security headers
 #  - More info: https://scotthelme.co.uk/hardening-your-http-response-headers/
 #  - Test website: https://securityheaders.com/
@@ -5,4 +12,13 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
   X-Frame-Options: sameorigin
-  Content-Security-Policy: script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+{{- /* Emitted only when the site set the policy in one place. A CSP here and
+       a different one in the meta tag are not alternatives - a browser applies
+       every policy it receives and enforces the intersection - so shipping a
+       default here would quietly tighten any site that had customised its meta
+       CSP, blocking whatever that policy allows and this one does not. */ -}}
+{{- with site.Params.contentSecurityPolicy }}
+  Content-Security-Policy: {{ . }}
+{{- end }}
