@@ -1,0 +1,99 @@
+name: Release
+
+# Patch releases are automatic: every push to main that touches shipped files
+# bumps the patch number, tags, publishes to npm and creates a GitHub release.
+#
+# Minor and major releases are deliberate: run this workflow manually from the
+# Actions tab and pick the bump. A breaking change must never ship as a patch -
+# consumers depend on caret ranges that promise backwards compatibility.
+
+on:
+  push:
+    branches: [main]
+    # Changes that do not alter what consumers install should not cut a release.
+    # Note this also skips exampleSite content edits (*.md), which do ship in
+    # the package - trigger a release manually if one of those matters.
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+      - '.vscode/**'
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump to apply
+        required: true
+        default: minor
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+
+# Never let two releases race for the same version number.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read Hugo version
+        id: hugo
+        run: echo "version=$(cat .hugo-version)" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: ${{ steps.hugo.outputs.version }}
+          extended: true
+
+      # Guard: never publish a theme that cannot build.
+      - name: Build exampleSite
+        run: hugo --source exampleSite --minify --cleanDestinationDir --gc
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: https://registry.npmjs.org
+
+      - name: Show what will be published
+        run: npm pack --dry-run
+
+      - name: Configure git identity
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # [skip ci] plus the fact that pushes made with GITHUB_TOKEN do not
+      # trigger workflows keeps this from looping.
+      - name: Bump version
+        id: bump
+        run: |
+          BUMP="${{ github.event.inputs.bump || 'patch' }}"
+          VERSION="$(npm version "$BUMP" -m 'chore(release): %s [skip ci]')"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Releasing $VERSION"
+
+      - name: Push commit and tag
+        run: git push --follow-tags
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub release
+        run: |
+          gh release create "${{ steps.bump.outputs.version }}" \
+            --title "${{ steps.bump.outputs.version }}" \
+            --generate-notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
