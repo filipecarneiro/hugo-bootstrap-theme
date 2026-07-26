@@ -48,7 +48,12 @@ import { createRequire } from 'node:module'
 import { dirname, join, resolve } from 'node:path'
 import { discoverUrls } from './sitemap-urls.mjs'
 
-const OUT_ROOT = resolve('.unlighthouse', 'sweep')
+/* Reports live at .unlighthouse/sweep/<site>/<page>/, set once the site is
+   known. Naming the directories after the site and the page - rather than
+   numbering them - keeps sweeps of different sites apart, lets a re-run
+   refresh its own results instead of piling up, and makes an artifact easy to
+   find when you want to read the raw lighthouse.json for one page. */
+let OUT_ROOT
 
 /* ci-result.json keys, in the order they should be printed. */
 const CATEGORIES = [
@@ -99,16 +104,22 @@ async function main() {
     fail(values.match ? `no URL matches "${values.match}"` : `no URLs to scan`)
   }
 
-  /* A stale sweep directory would let a crashed run be read as a passing one. */
-  await rm(OUT_ROOT, { recursive: true, force: true })
+  /* With --url and no --site, the pages themselves say which site this is. */
+  OUT_ROOT = resolve('.unlighthouse', 'sweep', slug(site ?? new URL(urls[0]).origin))
   await mkdir(OUT_ROOT, { recursive: true })
 
   warn(`Scanning ${urls.length} pages with unlighthouse-ci (${concurrency} at a time)`)
   warn(`Roughly ${Math.ceil((urls.length * 20) / concurrency / 60)} minutes.\n`)
+  if (concurrency > 1) {
+    /* Lighthouse times the page on this machine, so rival Chrome instances
+       show up as a lower performance score. The other three categories are
+       static analysis and stay put. */
+    warn(`Note: performance scores are unreliable above --concurrency=1.\n`)
+  }
 
   let done = 0
-  const results = await pool(urls, concurrency, async (url, index) => {
-    const result = await scan(url, index)
+  const results = await pool(urls, concurrency, async (url) => {
+    const result = await scan(url)
     done += 1
     warn(`[${String(done).padStart(String(urls.length).length)}/${urls.length}] ${line(result)}`)
     return result
@@ -137,9 +148,18 @@ try {
 /* ------------------------------------------------------------------------ */
 
 /** Scans one page and reads back the scores that run wrote to disk. */
-async function scan(url, index) {
-  const outputPath = join(OUT_ROOT, String(index))
+async function scan(url) {
   const { pathname } = new URL(url)
+  const outputPath = join(OUT_ROOT, slug(pathname) || 'home')
+
+  /* Cleared per page rather than wiping the whole sweep directory up front:
+     a second run started while this one is going would otherwise delete the
+     directories the running children are about to write into, and the child
+     fails with a bare ENOENT on its own report. Creating it here also means
+     unlighthouse never has to, so writing the report cannot fail for want of
+     a directory. */
+  await rm(outputPath, { recursive: true, force: true })
+  await mkdir(outputPath, { recursive: true })
 
   /* Just --site, deliberately no --urls. Passing an explicit url list looks
      like the tighter option - it turns the crawler off - but it makes
@@ -160,8 +180,15 @@ async function scan(url, index) {
   const resultFile = join(outputPath, 'ci-result.json')
   if (!existsSync(resultFile)) {
     /* unlighthouse-ci exits non-zero for a failed budget too, so the missing
-       file - not the exit code - is what marks a run as broken. */
-    return { url, error: lastError(stderr) || `exit ${code}` }
+       file - not the exit code - is what marks a run as broken. Say that the
+       report is missing rather than only echoing the child's error: an ENOENT
+       on this very path reads as if the scan script failed, when it is
+       unlighthouse reporting it could not write its own output. */
+    const detail = lastError(stderr)
+    return {
+      url,
+      error: `unlighthouse wrote no report (exit ${code})${detail ? ` - ${detail}` : ''}`,
+    }
   }
 
   const rows = JSON.parse(await readFile(resultFile, 'utf8'))
@@ -283,6 +310,21 @@ function lastError(stderr) {
     .filter(Boolean)
   const flagged = lines.filter((l) => /ERROR|Error:/.test(l)).pop()
   return (flagged ?? lines.pop() ?? '').replace(/^\[Unlighthouse\]\s*/, '')
+}
+
+/**
+ * Turns a URL or path into a directory name.
+ *
+ * Truncated because Windows still caps a full path at 260 characters by
+ * default, and a deep URL plus the repo path can reach it.
+ */
+function slug(s) {
+  return s
+    .toLowerCase()
+    .replace(/^https?:\/\//, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60)
 }
 
 function warn(m) {
