@@ -46,6 +46,7 @@
  
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
  src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp"
+ width="1280" height="853"
  srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_a38aed50b3671da8.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_868ab0caa8c1ea89.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_8c7815b60042997c.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_f02d8114a926fe8b.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_98ea1cc9fcc628e9.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_b5ba7ea000e46f13.webp 320w"
  sizes="100vw"
  alt="/carousel/bootstrap-v5-new-logo.png"&gt;
@@ -56,6 +57,7 @@
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
  src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_f5c58e8fd3bf94cd.webp"
+ width="1280" height="853"
  srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_9a244f6ac10a1501.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_ca213fa3f12e87a1.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_987c0856de059395.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_f5c58e8fd3bf94cd.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3569854ca2402d40.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3a632ea0cf515ae.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_562134f766a643ab.webp 320w"
  sizes="100vw"
  alt="/carousel/hugo-bootstrap-banner.png"&gt;
@@ -66,6 +68,7 @@
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
  src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_2307e3bf8cbc3b13.webp"
+ width="1280" height="853"
  srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_de2c29e6bbbe095e.webp 3200w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_5a7d8ece9e74673e.webp 2560w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_5ca2777393db0e32.webp 1920w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_2307e3bf8cbc3b13.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_ed12dd2cf96c83.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_29b1e057aa93d8f4.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_6fd943804354b6d2.webp 320w"
  sizes="100vw"
  alt="/carousel/site-feature-image.png"&gt;
