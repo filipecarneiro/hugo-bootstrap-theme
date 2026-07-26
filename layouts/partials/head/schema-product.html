@@ -28,6 +28,7 @@
                       "price" (trim .price " ")
                       "priceCurrency" .priceCurrency
                       "url" $.Permalink }}
+    {{ with .validFrom }}{{ $offer = merge $offer (dict "validFrom" .) }}{{ end }}
     {{ with .priceValidUntil }}{{ $offer = merge $offer (dict "priceValidUntil" .) }}{{ end }}
     {{ with .availability }}{{ $offer = merge $offer (dict "availability" (printf "https://schema.org/%s" .)) }}{{ end }}
     {{ with .itemCondition }}{{ $offer = merge $offer (dict "itemCondition" (printf "https://schema.org/%s" .)) }}{{ end }}
