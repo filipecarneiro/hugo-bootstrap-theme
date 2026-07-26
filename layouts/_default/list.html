@@ -72,7 +72,10 @@
                             {{ end }}
                         </div>
                         
-                        <a class="stretched-link" href="{{.RelPermalink}}"></a>
+                        {{/* The link covers the whole card and carries no visible text of
+                             its own, so its accessible name comes from the title repeated
+                             for screen readers - an empty <a> is announced as just "link". */}}
+                        <a class="stretched-link" href="{{.RelPermalink}}"><span class="visually-hidden">{{ .Title }}</span></a>
                     </div>
                 </div>
 
