@@ -23,27 +23,50 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
  
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  &lt;div id="bootstrapCarousel" class="carousel slide " data-bs-ride="carousel"&gt;
  
  &lt;div class="carousel-indicators"&gt;
  
+ 
  &lt;button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="0"
  
- aria-label="/carousel/bootstrap-v5-new-logo.png"&gt;
+ class="active" aria-current="true"
+ 
+ aria-label="Slide 1: The Bootstrap 5 logo: a white letter B on a purple rounded square, ringed by small circles, triangles and zigzags"&gt;
  &lt;/button&gt;
  
  &lt;button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="1"
  
- class="active" aria-current="true"
- 
- aria-label="/carousel/hugo-bootstrap-banner.png"&gt;
+ aria-label="Slide 2: The word HUGO spelled in pink, blue, green and yellow hexagons, above the Bootstrap logo on a purple tile"&gt;
  &lt;/button&gt;
  
  &lt;button type="button" data-bs-target="#bootstrapCarousel" data-bs-slide-to="2"
  
- class="active" aria-current="true"
- 
- aria-label="/carousel/site-feature-image.png"&gt;
+ aria-label="Slide 3: The Hugo Bootstrap Theme home page, with a Get Started button above columns headed Security aware, Fast by default and SEO-ready"&gt;
  &lt;/button&gt;
  
  &lt;/div&gt;
@@ -56,33 +79,33 @@ are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and rende
  &lt;img class="d-block w-100"
  
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
- src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp"
  width="1280" height="853"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_b5ba7ea000e46f13.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_98ea1cc9fcc628e9.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_f02d8114a926fe8b.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/bootstrap-v5-new-logo_hu_8aa19c5f7199b76d.webp 1500w"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/bootstrap-v5-new-logo_hu_b5ba7ea000e46f13.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/bootstrap-v5-new-logo_hu_98ea1cc9fcc628e9.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/bootstrap-v5-new-logo_hu_f02d8114a926fe8b.webp 960w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/bootstrap-v5-new-logo_hu_e4c567b26223597e.webp 1280w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/bootstrap-v5-new-logo_hu_8aa19c5f7199b76d.webp 1500w"
  sizes="100vw"
- alt="/carousel/bootstrap-v5-new-logo.png"&gt;
+ alt="The Bootstrap 5 logo: a white letter B on a purple rounded square, ringed by small circles, triangles and zigzags"&gt;
  &lt;/div&gt;
  
  &lt;div class="carousel-item"&gt;
  &lt;img class="d-block w-100"
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
- src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp"
  width="800" height="533"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_562134f766a643ab.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_3a632ea0cf515ae.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp 800w"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/hugo-bootstrap-banner_hu_562134f766a643ab.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/hugo-bootstrap-banner_hu_3a632ea0cf515ae.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/hugo-bootstrap-banner_hu_47b57d7877d56813.webp 800w"
  sizes="100vw"
- alt="/carousel/hugo-bootstrap-banner.png"&gt;
+ alt="The word HUGO spelled in pink, blue, green and yellow hexagons, above the Bootstrap logo on a purple tile"&gt;
  &lt;/div&gt;
  
  &lt;div class="carousel-item"&gt;
  &lt;img class="d-block w-100"
  loading="lazy" 
  style="width: 100%; height: auto; aspect-ratio: 3/2;"
- src="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_625e7e6813765c04.webp"
+ src="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/site-feature-image_hu_625e7e6813765c04.webp"
  width="900" height="600"
- srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_6fd943804354b6d2.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_29b1e057aa93d8f4.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/carousel/site-feature-image_hu_625e7e6813765c04.webp 900w"
+ srcset="https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/site-feature-image_hu_6fd943804354b6d2.webp 320w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/site-feature-image_hu_29b1e057aa93d8f4.webp 640w, https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/carousel/site-feature-image_hu_625e7e6813765c04.webp 900w"
  sizes="100vw"
- alt="/carousel/site-feature-image.png"&gt;
+ alt="The Hugo Bootstrap Theme home page, with a Get Started button above columns headed Security aware, Fast by default and SEO-ready"&gt;
  &lt;/div&gt;
  
  &lt;/div&gt;
