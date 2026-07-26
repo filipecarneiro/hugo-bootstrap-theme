@@ -1,13 +1,36 @@
 # Releasing
 
-Checklist for cutting a release of the theme to npm and GitHub.
+Releases are handled by `.github/workflows/release.yml`.
 
-> Commands are written one per line on purpose — the usual shell here is
-> Windows PowerShell 5.1, which does **not** support `&&`.
+| Release | How |
+|---|---|
+| **Patch** | Automatic — every push to `main` that touches shipped files |
+| **Minor / major** | Manual — Actions tab → **Release** → *Run workflow* → pick the bump |
 
-## 1. Decide the version number
+The workflow builds `exampleSite` first and stops if it fails, then bumps the
+version, commits, tags, pushes, publishes to npm and creates the GitHub release
+with generated notes.
 
-Follow semver, judged from the **consumer's** point of view:
+## One-time setup
+
+Add an **`NPM_TOKEN`** repository secret (Settings → Secrets and variables →
+Actions). It must be a **granular access token** with read-and-write on this
+package and the 2FA-bypass option enabled — npm refuses to publish otherwise.
+Rotate it if it is ever exposed.
+
+## Hugo version
+
+The Hugo version CI builds with lives in **`.hugo-version`** at the repo root,
+and both workflows read it. Change it there once — do not hardcode it in a
+workflow.
+
+That is the version the theme is *tested* against. The minimum version
+consumers must run is separate, and lives in `min_version` in `theme.toml`;
+raising it is a breaking change (see below).
+
+## Choosing the bump
+
+Judge it from the **consumer's** point of view:
 
 | Change | Bump |
 |---|---|
@@ -20,19 +43,23 @@ Follow semver, judged from the **consumer's** point of view:
 **A Hugo version requirement is a breaking change.** `min_version` in
 `theme.toml` is Hugo Modules metadata — it means nothing to npm, where
 consumers depend on `^x.y.z` ranges that promise backwards compatibility. A
-site pinned to an older Hugo will fail to build if it silently receives the
-new theme.
+site pinned to an older Hugo will fail to build if it silently receives the new
+theme. This is why minor and major are deliberate: a breaking change must never
+reach consumers as an automatic patch.
 
-`npm run deploy` deliberately does **not** bump the version — auto-bumping is
-what would ship a breaking change as a patch.
+## What does not trigger a release
 
-## 2. Land the version bump
+`**.md`, `.github/**` and `.vscode/**` are ignored, so documentation and
+workflow edits do not cut a version. Note this also covers `exampleSite`
+content, which *does* ship in the package — run the workflow manually if such a
+change needs to reach npm.
 
-Edit `version` in `package.json`, then open a PR like any other change and let
-CI pass before merging. Everything you intend to publish must be on `main`
-first.
+## Releasing by hand
 
-## 3. Pre-flight
+If the workflow is unavailable:
+
+> Commands are one per line on purpose — the shell here is Windows PowerShell
+> 5.1, which does **not** support `&&`.
 
 ```powershell
 git checkout main
@@ -45,77 +72,39 @@ git status
 ```
 
 The tree must be clean: **`npm publish` packs your working directory, not the
-git commit.** Untracked or uncommitted files ship.
-
-Now review exactly what will be published:
+git commit.** Untracked or uncommitted files ship. Then check the payload —
+npm has no `.npmignore` here, so it falls back to `.gitignore`, and **npm
+versions are immutable**:
 
 ```powershell
 npm pack --dry-run
 ```
-
-Read the file list. npm has no `.npmignore` here, so it falls back to
-`.gitignore` — anything not ignored gets packed. **npm versions are immutable**;
-a mistake can only be corrected by burning the next version number.
-
-## 4. Tag
-
 ```powershell
-git tag v<version>
+npm version patch
 ```
 ```powershell
-git push origin v<version>
+git push --follow-tags
 ```
-
-Use `-f` on both if the tag already exists and needs to move.
-
-## 5. Publish to npm
-
-```powershell
-npm run deploy
-```
-
-which runs `npm publish --access public`. `--access public` is required
-because the package is scoped.
-
-Publishing requires 2FA. Either enable it on the account and pass a one-time
-code:
-
 ```powershell
 npm publish --access public --otp=<code>
 ```
-
-or authenticate with a granular access token that has the 2FA-bypass option
-enabled. Set the token with `npm config set` — never paste it into a shared
-channel, and revoke it immediately if you do.
-
-Verify:
-
 ```powershell
-npm view @filipecarneiro/hugo-bootstrap-theme version
+gh release create v<version> --title "<version>" --generate-notes
 ```
-
-## 6. GitHub release
-
-```powershell
-gh release create v<version> --title "<version>" --notes "<summary>"
-```
-
-For a major, the notes should state the new minimum Hugo version, anything
-removed, and point at the upgrade section in `README.md`.
-
-`gh release create` creates the tag if it is missing, so it can silently
-produce a tag pointing somewhere you did not intend. Tag explicitly in step 4.
 
 ## Troubleshooting
 
 **`E404` on publish** — usually *not* a missing package. For scoped packages npm
-returns 404 rather than 401 for unauthenticated writes, so that it cannot be
-used to probe for private packages. Check `npm whoami` first; if it errors,
-you are simply logged out.
+returns 404 rather than 401 for unauthenticated writes, so the endpoint cannot
+be used to probe for private packages. Run `npm whoami`; if it errors, you are
+simply logged out.
 
 **`E403` mentioning 2FA** — the account needs two-factor authentication, or a
 granular token with 2FA bypass, before it may publish.
 
-**Errors that make no sense** — the terminal output is a lossy summary. The
-debug log named at the end of the failure has the raw status code and the
-registry's own message, which is often the only place the real cause appears.
+**Version bumped but npm publish failed** — the tag and commit are already
+pushed. Fix the cause and publish that version by hand; do not bump again.
+
+**Errors that make no sense** — terminal output is a lossy summary. The debug
+log named at the end of the failure has the raw status code and the registry's
+own message, which is often the only place the real cause appears.
