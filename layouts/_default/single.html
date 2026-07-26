@@ -1,6 +1,29 @@
 {{ define "main" }}
 
 <div class="container py-3">
+
+  {{/* Publication date, shown only where one exists - static pages such as
+       About carry no date and should not display one.
+
+       "Updated" is an editorial claim to the reader, so it is driven by an
+       explicit `updated:` front matter date and nothing else. .Lastmod cannot
+       serve here: it is derived from git or file times, so any commit touching
+       the file - a typo, a new tag - would announce an update that never
+       happened. Note .Params.lastmod is no use either, because Hugo fills it
+       from the frontmatter cascade whether or not the author wrote it.
+       Crawler metadata keeps using .Lastmod, where an approximate
+       modification time is exactly what is wanted. */}}
+  {{ if not .PublishDate.IsZero }}
+    <p class="text-muted small mb-3">
+      <time datetime="{{ .PublishDate.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .PublishDate | time.Format ":date_long" }}</time>
+      {{- with .Params.updated }}
+        {{- $u := . | time.AsTime }}
+        &middot; Updated
+        <time datetime="{{ $u.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ $u | time.Format ":date_long" }}</time>
+      {{- end }}
+    </p>
+  {{ end }}
+
   {{ .Content }}
 </div>
 

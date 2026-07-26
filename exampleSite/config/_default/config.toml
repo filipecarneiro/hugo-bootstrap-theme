@@ -21,7 +21,12 @@ enableEmoji = true
 
 [frontmatter]
   date = ["date", "publishDate", "lastmod"]
-  lastmod = ["lastmod", ":fileModTime", ":default"]
+  # :git before :fileModTime. A CI checkout rewrites every file's modification
+  # time, so :fileModTime would stamp every page with the build time - making
+  # sitemap <lastmod>, JSON-LD dateModified and article:modified_time all claim
+  # the whole site changed on every deploy. :git needs --enableGitInfo, which
+  # the build workflow passes; "date" is the fallback when neither applies.
+  lastmod = ["lastmod", ":git", "date"]
 
 [taxonomies]
   tag = "tags"

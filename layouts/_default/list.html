@@ -47,7 +47,11 @@
 
                         <div class="card-subtitle text-muted mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="feather"><use href="{{ `images/feather/feather-sprite.svg#calendar` | relURL }}"/></svg>
-                            <time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Lastmod | time.Format ":date_long" }}</time>
+                            {{/* .PublishDate, not .Lastmod: readers want to know when this
+                                 was published, and it is the same value the page reports to
+                                 crawlers as datePublished. .Lastmod is a modification time
+                                 and belongs in metadata only. */}}
+                            <time class="ms-2" datetime="{{ .PublishDate.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .PublishDate | time.Format ":date_long" }}</time>
 
                             {{ if isset .Params "categories" }}
                                 <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
