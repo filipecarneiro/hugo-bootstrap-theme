@@ -1,7 +1,6 @@
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-    {{/* Sorted by publish date so the order matches the date shown on each card. */}}
-    {{ range first 3 (where .Site.RegularPages.ByPublishDate.Reverse "Section" "post" ) }}
+    {{ range first 3 (where .Site.RegularPages.ByDate.Reverse "Section" "post" ) }}
         <div class="col">
 
             <div class="card h-100">
@@ -25,7 +24,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{ .PublishDate | time.Format ":date_long" }}</small>
+                    <small class="text-muted">{{ .Date | time.Format ":date_long" }}</small>
                 </div>
             </div>
  

@@ -111,37 +111,6 @@ Check your `copyright` variable, your menus (the theme supports `main`, `footer`
 
 Have a look on exampleSite for inspiration :)
 
-#### Step 5: Dates
-
-The theme shows readers the **publication date** (`publishDate`, falling back to
-`date`) and reports the same value to crawlers as `datePublished`. Modification
-time is kept for machines only — `dateModified`, `article:modified_time` and
-sitemap `<lastmod>` — where an approximate value is useful for recrawling.
-
-To display an "Updated" line on a post, set `updated` in its front matter:
-
-```yaml
-date: 2022-05-22
-updated: 2026-07-26
-```
-
-This is deliberately **not** `lastmod`. `lastmod` is derived from git or file
-timestamps and moves whenever a file is touched, so driving a visible "Updated"
-from it would announce edits that never happened. `updated` is only ever what
-you wrote.
-
-Configure the `lastmod` cascade so it does not fall back to file timestamps:
-
-```toml
-[frontmatter]
-  lastmod = ["lastmod", ":git", "date"]
-```
-
-`:git` requires building with `--enableGitInfo` and a full clone
-(`fetch-depth: 0` on GitHub Actions). Without this, `:fileModTime` stamps every
-page with the time your CI checked the files out — telling search engines your
-entire site changed on every deploy.
-
 ### Start from Scratch
 
 #### Step 1: Create a new Hugo site

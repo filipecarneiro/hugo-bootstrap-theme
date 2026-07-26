@@ -2,10 +2,6 @@
 title: "Hugo Bootstrap Theme alpha"
 description: "Hugo theme for a secure, blazing fast and SEO-ready static website, using Bootstrap 5."
 date: 2022-05-22T13:35:02+01:00
-# Optional. Drives the visible "Updated" line on the post; omit it and only the
-# publication date is shown. Deliberately separate from lastmod, which is
-# derived from git and moves on any commit.
-updated: 2026-07-26
 draft: false
 images: ["site-feature-image.png"]
 categories: ["Hugo Bootstrap Theme"]
