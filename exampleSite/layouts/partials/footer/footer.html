@@ -1,0 +1,17 @@
+{{/* Overrides the theme's footer/footer.html - a project partial wins over the
+     theme partial of the same name, and Hugo has no way to call the shadowed
+     one, so the markup below is a verbatim copy plus the validation bar. If
+     the theme footer changes, copy the change here too. */}}
+<footer class="py-3 mt-auto bg-light">
+  <div class="container py-1 my-1">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <p class="col-md mb-0 text-muted">{{ .Site.Copyright | safeHTML }}</p>
+      <ul class="nav col-md-auto justify-content-end">
+        {{ range .Site.Menus.footer -}}
+        <li class="nav-item"><a href="{{ .URL }}" class="nav-link px-2 text-muted"{{ with .Title }} title='{{ . }}' aria-label='{{ . }}'{{ end }}>{{ .Name }}</a></li>
+        {{ end -}}
+      </ul>
+    </div>
+    {{ partial "footer/validation.html" . }}
+  </div>
+</footer>

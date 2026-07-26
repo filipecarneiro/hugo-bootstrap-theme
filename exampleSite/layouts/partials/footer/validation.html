@@ -1,0 +1,21 @@
+{{/* Demo-site only: third-party validators for the page being viewed.
+
+     Each tool takes the page's absolute URL as a parameter, so the link lands
+     on a ready-to-run report instead of an empty form. .Permalink - not
+     .RelPermalink - because the validators fetch the page from their own
+     servers; under `hugo server` the permalink is localhost and none of them
+     can reach it, so expect these to work only on the published demo. */}}
+{{- $url := .Permalink | urlquery -}}
+{{- $tools := slice
+  (dict "name" "PageSpeed Insights" "url" (printf "https://pagespeed.web.dev/analysis?url=%s" $url))
+  (dict "name" "Rich Results Test" "url" (printf "https://search.google.com/test/rich-results?url=%s" $url))
+  (dict "name" "Schema Markup Validator" "url" (printf "https://validator.schema.org/#url=%s" $url))
+-}}
+<div class="footer-validation border-top mt-3 pt-3">
+  <ul class="nav justify-content-center small">
+    <li class="nav-item"><span class="nav-link px-2 text-muted disabled">Validate this page:</span></li>
+    {{ range $tools -}}
+    <li class="nav-item"><a href="{{ .url }}" class="nav-link px-2 text-muted" target="_blank" rel="nofollow noopener external" title='Check this page with {{ .name }}' aria-label='Check this page with {{ .name }}'>{{ .name }}</a></li>
+    {{ end -}}
+  </ul>
+</div>
