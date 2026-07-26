@@ -27,13 +27,17 @@ defaultMarkdownHandler = "goldmark"
 [highlight]
   # Hugo defaults to Monokai, whose comment/subheading grey (#75715e) sits at
   # 3.03:1 and whose keyword pink (#f92672) at 3.93:1 against the #272822 code
-  # background - both under the 4.5:1 WCAG AA needs, so Lighthouse fails the
-  # page on colour contrast. github-dark clears AA for every token this site
-  # renders, comments included, with 7.51:1 at its worst.
+  # background - both under the 4.5:1 WCAG AA asks for, so Lighthouse fails the
+  # page on colour contrast.
   #
-  # Its line-number greys are 4.12:1, so if lineNos is ever switched on, the
-  # contrast failure comes back for those.
-  style = "github-dark"
+  # modus-operandi is built for high contrast and clears AA on every token by
+  # the widest margin of the styles measured, 8.01:1 at its worst. Its white
+  # background suits a light page; the border and padding that make it read as
+  # a code block rather than bare text come from .highlight in custom.scss.
+  #
+  # Light styles usually fail on comments - github (light) manages 2.32:1 and
+  # friendly 2.18:1 - so re-measure before swapping this value.
+  style = "modus-operandi"
 
 [tableOfContents]
   endLevel = 3
