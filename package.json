@@ -20,7 +20,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
+    "url": "git+https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
   },
   "scripts": {
     "start": "hugo server --source exampleSite --cleanDestinationDir --gc",
