@@ -52,12 +52,15 @@ async function fetchText(url) {
 }
 
 function decodeEntities(s) {
+  /* & must decode last: decoding it first would turn a legitimately
+     double-escaped "&amp;lt;" into "&lt;", which the next line would then
+     wrongly decode again into "<". */
   return s
-    .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&apos;/g, "'")
+    .replace(/&amp;/g, '&')
 }
 
 export function withTrailingSlash(u) {
