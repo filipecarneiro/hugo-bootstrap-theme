@@ -32,5 +32,8 @@
     "bootstrap": "^5.3.8",
     "feather-icons": "^4.29.2",
     "unlighthouse": "^0.18.0"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
   }
 }
