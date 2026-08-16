@@ -36,18 +36,40 @@
   "dateModified": "{{ .Lastmod.Format $iso8601 }}",
 
   {{- if .Params.authors }}
-  "author": [
-    {{- range $i, $author := .Params.authors }}
-      {{- if $i }},{{ end }}
-      {
-        "@type": "Person",
-        "name": "{{ $author }}"
-        {{- with $.Site.GetPage (printf "/authors/%s" $author) }}
-        , "url": "{{ .Permalink }}"
-        {{- end }}
-      }
-    {{- end }}
-  ],
+  {{- /* Each entry in `authors` is a display name. The matching author page is found by
+         slugifying it, so front matter keeps the readable form and still resolves:
+         "Ada Lovelace" -> /authors/ada-lovelace/. Looking the name up verbatim, as this
+         did before, could never match a name containing a space or an accent.
+
+         The section is named by `authorSection` so a site in another language can put
+         its author pages under /autores/, /auteurs/, and so on.
+
+         Anything the author page does not define is simply left out - a name on its own
+         is still valid. Built as dicts rather than hand-written JSON so an absent field
+         can never leave a dangling comma. */}}
+  {{- $section := .Site.Params.authorSection | default "authors" -}}
+  {{- $people := slice -}}
+  {{- range .Params.authors -}}
+    {{- $name := . -}}
+    {{- $person := dict "@type" "Person" "name" $name -}}
+    {{- $authorPage := site.GetPage (printf "/%s/%s" $section (urlize $name)) -}}
+    {{- with $authorPage -}}
+      {{- /* url points at the author page on this site. Google asks for a page that
+             identifies the author; sameAs then carries their profiles elsewhere. */ -}}
+      {{- $person = merge $person (dict "url" .Permalink) -}}
+      {{- with .Params.jobTitle }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end -}}
+      {{- with .Params.sameAs }}{{ $person = merge $person (dict "sameAs" .) }}{{ end -}}
+      {{- /* Looked up in the author's own bundle first, then in assets/, so the photo
+             can sit beside the author page or be shared from assets/. */ -}}
+      {{- with .Params.image -}}
+        {{- with ($authorPage.Resources.GetMatch . | default (resources.GetMatch .)) -}}
+          {{- $person = merge $person (dict "image" (. | fingerprint).Permalink) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $people = $people | append $person -}}
+  {{- end }}
+  "author": {{ $people }},
   {{- else }}
   {{- /* Google asks for an author on an Article. A company blog often has no named
          one, and the organization already configured is the truthful answer. */}}
