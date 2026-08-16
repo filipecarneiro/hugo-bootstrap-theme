@@ -8,8 +8,14 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
+  {{/* `articleType` in front matter picks a more specific subtype of Article -
+       BlogPosting for a blog, NewsArticle for news. Set it once for a whole section
+       with a cascade in the section's _index.md rather than per page. */}}
+  "@type": "{{ .Params.articleType | default "Article" }}",
   "headline": "{{ .Title }}",
+  {{/* The page's own language, so a translated article is not read as the site's
+       default one. */}}
+  "inLanguage": "{{ .Language.Locale | default .Site.Language.Lang }}",
 
   {{ $supportedImageTypes := slice "png" "jpeg" "webp" "gif" }}
   {{ $images := slice }}
@@ -42,6 +48,16 @@
       }
     {{- end }}
   ],
+  {{- else }}
+  {{- /* Google asks for an author on an Article. A company blog often has no named
+         one, and the organization already configured is the truthful answer. */}}
+  {{- with .Site.Params.organization }}
+  "author": {
+    "@type": "Organization",
+    "name": "{{ .name }}"
+    {{- with .url }}, "url": "{{ . }}"{{ end }}
+  },
+  {{- end }}
   {{- end }}
 
   "mainEntityOfPage": "{{ .Permalink }}",
@@ -50,10 +66,12 @@
     "@type": "Organization",
     "name": "{{ .Site.Title }}"
     {{ with $.Site.Params.images }}
+      {{/* Fingerprinted, like every other image the theme publishes: an unhashed URL
+           under a path served with a long immutable cache can never be replaced. */}}
       {{ with resources.GetMatch (index . 0) }}
       , "logo": {
         "@type": "ImageObject",
-        "url": "{{ .Permalink }}"
+        "url": "{{ (. | fingerprint).Permalink }}"
       }
       {{ end }}
     {{ end }}

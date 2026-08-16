@@ -18,7 +18,7 @@
        image wins and a shared one still resolves. */}}
   {{ with .image }}
     {{ with ($.Resources.GetMatch . | default (resources.GetMatch .)) }}
-      {{ $d = merge $d (dict "image" .Permalink) }}
+      {{ $d = merge $d (dict "image" (. | fingerprint).Permalink) }}
     {{ end }}
   {{ end }}
   {{ with .provider }}

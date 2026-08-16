@@ -10,7 +10,7 @@
   {{ with .legalName }}{{ $d = merge $d (dict "legalName" .) }}{{ end }}
   {{ with .description }}{{ $d = merge $d (dict "description" .) }}{{ end }}
   {{ with .logo }}
-    {{ with resources.GetMatch . }}{{ $d = merge $d (dict "logo" .Permalink) }}{{ end }}
+    {{ with resources.GetMatch . }}{{ $d = merge $d (dict "logo" (. | fingerprint).Permalink) }}{{ end }}
   {{ end }}
   {{ with .url }}{{ $d = merge $d (dict "url" .) }}{{ end }}
   {{ with .taxID }}{{ $d = merge $d (dict "taxID" .) }}{{ end }}
