@@ -10,8 +10,21 @@
   {{ with .subType }}{{ $type = $type | append . }}{{ end }}
   {{ $d := dict "@context" "https://schema.org" "@type" $type
                 "name" .name "description" .description }}
+  {{ with .url }}{{ $d = merge $d (dict "url" .) }}{{ end }}
   {{ with .screenshot }}
     {{ with $.Resources.GetMatch . }}{{ $d = merge $d (dict "screenshot" .Permalink) }}{{ end }}
+  {{ end }}
+  {{/* Looked up in the page's own bundle first, then in assets/, so a page-specific
+       image wins and a shared one still resolves. */}}
+  {{ with .image }}
+    {{ with ($.Resources.GetMatch . | default (resources.GetMatch .)) }}
+      {{ $d = merge $d (dict "image" .Permalink) }}
+    {{ end }}
+  {{ end }}
+  {{ with .provider }}
+    {{ $provider := dict "@type" "Organization" "name" .name }}
+    {{ with .url }}{{ $provider = merge $provider (dict "url" .) }}{{ end }}
+    {{ $d = merge $d (dict "provider" $provider) }}
   {{ end }}
   {{ with .browserRequirements }}{{ $d = merge $d (dict "browserRequirements" .) }}{{ end }}
   {{ with .applicationCategory }}{{ $d = merge $d (dict "applicationCategory" .) }}{{ end }}
@@ -28,6 +41,7 @@
                       "price" (trim .price " ")
                       "priceCurrency" .priceCurrency
                       "url" $.Permalink }}
+    {{ with .description }}{{ $offer = merge $offer (dict "description" .) }}{{ end }}
     {{ with .validFrom }}{{ $offer = merge $offer (dict "validFrom" .) }}{{ end }}
     {{ with .priceValidUntil }}{{ $offer = merge $offer (dict "priceValidUntil" .) }}{{ end }}
     {{ $d = merge $d (dict "offers" $offer) }}
