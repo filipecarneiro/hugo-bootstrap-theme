@@ -1,1 +1,24 @@
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /*
+  Link render hook. Opens external links in a new tab, and only external ones.
+
+  A destination is external when it is absolute and points somewhere this site does
+  not serve. Both halves of the baseURL are compared, not just the host: on a project
+  page such as https://user.github.io/some-theme/, a link to another project on the
+  same host is external. Relative destinations, mailto: and tel: are never external,
+  and are not parsed at all - urls.Parse errors on some of what Markdown allows.
+*/ -}}
+{{- $dest := .Destination -}}
+{{- $external := false -}}
+{{- if or (hasPrefix $dest "http://") (hasPrefix $dest "https://") (hasPrefix $dest "//") -}}
+  {{- $external = true -}}
+  {{- $base := urls.Parse site.BaseURL -}}
+  {{- $basePath := strings.TrimSuffix "/" ($base.Path | default "/") -}}
+  {{- with urls.Parse $dest -}}
+    {{- $path := strings.TrimSuffix "/" (.Path | default "/") -}}
+    {{- /* Compared segment by segment, so a site at /theme does not swallow /theme-other. */ -}}
+    {{- if and (eq .Host $base.Host) (or (eq $path $basePath) (hasPrefix $path (printf "%s/" $basePath))) -}}
+      {{- $external = false -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
