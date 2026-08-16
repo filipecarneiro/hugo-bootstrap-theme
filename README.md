@@ -111,6 +111,38 @@ Check your `copyright` variable, your menus (the theme supports `main`, `footer`
 
 Have a look on exampleSite for inspiration :)
 
+### Favicons
+
+Drop the files in `static/` and the theme links them. There is nothing to configure —
+each well-known name is emitted only if the file exists:
+
+| File in `static/` | Emitted as |
+| --- | --- |
+| `favicon.svg` | `<link rel="icon" type="image/svg+xml">` |
+| `favicon.png` | `<link rel="icon" type="image/png">` |
+| `favicon-96x96.png` | `<link rel="icon" type="image/png" sizes="96x96">` |
+| `favicon.ico` | `<link rel="shortcut icon">` |
+| `apple-touch-icon.png` | `<link rel="apple-touch-icon" sizes="180x180">` plus `<meta name="apple-mobile-web-app-title">` |
+| `site.webmanifest` | `<link rel="manifest">` |
+
+These are the names favicon generators produce, so a standard icon set from something
+like [RealFaviconGenerator](https://realfavicongenerator.net) works untouched. A
+top-level `themeColor` param, if set, adds `<meta name="theme-color">`. A site whose
+icons are named differently can override the partial.
+
+Some SEO points the design follows, from [Google's favicon
+guidelines](https://developers.google.com/search/docs/appearance/favicon-in-search):
+
+- Google reads the favicon from the **home page**, so at least one `rel="icon"` must
+  exist. The theme emits a build warning if none does.
+- The icon should be **square**, ideally a multiple of 48px (48, 96, 144…).
+- It must be **crawlable** — do not block it in `robots.txt`.
+- Its **URL should stay stable**, because Google caches it. That is why these files are
+  deliberately not fingerprinted and carry no `?v=` query: a URL that moved with the
+  bytes would work against it. It also means a long `immutable` cache header is the
+  wrong choice for them — prefer something like a week, so a replaced icon can still
+  reach visitors.
+
 ### Security headers
 
 Every page gets a Content Security Policy as a `<meta>` tag, which works on any

@@ -1,11 +1,47 @@
-<!--
-    Use SVG Favicon Generator
-    Favicon for the modern web 🤟
-    https://realfavicongenerator.net/svg-favicon/
--->
-{{ if (os.FileExists "static/favicon.svg") -}}
-    <link rel="icon" type="image/svg+xml" href="{{ `favicon.svg` | absURL }}">
-{{ end -}}
-{{ if (os.FileExists "static/favicon.png") -}}
-    <link rel="icon" type="image/png" href="{{ `favicon.png` | absURL }}">
-{{ end -}}
+{{- /*
+  Favicons by convention: each well-known filename is linked if it exists in static/.
+  Drop the files in and they are picked up - there is nothing to configure.
+
+  The names are the ones favicon generators produce, so a standard icon set works
+  as-is: https://realfavicongenerator.net
+
+  Deliberately no fingerprint or ?v= query. Google caches a site's favicon and asks
+  that its URL stay stable, so a hash that moved with the bytes would work against it.
+  A site whose icons are named differently can still override this partial.
+
+  themeColor keeps reading the long-standing top-level param.
+*/ -}}
+{{- $icons := slice
+      (dict "file" "favicon.svg"          "rel" "icon"             "type" "image/svg+xml")
+      (dict "file" "favicon.png"          "rel" "icon"             "type" "image/png")
+      (dict "file" "favicon-96x96.png"    "rel" "icon"             "type" "image/png" "sizes" "96x96")
+      (dict "file" "favicon.ico"          "rel" "shortcut icon")
+      (dict "file" "apple-touch-icon.png" "rel" "apple-touch-icon" "sizes" "180x180")
+-}}
+{{- $found := 0 -}}
+{{- range $icons -}}
+  {{- if os.FileExists (printf "static/%s" .file) -}}
+    {{- $found = add $found 1 }}
+  {{- /* type through safeHTMLAttr, as in head/opengraph.html: interpolated into a plain
+         attribute, the "+" of image/svg+xml comes out as &#43;. */ -}}
+  <link rel="{{ .rel }}"{{ with .type }} {{ printf "type=%q" . | safeHTMLAttr }}{{ end }}{{ with .sizes }} sizes="{{ . }}"{{ end }} href="{{ .file | absURL }}">
+  {{- end -}}
+{{- end }}
+
+{{- if os.FileExists "static/apple-touch-icon.png" }}
+  <meta name="apple-mobile-web-app-title" content="{{ site.Title }}">
+{{- end }}
+
+{{- if os.FileExists "static/site.webmanifest" }}
+  <link rel="manifest" href="{{ `site.webmanifest` | absURL }}">
+{{- end }}
+
+{{- with site.Params.themeColor }}
+  <meta name="theme-color" content="{{ . }}">
+{{- end }}
+
+{{- /* Google reads the favicon from the home page, so that is the only page worth
+       warning about, and once is enough. */ -}}
+{{- if and .IsHome (eq $found 0) -}}
+  {{- warnf "head/favicons: no favicon found in static/ - search engines will show none. Expected one of favicon.svg, favicon.png, favicon-96x96.png, favicon.ico." -}}
+{{- end -}}
