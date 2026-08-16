@@ -14,6 +14,9 @@
   {{ end }}
   {{ with .url }}{{ $d = merge $d (dict "url" .) }}{{ end }}
   {{ with .taxID }}{{ $d = merge $d (dict "taxID" .) }}{{ end }}
+  {{/* sameAs = ["https://www.linkedin.com/company/…", …] — the profiles that identify
+       this same organization elsewhere. */}}
+  {{ with .sameAs }}{{ $d = merge $d (dict "sameAs" .) }}{{ end }}
   {{ with .address }}
     {{ $d = merge $d (dict "address" (dict
       "@type" "PostalAddress"
