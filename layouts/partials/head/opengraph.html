@@ -8,7 +8,8 @@
 
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+{{- $isArticle := partial "head/is-article.html" . -}}
+<meta property="og:type" content="{{ if $isArticle }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 
 {{- /* Only raster formats every OG consumer supports; SVG is rejected by all of them.
@@ -38,8 +39,12 @@
 <meta property="og:image" content="{{ . }}">
 {{- end }}
 
-{{- if .IsPage }}
-  <meta property="article:section" content="{{ .Section }}">
+{{- if $isArticle }}
+  {{- /* Only when there is a section to name: a page outside one would emit an empty
+         article:section, which says nothing. */}}
+  {{ with .Section }}
+    <meta property="article:section" content="{{ . }}">
+  {{ end }}
   {{ with .PublishDate }}
     <meta property="article:published_time" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }}>
   {{ end }}

@@ -1,0 +1,17 @@
+{{- /*
+  Returns true when a page should be described as an article - by Open Graph's og:type
+  and article:* tags, and by head/schema-article.html.
+
+  An article lives in a content section. Standalone top-level pages - contact, privacy
+  policy, a thank-you page - are regular pages, and describing them as articles is
+  metadata that does not match the content. Set `schemaArticle` in front matter to
+  force it either way.
+
+  One partial rather than the same condition in two templates, so og:type and the
+  Article schema can never disagree about what a page is.
+*/ -}}
+{{- $isArticle := ne .Section "" -}}
+{{- if isset .Params "schemaarticle" -}}
+  {{- $isArticle = .Params.schemaarticle -}}
+{{- end -}}
+{{- return (and .IsPage $isArticle) -}}

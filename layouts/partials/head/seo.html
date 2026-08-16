@@ -52,13 +52,7 @@
 
 <!-- will load JSON-LD Schemas in pages -->
 <!-- https://schema.org/docs/schemas.html -->
-{{- /* An Article lives in a content section. Standalone top-level pages - contact,
-       privacy policy, a thank-you page - are regular pages, and tagging them as
-       Articles is structured data that does not describe them. Set `schemaArticle`
-       in front matter to force it either way. */ -}}
-{{ $isArticle := ne .Section "" }}
-{{ if isset .Params "schemaarticle" }}{{ $isArticle = .Params.schemaarticle }}{{ end }}
-{{ if and .IsPage $isArticle }}
+{{ if partial "head/is-article.html" . }}
   <!-- Article structured data -->
   {{- partial "head/schema-article.html" .  -}}
 {{ end }}
