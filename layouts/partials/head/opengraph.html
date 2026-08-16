@@ -11,13 +11,17 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 
-{{- /* Only raster formats every OG consumer supports; SVG is rejected by all of them. */ -}}
+{{- /* Only raster formats every OG consumer supports; SVG is rejected by all of them.
+       WebP is not dropped but converted: several consumers - LinkedIn among them - do
+       not render it, and skipping it silently costs the page its own image. */ -}}
 {{- $ogFormats := slice "png" "jpeg" -}}
 {{- $ogImages := slice -}}
 {{- range $.Params.images -}}
   {{- with $.Resources.GetMatch . -}}
     {{- if in $ogFormats .MediaType.SubType -}}
       {{- $ogImages = $ogImages | append (.Resize "960x").Permalink -}}
+    {{- else if eq .MediaType.SubType "webp" -}}
+      {{- $ogImages = $ogImages | append (.Resize "960x jpeg q85").Permalink -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
@@ -25,6 +29,8 @@
   {{- with resources.GetMatch . -}}
     {{- if in $ogFormats .MediaType.SubType -}}
       {{- $ogImages = $ogImages | append (.Resize "960x").Permalink -}}
+    {{- else if eq .MediaType.SubType "webp" -}}
+      {{- $ogImages = $ogImages | append (.Resize "960x jpeg q85").Permalink -}}
     {{- end -}}
   {{- end -}}
 {{- end }}
@@ -46,7 +52,9 @@
   <meta property="og:audio" content="{{ . }}">
 {{ end }}
 
-{{- with .Params.locale }}
+{{- /* Falls back to the page's own language. Open Graph wants the underscore form
+       (pt_PT), while Hugo reports the locale with a hyphen. */ -}}
+{{- with .Params.locale | default (replace (.Language.Locale | default .Site.Language.Lang) "-" "_") }}
   <meta property="og:locale" content="{{ . }}">
 {{ end }}
 

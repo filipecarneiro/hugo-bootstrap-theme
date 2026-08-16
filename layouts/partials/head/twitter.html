@@ -3,7 +3,8 @@
 
 <!-- Test with Twitter Card Validator: https://cards-dev.twitter.com/validator -->
 
-{{- /* Only raster formats X can render; SVG cards are rejected. Matches head/opengraph.html. */ -}}
+{{- /* Only raster formats X can render; SVG cards are rejected. WebP is converted
+       rather than skipped. Matches head/opengraph.html. */ -}}
 {{- $twFormats := slice "png" "jpeg" -}}
 {{- $twImage := "" -}}
 {{- range $.Params.images -}}
@@ -11,6 +12,8 @@
     {{- with $.Resources.GetMatch . -}}
       {{- if in $twFormats .MediaType.SubType -}}
         {{- $twImage = (.Resize "960x").Permalink -}}
+      {{- else if eq .MediaType.SubType "webp" -}}
+        {{- $twImage = (.Resize "960x jpeg q85").Permalink -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
@@ -21,6 +24,8 @@
       {{- with resources.GetMatch . -}}
         {{- if in $twFormats .MediaType.SubType -}}
           {{- $twImage = (.Resize "960x").Permalink -}}
+        {{- else if eq .MediaType.SubType "webp" -}}
+          {{- $twImage = (.Resize "960x jpeg q85").Permalink -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}
