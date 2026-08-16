@@ -6,4 +6,31 @@
        overrides a more permissive meta tag. */ -}}
 {{- $default := "script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'" -}}
 {{- $csp := site.Params.contentSecurityPolicy | default $default -}}
-<meta http-equiv='Content-Security-Policy' {{ printf "content=%q" $csp | safeHTMLAttr }}>
+
+{{- /* frame-ancestors, report-uri, report-to and sandbox are only honoured in a
+       response header. A browser that meets one here ignores it and logs a console
+       error, which Lighthouse then counts against best-practices - so they are
+       dropped from the meta tag and left to the header in layouts/index.headers.
+       The policy string is passed through untouched when it carries none of them,
+       so a site that never used them sees no change. */ -}}
+{{- $headerOnly := slice "frame-ancestors" "report-uri" "report-to" "sandbox" -}}
+{{- $kept := slice -}}
+{{- $dropped := false -}}
+{{- range (split $csp ";") -}}
+  {{- with (trim . " ") -}}
+    {{- if in $headerOnly (lower (index (split . " ") 0)) -}}
+      {{- $dropped = true -}}
+    {{- else -}}
+      {{- $kept = $kept | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $dropped -}}
+  {{- $csp = delimit $kept "; " -}}
+{{- end -}}
+
+{{- /* Everything a meta tag can carry may have been dropped, and an empty policy
+       is not the same as no policy. */ -}}
+{{- with $csp }}
+<meta http-equiv='Content-Security-Policy' {{ printf "content=%q" . | safeHTMLAttr }}>
+{{- end }}
