@@ -1,7 +1,8 @@
 <head>
-    {{ block "head/google-tag" . }}{{ partial "head/google-tag.html" . }}{{ end }}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{/* After <meta charset> deliberately: see head/google-tag.html. */}}
+    {{ block "head/google-tag" . }}{{ partial "head/google-tag.html" . }}{{ end }}
     {{ block "head/content-security-policy" . }}{{ partial "head/content-security-policy.html" . }}{{ end }}
     {{ block "head/stylesheet" . }}{{ partial "head/stylesheet.html" . }}{{ end }}
     {{ block "head/seo" . }}{{ partial "head/seo.html" . }}{{ end }}

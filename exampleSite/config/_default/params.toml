@@ -30,6 +30,32 @@ footerAboutText = "We protect your website so you can provide a safe environment
   listTagFilter = true
 
 # ---------------------------------------------------------------------------
+# Google tag (gtag.js) — drives layouts/partials/head/google-tag.html.
+# Commented out here so the demo site measures nothing; uncomment and set your
+# own IDs to enable it.
+# ---------------------------------------------------------------------------
+#
+# By default the tag runs in Consent Mode with every consent type denied, so it
+# sets no cookies, stores nothing on the visitor's device, and needs no consent
+# banner. Reporting is correspondingly limited: event counts by country, device
+# and channel, with no users, sessions or attribution.
+#
+# Setting cookies = true disables those defaults and lets the tag set cookies
+# normally. The site is then responsible for presenting a consent banner that
+# calls gtag('consent', 'update', ...). The theme emits a build warning saying
+# so, which a site can acknowledge with:
+#
+#   ignoreLogs = ['google-tag-cookies-allowed']
+#
+# A site that sets params.contentSecurityPolicy also has to allow
+# https://www.googletagmanager.com in script-src, or the browser blocks the tag.
+#
+#[googleTag]
+#  measurementId = "G-XXXXXXXXXX"
+#  googleAds = "AW-XXXXXXXXX"
+#  cookies = false
+
+# ---------------------------------------------------------------------------
 # Structured data (JSON-LD) — https://schema.org
 # Each block below drives one partial in layouts/partials/head/. Remove a block
 # and its schema simply stops being emitted.

@@ -1,41 +1,96 @@
 {{/*
-<!--
-    Google tag
-    (see google-tag-consent.js and google-tag.js)
+    Google tag (gtag.js) with Consent Mode defaults.
 
-    https://developers.google.com/tag-platform/devguides/consent
-    
-    Uses 'googleTag' and 'googleAds' site params, if existent
+    Site params:
 
-    With:
-      - Variables inside JavaScript (https://discourse.gohugo.io/t/variables-inside-javascript/39086) 
-      - Generate inline script SHA for Content-Security-Policy (https://discourse.gohugo.io/t/generate-inline-script-sha-for-content-security-policy/14627)
+      [googleTag]
+        measurementId = "G-XXXXXXXXXX"  # GA4 measurement ID
+        googleAds     = "AW-XXXXXXXXX"  # optional, a second config target
+        cookies       = false           # true lets the tag set cookies
 
-    Notes:
-      - Use Tag Manager with a Content Security Policy (https://developers.google.com/tag-platform/tag-manager/web/csp)
-      - Using GTM with a Content Security Policy (CSP) and impress your DevOps team in the process (https://www.dumky.net/posts/using-gtm-with-a-content-security-policy-csp-and-impress-your-devops-team-in-the-process/)
--->
+    With `cookies` unset or false, google-tag-consent.js defaults every consent type to
+    'denied', so the tag sends cookieless pings and writes nothing to the device. Never
+    sending a 'consent' 'update' keeps it that way, which is a supported configuration for a
+    site that wants audience measurement without a consent banner. Reporting is limited in
+    that mode: event counts by country, device and channel, with no users, sessions or
+    attribution.
+
+    All three scripts are `defer`, and that is a correctness requirement rather than a
+    performance preference. Google requires the 'consent' 'default' command to run before the
+    tag library initialises. `async` scripts execute in completion order, so an async consent
+    script races gtag.js from Google's CDN, which is frequently already cached, and loses
+    often enough to set the very cookies it exists to prevent. `defer` executes in document
+    order across origins, which guarantees the sequence without blocking the parser. The cost
+    is that measurement begins once parsing finishes rather than as early as possible.
+
+    head/head.html calls this partial after <meta charset>, not before it. The HTML spec wants
+    the charset declaration within the first 1024 bytes, and the two fingerprinted script tags
+    below carry SHA512 integrity attributes of roughly 88 characters each, so emitting them
+    first spends a large part of that budget for nothing. It is still early enough for Google's
+    "as high as possible in the head" guidance.
+
+    Content-Security-Policy: this loads a script from www.googletagmanager.com and the tag
+    beacons to *.google-analytics.com. A site setting params.contentSecurityPolicy must allow
+    both or the browser blocks the tag with nothing but a console error, so the check below
+    turns that into a build warning.
+
+    See:
+      - https://developers.google.com/tag-platform/devguides/consent
+      - https://developers.google.com/tag-platform/security/guides/csp
+      - https://developers.google.com/tag-platform/tag-manager/web/csp
 */}}
-{{ with $.Site.Params.googleTag }}
+{{- with site.Params.googleTag }}
+  {{- $measurementId := .measurementId | default "" }}
+  {{- $googleAds := .googleAds | default "" }}
 
-<!-- google-tag-consent.js -->
-{{- $googleTagConsentJs := resources.Get "js/google-tag-consent.js" -}}
-{{- $googleTagConsentJs = $googleTagConsentJs | fingerprint "sha512" -}}
+  {{- /* Deliberately `eq ... true` rather than a truthiness test: a mistyped value such as
+         the string "true" then falls through to the cookieless path, which is the safe
+         direction to fail in. */ -}}
+  {{- $allowCookies := eq .cookies true }}
 
-<!-- google-tag.js -->
-{{- $googleTagJs := resources.Get "js/google-tag.js" -}}
-{{- $opts := dict 
-  "params" (dict "measurementId" .measurementId "googleAds" .googleAds)
--}}
-{{- $googleTagJs = $googleTagJs | js.Build $opts | fingerprint "sha512" -}}
+  {{- /* Outside the measurementId guard on purpose. A site that opts into cookies has made a
+         consent decision worth flagging even while its measurement ID is still commented
+         out, because the ID is the part most likely to be filled in later without anyone
+         revisiting the consent question. */ -}}
+  {{- if $allowCookies }}
+    {{- warnidf "google-tag-cookies-allowed" "head/google-tag.html: googleTag.cookies is true, so the Google tag sets cookies without asking. Most jurisdictions require consent for non-essential cookies (EU/UK: GDPR, ePrivacy, PECR; Brazil: LGPD), which means this site needs a banner calling gtag('consent', 'update', ...). Set cookies = false for cookieless measurement that needs no banner." }}
+  {{- end }}
 
-{{ if ne .cookies true }}
-<script async src="{{ $googleTagConsentJs.Permalink }}" integrity="{{ $googleTagConsentJs.Data.Integrity }}" crossorigin="anonymous"></script>
-{{ end }}
+  {{- if not $measurementId }}
+    {{- warnidf "google-tag-no-measurement-id" "head/google-tag.html: params.googleTag is set but measurementId is empty, so no tag was emitted. Remove the [googleTag] block if that is intentional." }}
+  {{- else }}
 
-{{ if ne .measurementId nil }}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ .measurementId }}" ></script>
-<script async src="{{ $googleTagJs.Permalink }}" integrity="{{ $googleTagJs.Data.Integrity }}" crossorigin="anonymous"></script>
-{{ end }}
+    {{- with site.Params.contentSecurityPolicy }}
+      {{- if not (strings.Contains . "googletagmanager.com") }}
+        {{- warnidf "google-tag-csp-blocked" "head/google-tag.html: params.contentSecurityPolicy omits googletagmanager.com, so the browser will block gtag.js and only a console error will show it. Add https://www.googletagmanager.com to script-src, and https://*.google-analytics.com to img-src for the image-beacon fallback." }}
+      {{- end }}
+    {{- end }}
 
-{{ end }}
+    {{- /* RelPermalink, not Permalink: an absolute URL built from baseURL points a deploy
+           preview at the production host, which with integrity set makes it a cross-origin
+           request that fails CORS and silently drops the tag. Same-origin subresource
+           integrity needs no crossorigin attribute. */ -}}
+    {{- if not $allowCookies }}
+      {{- with resources.Get "js/google-tag-consent.js" }}
+        {{- $consent := . }}
+        {{- if hugo.IsProduction }}{{ $consent = $consent | minify }}{{ end }}
+        {{- $consent = $consent | fingerprint "sha512" }}
+<script defer src="{{ $consent.RelPermalink }}" integrity="{{ $consent.Data.Integrity }}"></script>
+      {{- else }}
+        {{- errorf "head/google-tag.html: assets/js/google-tag-consent.js not found, so Consent Mode defaults cannot be emitted. Set googleTag.cookies = true to opt out of Consent Mode instead." }}
+      {{- end }}
+    {{- end }}
+<script defer src="https://www.googletagmanager.com/gtag/js?id={{ $measurementId }}"></script>
+    {{- with resources.Get "js/google-tag.js" }}
+      {{- $opts := dict
+        "params" (dict "measurementId" $measurementId "googleAds" $googleAds)
+        "minify" hugo.IsProduction
+      }}
+      {{- $tag := . | js.Build $opts | fingerprint "sha512" }}
+<script defer src="{{ $tag.RelPermalink }}" integrity="{{ $tag.Data.Integrity }}"></script>
+    {{- else }}
+      {{- errorf "head/google-tag.html: assets/js/google-tag.js not found." }}
+    {{- end }}
+
+  {{- end }}
+{{- end }}

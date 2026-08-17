@@ -143,6 +143,54 @@ guidelines](https://developers.google.com/search/docs/appearance/favicon-in-sear
   wrong choice for them — prefer something like a week, so a replaced icon can still
   reach visitors.
 
+### Google tag (Analytics and Ads)
+
+Add a `[googleTag]` block and the theme emits `gtag.js`. Without the block nothing is
+emitted at all.
+
+```toml
+[params]
+  [params.googleTag]
+    measurementId = "G-XXXXXXXXXX"  # GA4 measurement ID
+    googleAds = "AW-XXXXXXXXX"      # optional, a second config target
+    cookies = false                 # true lets the tag set cookies
+```
+
+**The default is cookieless.** With `cookies` unset or `false`, the theme loads Consent
+Mode defaults that deny every consent type before the tag library initialises, so the
+tag sends cookieless pings, stores nothing on the visitor's device, and needs no consent
+banner. Reporting is limited to match: event counts by country, device and channel, with
+no users, sessions or attribution, because none of those can exist without a persistent
+client ID.
+
+**`cookies = true` opts out of that** and lets the tag set cookies normally. The site is
+then responsible for presenting a consent banner that calls
+`gtag('consent', 'update', ...)` once the visitor agrees. The theme emits a build warning
+saying so. A site that genuinely has a banner, or is outside the jurisdictions that
+require one, acknowledges it in its configuration:
+
+```toml
+ignoreLogs = ['google-tag-cookies-allowed']
+```
+
+That line is the point of the warning: silencing it records a deliberate, reviewable
+decision in the repository rather than leaving the obligation unnoticed.
+
+Two further warnings, both suppressible the same way:
+
+| ID | Fires when |
+| --- | --- |
+| `google-tag-cookies-allowed` | `cookies = true` |
+| `google-tag-no-measurement-id` | `[googleTag]` exists but `measurementId` is empty |
+| `google-tag-csp-blocked` | A CSP is set and omits `googletagmanager.com` |
+
+All the scripts are loaded with `defer`, which is a correctness requirement and not a
+performance tweak: Consent Mode defaults must run *before* the tag library, and `defer`
+is the only attribute that guarantees execution order across origins without blocking
+the parser. The trade is that measurement begins once HTML parsing finishes rather than
+as early as possible. A site that needs the earliest possible firing can override
+`head/google-tag.html`.
+
 ### Security headers
 
 Every page gets a Content Security Policy as a `<meta>` tag, which works on any
@@ -196,6 +244,19 @@ intersection, so a permissive meta tag combined with a stricter header blocks
 whatever only the meta tag allowed. While the parameter is unset no CSP is
 written to `_headers`, precisely so an overridden meta tag cannot be tightened
 behind your back.
+
+A site using `[googleTag]` has to allow the hosts that the Google tag needs, or
+the browser blocks it and only a console error shows why:
+
+| Directive | Add |
+| --- | --- |
+| `script-src` | `https://www.googletagmanager.com` |
+| `img-src` | `https://*.google-analytics.com` (image-beacon fallback) |
+
+`connect-src` needs nothing as long as the policy sets no `default-src`, since an
+unset directive with nothing to fall back to is unrestricted. The theme emits the
+`google-tag-csp-blocked` warning when a policy is set and omits
+`googletagmanager.com`, which turns a silent runtime failure into a build-time one.
 
 ### Start from Scratch
 
