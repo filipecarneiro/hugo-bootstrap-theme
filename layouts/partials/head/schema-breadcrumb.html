@@ -1,0 +1,77 @@
+{{/*
+    BreadcrumbList Schema.org type.
+
+    https://schema.org/BreadcrumbList
+    https://developers.google.com/search/docs/appearance/structured-data/breadcrumb
+
+    Google renders this in the result snippet in place of the raw URL, and it does NOT
+    require a matching visible breadcrumb, so a site with params.options.breadCrumb off
+    still benefits from it. Set params.options.breadCrumbSchema = false to suppress it.
+
+    The trail comes from .Ancestors, Hugo's own page hierarchy, so there is nothing to
+    configure and it cannot drift from the site structure. .Ancestors returns closest-first
+    and includes the home page, hence .Reverse to put the root first.
+
+    Known limitation: Google recommends a breadcrumb "represent a typical user path to a page,
+    instead of mirroring the URL structure", and .Ancestors is by definition the URL structure.
+    On a conventional site the two coincide. A site where they diverge, where readers reach a
+    page by a route its URL does not describe, needs a hand-built trail and should override
+    this partial rather than bend the content structure to fit it. Google supports several
+    trails per page for exactly that case.
+
+    Names come from .LinkTitle, which falls back to .Title. A section whose .Title is a long
+    SEO title ("Blog – Brand") should set `linkTitle` in its front matter so the crumb stays
+    short. That is Hugo's own key for exactly this, and header/breadcrumb.html reads it too,
+    so renaming a section renames the visual trail and this schema together.
+
+    The home crumb uses site.Title rather than the home page's .LinkTitle, because a home
+    page's title is almost always a long SEO string rather than the name of the site.
+    site.Title is also per-language on a multilingual site.
+
+    That root label is the one place this diverges from header/breadcrumb.html, which
+    hardcodes the English string "Home". The chains themselves are identical: .Ancestors and
+    that partial's .Parent recursion walk the same pages, verified in a build. A site
+    rendering both may want to reconcile the two roots.
+
+    .Permalink, not .RelPermalink: structured data needs absolute URLs. This is the opposite
+    of head/google-tag.html, where a relative URL is what keeps deploy previews working.
+
+    Built as a map and emitted in one interpolation, like the other schema partials here, so
+    Hugo serialises the JSON and optional fields cannot leave a dangling comma.
+*/}}
+{{- $options := site.Params.options | default dict }}
+
+{{- /* No trail on the home page: a single-item breadcrumb carries no information. Skipped
+       on 404 and noindex pages too, where structured data can never be used. */ -}}
+{{- if and (not .IsHome) (ne .Kind "404") (not .Params.noindex) (ne $options.breadCrumbSchema false) }}
+
+  {{- $items := slice }}
+
+  {{- range .Ancestors.Reverse }}
+    {{- $items = $items | append (dict
+      "@type" "ListItem"
+      "position" (add (len $items) 1)
+      "name" (cond .IsHome site.Title .LinkTitle)
+      "item" .Permalink
+    ) }}
+  {{- end }}
+
+  {{- /* The page itself closes the trail. Google allows omitting the last item's URL, but
+         including it costs nothing and keeps every entry the same shape. */ -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" (add (len $items) 1)
+    "name" .LinkTitle
+    "item" .Permalink
+  ) }}
+
+  {{- /* Guard rather than an assumption: every non-home page should have the home page as an
+         ancestor, but a one-item list would be valid JSON-LD and useless, so do not emit it. */ -}}
+  {{- if ge (len $items) 2 }}
+    {{- $d := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items }}
+<script type="application/ld+json">
+{{ $d }}
+</script>
+  {{- end }}
+
+{{- end }}

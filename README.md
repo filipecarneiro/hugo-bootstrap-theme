@@ -113,35 +113,39 @@ Have a look on exampleSite for inspiration :)
 
 ### Favicons
 
-Drop the files in `static/` and the theme links them. There is nothing to configure —
-each well-known name is emitted only if the file exists:
+Drop a standard icon set in `static/` and the theme links whatever it finds. There is
+nothing to configure: each name below is emitted only if the file exists.
 
-| File in `static/` | Emitted as |
-| --- | --- |
-| `favicon.svg` | `<link rel="icon" type="image/svg+xml">` |
-| `favicon.png` | `<link rel="icon" type="image/png">` |
-| `favicon-96x96.png` | `<link rel="icon" type="image/png" sizes="96x96">` |
-| `favicon.ico` | `<link rel="shortcut icon">` |
-| `apple-touch-icon.png` | `<link rel="apple-touch-icon" sizes="180x180">` plus `<meta name="apple-mobile-web-app-title">` |
-| `site.webmanifest` | `<link rel="manifest">` |
+`favicon.svg`, `favicon.png`, `favicon-96x96.png`, `favicon.ico`,
+`apple-touch-icon.png`, `site.webmanifest`
 
-These are the names favicon generators produce, so a standard icon set from something
-like [RealFaviconGenerator](https://realfavicongenerator.net) works untouched. A
-top-level `themeColor` param, if set, adds `<meta name="theme-color">`. A site whose
-icons are named differently can override the partial.
+Those are the names favicon generators produce, so a set from something like
+[RealFaviconGenerator](https://realfavicongenerator.net) works untouched. A top-level
+`themeColor` param, if set, adds `<meta name="theme-color">`. The theme warns at build
+time if the home page ends up with no icon at all.
 
-Some SEO points the design follows, from [Google's favicon
-guidelines](https://developers.google.com/search/docs/appearance/favicon-in-search):
+Full details, including Google's favicon requirements, why these files are deliberately
+not fingerprinted, and the `Cache-Control` consequence that follows for your site:
+[`head/favicons.html`](layouts/partials/head/favicons.html).
 
-- Google reads the favicon from the **home page**, so at least one `rel="icon"` must
-  exist. The theme emits a build warning if none does.
-- The icon should be **square**, ideally a multiple of 48px (48, 96, 144…).
-- It must be **crawlable** — do not block it in `robots.txt`.
-- Its **URL should stay stable**, because Google caches it. That is why these files are
-  deliberately not fingerprinted and carry no `?v=` query: a URL that moved with the
-  bytes would work against it. It also means a long `immutable` cache header is the
-  wrong choice for them — prefer something like a week, so a replaced icon can still
-  reach visitors.
+### Breadcrumb structured data
+
+Every page except the home page emits a `BreadcrumbList` JSON-LD block, built from
+`.Ancestors`, so there is nothing to configure. Google renders it in the result snippet
+in place of the raw URL and does **not** require a matching visible breadcrumb, so it
+works independently of `options.breadCrumb`.
+
+```toml
+[params.options]
+  breadCrumbSchema = false   # suppress the schema
+```
+
+Crumb names come from `.LinkTitle`, so a section whose title is an SEO title should set
+`linkTitle` in its front matter to keep the crumb short.
+
+Full details, including which pages are skipped, why the home crumb differs from the
+visual trail, and the limits of a URL-derived path:
+[`head/schema-breadcrumb.html`](layouts/partials/head/schema-breadcrumb.html).
 
 ### Google tag (Analytics and Ads)
 
@@ -156,40 +160,20 @@ emitted at all.
     cookies = false                 # true lets the tag set cookies
 ```
 
-**The default is cookieless.** With `cookies` unset or `false`, the theme loads Consent
-Mode defaults that deny every consent type before the tag library initialises, so the
-tag sends cookieless pings, stores nothing on the visitor's device, and needs no consent
-banner. Reporting is limited to match: event counts by country, device and channel, with
-no users, sessions or attribution, because none of those can exist without a persistent
-client ID.
+**The default is cookieless.** Consent Mode defaults deny every storage type before the
+tag loads, so it sets no cookies and needs no consent banner. Reporting narrows to match:
+aggregate event counts, with no users, sessions or attribution.
 
-**`cookies = true` opts out of that** and lets the tag set cookies normally. The site is
-then responsible for presenting a consent banner that calls
-`gtag('consent', 'update', ...)` once the visitor agrees. The theme emits a build warning
-saying so. A site that genuinely has a banner, or is outside the jurisdictions that
-require one, acknowledges it in its configuration:
+**`cookies = true` opts out**, and a consent banner becomes the site's responsibility. The
+theme emits a build warning saying so, which a site acknowledges with
+`ignoreLogs = ['google-tag-cookies-allowed']` rather than by ignoring it.
 
-```toml
-ignoreLogs = ['google-tag-cookies-allowed']
-```
+A site with a CSP must allow `googletagmanager.com` in **both** `script-src` and
+`img-src`; see [Changing the Content Security Policy](#changing-the-content-security-policy).
 
-That line is the point of the warning: silencing it records a deliberate, reviewable
-decision in the repository rather than leaving the obligation unnoticed.
-
-Two further warnings, both suppressible the same way:
-
-| ID | Fires when |
-| --- | --- |
-| `google-tag-cookies-allowed` | `cookies = true` |
-| `google-tag-no-measurement-id` | `[googleTag]` exists but `measurementId` is empty |
-| `google-tag-csp-blocked` | A CSP is set and omits `googletagmanager.com` |
-
-All the scripts are loaded with `defer`, which is a correctness requirement and not a
-performance tweak: Consent Mode defaults must run *before* the tag library, and `defer`
-is the only attribute that guarantees execution order across origins without blocking
-the parser. The trade is that measurement begins once HTML parsing finishes rather than
-as early as possible. A site that needs the earliest possible firing can override
-`head/google-tag.html`.
+Full details, including the script ordering requirement, all three build warnings and
+what the CSP check can and cannot verify:
+[`head/google-tag.html`](layouts/partials/head/google-tag.html).
 
 ### Security headers
 
@@ -245,24 +229,17 @@ whatever only the meta tag allowed. While the parameter is unset no CSP is
 written to `_headers`, precisely so an overridden meta tag cannot be tightened
 behind your back.
 
-A site using `[googleTag]` has to allow the hosts that the Google tag needs, or
-the browser blocks it and only a console error shows why:
+A site using `[googleTag]` has to allow the hosts the Google tag needs, or the
+browser blocks it and only a console error shows why:
 
 | Directive | Add |
 | --- | --- |
 | `script-src` | `https://www.googletagmanager.com` |
 | `img-src` | `https://*.google-analytics.com` and `https://www.googletagmanager.com` |
 
-Note that `googletagmanager.com` is needed in **both**: `script-src` for `gtag.js`,
-and `img-src` for the `/td` tag-diagnostics ping that gtag fires as an `<img>`.
-That ping only fires on some page loads, so a clean home page does not prove
-`img-src` is right. Blocking it costs no measurement but logs a CSP error on
-every affected page, which then hides real problems in the console.
-
-`connect-src` needs nothing as long as the policy sets no `default-src`, since an
-unset directive with nothing to fall back to is unrestricted. The theme emits the
-`google-tag-csp-blocked` warning when a policy is set and omits
-`googletagmanager.com`, which turns a silent runtime failure into a build-time one.
+`googletagmanager.com` is needed in **both**. Why, which requests each directive
+covers, and what the theme's build-time check can and cannot verify for you:
+[`head/google-tag.html`](layouts/partials/head/google-tag.html).
 
 ### Start from Scratch
 

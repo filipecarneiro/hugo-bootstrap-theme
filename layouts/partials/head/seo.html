@@ -57,6 +57,11 @@
   {{- partial "head/schema-article.html" .  -}}
 {{ end }}
 
+<!-- BreadcrumbList structured data. Unconditional, like the Article schema above: the trail
+     is derived from .Ancestors, so there is nothing to configure and nothing to gate on. The
+     partial decides for itself which pages get one. -->
+{{- partial "head/schema-breadcrumb.html" .  -}}
+
 {{ if .IsHome }}
   <!-- WebSite structured data -->
   {{ if .Site.Params.webSite }}
