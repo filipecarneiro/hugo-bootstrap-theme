@@ -251,7 +251,13 @@ the browser blocks it and only a console error shows why:
 | Directive | Add |
 | --- | --- |
 | `script-src` | `https://www.googletagmanager.com` |
-| `img-src` | `https://*.google-analytics.com` (image-beacon fallback) |
+| `img-src` | `https://*.google-analytics.com` and `https://www.googletagmanager.com` |
+
+Note that `googletagmanager.com` is needed in **both**: `script-src` for `gtag.js`,
+and `img-src` for the `/td` tag-diagnostics ping that gtag fires as an `<img>`.
+That ping only fires on some page loads, so a clean home page does not prove
+`img-src` is right. Blocking it costs no measurement but logs a CSP error on
+every affected page, which then hides real problems in the console.
 
 `connect-src` needs nothing as long as the policy sets no `default-src`, since an
 unset directive with nothing to fall back to is unrestricted. The theme emits the
