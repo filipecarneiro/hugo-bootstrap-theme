@@ -10,7 +10,11 @@
   One partial rather than the same condition in two templates, so og:type and the
   Article schema can never disagree about what a page is.
 */ -}}
-{{- $isArticle := ne .Section "" -}}
+{{- /* An author's own page lives in a section too, but it describes a person rather than a
+       piece of writing, so it is a ProfilePage and not an Article. See
+       head/is-author-page.html and head/schema-profile-page.html. `schemaArticle` still
+       overrides this either way. */ -}}
+{{- $isArticle := and (ne .Section "") (not (partial "head/is-author-page.html" .)) -}}
 {{- if isset .Params "schemaarticle" -}}
   {{- $isArticle = .Params.schemaarticle -}}
 {{- end -}}

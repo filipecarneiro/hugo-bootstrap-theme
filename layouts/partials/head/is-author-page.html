@@ -1,0 +1,27 @@
+{{- /*
+  Returns true when a page is an author's own profile page, the thing head/schema-article.html
+  links to as an article's author.
+
+  One partial rather than the same condition in three templates, for the same reason
+  head/is-article.html exists: og:type, the Article schema and the ProfilePage schema must
+  never disagree about what a page is.
+
+  The section is named by `authorSection`, defaulting to "authors", so a site in another
+  language can put its author pages under /autores/, /auteurs/, and so on.
+
+  Two page shapes qualify, because the theme supports both:
+
+    Kind=page   a content section of leaf bundles, content/<authorSection>/<slug>/index.md
+    Kind=term   a taxonomy, [taxonomies] author = "<authorSection>", where the term page
+                takes its metadata from content/<authorSection>/<slug>/_index.md
+
+  Kind is what separates a profile from a listing. `taxonomy` (the /authors/ index) and
+  `section` (the /autores/ branch page) both carry the same .Section and are lists of authors
+  rather than one author, so they are excluded.
+
+  Worth knowing: a term page has .IsPage false, so head/is-article.html already excluded the
+  taxonomy shape before this partial existed. Only the section shape was being described as
+  an Article.
+*/ -}}
+{{- $section := site.Params.authorSection | default "authors" -}}
+{{- return (and (eq .Section $section) (in (slice "page" "term") .Kind)) -}}

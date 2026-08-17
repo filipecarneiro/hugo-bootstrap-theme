@@ -57,6 +57,10 @@
   {{- partial "head/schema-article.html" .  -}}
 {{ end }}
 
+<!-- ProfilePage structured data, for author pages. Mutually exclusive with the Article schema
+     above: head/is-article.html excludes whatever head/is-author-page.html recognises. -->
+{{- partial "head/schema-profile-page.html" .  -}}
+
 <!-- BreadcrumbList structured data. Unconditional, like the Article schema above: the trail
      is derived from .Ancestors, so there is nothing to configure and nothing to gate on. The
      partial decides for itself which pages get one. -->

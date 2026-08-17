@@ -147,6 +147,38 @@ Full details, including which pages are skipped, why the home crumb differs from
 visual trail, and the limits of a URL-derived path:
 [`head/schema-breadcrumb.html`](layouts/partials/head/schema-breadcrumb.html).
 
+### Author pages
+
+An author's own page is described as a person rather than as a piece of writing: it gets
+`ProfilePage` structured data wrapping a `Person`, plus `og:type: profile`, and is excluded
+from the `Article` schema. Both shapes the theme supports are recognised, a content section
+of leaf bundles and a taxonomy of terms.
+
+```toml
+[params]
+  authorSection = "autores"   # defaults to "authors"
+```
+
+The `Person` is built from the author page's own front matter, the same keys
+`head/schema-article.html` reads when it names an article's author, so both schemas describe
+one person identically:
+
+```yaml
+---
+title: "Ada Lovelace"
+description: "Engineer, writes about analytical engines."
+jobTitle: "Engineer"
+image: "photo.jpg"                              # in the author's own bundle, or in assets/
+sameAs: ["https://www.linkedin.com/in/ada/"]
+---
+```
+
+Everything except the title is optional and simply omitted when absent.
+
+Full details, including which page kinds are excluded and why the two schemas are mutually
+exclusive: [`head/schema-profile-page.html`](layouts/partials/head/schema-profile-page.html)
+and [`head/is-author-page.html`](layouts/partials/head/is-author-page.html).
+
 ### Google tag (Analytics and Ads)
 
 Add a `[googleTag]` block and the theme emits `gtag.js`. Without the block nothing is

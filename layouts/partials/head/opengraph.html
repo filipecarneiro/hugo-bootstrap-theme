@@ -9,7 +9,12 @@
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
 {{- $isArticle := partial "head/is-article.html" . -}}
-<meta property="og:type" content="{{ if $isArticle }}article{{ else }}website{{ end }}">
+{{- /* `profile` is Open Graph's own type for a page about a person, so an author page says so
+       rather than falling back to `website`. The profile:first_name / profile:last_name tags
+       are deliberately not emitted: splitting a personal name into given and family parts is
+       wrong often enough across locales that the type alone is the safer claim. */ -}}
+{{- $isAuthorPage := partial "head/is-author-page.html" . -}}
+<meta property="og:type" content="{{ if $isArticle }}article{{ else if $isAuthorPage }}profile{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 
 {{- /* Only raster formats every OG consumer supports; SVG is rejected by all of them.

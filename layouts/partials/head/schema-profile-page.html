@@ -1,0 +1,56 @@
+{{/*
+    ProfilePage Schema.org type, for an author's own page.
+
+    https://schema.org/ProfilePage
+    https://developers.google.com/search/docs/appearance/structured-data/profile-page
+
+    Google names "an author page on a news site" and "an employee page on a company website"
+    as valid uses, so this fits a blog's author bio. Only `mainEntity` and a `name` inside it
+    are required; everything else is recommended and simply omitted when absent.
+
+    Emitted on the pages head/is-author-page.html recognises, which is also what stops
+    head/is-article.html describing them as Articles. Before that split an author page claimed
+    og:type=article, an article:section of "autores", and a full Article schema, all of which
+    described a person's bio as a piece of writing.
+
+    Reads the same front matter that head/schema-article.html reads when it names an article's
+    author (`jobTitle`, `sameAs`, `image`, plus the page's description), and resolves the photo
+    the same way, from the author's own bundle first and then from assets/. The two schemas
+    therefore describe one person identically rather than approximately.
+
+    Built as maps and emitted in one interpolation, like the other schema partials here, so
+    Hugo serialises the JSON and an absent field cannot leave a dangling comma.
+*/}}
+{{- if partial "head/is-author-page.html" . }}
+
+  {{- /* name is the only required property inside mainEntity. url points at this page, which
+         is what Google asks for as the author's identifying page; sameAs then carries their
+         profiles elsewhere. */ -}}
+  {{- $person := dict "@type" "Person" "name" .Title "url" .Permalink }}
+
+  {{- with .Description }}{{ $person = merge $person (dict "description" .) }}{{ end }}
+  {{- with .Params.jobTitle }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end }}
+  {{- with .Params.sameAs }}{{ $person = merge $person (dict "sameAs" .) }}{{ end }}
+
+  {{- /* Fingerprinted, so the URL changes with the bytes and the photo here is the same
+         resource the byline and the Article schema use. */ -}}
+  {{- with .Params.image }}
+    {{- with ($.Resources.GetMatch . | default (resources.GetMatch .)) }}
+      {{- $person = merge $person (dict "image" (. | fingerprint).Permalink) }}
+    {{- end }}
+  {{- end }}
+
+  {{- $d := dict "@context" "https://schema.org" "@type" "ProfilePage" "mainEntity" $person }}
+
+  {{- /* Both dates are guarded rather than assumed. An author page rarely sets `date`, and a
+         taxonomy term page may have neither, so an unguarded .Format would serialise the zero
+         time as year 1. .Lastmod is only truthful with enableGitInfo or an explicit lastmod. */ -}}
+  {{- $iso8601 := "2006-01-02T15:04:05-07:00" }}
+  {{- if not .Date.IsZero }}{{ $d = merge $d (dict "dateCreated" (.Date.Format $iso8601)) }}{{ end }}
+  {{- if not .Lastmod.IsZero }}{{ $d = merge $d (dict "dateModified" (.Lastmod.Format $iso8601)) }}{{ end }}
+
+<script type="application/ld+json">
+{{ $d }}
+</script>
+
+{{- end }}
