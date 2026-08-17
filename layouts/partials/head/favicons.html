@@ -5,11 +5,28 @@
   The names are the ones favicon generators produce, so a standard icon set works
   as-is: https://realfavicongenerator.net
 
-  Deliberately no fingerprint or ?v= query. Google caches a site's favicon and asks
-  that its URL stay stable, so a hash that moved with the bytes would work against it.
-  A site whose icons are named differently can still override this partial.
-
   themeColor keeps reading the long-standing top-level param.
+
+  A site whose icons are named differently can override this partial.
+
+  What Google asks of a favicon, which is what shapes the decisions here
+  (https://developers.google.com/search/docs/appearance/favicon-in-search):
+
+    - It reads the favicon from the HOME PAGE only, so at least one rel="icon" has to
+      exist there. That is why the warning at the foot of this file fires on the home
+      page alone: warning on every page would say nothing extra.
+    - The icon should be square, ideally a multiple of 48px (48, 96, 144...).
+    - It must be crawlable, so do not block it in robots.txt.
+    - Its URL should stay STABLE, because Google caches it.
+
+  That last point is why there is deliberately no fingerprint and no ?v= query here. A
+  URL that moved with the bytes would defeat the caching Google is doing on purpose.
+
+  It also has a consequence beyond this file, for whoever configures caching. Because
+  these filenames carry no content hash, a long `immutable` Cache-Control would pin a
+  replaced icon in visitors' caches indefinitely. Something short, a week or so, is the
+  right choice for them, unlike the fingerprinted assets under /css/ and /js/. This
+  theme sets no Cache-Control itself, so that is a decision for the site.
 */ -}}
 {{- $icons := slice
       (dict "file" "favicon.svg"          "rel" "icon"             "type" "image/svg+xml")

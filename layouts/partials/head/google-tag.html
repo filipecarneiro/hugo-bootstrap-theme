@@ -29,10 +29,29 @@
     first spends a large part of that budget for nothing. It is still early enough for Google's
     "as high as possible in the head" guidance.
 
-    Content-Security-Policy: this loads a script from www.googletagmanager.com and the tag
-    beacons to *.google-analytics.com. A site setting params.contentSecurityPolicy must allow
-    both or the browser blocks the tag with nothing but a console error, so the check below
-    turns that into a build warning.
+    Content-Security-Policy. A site setting params.contentSecurityPolicy has to allow
+    googletagmanager.com in TWO directives, which is easy to get half right:
+
+      script-src  https://www.googletagmanager.com   gtag.js itself
+      img-src     https://www.googletagmanager.com   the /td tag-diagnostics ping
+      img-src     https://*.google-analytics.com     the /g/collect image fallback
+
+    The /td ping fires only on some page loads, so a clean home page proves nothing about
+    img-src. Blocking it costs no measurement, but it logs a CSP error that then hides real
+    problems in the console. connect-src needs nothing as long as the policy sets no
+    default-src, since an unset directive with nothing to fall back to is unrestricted.
+
+    Build warnings. Each is a suppressible ID, so silencing one means writing
+    ignoreLogs = ['<id>'] into the site config, which records the decision instead of leaving
+    the obligation unnoticed:
+
+      google-tag-cookies-allowed     cookies = true, so the site owes its visitors a banner
+      google-tag-no-measurement-id   [googleTag] present but measurementId empty
+      google-tag-csp-blocked         a CSP is set and script-src omits googletagmanager.com
+
+    That last check deliberately covers script-src only. The policy is one opaque string, so a
+    substring test cannot tell which directive the host appears in, and it would pass on
+    script-src alone while img-src silently blocks the /td ping.
 
     See:
       - https://developers.google.com/tag-platform/devguides/consent
