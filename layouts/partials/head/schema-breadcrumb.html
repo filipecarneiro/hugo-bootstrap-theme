@@ -48,12 +48,24 @@
   {{- $items := slice }}
 
   {{- range .Ancestors.Reverse }}
-    {{- $items = $items | append (dict
-      "@type" "ListItem"
-      "position" (add (len $items) 1)
-      "name" (cond .IsHome site.Title .LinkTitle)
-      "item" .Permalink
-    ) }}
+    {{- $ancestor := . }}
+    {{- /* Skip an ancestor with no URL. A section carrying `build.render: never` is a real
+           part of the hierarchy but was deliberately not published, so .Permalink is the
+           empty string. Emitting the crumb anyway produced "item": "", which Google's Rich
+           Results Test reports as a missing field, and `item` is required on every position
+           except the last. Linking is impossible either way, so the level is dropped: a trail
+           of pages that exist beats a trail with a hole in it.
+
+           Positions renumber themselves because they come from len $items rather than from
+           the loop index. */ -}}
+    {{- with .Permalink }}
+      {{- $items = $items | append (dict
+        "@type" "ListItem"
+        "position" (add (len $items) 1)
+        "name" (cond $ancestor.IsHome site.Title $ancestor.LinkTitle)
+        "item" .
+      ) }}
+    {{- end }}
   {{- end }}
 
   {{- /* The page itself closes the trail. Google allows omitting the last item's URL, but
