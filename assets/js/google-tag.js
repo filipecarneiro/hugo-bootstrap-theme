@@ -14,7 +14,10 @@ function gtag(){window.dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', params.measurementId);
 
-if(typeof params.googleAds !== 'undefined')
+// Truthy check rather than typeof: head/google-tag.html always defines googleAds, falling
+// back to an empty string when the site sets no value, and "" is not 'undefined'. A typeof
+// guard therefore let through a gtag('config', '') call carrying no ID at all.
+if(params.googleAds)
 {
     gtag('config', params.googleAds);
 }
