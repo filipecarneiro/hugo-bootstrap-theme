@@ -11,6 +11,31 @@ The workflow builds `exampleSite` first and stops if it fails, then bumps the
 version, commits, tags, pushes, publishes to npm and creates the GitHub release
 with generated notes.
 
+## Landing a minor or major
+
+Two steps, and the order matters. Any push to `main` that touches shipped files
+cuts a **patch** on its own, so the push and the deliberate bump would otherwise
+race each other.
+
+1. Commit the change with **`[skip ci]`** in the message and push. No release fires.
+2. Actions tab → **Release** → *Run workflow* → pick `minor` or `major`.
+
+**Leave `package.json` alone.** The workflow owns the bump, and running
+`npm version` yourself breaks both halves of the release:
+
+- The bump lands folded into your code commit, so there is no separate
+  `chore(release): x.y.z` commit and `git log --grep='chore(release)'` stops being
+  a complete release ledger.
+- `npm version` derives the next version from the current one, so once you have
+  written 2.1.0 by hand the workflow can only reach 2.1.1 or 2.2.0. There is no
+  bump that lands on the version you already wrote, and the only route back is
+  rewriting history that has already been pushed.
+
+If it happens anyway, do not unwind it. Finish that version by hand instead (see
+below). The tag, the version in `package.json` and the published contents still
+agree, which is the property that matters; the cost is one release missing from
+the `chore(release)` ledger.
+
 ## One-time setup
 
 Add an **`NPM_TOKEN`** repository secret (Settings → Secrets and variables →
@@ -79,8 +104,15 @@ versions are immutable**:
 ```powershell
 npm pack --dry-run
 ```
+
+Swap `patch` for `minor` or `major` as needed. The `-m` is not optional: npm's
+default message is just the version number, so without it the release commit
+lands on `main` carrying no `[skip ci]`, and `git push --follow-tags` then
+triggers the workflow and cuts a *second* release on top of the one you are
+making by hand. It also keeps the commit message identical to the workflow's.
+
 ```powershell
-npm version patch
+npm version patch -m "chore(release): %s [skip ci]"
 ```
 ```powershell
 git push --follow-tags
