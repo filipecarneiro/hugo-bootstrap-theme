@@ -31,12 +31,18 @@
     {{- /* $ogWidth is a cap, not a target: never upscale a source narrower than it. .Width
            is read inside each branch because it exists only on raster resources, and an
            unsupported format such as SVG must fall through untouched. */ -}}
+    {{- $img := "" -}}
     {{- if in $ogFormats .MediaType.SubType -}}
       {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
-      {{- $ogImages = $ogImages | append (.Resize (printf "%dx" $w)).Permalink -}}
+      {{- $img = .Resize (printf "%dx" $w) -}}
     {{- else if eq .MediaType.SubType "webp" -}}
       {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
-      {{- $ogImages = $ogImages | append (.Resize (printf "%dx jpeg q85" $w)).Permalink -}}
+      {{- $img = .Resize (printf "%dx jpeg q85" $w) -}}
+    {{- end -}}
+    {{- with $img -}}
+      {{- /* .Params survives image processing while .Title does not, so alt text attached to
+             the page resource in front matter reaches Open Graph from here. */ -}}
+      {{- $ogImages = $ogImages | append (dict "src" .Permalink "w" .Width "h" .Height "alt" .Params.alt) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
@@ -47,18 +53,32 @@
 {{- if not $ogImages -}}
   {{- range $.Site.Params.images -}}
     {{- with resources.GetMatch . -}}
+      {{- $img := "" -}}
       {{- if in $ogFormats .MediaType.SubType -}}
         {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
-        {{- $ogImages = $ogImages | append (.Resize (printf "%dx" $w)).Permalink -}}
+        {{- $img = .Resize (printf "%dx" $w) -}}
       {{- else if eq .MediaType.SubType "webp" -}}
         {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
-        {{- $ogImages = $ogImages | append (.Resize (printf "%dx jpeg q85" $w)).Permalink -}}
+        {{- $img = .Resize (printf "%dx jpeg q85" $w) -}}
+      {{- end -}}
+      {{- with $img -}}
+        {{- /* No alt: a site-wide fallback image describes the brand, not this page. */ -}}
+        {{- $ogImages = $ogImages | append (dict "src" .Permalink "w" .Width "h" .Height) -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end }}
+{{- /* width and height let a consumer lay the card out before it has fetched the image, and
+       are what stop LinkedIn and WhatsApp guessing wrong on a slow first scrape. alt is
+       emitted only when the page actually supplied one: an empty alt says nothing and is
+       worse than its absence. */ -}}
 {{ range first 6 $ogImages }}
-<meta property="og:image" content="{{ . }}">
+<meta property="og:image" content="{{ .src }}">
+<meta property="og:image:width" content="{{ .w }}">
+<meta property="og:image:height" content="{{ .h }}">
+{{- with .alt }}
+<meta property="og:image:alt" content="{{ . }}">
+{{- end }}
 {{- end }}
 
 {{- if $isArticle }}
