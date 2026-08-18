@@ -17,21 +17,27 @@
   {{/* sameAs = ["https://www.linkedin.com/company/…", …] — the profiles that identify
        this same organization elsewhere. */}}
   {{ with .sameAs }}{{ $d = merge $d (dict "sameAs" .) }}{{ end }}
+  {{/* Nested objects are guarded key by key, exactly like the top-level fields above.
+       Building them in one dict call looks tidier but reads every key unconditionally, and a
+       key absent from the config becomes an explicit JSON null: a site declaring only a
+       contact url published "email": null and "telephone": null. Schema.org treats a null as
+       a stated empty value rather than as silence, so it is worse than omitting the key. */}}
   {{ with .address }}
-    {{ $d = merge $d (dict "address" (dict
-      "@type" "PostalAddress"
-      "streetAddress" .streetAddress
-      "addressLocality" .locality
-      "addressRegion" .region
-      "postalCode" .postalCode
-      "addressCountry" .country)) }}
+    {{ $a := dict "@type" "PostalAddress" }}
+    {{ with .streetAddress }}{{ $a = merge $a (dict "streetAddress" .) }}{{ end }}
+    {{ with .locality }}{{ $a = merge $a (dict "addressLocality" .) }}{{ end }}
+    {{ with .region }}{{ $a = merge $a (dict "addressRegion" .) }}{{ end }}
+    {{ with .postalCode }}{{ $a = merge $a (dict "postalCode" .) }}{{ end }}
+    {{ with .country }}{{ $a = merge $a (dict "addressCountry" .) }}{{ end }}
+    {{/* len 1 means @type and nothing else: an empty table, not an address. */}}
+    {{ if gt (len $a) 1 }}{{ $d = merge $d (dict "address" $a) }}{{ end }}
   {{ end }}
   {{ with .contactPoint }}
-    {{ $d = merge $d (dict "contactPoint" (dict
-      "@type" "ContactPoint"
-      "email" .email
-      "telephone" .telephone
-      "url" .url)) }}
+    {{ $c := dict "@type" "ContactPoint" }}
+    {{ with .email }}{{ $c = merge $c (dict "email" .) }}{{ end }}
+    {{ with .telephone }}{{ $c = merge $c (dict "telephone" .) }}{{ end }}
+    {{ with .url }}{{ $c = merge $c (dict "url" .) }}{{ end }}
+    {{ if gt (len $c) 1 }}{{ $d = merge $d (dict "contactPoint" $c) }}{{ end }}
   {{ end }}
 <script type="application/ld+json">
 {{ $d }}
