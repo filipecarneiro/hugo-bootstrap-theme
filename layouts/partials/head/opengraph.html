@@ -28,11 +28,14 @@
 {{- $ogImages := slice -}}
 {{- range $.Params.images -}}
   {{- with $.Resources.GetMatch . -}}
-    {{- /* A cap, not a target: never upscale a source narrower than $ogWidth. */ -}}
-    {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
+    {{- /* $ogWidth is a cap, not a target: never upscale a source narrower than it. .Width
+           is read inside each branch because it exists only on raster resources, and an
+           unsupported format such as SVG must fall through untouched. */ -}}
     {{- if in $ogFormats .MediaType.SubType -}}
+      {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
       {{- $ogImages = $ogImages | append (.Resize (printf "%dx" $w)).Permalink -}}
     {{- else if eq .MediaType.SubType "webp" -}}
+      {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
       {{- $ogImages = $ogImages | append (.Resize (printf "%dx jpeg q85" $w)).Permalink -}}
     {{- end -}}
   {{- end -}}
@@ -44,10 +47,11 @@
 {{- if not $ogImages -}}
   {{- range $.Site.Params.images -}}
     {{- with resources.GetMatch . -}}
-      {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
       {{- if in $ogFormats .MediaType.SubType -}}
+        {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
         {{- $ogImages = $ogImages | append (.Resize (printf "%dx" $w)).Permalink -}}
       {{- else if eq .MediaType.SubType "webp" -}}
+        {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
         {{- $ogImages = $ogImages | append (.Resize (printf "%dx jpeg q85" $w)).Permalink -}}
       {{- end -}}
     {{- end -}}
