@@ -24,9 +24,12 @@
     short. That is Hugo's own key for exactly this, and header/breadcrumb.html reads it too,
     so renaming a section renames the visual trail and this schema together.
 
-    The home crumb uses site.Title rather than the home page's .LinkTitle, because a home
-    page's title is almost always a long SEO string rather than the name of the site.
-    site.Title is also per-language on a multilingual site.
+    The home crumb prefers an explicit `linkTitle` on the home page and falls back to
+    site.Title. Not .LinkTitle: that silently falls back to .Title, and a home page's title is
+    almost always a long SEO string rather than the name of the site, so reading it would put
+    "Brand — the tagline that ranks" at the root of every trail. site.Title is the better
+    default and is per-language on a multilingual site; a site wanting something else sets
+    `linkTitle` on the home page and gets it.
 
     That root label is the one place this diverges from header/breadcrumb.html, which
     hardcodes the English string "Home". The chains themselves are identical: .Ancestors and
@@ -62,7 +65,7 @@
       {{- $items = $items | append (dict
         "@type" "ListItem"
         "position" (add (len $items) 1)
-        "name" (cond $ancestor.IsHome site.Title $ancestor.LinkTitle)
+        "name" (cond $ancestor.IsHome (or $ancestor.Params.linkTitle site.Title) $ancestor.LinkTitle)
         "item" .
       ) }}
     {{- end }}
