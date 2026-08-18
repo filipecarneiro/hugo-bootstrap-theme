@@ -20,23 +20,36 @@
 {{- /* Only raster formats every OG consumer supports; SVG is rejected by all of them.
        WebP is not dropped but converted: several consumers - LinkedIn among them - do
        not render it, and skipping it silently costs the page its own image. */ -}}
+{{- /* 1200px is the width LinkedIn needs to render a large link preview card; below it the
+       image is demoted to a small thumbnail beside the text. Facebook and X accept the same
+       width, so one number serves all three. */ -}}
+{{- $ogWidth := 1200 -}}
 {{- $ogFormats := slice "png" "jpeg" -}}
 {{- $ogImages := slice -}}
 {{- range $.Params.images -}}
   {{- with $.Resources.GetMatch . -}}
+    {{- /* A cap, not a target: never upscale a source narrower than $ogWidth. */ -}}
+    {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
     {{- if in $ogFormats .MediaType.SubType -}}
-      {{- $ogImages = $ogImages | append (.Resize "960x").Permalink -}}
+      {{- $ogImages = $ogImages | append (.Resize (printf "%dx" $w)).Permalink -}}
     {{- else if eq .MediaType.SubType "webp" -}}
-      {{- $ogImages = $ogImages | append (.Resize "960x jpeg q85").Permalink -}}
+      {{- $ogImages = $ogImages | append (.Resize (printf "%dx jpeg q85" $w)).Permalink -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{- range $.Site.Params.images -}}
-  {{- with resources.GetMatch . -}}
-    {{- if in $ogFormats .MediaType.SubType -}}
-      {{- $ogImages = $ogImages | append (.Resize "960x").Permalink -}}
-    {{- else if eq .MediaType.SubType "webp" -}}
-      {{- $ogImages = $ogImages | append (.Resize "960x jpeg q85").Permalink -}}
+{{- /* Site-level images are a fallback, not an addition. Without the emptiness check both
+       ranges append, so any page carrying its own image emitted that image *and* the site
+       logo. Consumers differ on which of several og:image tags they use - some take the
+       first, some the last - so the page was effectively sharing a random one of the two. */ -}}
+{{- if not $ogImages -}}
+  {{- range $.Site.Params.images -}}
+    {{- with resources.GetMatch . -}}
+      {{- $w := cond (gt .Width $ogWidth) $ogWidth .Width -}}
+      {{- if in $ogFormats .MediaType.SubType -}}
+        {{- $ogImages = $ogImages | append (.Resize (printf "%dx" $w)).Permalink -}}
+      {{- else if eq .MediaType.SubType "webp" -}}
+        {{- $ogImages = $ogImages | append (.Resize (printf "%dx jpeg q85" $w)).Permalink -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end }}
