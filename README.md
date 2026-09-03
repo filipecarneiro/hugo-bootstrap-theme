@@ -179,6 +179,48 @@ Full details, including which page kinds are excluded and why the two schemas ar
 exclusive: [`head/schema-profile-page.html`](layouts/partials/head/schema-profile-page.html)
 and [`head/is-author-page.html`](layouts/partials/head/is-author-page.html).
 
+### Glossary structured data
+
+A page that declares a `definedTermSet` block emits a `DefinedTermSet` JSON-LD block, with
+one `DefinedTerm` per entry. Like the `Product` and `FAQPage` blocks, it emits structured
+data and nothing visible: the glossary itself is written in the page body, and the anchors
+the schema publishes have to match the headings there.
+
+```yaml
+---
+definedTermSet:
+  title: "Theme Glossary"                  # defaults to the page title
+  description: "The words this theme uses in a particular way."
+  items:
+    - term: "Front Matter"
+      description: "The metadata block at the top of a content file."
+      alternateName: "Frontmatter"         # a string or a list
+      sameAs: "https://gohugo.io/content-management/front-matter/"
+    - term: "Structured Data"
+      anchor: "structured-data"            # defaults to `anchorize` of the term
+      termCode: "SD"
+      description: |
+        Markdown, so an entry can link, emphasise and run to more than one paragraph.
+      items:                               # sub-terms, folded into the same set
+        - term: "JSON-LD"
+          sameAs:
+            - "https://en.wikipedia.org/wiki/JSON-LD"
+            - "https://www.wikidata.org/wiki/Q6108942"
+---
+```
+
+Only `term` is required; everything else is omitted when absent. Each entry is identified
+by `#<anchor>` on the page, derived from the term with `anchorize`, which is the rule Hugo
+applies to markdown headings, so a heading that reads the same as the term needs no
+`anchor`. `alternateName`, `sameAs` and `termCode` carry the names schema.org gives them.
+
+`sameAs` is the one worth filling in: it ties the entry to the entity it names, on Wikidata
+or wherever, so the term stops being a string that exists only on your page.
+
+Full details, including why the set is identified by `#glossary` rather than by the page
+URL, and why a description is published whole rather than cut to its first sentence:
+[`head/schema-defined-term-set.html`](layouts/partials/head/schema-defined-term-set.html).
+
 ### Google tag (Analytics and Ads)
 
 Add a `[googleTag]` block and the theme emits `gtag.js`. Without the block nothing is
