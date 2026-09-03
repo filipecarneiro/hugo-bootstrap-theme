@@ -2,11 +2,12 @@
 &lt;p&gt;This page exists to exercise the page-level JSON-LD partials that ship with the
 theme, so their output is validated on every build rather than only when a real
 site happens to configure them.&lt;/p&gt;
-&lt;p&gt;Three schemas are emitted from the front matter above:&lt;/p&gt;
+&lt;p&gt;Four schemas are emitted from the front matter above:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/Product" target="_blank" rel="noopener"&gt;Product&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;product:&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/SoftwareApplication" target="_blank" rel="noopener"&gt;SoftwareApplication&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;softwareApplication:&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/FAQPage" target="_blank" rel="noopener"&gt;FAQPage&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;faq:&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://schema.org/DefinedTermSet" target="_blank" rel="noopener"&gt;DefinedTermSet&lt;/a&gt;&lt;/strong&gt; — via &lt;code&gt;definedTermSet:&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The site-level schemas (&lt;code&gt;WebSite&lt;/code&gt;, &lt;code&gt;Organization&lt;/code&gt;, &lt;code&gt;LocalBusiness&lt;/code&gt; and &lt;code&gt;Event&lt;/code&gt;)
 are configured in &lt;code&gt;config/_default/params.toml&lt;/code&gt; and render on the home page.&lt;/p&gt;</description></item><item><title>Bootstrap Carousel 🎠</title><link>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0100</pubDate><guid>https://filipecarneiro.github.io/hugo-bootstrap-theme/page/bootstrap-carousel/</guid><description>&lt;h1 id="bootstrap-carousel"&gt;Bootstrap Carousel&lt;/h1&gt;
