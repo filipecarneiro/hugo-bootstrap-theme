@@ -99,3 +99,8 @@
 {{ if .Params.faq -}}
   {{- partial "head/schema-faq.html" .  -}}
 {{ end }}
+
+<!-- DefinedTermSet structured data, for a glossary -->
+{{ if .Params.definedTermSet -}}
+  {{- partial "head/schema-defined-term-set.html" .  -}}
+{{ end }}

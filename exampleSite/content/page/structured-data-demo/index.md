@@ -1,7 +1,7 @@
 ---
 title: "Structured Data Demo 🔎"
 date: 2026-07-25
-description: "Demonstrates the Product, SoftwareApplication and FAQPage JSON-LD that this theme can emit from front matter."
+description: "Demonstrates the Product, SoftwareApplication, FAQPage and DefinedTermSet JSON-LD that this theme can emit from front matter."
 draft: false
 tags: ["Featured"]
 keywords: ["structured data","json-ld","schema.org","hugo bootstrap theme"]
@@ -80,6 +80,33 @@ faq:
       answer: "No. You can install it as an npm package, a Hugo Module, or a git submodule."
     - question: "How do I enable structured data?"
       answer: "Add the matching block to your site params or page front matter. Each block drives one partial, and omitting a block simply omits that schema."
+
+# schema.org/DefinedTermSet -> layouts/partials/head/schema-defined-term-set.html
+definedTermSet:
+  title: "Theme Glossary"
+  description: "The handful of words this theme uses in a particular way."
+  items:
+    - term: "Partial"
+      description: "A template fragment the theme reuses across layouts. Each JSON-LD block on this page comes from one."
+    - term: "Front Matter"
+      alternateName: "Frontmatter"
+      description: "The metadata block at the top of a content file, which is where every page-level schema on this page is configured."
+      sameAs: "https://gohugo.io/content-management/front-matter/"
+    - term: "Structured Data"
+      anchor: "structured-data"
+      termCode: "SD"
+      description: |
+        Machine-readable markup, here JSON-LD, that states what a page is about
+        in a vocabulary search engines read.
+
+        It is emitted from front matter, so a page declares what it is once.
+      items:
+        - term: "JSON-LD"
+          alternateName: "JavaScript Object Notation for Linked Data"
+          description: "The serialisation this theme emits: a script block of JSON, kept apart from the markup it describes."
+          sameAs:
+            - "https://en.wikipedia.org/wiki/JSON-LD"
+            - "https://www.wikidata.org/wiki/Q6108942"
 ---
 
 # Structured Data Demo
@@ -88,11 +115,12 @@ This page exists to exercise the page-level JSON-LD partials that ship with the
 theme, so their output is validated on every build rather than only when a real
 site happens to configure them.
 
-Three schemas are emitted from the front matter above:
+Four schemas are emitted from the front matter above:
 
 - **[Product](https://schema.org/Product)** — via `product:`
 - **[SoftwareApplication](https://schema.org/SoftwareApplication)** — via `softwareApplication:`
 - **[FAQPage](https://schema.org/FAQPage)** — via `faq:`
+- **[DefinedTermSet](https://schema.org/DefinedTermSet)** — via `definedTermSet:`
 
 The site-level schemas (`WebSite`, `Organization`, `LocalBusiness` and `Event`)
 are configured in `config/_default/params.toml` and render on the home page.
@@ -114,3 +142,27 @@ No. You can install it as an npm package, a Hugo Module, or a git submodule.
 **How do I enable structured data?**
 
 Add the matching block to your site params or page front matter.
+
+## Theme Glossary
+
+### Partial
+
+A template fragment the theme reuses across layouts. Each JSON-LD block on this
+page comes from one.
+
+### Front Matter
+
+The metadata block at the top of a content file, which is where every
+page-level schema on this page is configured.
+
+### Structured Data
+
+Machine-readable markup, here JSON-LD, that states what a page is about
+in a vocabulary search engines read.
+
+It is emitted from front matter, so a page declares what it is once.
+
+#### JSON-LD
+
+The serialisation this theme emits: a script block of JSON, kept apart from the
+markup it describes.

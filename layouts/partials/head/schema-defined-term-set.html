@@ -1,0 +1,90 @@
+<!-- DefinedTermSet Schema.org Type -->
+<!-- https://schema.org/DefinedTermSet -->
+
+<!-- For a glossary: the page is the set and each entry is a DefinedTerm.
+
+     Like the Product and FAQPage partials, this emits structured data and
+     nothing visible. The glossary itself is written in the page body, and the
+     anchors here have to match the headings there.
+
+     A term may nest others under `items:`; they are flattened into the one set,
+     in reading order, because DefinedTerm has no hierarchy of its own and a
+     glossary is a set.
+
+     `description` is markdown, so here it is rendered, stripped of its tags and
+     unescaped back to the words a reader sees. It is not cut short: schema.org
+     sets no length on the property, and reducing it to the first sentence
+     mangled every description whose first period was not followed by a space,
+     which is every description that ends there.
+
+     `alternateName`, `sameAs` and `termCode` are optional and carry the names
+     schema.org gives them. Each is passed through as written, a string or a
+     list, the way head/schema-organization.html passes its own sameAs. sameAs
+     is the one that earns its place: it ties the entry to the entity it names,
+     on Wikidata or wherever, so the term stops being a string that exists only
+     on this page.
+
+     `anchor` is optional. Left out, it is derived from the term with
+     `anchorize`, the rule Hugo applies to markdown headings, so a term whose
+     heading reads the same as the term needs nothing. Give it explicitly when
+     the heading and the term differ, or when an anchor has to stay stable for
+     old links. It is deliberately not called `id`: schema.org has no such
+     property, and the name would sit next to the JSON-LD `@id`, `identifier`
+     and `termCode`, none of which it is.
+
+     The set is identified by `#glossary` rather than by the page URL. The page
+     URL is already the Article's mainEntityOfPage, and claiming it as the @id
+     here would type that same node as a glossary.
+
+     Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. -->
+
+{{ with .Params.definedTermSet }}
+  {{ $page := $ }}
+  {{ $glossary := . }}
+  {{ $set := printf "%s#glossary" $page.Permalink }}
+
+  {{ $terms := slice }}
+  {{ range $glossary.items }}
+    {{/* The term and whatever it nests, so both go through the same code. */}}
+    {{ $entries := slice . }}
+    {{ with .items }}{{ $entries = $entries | append . }}{{ end }}
+    {{ range $entries }}
+      {{ $url := printf "%s#%s" $page.Permalink (or .anchor (anchorize .term)) }}
+      {{ $term := dict "@type" "DefinedTerm" "@id" $url "name" .term
+                       "url" $url "inDefinedTermSet" $set }}
+      {{ with .description }}
+        {{/* htmlUnescape because plainify removes tags but leaves entities, so
+             an ampersand would otherwise be published as the literal &amp;. */}}
+        {{ $text := $page.RenderString . | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace }}
+        {{ with $text }}{{ $term = merge $term (dict "description" .) }}{{ end }}
+      {{ end }}
+      {{ with .alternateName }}{{ $term = merge $term (dict "alternateName" .) }}{{ end }}
+      {{ with .sameAs }}{{ $term = merge $term (dict "sameAs" .) }}{{ end }}
+      {{ with .termCode }}{{ $term = merge $term (dict "termCode" .) }}{{ end }}
+      {{ $terms = $terms | append $term }}
+    {{ end }}
+  {{ end }}
+
+  {{/* No terms, no set. A `definedTermSet` block carrying only a title is a
+       glossary someone started and has not filled in, and an empty
+       hasDefinedTerm states that the set is known to have no members. */}}
+  {{ with $terms }}
+    {{/* The page's own language, like head/schema-article.html, so a translated
+         glossary is not read as the site's default one. `.Language.Locale` and
+         not `.LanguageCode`: Hugo deprecated the `languageCode` config key in
+         v0.158.0 in favour of `locale`. */}}
+    {{ $d := dict "@context" "https://schema.org" "@type" "DefinedTermSet"
+                  "@id" $set
+                  "name" ($glossary.title | default $page.Title)
+                  "url" $page.Permalink
+                  "inLanguage" ($page.Language.Locale | default $page.Site.Language.Lang)
+                  "hasDefinedTerm" . }}
+    {{ with $glossary.description | default $page.Description }}
+      {{ $d = merge $d (dict "description" .) }}
+    {{ end }}
+<script type="application/ld+json">
+{{ $d }}
+</script>
+  {{ end }}
+{{ end }}
