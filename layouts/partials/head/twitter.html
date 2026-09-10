@@ -41,6 +41,14 @@
 <meta name="twitter:title" content="{{ .Title }}">
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
 
-{{ with .Site.Params.Social.twitter -}}
+{{/* params.twitterSite is the documented setting. params.social.twitter stays as a
+     fallback for sites configured before it existed; that param is also a plausible
+     name for a list of [[params.social]] links, and indexing a slice by field name
+     is a build error, so its shape is checked rather than assumed. */}}
+{{- $handle := site.Params.twitterSite -}}
+{{- if and (not $handle) (reflect.IsMap site.Params.social) -}}
+  {{- $handle = site.Params.social.twitter -}}
+{{- end }}
+{{ with $handle -}}
 <meta name="twitter:site" content="@{{ . }}">
 {{ end -}}

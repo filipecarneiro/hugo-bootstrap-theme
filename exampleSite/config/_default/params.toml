@@ -23,6 +23,18 @@ footerAbout = true
 footerAboutTitle = "Few Words About Us"
 footerAboutText = "We protect your website so you can provide a safe environment to build trust and improve the user experience of your visitors.<br/><br/>Salvus Site is the partner that you can rely on for preventive and reactive cybersecurity."
 
+# ---------------------------------------------------------------------------
+# Social identifiers used in <head> metadata. These are single values consumed by
+# head/twitter.html and head/facebook-admin.html, and are unrelated to the [[social]]
+# menu in config/_default/menus/, which is what renders the social links themselves.
+#
+# Older sites set these under [social] as a map (social.twitter, social.facebook_admin);
+# that still works and is used when the params below are unset.
+# ---------------------------------------------------------------------------
+
+# twitterSite = "hugobootstrap"    # handle only, without the @, for twitter:site
+# facebookAdmin = "1234567890"     # Facebook Page Admin ID, for fb:admins
+
 [options]
   bootStrapJs = true
   breadCrumb = true

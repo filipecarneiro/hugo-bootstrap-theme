@@ -4,6 +4,12 @@
     https://developers.facebook.com/docs/plugins/comments/#moderation-setup-instructions
 -->
 */}}
-{{- with .Site.Params.Social.facebook_admin }}
+{{/* params.facebookAdmin is the documented setting; params.social.facebook_admin stays
+     as a fallback. See head/twitter.html for why the shape is checked. */}}
+{{- $admin := site.Params.facebookAdmin -}}
+{{- if and (not $admin) (reflect.IsMap site.Params.social) -}}
+  {{- $admin = site.Params.social.facebook_admin -}}
+{{- end }}
+{{- with $admin }}
     <meta property="fb:admins" content="{{ . }}">
 {{ end }}
