@@ -48,6 +48,13 @@
     - "alt"    alternative text; it names the link, so say where it goes
                (default "Map of <the configured address>")
     - "sizes"  sizes attribute (default "100vw")
+    - "mobileImage"  a separate, tighter crop served below the breakpoint
+               (default site.Params.localBusiness.map.mobileImage). A wide
+               banner cropped into a narrow column shows very little map and
+               is upscaled doing it, so a portrait image drawn at a closer
+               zoom is a different picture, not a different size of the same
+               one. Omit it and the one image is used at every width.
+    - "mobileMedia"  media query that selects it (default "(max-width: 767px)")
     - "class"  class or classes added to the wrapper (default empty)
     - "target" link target attribute (default "_blank")
     - "source" imagery provider, to emit the credit it requires. Only
@@ -70,6 +77,12 @@
 
 {{- $path := .Get "image" | default $map.image | default "images/contact-map.png" -}}
 {{- $image := or (.Page.Resources.GetMatch $path) (resources.Get $path) -}}
+
+{{- $mobile := "" -}}
+{{- with .Get "mobileImage" | default $map.mobileImage -}}
+  {{- $mobile = or ($.Page.Resources.GetMatch .) (resources.Get .) -}}
+{{- end -}}
+{{- $mobileMedia := .Get "mobileMedia" | default "(max-width: 767px)" -}}
 
 {{/* Address on one line, for the link, the fallback text and the default alt. */}}
 {{- $address := "" -}}
@@ -123,16 +136,24 @@
        reload the page under the visitor. */}}
   {{- if $href }}<a href="{{ $href }}"{{ with $target }} target="{{ . }}"{{ end }} rel="noopener">{{ end }}
     {{- with $image }}
-      {{- $sm := .Resize "640x webp" }}
-      {{- $md := .Resize "1024x webp" }}
-      {{- $lg := .Resize "1600x webp" }}
-      {{- $xl := .Resize "2400x webp" }}
-    <img src="{{ $md.RelPermalink }}"
-         srcset="{{ $sm.RelPermalink }} 640w, {{ $md.RelPermalink }} 1024w, {{ $lg.RelPermalink }} 1600w, {{ $xl.RelPermalink }} 2400w"
+      {{- $wide := partial "static-map-srcset.html" (dict "image" . "ladder" (slice 640 1024 1600 2400)) }}
+      {{- $narrow := "" }}
+      {{- with $mobile }}
+        {{- $narrow = partial "static-map-srcset.html" (dict "image" . "ladder" (slice 360 600 900)) }}
+      {{- end }}
+      {{- if $narrow }}
+    <picture>
+      <source media="{{ $mobileMedia }}" srcset="{{ $narrow.srcset }}" sizes="{{ $sizes }}">
+      {{- end }}
+    <img src="{{ $wide.fallback.RelPermalink }}"
+         srcset="{{ $wide.srcset }}"
          sizes="{{ $sizes }}"
-         width="{{ $md.Width }}" height="{{ $md.Height }}"
+         width="{{ $wide.fallback.Width }}" height="{{ $wide.fallback.Height }}"
          loading="lazy" decoding="async"
          alt="{{ $alt }}">
+      {{- if $narrow }}
+    </picture>
+      {{- end }}
     {{- else }}
     {{ $alt }}
     {{- end }}

@@ -1,0 +1,36 @@
+{{/*
+  Builds one webp srcset for the static-map shortcode.
+
+  The ladder is capped at the source width and the native width is always
+  included, so a source smaller than the largest rung never becomes an
+  upscaled candidate that costs bytes and buys no detail.
+
+  Parameters:
+
+    - "image"   the image resource
+    - "ladder"  candidate widths, largest last
+
+  Returns a dict:
+
+    - "srcset"    the attribute value
+    - "fallback"  the resource to use for src, width and height
+*/}}
+{{- $image := .image -}}
+
+{{- $widths := slice -}}
+{{- range .ladder -}}
+  {{- if lt . $image.Width }}{{ $widths = $widths | append . }}{{ end -}}
+{{- end -}}
+{{- $widths = $widths | append $image.Width -}}
+
+{{- $items := slice -}}
+{{- $fallback := "" -}}
+{{- range $widths -}}
+  {{- $r := $image.Resize (printf "%dx webp" .) -}}
+  {{- $items = $items | append (printf "%s %dw" $r.RelPermalink .) -}}
+  {{/* src is only read by browsers that ignore srcset, so aim mid-ladder
+       rather than handing them the largest file on the page. */}}
+  {{- if or (not $fallback) (le . 1024) }}{{ $fallback = $r }}{{ end -}}
+{{- end -}}
+
+{{- return dict "srcset" (delimit $items ", ") "fallback" $fallback -}}
