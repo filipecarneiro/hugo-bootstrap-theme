@@ -5,105 +5,94 @@
 <!-- Revision based on Google guide https://developers.google.com/search/docs/advanced/structured-data/article#non-amp -->
 {{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
 
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
+{{/* `articleType` in front matter picks a more specific subtype of Article -
+     BlogPosting for a blog, NewsArticle for news. Set it once for a whole section
+     with a cascade in the section's _index.md rather than per page. */}}
+{{/* inLanguage is the page's own language, so a translated article is not read as
+     the site's default one. */}}
+{{ $d := dict
+   "@context" "https://schema.org"
+   "@type" (.Params.articleType | default "Article")
+   "headline" .Title
+   "inLanguage" (.Language.Locale | default .Site.Language.Lang)
+   "dateModified" (.Lastmod.Format $iso8601)
+   "mainEntityOfPage" .Permalink
+   "wordcount" (.Content | countwords) }}
+
+{{ $supportedImageTypes := slice "png" "jpeg" "webp" "gif" }}
+{{ $images := slice }}
+{{ range ($.Param "images") }}
+  {{ with $.Resources.GetMatch . }}
+    {{ if in $supportedImageTypes .MediaType.SubType }}
+      {{ $images = $images | append .Permalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ with $images }}{{ $d = merge $d (dict "image" .) }}{{ end }}
+
+{{ if not .PublishDate.IsZero }}{{ $d = merge $d (dict "datePublished" (.PublishDate.Format $iso8601)) }}{{ end }}
+
+{{ $description := .Summary | plainify }}
+{{ with .Params.description }}{{ $description = . }}{{ end }}
+{{ with $description }}{{ $d = merge $d (dict "description" .) }}{{ end }}
+
+{{ with .Keywords }}{{ $d = merge $d (dict "keywords" .) }}{{ end }}
+
+{{ if .Params.authors }}
+  {{/* Each entry in `authors` is a display name. The matching author page is found by
+       slugifying it, so front matter keeps the readable form and still resolves:
+       "Ada Lovelace" -> /authors/ada-lovelace/. Looking the name up verbatim, as this
+       did before, could never match a name containing a space or an accent.
+
+       The section is named by `authorSection` so a site in another language can put
+       its author pages under /autores/, /auteurs/, and so on.
+
+       Anything the author page does not define is simply left out - a name on its own
+       is still valid. */}}
+  {{ $section := .Site.Params.authorSection | default "authors" }}
+  {{ $people := slice }}
+  {{ range .Params.authors }}
+    {{ $name := . }}
+    {{ $person := dict "@type" "Person" "name" $name }}
+    {{ $authorPage := site.GetPage (printf "/%s/%s" $section (urlize $name)) }}
+    {{ with $authorPage }}
+      {{/* url points at the author page on this site. Google asks for a page that
+           identifies the author; sameAs then carries their profiles elsewhere. */}}
+      {{ $person = merge $person (dict "url" .Permalink) }}
+      {{ with .Params.jobTitle }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end }}
+      {{ with .Params.sameAs }}{{ $person = merge $person (dict "sameAs" .) }}{{ end }}
+      {{/* Looked up in the author's own bundle first, then in assets/, so the photo
+           can sit beside the author page or be shared from assets/. */}}
+      {{ with .Params.image }}
+        {{ with ($authorPage.Resources.GetMatch . | default (resources.GetMatch .)) }}
+          {{ $person = merge $person (dict "image" (. | fingerprint).Permalink) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ $people = $people | append $person }}
+  {{ end }}
+  {{ $d = merge $d (dict "author" $people) }}
+{{ else }}
+  {{/* Google asks for an author on an Article. A company blog often has no named
+       one, and the organization already configured is the truthful answer. */}}
+  {{ with .Site.Params.organization }}
+    {{ $author := dict "@type" "Organization" "name" .name }}
+    {{ with .url }}{{ $author = merge $author (dict "url" .) }}{{ end }}
+    {{ $d = merge $d (dict "author" $author) }}
+  {{ end }}
+{{ end }}
+
+{{ $publisher := dict "@type" "Organization" "name" .Site.Title }}
+{{ with $.Site.Params.images }}
+  {{/* Fingerprinted, like every other image the theme publishes: an unhashed URL
+       under a path served with a long immutable cache can never be replaced. */}}
+  {{ with resources.GetMatch (index . 0) }}
+    {{ $publisher = merge $publisher (dict "logo" (dict "@type" "ImageObject" "url" (. | fingerprint).Permalink)) }}
+  {{ end }}
+{{ end }}
+{{ $d = merge $d (dict "publisher" $publisher) }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  {{/* `articleType` in front matter picks a more specific subtype of Article -
-       BlogPosting for a blog, NewsArticle for news. Set it once for a whole section
-       with a cascade in the section's _index.md rather than per page. */}}
-  "@type": "{{ .Params.articleType | default "Article" }}",
-  "headline": "{{ .Title }}",
-  {{/* The page's own language, so a translated article is not read as the site's
-       default one. */}}
-  "inLanguage": "{{ .Language.Locale | default .Site.Language.Lang }}",
-
-  {{ $supportedImageTypes := slice "png" "jpeg" "webp" "gif" }}
-  {{ $images := slice }}
-  {{ range ($.Param "images") }}
-    {{ with $.Resources.GetMatch . }}
-      {{ if in $supportedImageTypes .MediaType.SubType }}
-        {{ $images = $images | append .Permalink }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-  {{ if $images }}
-  "image": {{ $images }},
-  {{ end }}
-
-  {{ if not .PublishDate.IsZero }}
-  "datePublished": "{{ .PublishDate.Format $iso8601 }}",
-  {{ end }}
-  "dateModified": "{{ .Lastmod.Format $iso8601 }}",
-
-  {{- if .Params.authors }}
-  {{- /* Each entry in `authors` is a display name. The matching author page is found by
-         slugifying it, so front matter keeps the readable form and still resolves:
-         "Ada Lovelace" -> /authors/ada-lovelace/. Looking the name up verbatim, as this
-         did before, could never match a name containing a space or an accent.
-
-         The section is named by `authorSection` so a site in another language can put
-         its author pages under /autores/, /auteurs/, and so on.
-
-         Anything the author page does not define is simply left out - a name on its own
-         is still valid. Built as dicts rather than hand-written JSON so an absent field
-         can never leave a dangling comma. */}}
-  {{- $section := .Site.Params.authorSection | default "authors" -}}
-  {{- $people := slice -}}
-  {{- range .Params.authors -}}
-    {{- $name := . -}}
-    {{- $person := dict "@type" "Person" "name" $name -}}
-    {{- $authorPage := site.GetPage (printf "/%s/%s" $section (urlize $name)) -}}
-    {{- with $authorPage -}}
-      {{- /* url points at the author page on this site. Google asks for a page that
-             identifies the author; sameAs then carries their profiles elsewhere. */ -}}
-      {{- $person = merge $person (dict "url" .Permalink) -}}
-      {{- with .Params.jobTitle }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end -}}
-      {{- with .Params.sameAs }}{{ $person = merge $person (dict "sameAs" .) }}{{ end -}}
-      {{- /* Looked up in the author's own bundle first, then in assets/, so the photo
-             can sit beside the author page or be shared from assets/. */ -}}
-      {{- with .Params.image -}}
-        {{- with ($authorPage.Resources.GetMatch . | default (resources.GetMatch .)) -}}
-          {{- $person = merge $person (dict "image" (. | fingerprint).Permalink) -}}
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}
-    {{- $people = $people | append $person -}}
-  {{- end }}
-  "author": {{ $people }},
-  {{- else }}
-  {{- /* Google asks for an author on an Article. A company blog often has no named
-         one, and the organization already configured is the truthful answer. */}}
-  {{- with .Site.Params.organization }}
-  "author": {
-    "@type": "Organization",
-    "name": "{{ .name }}"
-    {{- with .url }}, "url": "{{ . }}"{{ end }}
-  },
-  {{- end }}
-  {{- end }}
-
-  "mainEntityOfPage": "{{ .Permalink }}",
-
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ .Site.Title }}"
-    {{ with $.Site.Params.images }}
-      {{/* Fingerprinted, like every other image the theme publishes: an unhashed URL
-           under a path served with a long immutable cache can never be replaced. */}}
-      {{ with resources.GetMatch (index . 0) }}
-      , "logo": {
-        "@type": "ImageObject",
-        "url": "{{ (. | fingerprint).Permalink }}"
-      }
-      {{ end }}
-    {{ end }}
-  },
-
-  "wordcount": {{ .Content | countwords }},
-  "description": "{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }}"
-
-  {{- if .Keywords }},
-  "keywords": {{ .Keywords }}
-  {{- end }}
-}
+{{ $d }}
 </script>

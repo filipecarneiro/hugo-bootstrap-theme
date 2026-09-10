@@ -3,27 +3,20 @@
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/faqpage -->
 
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
 {{ with .Params.faq }}
+  {{ $d := dict "@context" "https://schema.org" "@type" "FAQPage" }}
+  {{ with .title }}{{ $d = merge $d (dict "name" .) }}{{ end }}
+  {{ $entities := slice }}
+  {{ range .items }}
+    {{/* A newline in the answer is meaningful to a reader, and Google renders the
+         answer as HTML, so it survives as a <br> rather than as whitespace. */}}
+    {{ $answer := dict "@type" "Answer" "text" (replace .answer "\n" "<br>") }}
+    {{ $entities = $entities | append (dict "@type" "Question" "name" .question "acceptedAnswer" $answer) }}
+  {{ end }}
+  {{ with $entities }}{{ $d = merge $d (dict "mainEntity" .) }}{{ end }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  {{ with .title -}}
-  "name": {{ . }},
-  {{ end -}}
-  "mainEntity": [
-  {{ range $i, $item := .items -}}
-    {{- if $i }}, {{ end }}
-    {
-      "@type": "Question",
-      "name": {{ $item.question }},
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": {{ replace $item.answer "\n" "<br>" | safeJSStr }}
-      }
-    }
-  {{- end }}
-  ]
-}
+{{ $d }}
 </script>
 {{ end }}
