@@ -8,10 +8,15 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
-        {{ if isset .Site.Params "mainmenulogo" }}
-        <img src="{{ .Site.Params.mainMenuLogo | relURL }}" alt="logo" width="30" height="24"
+        {{- with .Site.Params.mainMenuLogo }}
+        {{- /* Resolved through the asset pipeline when the logo lives in assets/, which is
+               also where params.images is looked up from. A logo kept in static/ is not a
+               resource, so the plain URL stays as the fallback. */ -}}
+        {{- $logo := . | relURL -}}
+        {{- with resources.Get . }}{{ $logo = (. | fingerprint).RelPermalink }}{{ end }}
+        <img src="{{ $logo }}" alt="logo" width="30" height="24"
           class="d-inline-block align-text-top">
-        {{ end }}
+        {{- end }}
         {{ .Site.Title }}
       </a>
 
