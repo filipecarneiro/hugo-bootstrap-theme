@@ -119,8 +119,8 @@ footerAboutText = "We protect your website so you can provide a safe environment
     country = "PT"
     countryName = "Portugal"
   [localBusiness.map]
-    latitude = "41.3534268"
-    longitude = "-8.7434646"
+    latitude = "41.3533727"
+    longitude = "-8.7433761"
     # Google Maps customer ID, not the Business Profile ID: see the static-map
     # shortcode for how to read it out of a Maps place URL.
     cid = "4551885198553855081"
