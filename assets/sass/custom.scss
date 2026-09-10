@@ -92,3 +92,27 @@ a /*.feather*/ {
         fill: $github-black;
     }
 }
+
+// Static map shortcode.
+//
+// The anchor wraps nothing but the image, so it has to become a block: left
+// inline it sits on a text baseline and leaves a gap under the picture.
+// Height is deliberately not set here - how tall the map band should be is a
+// decision for the site, not the theme.
+.static-map {
+    > a {
+        display: block;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+    }
+}
+
+.static-map-credit {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    text-align: right;
+}

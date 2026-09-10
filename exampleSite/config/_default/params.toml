@@ -101,6 +101,9 @@ footerAboutText = "We protect your website so you can provide a safe environment
     url = "https://filipecarneiro.github.io/hugo-bootstrap-theme/contact/"
 
 # schema.org/LocalBusiness — rendered on the home page
+# The identity here is the theme's own, but the address and map point at a real
+# place: a static map demo is only honest if the picture, the coordinates and
+# the link all agree on somewhere that exists.
 [localBusiness]
   name = "Hugo Bootstrap Theme"
   image = "images/site-feature-image.png"
@@ -108,14 +111,19 @@ footerAboutText = "We protect your website so you can provide a safe environment
   priceRange = "$$"
   webpage = "https://filipecarneiro.github.io/hugo-bootstrap-theme/"
   [localBusiness.address]
-    streetAddress = "Rua de Exemplo 100"
-    locality = "Porto"
+    streetAddress = "Rua da Misericórdia, 6"
+    extendedAddress = "Sala 3"
+    locality = "Vila do Conde"
     region = "Porto"
-    postalCode = "4000-000"
+    postalCode = "4480-758"
     country = "PT"
+    countryName = "Portugal"
   [localBusiness.map]
-    latitude = "41.14961"
-    longitude = "-8.61099"
+    latitude = "41.3534268"
+    longitude = "-8.7434646"
+    # Google Maps customer ID, not the Business Profile ID: see the static-map
+    # shortcode for how to read it out of a Maps place URL.
+    cid = "4551885198553855081"
 
 # schema.org/Event — rendered on the home page
 [event]

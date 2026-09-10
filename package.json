@@ -26,11 +26,13 @@
     "start": "hugo server --source exampleSite --cleanDestinationDir --gc",
     "build": "hugo --minify --source exampleSite --baseURL '/' --cleanDestinationDir --gc --printPathWarnings --templateMetrics",
     "scan": "node scripts/scan.mjs --site=https://filipecarneiro.github.io/hugo-bootstrap-theme/",
-    "deploy": "npm publish --access public"
+    "deploy": "npm publish --access public",
+    "static-map": "node scripts/static-map.mjs --lat=41.3534268 --lon=-8.7434646 --out=exampleSite/assets/images/contact-map.png"
   },
   "devDependencies": {
     "bootstrap": "^5.3.8",
     "feather-icons": "^4.29.2",
+    "sharp": "^0.35.4",
     "unlighthouse": "^0.18.0"
   },
   "overrides": {

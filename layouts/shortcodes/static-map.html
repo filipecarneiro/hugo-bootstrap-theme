@@ -1,0 +1,143 @@
+{{/*
+  Static Map Shortcode
+  A map picture that links out to a maps service, in place of an embedded map.
+  An embed pulls a whole third-party JavaScript stack into the page, and adds a
+  third-party connection on every visit, just to show one fixed view.
+
+  The image is yours to produce and commit; nothing is fetched at build time.
+  When it is missing the shortcode renders a plain text link instead, so a site
+  that has not added one yet still builds and still says where you are.
+
+  Reads site.Params.localBusiness for its defaults, the same block that feeds
+  head/schema-local-business.html, so the picture, the link and the structured
+  data cannot drift apart.
+
+  The link is resolved from the most specific thing available, in this order:
+
+    1. "href" parameter             an explicit URL, overriding everything.
+    2. localBusiness.map.url        an explicit URL from config, e.g. a
+                                    share.google short link.
+    3. localBusiness.map.placeId    a Google place ID ("ChIJ..."). Google wants
+                                    a query alongside it, so coordinates are
+                                    used when present and the address otherwise.
+    4. localBusiness.map.cid        a Google Maps customer ID, which opens the
+                                    business listing itself.
+    5. map.latitude and .longitude  drops a pin on the point.
+    6. localBusiness.address        a plain address search, the loosest match.
+
+  Finding cid and placeId:
+
+    cid      Open the business in Google Maps and read the address bar. The
+             "data=" segment carries "!1s0x<hex>:0x<hex>"; convert the SECOND
+             hex value to decimal:
+               node -e "console.log(parseInt('3f2b8b789e293469',16))"
+    placeId  Needs the Places API or Google's Place ID Finder. It is not shown
+             anywhere in the Maps interface.
+
+  Note: the "Business Profile ID" under Google Business Profile advanced
+        settings is NEITHER of these. It belongs to a different namespace and
+        yields a dead link, which is easy to miss because Google answers with
+        an empty map rather than an error. Verified against two listings.
+
+  Parameters:
+
+    - "image"  map image, looked up first as a page resource and then under
+               assets/ (default site.Params.localBusiness.map.image, else
+               "images/contact-map.png")
+    - "href"   link target, overriding every config source above
+    - "alt"    alternative text; it names the link, so say where it goes
+               (default "Map of <the configured address>")
+    - "sizes"  sizes attribute (default "100vw")
+    - "class"  class or classes added to the wrapper (default empty)
+    - "target" link target attribute (default "_blank")
+    - "source" imagery provider, to emit the credit it requires. Only
+               "openstreetmap" is known; anything else needs "credit"
+    - "credit" attribution HTML, overriding "source" (default empty)
+
+  Example:
+
+    {{< static-map source="openstreetmap" >}}
+    {{< static-map image="img/office.png" class="my-4" sizes="(max-width: 768px) 100vw, 50vw" >}}
+
+  Note: OpenStreetMap imagery is ODbL licensed and MUST carry a credit. Pass
+        source="openstreetmap" and the shortcode writes it for you.
+
+  Note: the map is a picture, so it cannot be panned or zoomed. Choose the zoom
+        and the centre when you generate the image.
+*/}}
+{{- $lb := site.Params.localBusiness | default dict -}}
+{{- $map := $lb.map | default dict -}}
+
+{{- $path := .Get "image" | default $map.image | default "images/contact-map.png" -}}
+{{- $image := or (.Page.Resources.GetMatch $path) (resources.Get $path) -}}
+
+{{/* Address on one line, for the link, the fallback text and the default alt. */}}
+{{- $address := "" -}}
+{{- with $lb.address -}}
+  {{- $parts := slice -}}
+  {{- with .streetAddress }}{{ $parts = $parts | append . }}{{ end -}}
+  {{/* Postal code and town are one line of an address, not two. */}}
+  {{- $town := trim (printf "%s %s" (.postalCode | default "") (.locality | default "")) " " -}}
+  {{- with $town }}{{ $parts = $parts | append . }}{{ end -}}
+  {{/* countryName spells it out; country is often a two-letter code, which
+       reads poorly when this lands in alt text. */}}
+  {{- with (.countryName | default .country) }}{{ $parts = $parts | append . }}{{ end -}}
+  {{- $address = delimit $parts ", " -}}
+{{- end -}}
+
+{{/* Coordinates are a tighter match than an address, so they are preferred as
+     the query in every branch below. */}}
+{{- $query := $address -}}
+{{- if and $map.latitude $map.longitude -}}
+  {{- $query = printf "%v,%v" $map.latitude $map.longitude -}}
+{{- end -}}
+
+{{- $href := .Get "href" | default $map.url -}}
+{{- if not $href -}}
+  {{- with $map.placeId -}}
+    {{- $href = printf "https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s" (urlquery $query) (urlquery .) -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $href -}}
+  {{- with $map.cid -}}
+    {{- $href = printf "https://maps.google.com/maps?cid=%v" . -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $href -}}
+  {{- with $query -}}
+    {{- $href = printf "https://www.google.com/maps/search/?api=1&query=%s" (urlquery .) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $alt := .Get "alt" | default (printf "Map of %s" $address) -}}
+{{- $sizes := .Get "sizes" | default "100vw" -}}
+{{- $target := .Get "target" | default "_blank" -}}
+
+{{- $credit := .Get "credit" -}}
+{{- if and (not $credit) (eq (.Get "source") "openstreetmap") -}}
+  {{- $credit = `Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors` -}}
+{{- end -}}
+
+<div class="static-map{{ with .Get "class" }} {{ . }}{{ end }}">
+  {{/* Nothing to link to means no anchor at all: an empty href would just
+       reload the page under the visitor. */}}
+  {{- if $href }}<a href="{{ $href }}"{{ with $target }} target="{{ . }}"{{ end }} rel="noopener">{{ end }}
+    {{- with $image }}
+      {{- $sm := .Resize "640x webp" }}
+      {{- $md := .Resize "1024x webp" }}
+      {{- $lg := .Resize "1600x webp" }}
+      {{- $xl := .Resize "2400x webp" }}
+    <img src="{{ $md.RelPermalink }}"
+         srcset="{{ $sm.RelPermalink }} 640w, {{ $md.RelPermalink }} 1024w, {{ $lg.RelPermalink }} 1600w, {{ $xl.RelPermalink }} 2400w"
+         sizes="{{ $sizes }}"
+         width="{{ $md.Width }}" height="{{ $md.Height }}"
+         loading="lazy" decoding="async"
+         alt="{{ $alt }}">
+    {{- else }}
+    {{ $alt }}
+    {{- end }}
+  {{- if $href }}</a>{{ end }}
+  {{- if and $image $credit }}
+  <p class="static-map-credit">{{ $credit | safeHTML }}</p>
+  {{- end }}
+</div>
