@@ -1,44 +1,42 @@
 <!-- LocalBusiness Schema.org Type -->
 <!-- https://schema.org/LocalBusiness -->
-<!-- Output all taxonomies as schema.org keywords -->
 
 <!-- Revision based on Google guide https://developers.google.com/search/docs/appearance/structured-data/local-business#non-amp -->
 
+{{/* Built as a map and emitted in one interpolation: Hugo serialises it as
+     JSON, so optional fields can never leave a dangling comma behind. */}}
 {{ with .Site.Params.localBusiness }}
+  {{ $d := dict "@context" "https://schema.org" "@type" "LocalBusiness" "name" .name }}
+  {{ with .image }}
+    {{ with resources.GetMatch . }}{{ $d = merge $d (dict "image" .Permalink) }}{{ end }}
+  {{ end }}
+  {{/* Nested objects are guarded key by key, exactly like the top-level fields above.
+       See head/schema-organization.html for why building them in one dict call turns a
+       key absent from the config into an explicit JSON null. */}}
+  {{ with .address }}
+    {{ $a := dict "@type" "PostalAddress" }}
+    {{ with .streetAddress }}{{ $a = merge $a (dict "streetAddress" .) }}{{ end }}
+    {{ with .extendedAddress }}{{ $a = merge $a (dict "extendedAddress" .) }}{{ end }}
+    {{ with .locality }}{{ $a = merge $a (dict "addressLocality" .) }}{{ end }}
+    {{ with .region }}{{ $a = merge $a (dict "addressRegion" .) }}{{ end }}
+    {{ with .postalCode }}{{ $a = merge $a (dict "postalCode" .) }}{{ end }}
+    {{ with .country }}{{ $a = merge $a (dict "addressCountry" .) }}{{ end }}
+    {{/* len 1 means @type and nothing else: an empty table, not an address. */}}
+    {{ if gt (len $a) 1 }}{{ $d = merge $d (dict "address" $a) }}{{ end }}
+  {{ end }}
+  {{ with .map }}
+    {{ $g := dict "@type" "GeoCoordinates" }}
+    {{ with .latitude }}{{ $g = merge $g (dict "latitude" .) }}{{ end }}
+    {{ with .longitude }}{{ $g = merge $g (dict "longitude" .) }}{{ end }}
+    {{ if gt (len $g) 1 }}{{ $d = merge $d (dict "geo" $g) }}{{ end }}
+  {{ end }}
+  {{ with .telephone }}{{ $d = merge $d (dict "telephone" .) }}{{ end }}
+  {{ with .priceRange }}{{ $d = merge $d (dict "priceRange" .) }}{{ end }}
+  {{/* The page's own URL unless the site names the business's page explicitly. */}}
+  {{ $url := $.Permalink }}
+  {{ with .webpage }}{{ $url = . }}{{ end }}
+  {{ $d = merge $d (dict "url" $url) }}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  {{ with .image -}}
-  {{- with resources.GetMatch . -}}
-  "image": {{ .Permalink }},
-  {{ end -}}
-  {{ end -}}
-  "name": {{ .name | safeHTML }},
-  {{ with .address -}}
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "{{ .streetAddress }}",
-    "addressLocality": "{{ .locality }}",
-    "addressRegion": "{{ .region }}",
-    "postalCode": "{{ .postalCode }}",
-    "addressCountry": "{{ .country }}"
-  },
-  {{ end -}}
-  {{ with .map -}}
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "{{ .latitude }}",
-    "longitude": "{{ .longitude }}"
-  },
-  {{ end -}}
-  {{ with .telephone -}}
-  "telephone": {{ . }},
-  {{ end -}}
-  {{ with .priceRange -}}
-  "priceRange": {{ . }},
-  {{ end -}}
-  "url": {{ with .webpage }}{{ . | jsonify | safeJS }}{{ else }}{{ $.Permalink }}{{ end }}
-}
+{{ $d }}
 </script>
 {{ end }}

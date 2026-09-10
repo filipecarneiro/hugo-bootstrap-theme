@@ -15,12 +15,14 @@
 
   {{ $place := dict "@type" "Place" "name" .PlaceName }}
   {{ with .address }}
-    {{ $place = merge $place (dict "address" (dict
-      "@type" "PostalAddress"
-      "streetAddress" .streetAddress
-      "addressLocality" .locality
-      "postalCode" .postalCode
-      "addressCountry" .country)) }}
+    {{ $a := dict "@type" "PostalAddress" }}
+    {{ with .streetAddress }}{{ $a = merge $a (dict "streetAddress" .) }}{{ end }}
+    {{ with .extendedAddress }}{{ $a = merge $a (dict "extendedAddress" .) }}{{ end }}
+    {{ with .locality }}{{ $a = merge $a (dict "addressLocality" .) }}{{ end }}
+    {{ with .region }}{{ $a = merge $a (dict "addressRegion" .) }}{{ end }}
+    {{ with .postalCode }}{{ $a = merge $a (dict "postalCode" .) }}{{ end }}
+    {{ with .country }}{{ $a = merge $a (dict "addressCountry" .) }}{{ end }}
+    {{ if gt (len $a) 1 }}{{ $place = merge $place (dict "address" $a) }}{{ end }}
   {{ end }}
   {{ $d = merge $d (dict "location" $place) }}
 
@@ -33,12 +35,14 @@
   {{ end }}
 
   {{ with .offer }}
-    {{ $offer := dict "@type" "Offer"
-                      "price" .price
-                      "priceCurrency" .priceCurrency
-                      "availability" (printf "https://schema.org/%s" .availability)
-                      "description" .description
-                      "url" .url }}
+    {{ $offer := dict "@type" "Offer" }}
+    {{ with .price }}{{ $offer = merge $offer (dict "price" .) }}{{ end }}
+    {{ with .priceCurrency }}{{ $offer = merge $offer (dict "priceCurrency" .) }}{{ end }}
+    {{/* Guarded like the rest: printf on an absent value published the literal
+         "https://schema.org/%!s(<nil>)" as the availability. */}}
+    {{ with .availability }}{{ $offer = merge $offer (dict "availability" (printf "https://schema.org/%s" .)) }}{{ end }}
+    {{ with .description }}{{ $offer = merge $offer (dict "description" .) }}{{ end }}
+    {{ with .url }}{{ $offer = merge $offer (dict "url" .) }}{{ end }}
     {{ with .validFrom }}{{ $offer = merge $offer (dict "validFrom" .) }}{{ end }}
     {{ $d = merge $d (dict "offers" $offer) }}
   {{ end }}

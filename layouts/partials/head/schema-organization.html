@@ -25,6 +25,7 @@
   {{ with .address }}
     {{ $a := dict "@type" "PostalAddress" }}
     {{ with .streetAddress }}{{ $a = merge $a (dict "streetAddress" .) }}{{ end }}
+    {{ with .extendedAddress }}{{ $a = merge $a (dict "extendedAddress" .) }}{{ end }}
     {{ with .locality }}{{ $a = merge $a (dict "addressLocality" .) }}{{ end }}
     {{ with .region }}{{ $a = merge $a (dict "addressRegion" .) }}{{ end }}
     {{ with .postalCode }}{{ $a = merge $a (dict "postalCode" .) }}{{ end }}
