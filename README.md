@@ -261,25 +261,15 @@ be sent as HTTP response headers, so they depend on where the site is published:
 | Netlify, Cloudflare Pages | reads `_headers` | meta CSP **and** all headers below |
 | GitHub Pages | not supported | meta CSP only |
 
-The theme ships `layouts/index.headers`, but Hugo writes it only if the site
-declares the output format. Add these three blocks to your configuration:
+The theme ships `layouts/index.headers` and declares the `HEADERS` output format
+and its media type in its own configuration. Hugo merges `mediaTypes` and
+`outputFormats` from a theme but **not** `outputs`, so the home page still has to
+opt in. Add this one block to your configuration:
 
 ```toml
-[mediaTypes]
-  # No delimiter, so the file is written as "_headers" and not "_headers.txt".
-  [mediaTypes."text/netlify"]
-    delimiter = ""
-
-[outputFormats]
-  [outputFormats.HEADERS]
-    mediaType = "text/netlify"
-    baseName = "_headers"
-    isPlainText = true
-    notAlternative = true
-
 [outputs]
   # HTML and RSS are Hugo's defaults for the home page and must be repeated,
-  # or declaring HEADERS would replace them.
+  # or declaring HEADERS would replace them and you would lose your feed.
   home = ["HTML", "RSS", "HEADERS"]
 ```
 

@@ -23,22 +23,11 @@ enableEmoji = true
   date = ["date", "publishDate", "lastmod"]
   lastmod = ["lastmod", ":fileModTime", ":default"]
 
-# Writes public/_headers from layouts/index.headers. Without these three blocks
-# that template is never rendered, so the security headers it defines reach
-# nobody. Netlify and Cloudflare Pages read the file and turn it into response
-# headers; GitHub Pages ignores it, since it cannot serve custom headers.
-[mediaTypes]
-  # No delimiter, so the file is written as "_headers" and not "_headers.txt".
-  [mediaTypes."text/netlify"]
-    delimiter = ""
-
-[outputFormats]
-  [outputFormats.HEADERS]
-    mediaType = "text/netlify"
-    baseName = "_headers"
-    isPlainText = true
-    notAlternative = true
-
+# Writes public/_headers from layouts/index.headers. The theme declares the
+# HEADERS output format and its media type; Hugo merges those from a theme but
+# not outputs, so the home page opts in below. Netlify and Cloudflare Pages turn
+# the file into response headers; GitHub Pages, where this demo is published,
+# ignores it, so here the meta CSP is the only policy that reaches the browser.
 [outputs]
   # HTML and RSS are Hugo's defaults for the home page and have to be repeated,
   # or declaring HEADERS would replace them.

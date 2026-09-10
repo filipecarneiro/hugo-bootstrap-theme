@@ -1,0 +1,26 @@
+# Theme-level defaults. A site's own configuration overrides anything here.
+
+# layouts/index.headers writes the security headers that cannot be sent as a
+# meta tag, but Hugo renders it only when this output format exists. Declared
+# here so a site does not have to repeat it.
+#
+# There is deliberately no [outputs] block: Hugo merges mediaTypes and
+# outputFormats from a theme but not outputs, which replaces rather than
+# extends. A site opts its home page in with:
+#
+#   [outputs]
+#     home = ["HTML", "RSS", "HEADERS"]
+#
+# Only hosts that read a _headers file act on the result - Netlify and
+# Cloudflare Pages do, GitHub Pages ignores it. Hence the host-neutral media
+# type name; it exists only so the file is written without an extension.
+[mediaTypes]
+  [mediaTypes."text/headers"]
+    delimiter = ""
+
+[outputFormats]
+  [outputFormats.HEADERS]
+    mediaType = "text/headers"
+    baseName = "_headers"
+    isPlainText = true
+    notAlternative = true
