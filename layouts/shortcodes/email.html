@@ -1,20 +1,23 @@
 {{/*
   Email Shortcode
-  Write a email address using HTML DOM Document write() to hide the email from bots 
+  Write an email address split across data attributes, so the plain
+  local-part@domain string never appears in the served HTML.
+
+  Emits no inline script: main.js upgrades the span to a mailto link, which
+  keeps the shortcode usable under the theme's default script-src 'self'.
+  Without JavaScript the span itself stays readable as "user at domain".
 
   Parameters:
 
     - "user" local-part of the email address (local-part@domain)
     - "domain" domain of the email address (local-part@domain)
-    - "class" class or classes to be applied on parent figure element. (default empty)
+    - "class" class or classes to be applied on the element. (default empty)
 
   Example:
 
     {{< email user="john.smith" domain="example.com" class="cool-link" >}}
 
 */}}
-{{ $emailAddress := printf "%s@%s" (.Get "user") (.Get "domain") }}
-<script type='text/javascript' nonce='dXNlcj0iaGVsbG8iLGRvbWFpbj0iaGVua3ZlcmxpbmRlLmNvbSIsZG9jdW1lbnQud3JpdGUodXNlcisiQCIrZG9tYWluKTs='>
-  document.write("<a href='mailto:" + {{ $emailAddress }} + "' class='email {{- with .Get "class" }} {{.}}{{ end -}}'>" + {{ $emailAddress }} + "</a>");
-</script>
-<noscript>{{ with .Get "user" }}{{.}}{{ end }} at {{ with .Get "domain" }}{{.}}{{ end }}</noscript>
+{{- $user := .Get "user" -}}
+{{- $domain := .Get "domain" -}}
+<span class="email{{ with .Get "class" }} {{ . }}{{ end }}" data-email-user="{{ $user }}" data-email-domain="{{ $domain }}">{{ $user }} at {{ $domain }}</span>
