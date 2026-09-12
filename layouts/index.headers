@@ -13,7 +13,22 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: sameorigin
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+{{- /* HSTS, with a safe default that a site can replace. One year and nothing
+       else is right for any site: it protects the hosts this configuration
+       serves and claims nothing about the rest of the zone.
+
+       Adding includeSubDomains claims the whole zone, and preload puts that
+       claim in a list shipped with the browser, which takes months to leave.
+       Neither can be a default: on a site with one subdomain still on plain
+       HTTP, includeSubDomains makes it unreachable with no way to click past
+       the error. Set the parameter only after checking every name, including
+       the ones nobody thinks of, and only if you accept it for every name the
+       zone will ever have. */ -}}
+{{- with site.Params.strictTransportSecurity }}
+  Strict-Transport-Security: {{ . }}
+{{- else }}
   Strict-Transport-Security: max-age=31536000
+{{- end }}
 {{- /* Emitted only when the site set the policy in one place. A CSP here and
        a different one in the meta tag are not alternatives - a browser applies
        every policy it receives and enforces the intersection - so shipping a

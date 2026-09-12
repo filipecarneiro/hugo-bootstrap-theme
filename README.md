@@ -305,6 +305,31 @@ browser blocks it and only a console error shows why:
 covers, and what the theme's build-time check can and cannot verify for you:
 [`head/google-tag.html`](layouts/partials/head/google-tag.html).
 
+#### HSTS beyond the default
+
+The default is `max-age=31536000`, one year, and nothing else. That is right for
+any site: it protects the hosts this configuration serves and claims nothing
+about the rest of the zone.
+
+```toml
+[params]
+  strictTransportSecurity = "max-age=31536000; includeSubDomains; preload"
+```
+
+`includeSubDomains` claims **every** name under the domain, and `preload` puts
+that claim in a list that ships inside the browser, which takes months to leave.
+One subdomain still on plain HTTP becomes unreachable, with no way for a visitor
+to click past the error.
+
+Before setting it, check every name the zone answers for, not only the ones you
+remember: certificate transparency (`crt.sh`) lists the ones that ever held a
+certificate, and the DNS zone lists the rest. Each must redirect HTTP to HTTPS
+and serve a certificate that verifies. Then decide whether you accept the same
+of every name the zone will ever have, because that is what preload buys.
+
+`https://hstspreload.org/api/v2/preloadable?domain=example.com` answers with the
+errors that stand between the site and eligibility.
+
 #### The three isolation headers
 
 Off unless you set them, for the same reason as the CSP: none of the three is a
