@@ -305,6 +305,35 @@ browser blocks it and only a console error shows why:
 covers, and what the theme's build-time check can and cannot verify for you:
 [`head/google-tag.html`](layouts/partials/head/google-tag.html).
 
+#### The three isolation headers
+
+Off unless you set them, for the same reason as the CSP: none of the three is a
+safe default, and each breaks something different when it is wrong.
+
+```toml
+[params]
+  crossOriginOpenerPolicy   = "same-origin"
+  crossOriginResourcePolicy = "same-origin"
+  crossOriginEmbedderPolicy = "require-corp"
+```
+
+| Parameter | What it does | What it breaks |
+| --- | --- | --- |
+| `crossOriginOpenerPolicy` | Cuts the window reference between your page and whatever opened it | A popup your page has to talk back to, such as an OAuth or payment window |
+| `crossOriginResourcePolicy` | Says who may load your files inside a page of their own | Any logo, badge, font or image another site legitimately embeds from you |
+| `crossOriginEmbedderPolicy` | Refuses third-party resources that have not opted in | Any map, video, font or script from another origin, **silently** |
+
+The third one earns its warning. Under `require-corp` a cross-origin subresource
+that has not opted in does not load and the visitor sees nothing at all, no gap
+and no error. Set it only on a site that loads no third-party resource today,
+and check the console after you do, not only the day you ship it but the day
+somebody embeds a video.
+
+`crossOriginResourcePolicy` deserves a thought about who else uses your files.
+A trust badge or a logo that partners display on their own sites stops working
+the moment you send `same-origin`. Hand them the file to host instead, which
+also means their page keeps working when yours is down.
+
 ### Start from Scratch
 
 #### Step 1: Create a new Hugo site

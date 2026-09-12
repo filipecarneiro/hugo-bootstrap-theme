@@ -22,3 +22,30 @@
 {{- with site.Params.contentSecurityPolicy }}
   Content-Security-Policy: {{ . }}
 {{- end }}
+{{- /* The three isolation headers, opt-in for the same reason as the CSP above.
+       None of them is a safe default.
+
+       Cross-Origin-Opener-Policy severs the window reference between a page and
+       whatever opened it, or whatever it opens. "same-origin" is right for a
+       site that never talks to a popup, and wrong for one running an OAuth or
+       payment window.
+
+       Cross-Origin-Resource-Policy says who may load this site's files inside a
+       page of their own. "same-origin" breaks any image, font or script another
+       site legitimately embeds, a logo or a badge above all.
+
+       Cross-Origin-Embedder-Policy is the one that fails quietly. Under
+       "require-corp" a cross-origin subresource that has not opted in simply
+       does not load, with nothing shown to the visitor. Safe only on a site that
+       loads no third-party resource at all, and it must be tested rather than
+       assumed, because the day someone adds a map or a video it stops appearing
+       and nobody learns why. */ -}}
+{{- with site.Params.crossOriginOpenerPolicy }}
+  Cross-Origin-Opener-Policy: {{ . }}
+{{- end }}
+{{- with site.Params.crossOriginResourcePolicy }}
+  Cross-Origin-Resource-Policy: {{ . }}
+{{- end }}
+{{- with site.Params.crossOriginEmbedderPolicy }}
+  Cross-Origin-Embedder-Policy: {{ . }}
+{{- end }}
