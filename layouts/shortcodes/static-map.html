@@ -60,6 +60,9 @@
     - "source" imagery provider, to emit the credit it requires. Only
                "openstreetmap" is known; anything else needs "credit"
     - "credit" attribution HTML, overriding "source" (default empty)
+    - "loading" "lazy" or "eager" (default "lazy"). Use "eager" for a map near
+               the top of the page, where it is the largest contentful paint
+    - "fetchpriority" "high", "low" or "auto", emitted only when set
 
   Example:
 
@@ -125,6 +128,8 @@
 {{- $alt := .Get "alt" | default (printf "Map of %s" $address) -}}
 {{- $sizes := .Get "sizes" | default "100vw" -}}
 {{- $target := .Get "target" | default "_blank" -}}
+{{- $loading := .Get "loading" | default "lazy" -}}
+{{- $fetchpriority := .Get "fetchpriority" -}}
 
 {{- $credit := .Get "credit" -}}
 {{- if and (not $credit) (eq (.Get "source") "openstreetmap") -}}
@@ -143,13 +148,13 @@
       {{- end }}
       {{- if $narrow }}
     <picture>
-      <source media="{{ $mobileMedia }}" srcset="{{ $narrow.srcset }}" sizes="{{ $sizes }}">
+      <source media="{{ $mobileMedia }}" srcset="{{ $narrow.srcset }}" sizes="{{ $sizes }}" width="{{ $narrow.fallback.Width }}" height="{{ $narrow.fallback.Height }}">
       {{- end }}
     <img src="{{ $wide.fallback.RelPermalink }}"
          srcset="{{ $wide.srcset }}"
          sizes="{{ $sizes }}"
          width="{{ $wide.fallback.Width }}" height="{{ $wide.fallback.Height }}"
-         loading="lazy" decoding="async"
+         loading="{{ $loading }}" decoding="async"{{ with $fetchpriority }} fetchpriority="{{ . }}"{{ end }}
          alt="{{ $alt }}">
       {{- if $narrow }}
     </picture>

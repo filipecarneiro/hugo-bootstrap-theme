@@ -107,6 +107,9 @@ a /*.feather*/ {
     img {
         display: block;
         width: 100%;
+        // The height attribute is a ratio hint; left fixed, it squashes the
+        // portrait mobileImage into the wide image's box.
+        height: auto;
     }
 }
 

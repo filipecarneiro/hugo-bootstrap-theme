@@ -13,4 +13,4 @@ menu:
 
 ## Where we are
 
-{{< static-map source="openstreetmap" >}}
+{{< static-map source="openstreetmap" loading="eager" fetchpriority="high" >}}
