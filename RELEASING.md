@@ -36,12 +36,35 @@ below). The tag, the version in `package.json` and the published contents still
 agree, which is the property that matters; the cost is one release missing from
 the `chore(release)` ledger.
 
-## One-time setup
+## How the workflow authenticates to npm
 
-Add an **`NPM_TOKEN`** repository secret (Settings → Secrets and variables →
-Actions). It must be a **granular access token** with read-and-write on this
-package and the 2FA-bypass option enabled — npm refuses to publish otherwise.
-Rotate it if it is ever exposed.
+It uses **npm trusted publishing** (OIDC). There is no `NPM_TOKEN` secret and
+nothing to rotate: npm accepts the publish because the job runs from this
+repository and this workflow file. npm is retiring tokens that bypass 2FA for
+direct publishing, which is why a stored token is not an option.
+
+The link lives on npmjs.com, under the package's **Settings → Trusted
+Publisher**, and has to match exactly (the fields are case-sensitive):
+
+| Field | Value |
+|---|---|
+| Organization or user | `filipecarneiro` |
+| Repository | `hugo-bootstrap-theme` |
+| Workflow filename | `release.yml` |
+| Environment | empty |
+| Allowed actions | **npm publish** ticked, so the workflow can publish without a staged approval |
+
+Three things keep it working:
+
+- **Do not rename `release.yml`.** The filename is part of the link, and a
+  rename fails at publish time with `ENEEDAUTH`.
+- The workflow needs `id-token: write` and an npm of 11.5.1 or newer, which is
+  why it runs on Node 24.
+- `package.json` `repository.url` must keep pointing at this GitHub repository.
+
+npm does not validate the link when it is saved, and a link cannot be edited,
+only deleted and recreated. A new link must also complete one successful publish
+within two days or it expires.
 
 ## Hugo version
 
@@ -130,6 +153,12 @@ gh release create v<version> --title "<version>" --generate-notes
 returns 404 rather than 401 for unauthenticated writes, so the endpoint cannot
 be used to probe for private packages. Run `npm whoami`; if it errors, you are
 simply logged out.
+
+**`ENEEDAUTH` or `E404` in the workflow** — the trusted publisher link is the
+first suspect, since there is no token to expire. Check that the link still
+exists and that every field matches the table above, and that `release.yml` has
+not been renamed. A `404` here is the same masked authentication failure
+described above.
 
 **`E403` mentioning 2FA** — the account needs two-factor authentication, or a
 granular token with 2FA bypass, before it may publish.
