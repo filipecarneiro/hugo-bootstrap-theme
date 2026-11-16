@@ -32,11 +32,11 @@
   "devDependencies": {
     "bootstrap": "^5.3.9",
     "feather-icons": "^4.29.2",
-    "sharp": "^0.35.4",
-    "unlighthouse": "^0.18.0"
+    "sharp": "^0.35.5",
+    "unlighthouse": "^0.19.1"
   },
   "overrides": {
     "esbuild": "^0.28.1",
-    "js-yaml": "^3.15.1"
+    "js-yaml": "^3.15.2"
   }
 }
