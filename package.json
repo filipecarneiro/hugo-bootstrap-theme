@@ -30,7 +30,7 @@
     "static-map": "node scripts/static-map.mjs --lat=41.3533727 --lon=-8.7433761 --zoom=17 --out=exampleSite/assets/images/contact-map.png && node scripts/static-map.mjs --lat=41.3533727 --lon=-8.7433761 --zoom=18 --width=900 --height=1200 --out=exampleSite/assets/images/contact-map-mobile.png"
   },
   "devDependencies": {
-    "bootstrap": "^5.3.8",
+    "bootstrap": "^5.3.9",
     "feather-icons": "^4.29.2",
     "sharp": "^0.35.4",
     "unlighthouse": "^0.18.0"
