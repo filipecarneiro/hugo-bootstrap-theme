@@ -86,7 +86,7 @@ This launches Hugo development server and you can see the example site by openin
 npm install @filipecarneiro/hugo-bootstrap-theme
 ```
 
-Hugo bootstrap theme package will also add bootstrap and feather-icons to node modules.
+The theme ships Bootstrap 5.3 and the Feather icon sprite inside the package, so nothing else needs to be installed.
 
 #### Step 2: Add to Config
 
@@ -220,6 +220,59 @@ or wherever, so the term stops being a string that exists only on your page.
 Full details, including why the set is identified by `#glossary` rather than by the page
 URL, and why a description is published whole rather than cut to its first sentence:
 [`head/schema-defined-term-set.html`](layouts/partials/head/schema-defined-term-set.html).
+
+### Static map
+
+The `static-map` shortcode shows a map as a picture that links out to a maps service. An
+embedded map pulls a third-party JavaScript stack into the page and opens a third-party
+connection on every visit, just to show one fixed view; a picture costs neither. Nothing is
+fetched at build time, and when the image is missing the shortcode renders a plain text link,
+so a site without one still builds.
+
+```
+{{< static-map source="openstreetmap" >}}
+```
+
+It reads its defaults from the same `localBusiness` block that feeds the local business
+structured data, so the picture, the link and the structured data cannot drift apart:
+
+```toml
+[localBusiness.map]
+  latitude = "41.3534021"
+  longitude = "-8.7434415"
+  url = "https://maps.app.goo.gl/yc98wwX3u8vWhnuy7"   # or placeId, or cid
+  image = "images/contact-map.png"                     # under assets/
+  mobileImage = "images/contact-map-mobile.png"        # optional
+```
+
+The link comes from the most specific source available: the `href` parameter, then `url`,
+`placeId`, `cid`, the coordinates, and finally the address. `mobileImage` is a tighter,
+portrait crop served below 768px, because a wide banner squeezed into a narrow column shows
+very little map; the shortcode serves each image in a responsive `srcset`.
+
+By default the image is lazy-loaded. A map near the top of the page is often the largest
+contentful paint, so load it eagerly there:
+
+```
+{{< static-map source="openstreetmap" loading="eager" fetchpriority="high" >}}
+```
+
+Other parameters: `image`, `href`, `alt`, `sizes`, `class`, `target`, `mobileImage`,
+`mobileMedia` and `credit`. OpenStreetMap imagery is ODbL licensed and must be credited;
+`source="openstreetmap"` writes the credit for you. Every parameter is documented at the top
+of [`static-map.html`](layouts/shortcodes/static-map.html).
+
+To generate the images, stitch OpenStreetMap tiles into one picture with the bundled script,
+which needs [`sharp`](https://www.npmjs.com/package/sharp) (`npm install --save-dev sharp`),
+then commit the result:
+
+```
+node node_modules/@filipecarneiro/hugo-bootstrap-theme/scripts/static-map.mjs \
+  --lat=41.3534021 --lon=-8.7434415 --zoom=17 --out=assets/images/contact-map.png
+```
+
+`--width`, `--height` and `--marker` are also available; run it again with `--zoom=18
+--width=900 --height=1200` for the portrait image.
 
 ### Google tag (Analytics and Ads)
 
