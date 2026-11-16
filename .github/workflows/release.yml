@@ -31,6 +31,9 @@ on:
 
 permissions:
   contents: write
+  # Lets npm exchange this job's identity for a publish credential; there is
+  # no npm token stored anywhere.
+  id-token: write
 
 # Never let two releases race for the same version number.
 concurrency:
@@ -61,7 +64,8 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          # Trusted publishing needs npm 11.5.1 or newer, which Node 22 does not bundle.
+          node-version: '24'
           registry-url: https://registry.npmjs.org
 
       - name: Show what will be published
@@ -85,10 +89,10 @@ jobs:
       - name: Push commit and tag
         run: git push --follow-tags
 
+      # Authenticates through the trusted publisher configured on npmjs.com for
+      # this repository and workflow file name; renaming release.yml breaks it.
       - name: Publish to npm
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub release
         run: |
